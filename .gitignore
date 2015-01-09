@@ -1,0 +1,10 @@
+*.nupkg
+*.suo
+*.user
+/TestResults
+/packages
+StyleCop.Cache
+bin
+obj
+/Bootstrap3Mvc5
+/Bootstrap3Mvc5.Sample

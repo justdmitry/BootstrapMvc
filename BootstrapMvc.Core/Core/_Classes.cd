@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BootstrapMvc.Core.WritableBlock">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAgAAQAAAAAAAAAAAAAAAAQQgAAAAAIJAAAA=</HashCode>
+      <FileName>Core\WritableBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BootstrapMvc.Core.Element">
+    <Position X="2.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAEAAAAAAAAAAAAABAABAAAQAEAAA=</HashCode>
+      <FileName>Core\Element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BootstrapMvc.Core.Content">
+    <Position X="6.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAACAAAAAgAIAAAAA=</HashCode>
+      <FileName>Core\Content.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BootstrapMvc.Core.DisposableContent">
+    <Position X="8.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DisposableContent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BootstrapMvc.Core.AnyContent">
+    <Position X="8.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\AnyContent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BootstrapMvc.Core.AnyContentElement">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Core\AnyContentElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BootstrapMvc.Core.ContentElement&lt;T&gt;">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAABAAAABAAAYCAAAA=</HashCode>
+      <FileName>Core\ContentElementT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BootstrapMvc.Core.OrdinaryElement">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\OrdinaryElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

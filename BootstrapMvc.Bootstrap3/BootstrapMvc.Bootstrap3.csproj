@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FAEE806-C15F-4CEE-992B-C5CDC431EAB8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BootstrapMvc</RootNamespace>
+    <AssemblyName>BootstrapMvc.Bootstrap3</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnyContentElements\Alert.cs" />
+    <Compile Include="AlertType.cs" />
+    <Compile Include="AnyContentElements\Badge.cs" />
+    <Compile Include="Controls\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Controls\Radio.cs" />
+    <Compile Include="Controls\ControlBase.cs" />
+    <Compile Include="Controls\EnumToStringConverter.cs" />
+    <Compile Include="Controls\Input.cs" />
+    <Compile Include="Controls\Checkbox.cs" />
+    <Compile Include="Controls\InputType.cs" />
+    <Compile Include="Controls\StaticValue.cs" />
+    <Compile Include="Controls\Textarea.cs" />
+    <Compile Include="Core\GridSize.cs" />
+    <Compile Include="Core\ILink.cs" />
+    <Compile Include="Forms\EnumToStringConverter.cs" />
+    <Compile Include="Forms\Fieldset.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\Form.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\FormContent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\FormContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEnctype.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\FormGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\FormGroupControls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\FormGroupLabel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMethod.cs" />
+    <Compile Include="Forms\FormType.cs" />
+    <Compile Include="Forms\HelpBlock.cs" />
+    <Compile Include="Forms\IAnyContentMarkerExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\IAnyContentMarkerTExtensions .cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\Legend.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GeneralExtensions\ElementExtensions.cs" />
+    <Compile Include="Elements\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="EnumToStringConverter.cs" />
+    <Compile Include="Elements\Icon.cs" />
+    <Compile Include="IconType.cs" />
+    <Compile Include="AnyContentElements\Label.cs" />
+    <Compile Include="LabelType.cs" />
+    <Compile Include="Panels\EnumToStringConverter.cs" />
+    <Compile Include="Panels\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Panels\Panel.cs" />
+    <Compile Include="Panels\PanelBody.cs" />
+    <Compile Include="Panels\PanelContent.cs" />
+    <Compile Include="Panels\PanelFooter.cs" />
+    <Compile Include="Panels\PanelHeader.cs" />
+    <Compile Include="Panels\PanelType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\EnumToStringConverter.cs" />
+    <Compile Include="Tables\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Tables\Table.cs" />
+    <Compile Include="Tables\TableCaption.cs" />
+    <Compile Include="Tables\TableBody.cs" />
+    <Compile Include="Tables\TableHeaderCell.cs" />
+    <Compile Include="Tables\TableCell.cs" />
+    <Compile Include="Tables\TableContent.cs" />
+    <Compile Include="Tables\TableFooter.cs" />
+    <Compile Include="Tables\TableHeader.cs" />
+    <Compile Include="Tables\TableRow.cs" />
+    <Compile Include="Tables\TableRowCellColor.cs" />
+    <Compile Include="Tables\TableRowContent.cs" />
+    <Compile Include="Tables\TableSectionContent.cs" />
+    <Compile Include="Tables\TableStyles.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BootstrapMvc.Core\BootstrapMvc.Core.csproj">
+      <Project>{ea934fa0-71aa-4f8f-bd50-3af7f487785a}</Project>
+      <Name>BootstrapMvc.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Panels\_Panel.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
