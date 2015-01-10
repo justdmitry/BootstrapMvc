@@ -10,8 +10,8 @@ namespace BootstrapMvc.Core
     [TestClass]
     public class DisposableContentTest
     {
-        MockRepository mocks;
-        Mock<IBootstrapContext> contextMock;
+        private MockRepository mocks;
+        private Mock<IBootstrapContext> contextMock;
 
         [TestInitialize]
         public void Initialize()
@@ -35,7 +35,7 @@ namespace BootstrapMvc.Core
                     obj.Value(sample);
                 }
 
-                Assert.AreEqual(sample , sw.ToString());
+                Assert.AreEqual(sample, sw.ToString());
             }
         }
     }

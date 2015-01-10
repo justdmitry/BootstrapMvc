@@ -8,8 +8,8 @@ namespace BootstrapMvc.Core
     [TestClass]
     public class WritableBlockTests
     {
-        MockRepository mocks;
-        Mock<IBootstrapContext> contextMock;
+        private MockRepository mocks;
+        private Mock<IBootstrapContext> contextMock;
 
         [TestInitialize]
         public void Initialize()
@@ -66,7 +66,6 @@ namespace BootstrapMvc.Core
                 b1.WriteTo(sw);
                 Assert.AreEqual("1 2 ", sw.ToString());
             }
-
         }
 
         [TestMethod]
@@ -81,7 +80,6 @@ namespace BootstrapMvc.Core
                 Assert.IsTrue(b1.AfterWriteCalled);
                 Assert.AreEqual("123", sw.ToString());
             }
-
         }
     }
 }

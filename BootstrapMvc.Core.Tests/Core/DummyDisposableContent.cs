@@ -7,7 +7,7 @@ namespace BootstrapMvc.Core
         public DummyDisposableContent(IBootstrapContext context)
             : base(context)
         {
-            base.WriteWhitespaceSuffix(false);
+            WriteWhitespaceSuffix(false);
         }
     }
 }

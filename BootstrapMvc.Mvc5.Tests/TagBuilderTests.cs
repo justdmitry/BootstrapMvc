@@ -11,7 +11,7 @@ namespace BootstrapMvc.Mvc5
         public void Test_EmptyCssClassesNotAdded()
         {
             var tb = new TagBuilder("test");
-            tb.AddCssClass("");
+            tb.AddCssClass(string.Empty);
             tb.InnerHtml = "aaa";
 
             Assert.AreEqual("<test>aaa</test>", tb.GetFullTag());

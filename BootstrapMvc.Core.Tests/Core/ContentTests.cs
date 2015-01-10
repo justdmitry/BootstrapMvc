@@ -10,8 +10,8 @@ namespace BootstrapMvc.Core
     [TestClass]
     public class ContentTests
     {
-        MockRepository mocks;
-        Mock<IBootstrapContext> contextMock;
+        private MockRepository mocks;
+        private Mock<IBootstrapContext> contextMock;
 
         [TestInitialize]
         public void Initialize()

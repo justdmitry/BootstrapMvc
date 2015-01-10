@@ -42,6 +42,15 @@
     <Compile Include="AnyContentElements\Alert.cs" />
     <Compile Include="AlertType.cs" />
     <Compile Include="AnyContentElements\Badge.cs" />
+    <Compile Include="Buttons\Button.cs" />
+    <Compile Include="Buttons\ButtonGroup.cs" />
+    <Compile Include="Buttons\ButtonGroupContent.cs" />
+    <Compile Include="Buttons\ButtonSize.cs" />
+    <Compile Include="Buttons\ButtonToolbar.cs" />
+    <Compile Include="Buttons\ButtonToolbarContent.cs" />
+    <Compile Include="Buttons\ButtonType.cs" />
+    <Compile Include="Buttons\EnumToStringConverter.cs" />
+    <Compile Include="Buttons\IAnyContentMarkerExtensions.cs" />
     <Compile Include="Controls\IAnyContentMarkerExtensions.cs" />
     <Compile Include="Controls\Radio.cs" />
     <Compile Include="Controls\ControlBase.cs" />
@@ -52,7 +61,7 @@
     <Compile Include="Controls\StaticValue.cs" />
     <Compile Include="Controls\Textarea.cs" />
     <Compile Include="Core\GridSize.cs" />
-    <Compile Include="Core\ILink.cs" />
+    <Compile Include="Dropdown\IDropdownMenuParentMarker.cs" />
     <Compile Include="Forms\EnumToStringConverter.cs" />
     <Compile Include="Forms\Fieldset.cs">
       <SubType>Code</SubType>
@@ -121,6 +130,8 @@
     <Compile Include="Tables\TableRowContent.cs" />
     <Compile Include="Tables\TableSectionContent.cs" />
     <Compile Include="Tables\TableStyles.cs" />
+    <Compile Include="BaseColor.cs" />
+    <Compile Include="TextColor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BootstrapMvc.Core\BootstrapMvc.Core.csproj">

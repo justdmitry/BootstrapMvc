@@ -21,7 +21,7 @@ namespace BootstrapMvc.Core
             return this;
         }
 
-        public AnyContentElement Content(IEnumerable<object> values)
+        public AnyContentElement Content(params object[] values)
         {
             this.content = new Content(Context).Value(values);
             return this;

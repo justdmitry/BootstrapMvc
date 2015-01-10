@@ -1,16 +1,16 @@
 ﻿using System;
 using System.IO;
+using System.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System.Web;
 
 namespace BootstrapMvc.Core
 {
     [TestClass]
     public class ContentElementTests
     {
-        MockRepository mocks;
-        Mock<IBootstrapContext> contextMock;
+        private MockRepository mocks;
+        private Mock<IBootstrapContext> contextMock;
 
         [TestInitialize]
         public void Initialize()
@@ -36,14 +36,14 @@ namespace BootstrapMvc.Core
 
         private class DummyDisposableContent : DisposableContent
         {
-            public DummyDisposableContent(IBootstrapContext context) 
+            public DummyDisposableContent(IBootstrapContext context)
                 : base(context)
             {
                 // Nothing
             }
         }
 
-        private class DummyContentElement: ContentElement<DummyDisposableContent>
+        private class DummyContentElement : ContentElement<DummyDisposableContent>
         {
             public DummyContentElement(IBootstrapContext context)
                 : base(context)
@@ -62,6 +62,5 @@ namespace BootstrapMvc.Core
                 return new Content(Context).Value("end");
             }
         }
-
     }
 }
