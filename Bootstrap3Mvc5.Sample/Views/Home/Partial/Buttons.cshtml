@@ -1,0 +1,123 @@
+﻿<h2>Buttons</h2>
+
+<h3>Simple buttons</h3>
+<pre>
+@@Bootstrap.Button(ButtonType.DefaultGray, "DefaultGray")
+@@Bootstrap.Button(ButtonType.InfoCyan, "InfoCyan")
+@@Bootstrap.Button(ButtonType.PrimaryBlue, "PrimaryBlue")
+@@Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange")
+@@Bootstrap.Button(ButtonType.DangerRed, "DangerRed")
+@@Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen")
+@@Bootstrap.Button(ButtonType.Link, "Link")
+</pre>
+<p>
+@Bootstrap.Button(ButtonType.DefaultGray, "DefaultGray")
+@Bootstrap.Button(ButtonType.InfoCyan, "InfoCyan")
+@Bootstrap.Button(ButtonType.PrimaryBlue, "PrimaryBlue")
+@Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange")
+@Bootstrap.Button(ButtonType.DangerRed, "DangerRed")
+@Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen")
+@Bootstrap.Button(ButtonType.Link, "Link")
+</p>
+
+<h3>Different sizes, disabled</h3>
+<pre>
+@@Bootstrap.Button(ButtonType.PrimaryBlue, "PrimaryBlue extra small").Size(ButtonSize.ExtraSmall)
+@@Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange small").Size(ButtonSize.Small)
+@@Bootstrap.Button(ButtonType.DangerRed, "DangerRed large").Size(ButtonSize.Large)
+@@Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen").Disabled()
+</pre>
+<p>
+@Bootstrap.Button(ButtonType.PrimaryBlue, "PrimaryBlue extra small").Size(ButtonSize.ExtraSmall)
+@Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange small").Size(ButtonSize.Small)
+@Bootstrap.Button(ButtonType.DangerRed, "DangerRed large").Size(ButtonSize.Large)
+@Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen").Disabled()
+</p>
+
+<h3>Shorthand for icons</h3>
+<p>Provide ItemType as first parameter to render Icon</p>
+<pre>
+@@Bootstrap.Button(ButtonType.SuccessGreen, IconType.Ok, " SuccessGreen")
+</pre>
+<p>
+@Bootstrap.Button(ButtonType.SuccessGreen, IconType.Ok, " SuccessGreen")
+</p>
+
+<h3>Any content, including hand-written HTML</h3>
+<pre>
+@@Bootstrap.Button(ButtonType.DefaultGray).AddContent("Hello ").AddContent(Bootstrap.Label(LabelType.InfoCyan, "World!"))
+@@using (Bootstrap.Button(ButtonType.WarningOrange).BeginContent())
+{
+    Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside (at your risk!)
+}
+</pre>
+<p>
+@Bootstrap.Button(ButtonType.DefaultGray).AddContent("Hello ").AddContent(Bootstrap.Label(LabelType.InfoCyan, "World!"))
+@using (Bootstrap.Button(ButtonType.WarningOrange).BeginContent())
+{
+    <text>Use <code>BeginContent()</code> method and place any HTML markup inside (at your risk!)</text>
+}
+</p>
+
+<h3>Button groups and toolbars</h3>
+<p>Create toolbars and button groups with precreated values or with <code>using</code> blocks:</p>
+<pre>
+@@Bootstrap.ButtonGroup().AddButton(
+    Bootstrap.Button(ButtonType.DefaultGray, "One"),
+    Bootstrap.Button(ButtonType.DefaultGray, "Two"),
+    Bootstrap.Button(ButtonType.DefaultGray, "Three")
+)
+@@Bootstrap.ButtonGroup(ButtonSize.Small)
+    .AddButton(Bootstrap.Button(ButtonType.SuccessGreen, "Four"))
+    .AddButton(Bootstrap.Button(ButtonType.SuccessGreen, "Five"))    
+</pre>
+<p>
+@(Bootstrap.ButtonGroup().AddButton(
+    Bootstrap.Button(ButtonType.DefaultGray, "One"),
+    Bootstrap.Button(ButtonType.DefaultGray, "Two"),
+    Bootstrap.Button(ButtonType.DefaultGray, "Three")
+))
+@(Bootstrap.ButtonGroup(ButtonSize.Small)
+    .AddButton(Bootstrap.Button(ButtonType.SuccessGreen, "Four"))
+    .AddButton(Bootstrap.Button(ButtonType.SuccessGreen, "Five"))    
+)
+</p>
+
+
+<pre>
+@@using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
+{
+    using (var groupContent = toolbarContent.BeginButtonGroup())
+    {
+        @@Bootstrap.Button(IconType.Save, "Save")
+        @@Bootstrap.Button(IconType.Remove, "Cancel")
+        @@Bootstrap.Button(IconType.Question_Sign, "Help")
+    }
+    &lt;span&gt;Or any HTML at your risk&lt;span&gt;
+}
+</pre>
+<p>
+@using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
+{
+    using (var groupContent = toolbarContent.BeginButtonGroup())
+    {
+        @Bootstrap.Button(IconType.Save, "Save")
+        @Bootstrap.Button(IconType.Remove, "Cancel")
+        @Bootstrap.Button(IconType.Question_Sign, "Help")
+    }
+    <span>Or any HTML at your risk</span>
+}
+</p>
+
+<h3>Dropdowns</h3>
+<p>Use <code>Dropdown()</code> or <code>BeginDropdown()</code> methods</p>
+<div class="dropdown">
+@using (var dropdown = Bootstrap.Button("Sample").BeginDropdown())
+{
+    @dropdown.Link("Hello");
+    @dropdown.Divider();  
+    @dropdown.Header("Header");
+    @dropdown.Link("Link 1").Href("#target1");
+    @dropdown.Link("Link 2").Href("#target2");
+}
+</div>

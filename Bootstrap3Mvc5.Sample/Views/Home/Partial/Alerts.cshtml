@@ -1,0 +1,52 @@
+﻿<h2>Alerts</h2>
+
+<h3>Simple alerts</h3>
+<pre>
+@@Bootstrap.Alert(AlertType.DangerRed,     "This is simple danger alert")
+@@Bootstrap.Alert(AlertType.SuccessGreen,  "This is simple success alert")
+@@Bootstrap.Alert(AlertType.WarningOrange, "This is simple warning alert")
+@@Bootstrap.Alert(AlertType.InfoCyan,      "This is simple info alert")
+</pre>
+@Bootstrap.Alert(AlertType.DangerRed, "This is simple danger alert")
+@Bootstrap.Alert(AlertType.SuccessGreen, "This is simple success alert")
+@Bootstrap.Alert(AlertType.WarningOrange, "This is simple warning alert")
+@Bootstrap.Alert(AlertType.InfoCyan, "This is simple info alert")
+
+
+<h3>Additional capabilities</h3>
+
+<h4>Closable alerts</h4>
+<pre>@@Bootstrap.Alert(AlertType.WarningOrange, "This is simple alert with close button").Closable()</pre>
+@Bootstrap.Alert(AlertType.WarningOrange, "This is simple alert with close button").Closable()
+
+
+<h3>Any content inside</h3>
+
+@(Bootstrap.Alert(AlertType.SuccessGreen)
+    .AddContent("Regular Strings will be encoded (<hi!>);")
+    .AddContent(MvcHtmlString.Create("<i>HtmlStrings will NOT be encoded</i> "))
+    .AddContent(Bootstrap.Label(LabelType.SuccessGreen, "and other Bootstrap objects are accepted"))
+)
+<pre>
+@@Bootstrap.Alert(AlertType.SuccessGreen)
+    .AddContent("Regular Strings will be encoded (&lt;hi!&gt;);")
+    .AddContent(MvcHtmlString.Create("&lt;i&gt;HtmlStrings will NOT be encoded&lt;/i&gt; "))
+    .AddContent(Bootstrap.Label(LabelType.SuccessGreen, "and other Bootstrap objects are accepted"))
+</pre>
+
+
+<h3>Any HTML content</h3>
+
+@using (Bootstrap.Alert(AlertType.SuccessGreen).Closable().BeginContent())
+{
+    <h4>Header inside Alert</h4>
+    <p>Use <code>BeginContent()</code> method and place any HTML markup inside, and mix with bootstrap objects: @Bootstrap.Icon(IconType.Exclamation_Sign)</p>
+}
+
+<pre>
+@@using (Bootstrap.Alert(AlertType.SuccessGreen).Closable().BeginContent())
+{
+    &lt;h4&gt;Header inside Alert&lt;/h4&gt;
+    &lt;p&gt;Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside, and mix with bootstrap objects: @@Bootstrap.Icon(IconType.Exclamation_Sign)&lt;/p&gt;
+}
+</pre>

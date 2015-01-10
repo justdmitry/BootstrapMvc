@@ -1,0 +1,53 @@
+﻿<h2>Labels</h2>
+
+<h3>Simple labels</h3>
+<pre>
+@@Bootstrap.Label(LabelType.DefaultGray, "DefaultGray")
+@@Bootstrap.Label(LabelType.InfoCyan, "InfoCyan")
+@@Bootstrap.Label(LabelType.PrimaryBlue, "PrimaryBlue")
+@@Bootstrap.Label(LabelType.WarningOrange, "WarningOrange")
+@@Bootstrap.Label(LabelType.DangerRed, "DangerRed")
+@@Bootstrap.Label(LabelType.SuccessGreen, "SuccessGreen")
+</pre>
+@Bootstrap.Label(LabelType.DefaultGray, "DefaultGray")
+@Bootstrap.Label(LabelType.InfoCyan, "InfoCyan")
+@Bootstrap.Label(LabelType.PrimaryBlue, "PrimaryBlue")
+@Bootstrap.Label(LabelType.WarningOrange, "WarningOrange")
+@Bootstrap.Label(LabelType.DangerRed, "DangerRed")
+@Bootstrap.Label(LabelType.SuccessGreen, "SuccessGreen")
+
+
+<h3>Any content inside</h3>
+
+<p>
+    @(Bootstrap.Label(LabelType.SuccessGreen)
+    .AddContent("Regular Strings will be encoded (<hi!>);")
+    .AddContent(MvcHtmlString.Create("<i>HtmlStrings will NOT be encoded</i> "))
+    .AddContent(Bootstrap.Icon(IconType.Camera))
+    )
+</p>
+
+<pre>
+@@Bootstrap.Label(LabelType.SuccessGreen)
+    .AddContent("Regular Strings will be encoded (&lt;hi!&gt;);")
+    .AddContent(MvcHtmlString.Create("&lt;i&gt;HtmlStrings will NOT be encoded&lt;/i&gt; "))
+    .AddContent(Bootstrap.Icon(IconType.Camera))
+)
+</pre>
+
+
+<h3>Any HTML content</h3>
+
+<p>
+    @using (Bootstrap.Label(LabelType.SuccessGreen).BeginContent())
+    {
+        <text>Use <code>BeginContent()</code> method and place any HTML markup inside (at your risk!)</text>
+    }
+</p>
+
+<pre>
+@@using (Bootstrap.Label(LabelType.SuccessGreen).BeginContent())
+{
+    Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside (at your risk!)
+}
+</pre>

@@ -1,0 +1,15 @@
+﻿<h2>Badges</h2>
+
+<h3>Simple badge</h3>
+<pre>
+@@Bootstrap.Badge("42") 
+</pre>
+@Bootstrap.Badge("42") 
+
+<h3>Badge with HTML content</h3>
+<p> You can use HTML content (at your own risk)</p>
+<pre>
+@@Bootstrap.Badge(MvcHtmlString.Create("To be or &lt;s&gt;not&lt;/s&gt; to be?"))
+</pre>
+@Bootstrap.Badge(MvcHtmlString.Create("To be or <s>not</s> to be?"))
+
