@@ -44,6 +44,8 @@
     <Compile Include="Core\ContentElementT.cs" />
     <Compile Include="Core\DisposableContent.cs" />
     <Compile Include="Core\IAnyContentMarkerT.cs" />
+    <Compile Include="Core\IBootstrapMvcViewPageT.cs" />
+    <Compile Include="Core\IBootstrapMvcViewPage.cs" />
     <Compile Include="Core\IControlContext.cs" />
     <Compile Include="Core\IAnyContentMarker.cs" />
     <Compile Include="Core\IBootstrapContext.cs" />

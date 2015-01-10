@@ -14,21 +14,21 @@ namespace BootstrapMvc.Core
 
         private byte lg;
 
-        private byte offset_xs;
+        private byte xsOffset;
 
-        private byte offset_sm;
+        private byte smOffset;
 
-        private byte offset_md;
+        private byte mdOffset;
 
-        private byte offset_lg;
-        
+        private byte lgOffset;
+
         public GridSize(byte xs, byte sm, byte md, byte lg)
             : this(xs, sm, md, lg, 0, 0, 0, 0)
         {
             // Nothing
         }
 
-        public GridSize(byte xs, byte sm, byte md, byte lg, byte offset_xs, byte offset_sm, byte offset_md, byte offset_lg)
+        public GridSize(byte xs, byte sm, byte md, byte lg, byte xsOffset, byte smOffset, byte mdOffset, byte lgOffset)
         {
             if (xs > ColumnsCount)
             {
@@ -46,30 +46,30 @@ namespace BootstrapMvc.Core
             {
                 throw new ArgumentOutOfRangeException("lg");
             }
-            if ((xs + offset_xs) > ColumnsCount)
+            if ((xs + xsOffset) > ColumnsCount)
             {
-                throw new ArgumentOutOfRangeException("offset_xs");
+                throw new ArgumentOutOfRangeException("xsOffset");
             }
-            if ((sm + offset_sm) > ColumnsCount)
+            if ((sm + smOffset) > ColumnsCount)
             {
-                throw new ArgumentOutOfRangeException("offset_sm");
+                throw new ArgumentOutOfRangeException("smOffset");
             }
-            if ((md + offset_md) > ColumnsCount)
+            if ((md + mdOffset) > ColumnsCount)
             {
-                throw new ArgumentOutOfRangeException("offset_md");
+                throw new ArgumentOutOfRangeException("mdOffset");
             }
-            if ((lg + offset_lg) > ColumnsCount)
+            if ((lg + lgOffset) > ColumnsCount)
             {
-                throw new ArgumentOutOfRangeException("offset_lg");
+                throw new ArgumentOutOfRangeException("lgOffset");
             }
             this.xs = xs;
             this.sm = sm;
             this.md = md;
             this.lg = lg;
-            this.offset_xs = offset_xs;
-            this.offset_sm = offset_sm;
-            this.offset_md = offset_md; 
-            this.offset_lg = offset_lg;
+            this.xsOffset = xsOffset;
+            this.smOffset = smOffset;
+            this.mdOffset = mdOffset;
+            this.lgOffset = lgOffset;
         }
 
         public string ToCssClass()
@@ -78,11 +78,10 @@ namespace BootstrapMvc.Core
                  + (sm == 0 ? string.Empty : " col-sm-" + sm)
                  + (md == 0 ? string.Empty : " col-md-" + md)
                  + (lg == 0 ? string.Empty : " col-lg-" + lg)
-                 + (offset_xs == 0 ? string.Empty : " col-offset-xs-" + offset_xs)
-                 + (offset_sm == 0 ? string.Empty : " col-offset-sm-" + offset_sm)
-                 + (offset_md == 0 ? string.Empty : " col-offset-md-" + offset_md)
-                 + (offset_lg == 0 ? string.Empty : " col-offset-lg-" + offset_lg)
-                ;
+                 + (xsOffset == 0 ? string.Empty : " col-offset-xs-" + xsOffset)
+                 + (smOffset == 0 ? string.Empty : " col-offset-sm-" + smOffset)
+                 + (mdOffset == 0 ? string.Empty : " col-offset-md-" + mdOffset)
+                 + (lgOffset == 0 ? string.Empty : " col-offset-lg-" + lgOffset);
         }
 
         public GridSize Invert()
@@ -91,8 +90,7 @@ namespace BootstrapMvc.Core
                 (byte)(xs == 0 ? 0 : ColumnsCount - xs),
                 (byte)(sm == 0 ? 0 : ColumnsCount - sm),
                 (byte)(md == 0 ? 0 : ColumnsCount - md),
-                (byte)(lg == 0 ? 0 : ColumnsCount - lg)
-                );
+                (byte)(lg == 0 ? 0 : ColumnsCount - lg));
         }
 
         public GridSize Offset(GridSize value)

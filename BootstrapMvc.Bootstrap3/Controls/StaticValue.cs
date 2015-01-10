@@ -46,8 +46,6 @@ namespace BootstrapMvc.Controls
             ApplyCss(input);
             ApplyAttributes(input);
 
-            //input.MergeAttributes(helper.HtmlHelper.GetUnobtrusiveValidationAttributes(context.ExpressionText, context.Metadata));
-
             writer.Write(input.GetFullTag());
         }
     }

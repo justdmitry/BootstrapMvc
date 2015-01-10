@@ -1,6 +1,6 @@
 ﻿using System;
-using BootstrapMvc.Core;
 using BootstrapMvc.Controls;
+using BootstrapMvc.Core;
 
 namespace BootstrapMvc
 {

@@ -1,8 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace BootstrapMvc.Core
 {
-    public abstract class BootstrapViewPage : WebViewPage
+    public abstract class BootstrapViewPage : WebViewPage, IBootstrapMvcViewPage
     {
         public BootstrapHelper Bootstrap { get; protected set; }
 

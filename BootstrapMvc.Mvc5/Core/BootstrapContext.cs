@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using mvc = System.Web.Mvc;
-using System.Web.Routing;
 using System.Web;
+using System.Web.Routing;
+using mvc = System.Web.Mvc;
 
 namespace BootstrapMvc.Core
 {
@@ -23,7 +23,7 @@ namespace BootstrapMvc.Core
 
         protected mvc.UrlHelper Url { get; set; }
 
-        public mvc.ViewDataDictionary ViewData { get; protected set; }
+        protected mvc.ViewDataDictionary ViewData { get; set; }
 
         public ITagBuilder CreateTagBuilder(string tagName)
         {
@@ -109,7 +109,7 @@ namespace BootstrapMvc.Core
                 return false;
             }
             value = stack.Peek() as T;
-            return (value != null);
+            return value != null;
         }
     }
 }
