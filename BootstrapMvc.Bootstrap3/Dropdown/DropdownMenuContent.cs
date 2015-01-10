@@ -1,10 +1,17 @@
 ﻿using System;
 using BootstrapMvc.Core;
+using BootstrapMvc.Elements;
 
-namespace BootstrapMvc
+namespace BootstrapMvc.Dropdown
 {
     public class DropdownMenuContent : DisposableContent
     {
+        public DropdownMenuContent(IBootstrapContext context)
+            : base(context)
+        {
+            // Nothing
+        }
+
         public DropdownMenuItemLink Link()
         {
             return new DropdownMenuItemLink(Context);
@@ -12,35 +19,35 @@ namespace BootstrapMvc
 
         public DropdownMenuItemLink Link(object content)
         {
-            return (DropdownMenuItemLink)new DropdownMenuItemLink(Context).AddContent(content);
+            return (DropdownMenuItemLink)new DropdownMenuItemLink(Context).Content(content);
         }
 
         public DropdownMenuItemLink Link(IconType iconType, object content)
         {
-            return (DropdownMenuItemLink)new DropdownMenuItemLink(Context).AddContent(new Icon().Type(iconType)).AddContent(content);
+            return (DropdownMenuItemLink)new DropdownMenuItemLink(Context).Content(new Icon(Context).Type(iconType), content);
         }
 
         public DropdownMenuItemLink Link(params object[] contents)
         {
-            return (DropdownMenuItemLink)new DropdownMenuItemLink(Context).AddContent(contents);
+            return (DropdownMenuItemLink)new DropdownMenuItemLink(Context).Content(contents);
         }
 
         public DropdownMenuItemDivider Divider()
         {
-            return new DropdownMenuItemDivider();
+            return new DropdownMenuItemDivider(Context);
         }
 
         public DropdownMenuItemHeader Header(object content)
         {
-            return (DropdownMenuItemHeader)new DropdownMenuItemHeader(Context).AddContent(content);
+            return (DropdownMenuItemHeader)new DropdownMenuItemHeader(Context).Content(content);
         }
 
         public DropdownMenuItemHeader Header(params object[] contents)
         {
-            return (DropdownMenuItemHeader)new DropdownMenuItemHeader(Context).AddContent(contents);
+            return (DropdownMenuItemHeader)new DropdownMenuItemHeader(Context).Content(contents);
         }
 
-        public AnyContent BeginItem()
+        public AnyContent BeginLink()
         {
             return new DropdownMenuItemLink(Context).BeginContent();
         }

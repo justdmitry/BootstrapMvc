@@ -1,30 +1,30 @@
 ﻿using System;
 using BootstrapMvc.Core;
 
-namespace BootstrapMvc
+namespace BootstrapMvc.Dropdown
 {
     public static class DropdownMenuParentExtensions
     {
-        public static IDropdownMenuParentMarker Dropdown(this IDropdownMenuParentMarker parent, DropdownMenu menu)
+        public static T Dropdown<T>(this T parent, DropdownMenu menu) where T : AnyContentElement, IDropdownMenuParentMarker
         {
             parent.AddCssClass("dropdown-toggle");
             parent.MergeAttribute("data-toggle", "dropdown");
             parent.MergeAttribute("aria-expanded", "false");
 
-            var caret = SimpleContent.FromHtml(" <span class=\"caret\"></span>");
+            var caret = new Content(parent.Context).Value(" <span class=\"caret\"></span>", true);
             parent.AddContent(caret);
             parent.AddContent(menu);
 
             return parent;
         }
 
-        public static DropdownMenuContent BeginDropdown(this IDropdownMenuParentMarker parent)
+        public static DropdownMenuContent BeginDropdown<T>(this T parent) where T : AnyContentElement, IDropdownMenuParentMarker
         {
             parent.AddCssClass("dropdown-toggle");
             parent.MergeAttribute("data-toggle", "dropdown");
             parent.MergeAttribute("aria-expanded", "false");
 
-            var caret = SimpleContent.FromHtml(" <span class=\"caret\"></span>");
+            var caret = new Content(parent.Context).Value(" <span class=\"caret\"></span>", true);
             parent.AddContent(caret);
 
             var parentEnd = parent.BeginContent();
@@ -33,8 +33,7 @@ namespace BootstrapMvc
             var menu = new DropdownMenu(parent.Context);
             var menuEnd = menu.BeginContent();
 
-            // return original menuEnd, which contains parentEnd as NextBlock
-            return menuEnd; 
+            return menuEnd;
         }
     }
 }

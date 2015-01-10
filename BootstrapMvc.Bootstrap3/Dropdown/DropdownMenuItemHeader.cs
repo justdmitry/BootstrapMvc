@@ -1,11 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System;
 using BootstrapMvc.Core;
 
-namespace BootstrapMvc
+namespace BootstrapMvc.Dropdown
 {
     public class DropdownMenuItemHeader : AnyContentElement, IDropdownMenuItem
     {
-        public DropdownMenuItemHeader(BootstrapContext context)
+        public DropdownMenuItemHeader(IBootstrapContext context)
             : base(context)
         {
             // Nothing
@@ -13,13 +13,13 @@ namespace BootstrapMvc
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = new TagBuilder("li");
+            var tb = Context.CreateTagBuilder("li");
             tb.AddCssClass("dropdown-header");
             tb.MergeAttribute("role", "presentation");
 
-            writer.Write(tb.ToString(TagRenderMode.StartTag));
+            writer.Write(tb.GetStartTag());
 
-            return "</li>";
+            return tb.GetEndTag();
         }
     }
 }

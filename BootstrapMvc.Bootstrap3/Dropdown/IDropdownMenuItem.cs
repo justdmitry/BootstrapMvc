@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BootstrapMvc
+namespace BootstrapMvc.Dropdown
 {
     public interface IDropdownMenuItem
     {

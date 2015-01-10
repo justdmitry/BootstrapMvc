@@ -60,7 +60,17 @@
     <Compile Include="Controls\InputType.cs" />
     <Compile Include="Controls\StaticValue.cs" />
     <Compile Include="Controls\Textarea.cs" />
-    <Compile Include="Core\GridSize.cs" />
+    <Compile Include="GridSize.cs" />
+    <Compile Include="Dropdown\DropdownMenu.cs" />
+    <Compile Include="Dropdown\DropdownMenuContent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dropdown\DropdownMenuItemDivider.cs" />
+    <Compile Include="Dropdown\DropdownMenuItemHeader.cs" />
+    <Compile Include="Dropdown\DropdownMenuItemLink.cs" />
+    <Compile Include="Dropdown\DropdownMenuParentExtensions.cs" />
+    <Compile Include="Dropdown\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Dropdown\IDropdownMenuItem.cs" />
     <Compile Include="Dropdown\IDropdownMenuParentMarker.cs" />
     <Compile Include="Forms\EnumToStringConverter.cs" />
     <Compile Include="Forms\Fieldset.cs">
@@ -103,6 +113,9 @@
     <Compile Include="Elements\IAnyContentMarkerExtensions.cs" />
     <Compile Include="EnumToStringConverter.cs" />
     <Compile Include="Elements\Icon.cs" />
+    <Compile Include="Grid\Row.cs" />
+    <Compile Include="Grid\RowCol.cs" />
+    <Compile Include="Grid\RowContent.cs" />
     <Compile Include="IconType.cs" />
     <Compile Include="AnyContentElements\Label.cs" />
     <Compile Include="LabelType.cs" />

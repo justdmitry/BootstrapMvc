@@ -1,17 +1,23 @@
-﻿using System.Web.Mvc;
+﻿using System;
 using BootstrapMvc.Core;
 
-namespace BootstrapMvc
+namespace BootstrapMvc.Dropdown
 {
-    public class DropdownMenuItemDivider : SimpleElement, IDropdownMenuItem
+    public class DropdownMenuItemDivider : Element, IDropdownMenuItem
     {
+        public DropdownMenuItemDivider(IBootstrapContext context)
+            : base(context)
+        {
+            // Nothing
+        }
+
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            var tb = new TagBuilder("li");
+            var tb = Context.CreateTagBuilder("li");
             tb.AddCssClass("divider");
             tb.MergeAttribute("role", "presentation");
 
-            writer.Write(tb.ToString());
+            writer.Write(tb.GetFullTag());
         }
     }
 }

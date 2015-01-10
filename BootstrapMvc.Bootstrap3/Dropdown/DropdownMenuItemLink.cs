@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System;
 using BootstrapMvc.Core;
 
-namespace BootstrapMvc
+namespace BootstrapMvc.Dropdown
 {
     public class DropdownMenuItemLink : AnyContentElement, IDropdownMenuItem, ILink<DropdownMenuItemLink>
     {
@@ -9,7 +9,7 @@ namespace BootstrapMvc
 
         private bool disabled = false;
 
-        public DropdownMenuItemLink(BootstrapContext context)
+        public DropdownMenuItemLink(IBootstrapContext context)
             : base(context)
         {
             // Nothing
@@ -33,20 +33,20 @@ namespace BootstrapMvc
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = new TagBuilder("li");
+            var tb = Context.CreateTagBuilder("li");
             tb.MergeAttribute("role", "presentation");
             if (disabled)
             {
                 tb.AddCssClass("disabled");
             }
 
-            writer.Write(tb.ToString(TagRenderMode.StartTag));
+            writer.Write(tb.GetStartTag());
 
-            var a = new TagBuilder("a");
+            var a = Context.CreateTagBuilder("a");
             a.MergeAttribute("role", "menuitem");
             a.MergeAttribute("tabindex", "-1");
             a.MergeAttribute("href", disabled ? "#" : href);
-            writer.Write(a.ToString(TagRenderMode.StartTag));
+            writer.Write(a.GetStartTag());
 
             return "</a></li>";
         }

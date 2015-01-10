@@ -27,6 +27,20 @@ namespace BootstrapMvc.Core
             return this;
         }
 
+        public AnyContentElement AddContent(object value)
+        {
+            var newContent = new Content(Context).Value(value).WriteWhitespaceSuffix(false);
+            if (content == null)
+            {
+                content = newContent;
+            }
+            else
+            {
+                content.Append(newContent);
+            }
+            return this;
+        }
+
         #endregion
 
         protected abstract string WriteSelfStartTag(System.IO.TextWriter writer);
