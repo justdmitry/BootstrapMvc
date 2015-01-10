@@ -1,7 +1,8 @@
 ﻿using System;
 using BootstrapMvc.Core;
+using BootstrapMvc.Dropdown;
 
-namespace BootstrapMvc.Dropdown
+namespace BootstrapMvc
 {
     public static class DropdownMenuParentExtensions
     {

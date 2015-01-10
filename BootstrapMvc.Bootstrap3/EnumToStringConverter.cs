@@ -86,23 +86,5 @@ namespace BootstrapMvc
                     return string.Empty;
             }
         }
-
-        ////public static TextColor ToTextColor(this LabelType type)
-        ////{
-        ////    switch (type)
-        ////    {
-        ////        case LabelType.PrimaryBlue:
-        ////            return TextColor.PrimaryBlue;
-        ////        case LabelType.SuccessGreen:
-        ////            return TextColor.SuccessGreen;
-        ////        case LabelType.WarningOrange:
-        ////            return TextColor.WarningOrange;
-        ////        case LabelType.DangerRed:
-        ////            return TextColor.DangerRed;
-        ////        case LabelType.InfoCyan:
-        ////            return TextColor.InfoCyan;
-        ////    }
-        ////    return TextColor.Default;
-        ////}
     }
 }

@@ -14,12 +14,20 @@ namespace BootstrapMvc.Core
 
         public BootstrapContext(mvc.ViewContext viewContext, mvc.UrlHelper urlHelper, mvc.ViewDataDictionary viewData)
         {
-            this.Writer = viewContext.Writer;
+            this.ViewContext = viewContext;
             this.Url = urlHelper;
             this.ViewData = viewData;
         }
 
-        public TextWriter Writer { get; protected set; }
+        private mvc.ViewContext ViewContext { get; set; }
+
+        public TextWriter Writer 
+        {
+            get
+            {
+                return ViewContext.Writer;
+            }  
+        }
 
         protected mvc.UrlHelper Url { get; set; }
 
