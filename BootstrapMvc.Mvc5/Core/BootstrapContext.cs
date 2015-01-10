@@ -59,6 +59,7 @@ namespace BootstrapMvc.Core
             if (html != null)
             {
                 Writer.Write(html.ToHtmlString());
+                return;
             }
             Writer.Write(HtmlEncode(value.ToString()));
         }

@@ -17,5 +17,10 @@ namespace BootstrapMvc.Core
         {
             block.WriteTo(this.ViewContext.Writer);
         }
+
+        public static void WriteTo(System.IO.TextWriter writer, WritableBlock block)
+        {
+            block.WriteTo(writer);
+        }
     }
 }
