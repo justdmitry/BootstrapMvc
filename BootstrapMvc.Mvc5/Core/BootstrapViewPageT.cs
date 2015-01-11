@@ -20,7 +20,10 @@ namespace BootstrapMvc.Core
 
         public static void WriteTo(System.IO.TextWriter writer, WritableBlock block)
         {
-            block.WriteTo(writer);
+            if (block != null)
+            {
+                block.WriteTo(writer);
+            }
         }
     }
 }

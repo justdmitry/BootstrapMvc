@@ -3,17 +3,17 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Grid
 {
-    public class Row : ContentElement<RowContent>
+    public class GridRow : ContentElement<GridRowContent>
     {
-        public Row(IBootstrapContext context)
+        public GridRow(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        protected override RowContent CreateContent()
+        protected override GridRowContent CreateContent()
         {
-            throw new NotImplementedException();
+            return new GridRowContent(Context);
         }
 
         protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)

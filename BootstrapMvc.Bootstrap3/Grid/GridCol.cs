@@ -3,13 +3,13 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Grid
 {
-    public class RowCol : AnyContentElement
+    public class GridCol : AnyContentElement
     {
         private GridSize size;
 
         private GridSize offset;
 
-        public RowCol(IBootstrapContext context)
+        public GridCol(IBootstrapContext context)
             : base(context) 
         {
             // Nothing
@@ -17,13 +17,13 @@ namespace BootstrapMvc.Grid
 
         #region Fluent
 
-        public RowCol Size(GridSize size)
+        public GridCol Size(GridSize size)
         {
             this.size = size;
             return this;
         }
 
-        public RowCol Offset(GridSize offset)
+        public GridCol Offset(GridSize offset)
         {
             this.offset = offset;
             return this;

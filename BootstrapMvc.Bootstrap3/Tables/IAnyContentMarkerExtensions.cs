@@ -50,12 +50,12 @@ namespace BootstrapMvc
 
         #region TableRow
 
-        public static TableRow Row(this IAnyContentMarker contentHelper)
+        public static TableRow TableRow(this IAnyContentMarker contentHelper)
         {
             return new TableRow(contentHelper.Context);
         }
 
-        public static TableRow Row(this IAnyContentMarker contentHelper, TableRowCellColor color)
+        public static TableRow TableRow(this IAnyContentMarker contentHelper, TableRowCellColor color)
         {
             return new TableRow(contentHelper.Context).Color(color);
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Routing;
+using System.Web.WebPages;
 using mvc = System.Web.Mvc;
 
 namespace BootstrapMvc.Core
@@ -61,7 +62,13 @@ namespace BootstrapMvc.Core
                 Writer.Write(html.ToHtmlString());
                 return;
             }
-            Writer.Write(HtmlEncode(value.ToString()));
+            var helperResult = value as HelperResult;
+            if (helperResult != null)
+            {
+                WebPageExecutingBase.WriteTo(Writer, helperResult);
+                return;
+            }
+            WebPageExecutingBase.WriteTo(Writer, value);
         }
 
         public void PushValue(string key, object value)

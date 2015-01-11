@@ -48,10 +48,10 @@ namespace BootstrapMvc
 
         public string ToOffsetCssClass()
         {
-            return (xs == 0 ? string.Empty : " col-offset-xs-" + xs)
-                 + (sm == 0 ? string.Empty : " col-offset-sm-" + sm)
-                 + (md == 0 ? string.Empty : " col-offset-md-" + md)
-                 + (lg == 0 ? string.Empty : " col-offset-lg-" + lg);
+            return (xs == 0 ? string.Empty : " col-xs-offset-" + xs)
+                 + (sm == 0 ? string.Empty : " col-sm-offset-" + sm)
+                 + (md == 0 ? string.Empty : " col-md-offset-" + md)
+                 + (lg == 0 ? string.Empty : " col-lg-offset-" + lg);
         }
 
         public GridSize Invert()
