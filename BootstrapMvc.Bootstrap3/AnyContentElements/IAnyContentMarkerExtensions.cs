@@ -74,5 +74,52 @@ namespace BootstrapMvc
             b.Content(content);
             return b;
         }
+
+        public static Anchor Anchor(this IAnyContentMarker contentHelper)
+        {
+            var obj = new Anchor(contentHelper.Context);
+            return obj;
+        }
+
+        public static Anchor Anchor(this IAnyContentMarker contentHelper, object content)
+        {
+            var obj = new Anchor(contentHelper.Context);
+            obj.Content(content);
+            return obj;
+        }
+
+        public static Anchor Anchor(this IAnyContentMarker contentHelper, params object[] contents)
+        {
+            var obj = new Anchor(contentHelper.Context);
+            obj.Content(contents);
+            return obj;
+        }
+
+        public static AnyContent BeginAnchor(this IAnyContentMarker contentHelper)
+        {
+            var obj = new Anchor(contentHelper.Context);
+            return obj.BeginContent();
+        }
+
+        public static Anchor Link(this IAnyContentMarker contentHelper)
+        {
+            return Anchor(contentHelper);
+        }
+
+        public static Anchor Link(this IAnyContentMarker contentHelper, object content)
+        {
+            return Anchor(contentHelper, content);
+        }
+
+        public static Anchor Link(this IAnyContentMarker contentHelper, params object[] contents)
+        {
+            return Anchor(contentHelper, contents);
+        }
+
+        public static AnyContent BeginLink(this IAnyContentMarker contentHelper)
+        {
+            return BeginAnchor(contentHelper);
+        }
+
     }
 }
