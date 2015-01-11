@@ -16,7 +16,7 @@ namespace BootstrapMvc.Lists
             return new OrdinaryElement(Context, "dt").Content(content);
         }
 
-        public AnyContentElement Value(object content)
+        public new AnyContentElement Value(object content)
         {
             return new OrdinaryElement(Context, "dd").Content(content);
         }

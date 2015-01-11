@@ -23,5 +23,29 @@ namespace BootstrapMvc
         }
 
         #endregion
+
+        #region List
+
+        public static List List(this IAnyContentMarker contentHelper, ListType type)
+        {
+            return new List(contentHelper.Context).Type(type);
+        }
+
+        public static ListContent BeginList(this IAnyContentMarker contentHelper, ListType type)
+        {
+            return List(contentHelper, type).BeginContent();
+        }
+
+        public static AnyContentElement ListItem(this IAnyContentMarker contentHelper)
+        {
+            return new OrdinaryElement(contentHelper.Context, "li");
+        }
+
+        public static AnyContent BeginListItem(this IAnyContentMarker contentHelper)
+        {
+            return ListItem(contentHelper).BeginContent();
+        }
+
+        #endregion
     }
 }

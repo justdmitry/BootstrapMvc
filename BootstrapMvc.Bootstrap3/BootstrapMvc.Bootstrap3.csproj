@@ -124,6 +124,9 @@
     <Compile Include="Lists\DefinitionList.cs" />
     <Compile Include="Lists\DefinitionListContent.cs" />
     <Compile Include="Lists\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Lists\List.cs" />
+    <Compile Include="Lists\ListContent.cs" />
+    <Compile Include="Lists\ListType.cs" />
     <Compile Include="Panels\EnumToStringConverter.cs" />
     <Compile Include="Panels\IAnyContentMarkerExtensions.cs" />
     <Compile Include="Panels\Panel.cs" />
@@ -138,6 +141,7 @@
     <Compile Include="Tables\Table.cs" />
     <Compile Include="Tables\TableCaption.cs" />
     <Compile Include="Tables\TableBody.cs" />
+    <Compile Include="Tables\TableExtensions.cs" />
     <Compile Include="Tables\TableHeaderCell.cs" />
     <Compile Include="Tables\TableCell.cs" />
     <Compile Include="Tables\TableContent.cs" />
