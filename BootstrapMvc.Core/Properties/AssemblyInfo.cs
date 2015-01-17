@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BootstrapMvc.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Helpers for using [Twitter] Bootsrap in MVC - core functionality")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BootstrapMvc.Core")]
-[assembly: AssemblyCopyright("Copyright © Dmitry Popov, 2015")]
+[assembly: AssemblyCopyright("Copyright © Dmitry Popov, 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

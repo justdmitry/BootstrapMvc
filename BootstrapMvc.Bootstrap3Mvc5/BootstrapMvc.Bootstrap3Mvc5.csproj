@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EA934FA0-71AA-4F8F-BD50-3AF7F487785A}</ProjectGuid>
+    <ProjectGuid>{07BCE768-CFBD-46BC-B208-299D2C2EB29E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BootstrapMvc</RootNamespace>
-    <AssemblyName>BootstrapMvc.Core</AssemblyName>
+    <RootNamespace>BootstrapMvc.Bootstrap3Mvc5</RootNamespace>
+    <AssemblyName>BootstrapMvc.Bootstrap3Mvc5</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -29,42 +31,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Core\AnyContent.cs" />
-    <Compile Include="Core\AnyContentElement.cs" />
-    <Compile Include="Core\BootstrapHelper.cs" />
-    <Compile Include="Core\BootstrapHelperT.cs" />
-    <Compile Include="Core\ContentElementT.cs" />
-    <Compile Include="Core\DisposableContent.cs" />
-    <Compile Include="Core\IAnyContentMarkerT.cs" />
-    <Compile Include="Core\IBootstrapMvcViewPageT.cs" />
-    <Compile Include="Core\IBootstrapMvcViewPage.cs" />
-    <Compile Include="Core\IControlContext.cs" />
-    <Compile Include="Core\IAnyContentMarker.cs" />
-    <Compile Include="Core\IBootstrapContext.cs" />
-    <Compile Include="Core\IBootstrapContextT.cs" />
-    <Compile Include="Core\ILink.cs" />
-    <Compile Include="Core\ITagBuilder.cs" />
-    <Compile Include="Core\Element.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Core\Content.cs" />
-    <Compile Include="Core\OrdinaryElement.cs" />
-    <Compile Include="Core\WritableBlock.cs">
-      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BootstrapMvc.Core.nuspec" />
-    <None Include="Core\_Classes.cd" />
+    <None Include="BootstrapMvc.Bootstrap3Mvc5.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

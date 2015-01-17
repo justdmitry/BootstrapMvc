@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>just_dmitry</authors>
+    <owners>just_dmitry</owners>
+    <!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>-->
+    <projectUrl>https://github.com/justdmitry/BootstrapMvc</projectUrl>
+    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Helpers for using [Twitter] Bootsrap in MVC - Bootstrap 3.3 data</description>
+    <releaseNotes>initial release.</releaseNotes>
+    <copyright>Dmitry Popov, 2014</copyright>
+    <tags>Bootstrap Bootstrap3 Mvc HtmlHelpers</tags>
+    <dependencies>
+      <dependency id="BootstrapMvc.Core" version="0.6.50111" />
+    </dependencies>
+  </metadata>
+</package>

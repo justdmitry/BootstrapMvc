@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>BootstrapMvc.Bootstrap3Mvc5</id>
+    <version>0.1.50118</version>
+    <title>BootstrapMvc.Bootstrap3Mvc5</title>
+    <authors>just_dmitry</authors>
+    <owners>just_dmitry</owners>
+    <!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>-->
+    <projectUrl>https://github.com/justdmitry/BootstrapMvc</projectUrl>
+    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Helpers for using [Twitter] Bootsrap in MVC - Mvc5 integration</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Dmitry Popov, 2014</copyright>
+    <tags>Bootstrap Bootstrap3 Mvc Mvc5 HelpHelpers</tags>
+    <dependencies>
+      <dependency id="BootstrapMvc.Core" version="0.6.50111" />
+      <dependency id="BootstrapMvc.Mvc5" version="0.4.50111" />
+      <dependency id="BootstrapMvc.Bootstrap3" version="0.5.50112" />
+    </dependencies>
+  </metadata>
+  <files>
+   
+  </files>
+</package>
