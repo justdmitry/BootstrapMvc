@@ -10,9 +10,9 @@
     <projectUrl>https://github.com/justdmitry/BootstrapMvc</projectUrl>
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Helpers for using [Twitter] Bootsrap in MVC - Bootstrap 3.3 data</description>
+    <description>Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).</description>
     <releaseNotes>initial release.</releaseNotes>
-    <copyright>Dmitry Popov, 2014</copyright>
+    <copyright>Dmitry Popov, 2015</copyright>
     <tags>Bootstrap Bootstrap3 Mvc HtmlHelpers</tags>
     <dependencies>
       <dependency id="BootstrapMvc.Core" version="0.6.50111" />
