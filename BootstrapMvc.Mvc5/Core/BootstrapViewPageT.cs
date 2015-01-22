@@ -15,7 +15,10 @@ namespace BootstrapMvc.Core
 
         public void Write(WritableBlock block)
         {
-            block.WriteTo(this.ViewContext.Writer);
+            if (block != null)
+            {
+                block.WriteTo(this.ViewContext.Writer);
+            }
         }
 
         public static void WriteTo(System.IO.TextWriter writer, WritableBlock block)
