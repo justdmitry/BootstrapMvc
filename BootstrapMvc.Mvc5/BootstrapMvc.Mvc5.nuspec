@@ -11,7 +11,7 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Helpers for using [Twitter] Bootsrap in MVC - Mvc5 integration</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Fixed NPE possible bug.</releaseNotes>
     <copyright>Dmitry Popov, 2014</copyright>
     <tags>Bootstrap Mvc Mvc5 HelpHelpers</tags>
     <dependencies>
