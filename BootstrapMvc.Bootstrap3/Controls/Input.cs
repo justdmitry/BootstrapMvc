@@ -40,6 +40,7 @@ namespace BootstrapMvc.Controls
             }
 
             var input = Context.CreateTagBuilder("input");
+            input.AddCssClass("form-control");
             if (type != InputType.Text)
             {
                 input.MergeAttribute("type", type.ToType());

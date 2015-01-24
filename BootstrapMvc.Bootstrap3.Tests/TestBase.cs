@@ -5,6 +5,7 @@ using BootstrapMvc.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using mvc = System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace BootstrapMvc
 {
@@ -13,6 +14,8 @@ namespace BootstrapMvc
         protected MockRepository mocks;
         protected Mock<IBootstrapContext> contextMock;
         protected TextWriter writer;
+
+        protected Dictionary<string, Stack<object>> cachedData = new Dictionary<string,Stack<object>>();
 
         [TestInitialize]
         public void Init()
@@ -24,6 +27,17 @@ namespace BootstrapMvc
             contextMock.Setup(x => x.HtmlEncode(It.IsAny<string>())).Returns((string s) => HttpUtility.HtmlEncode(s));
             contextMock.SetupGet(x => x.Writer).Returns(writer);
             contextMock.Setup(x => x.CreateTagBuilder(It.IsAny<string>())).Returns((string s) => new TagBuilder(s));
+
+            contextMock.Setup(x => x.PushValue(It.IsAny<string>(), It.IsAny<object>())).Callback((string s, object v) =>
+            {
+                if (!cachedData.ContainsKey(s))
+                {
+                    cachedData.Add(s, new Stack<object>());
+                }
+                cachedData[s].Push(v);
+            });
+
+            contextMock.Setup(x => x.PopValue(It.IsAny<string>())).Returns((string s) => cachedData[s].Pop());
         }
 
         protected class TagBuilder : mvc.TagBuilder, ITagBuilder

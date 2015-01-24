@@ -1,4 +1,5 @@
 ﻿using System;
+using BootstrapMvc;
 using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Forms
@@ -94,7 +95,7 @@ namespace BootstrapMvc.Forms
             {
                 tb.AddCssClass(formContext.FormType.ToCssClass());
             }
-            if (method != FormMethod.Post)
+            if (method != FormMethod.Get)
             {
                 tb.MergeAttribute("method", method.ToString().ToLowerInvariant());
             }

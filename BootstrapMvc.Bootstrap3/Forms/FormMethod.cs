@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BootstrapMvc.Forms
+namespace BootstrapMvc
 {
     public enum FormMethod
     {

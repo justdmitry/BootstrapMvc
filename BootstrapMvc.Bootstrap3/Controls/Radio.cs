@@ -61,7 +61,7 @@ namespace BootstrapMvc.Controls
             writer.Write(lbl.GetStartTag());
 
             var input = Context.CreateTagBuilder("input");
-            input.MergeAttribute("type", "checkbox");
+            input.MergeAttribute("type", "radio");
             if (controlContext != null)
             {
                 input.MergeAttribute("id", controlContext.Name);

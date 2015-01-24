@@ -43,6 +43,7 @@ namespace BootstrapMvc.Controls
             }
             
             var tb = Context.CreateTagBuilder("textarea");
+            tb.AddCssClass("form-control");
             if (rows != 0)
             {
                 tb.MergeAttribute("rows", rows.ToString(CultureInfo.InvariantCulture));

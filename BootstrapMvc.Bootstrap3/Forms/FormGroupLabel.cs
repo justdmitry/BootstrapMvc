@@ -24,9 +24,8 @@ namespace BootstrapMvc.Forms
             if (formContext.FormType == FormType.Horizontal)
             {
                 tb.AddCssClass("control-label");
+                tb.AddCssClass(formContext.LabelWidth.ToCssClass());
             }
-
-            tb.AddCssClass(formContext.LabelWidth.ToCssClass());
 
             if (!string.IsNullOrEmpty(name))
             {

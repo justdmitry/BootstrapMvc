@@ -47,6 +47,11 @@ namespace BootstrapMvc.Forms
             return new FormGroup(Context);
         }
 
+        public FormGroup Group(object label)
+        {
+            return new FormGroup(Context).Label(label);
+        }
+
         public AnyContent BeginGroup()
         {
             return new FormGroup(Context).BeginContent();

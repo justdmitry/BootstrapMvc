@@ -15,6 +15,10 @@ namespace BootstrapMvc.Forms
 
         private ControlBase control = null;
 
+        private bool withCheckbox = false;
+
+        private bool withRadio = false;
+
         public FormGroup(IBootstrapContext context)
             : base(context)
         {
@@ -49,22 +53,35 @@ namespace BootstrapMvc.Forms
             return this;
         }
 
-        public ControlBase Control(ControlBase control)
+        public FormGroup Control(ControlBase control)
         {
             this.control = control;
-            return this.control;
+            return this;
+        }
+
+        public FormGroup WithCheckbox(bool value = true)
+        {
+            withCheckbox = value;
+            return this;
+        }
+
+        public FormGroup WithRadio(bool value = true)
+        {
+            withRadio = value;
+            return this;
         }
 
         #endregion
 
         public AnyContent BeginControls()
         {
-            if (label == null)
+            if (label == null && !withCheckbox && !withRadio)
             {
                 label = new FormGroupLabel(Context);
+                label.Content(string.Empty);
             }
             var end = this.WriteSelfStart(Context.Writer);
-            var area = new FormGroupControls(Context).BeginContent();
+            var area = new FormGroupControls(Context).WithCheckbox(withCheckbox).WithRadio(withRadio).WithoutLabel(label == null).BeginContent();
             area.Append(end);
             return area;
         }
@@ -99,7 +116,9 @@ namespace BootstrapMvc.Forms
 
             if (control != null)
             {
-                using (var area = new FormGroupControls(Context).BeginContent())
+                var fgc = new FormGroupControls(Context);
+                fgc.WithCheckbox(control is Checkbox).WithRadio(control is Radio);
+                using (var area = fgc.BeginContent())
                 {
                     control.WriteTo(writer);
                 }
