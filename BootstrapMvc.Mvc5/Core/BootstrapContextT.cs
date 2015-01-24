@@ -25,7 +25,9 @@ namespace BootstrapMvc.Core
             string value = modelState == null || modelState.Value == null
                 ? (modelMetadata.Model == null ? string.Empty : modelMetadata.Model.ToString())
                 : modelState.Value.AttemptedValue;
-            var errors = modelState.Errors.Select(e => e.ErrorMessage).ToArray();
+            var errors = modelState == null || modelState.Errors == null
+                ? null
+                : modelState.Errors.Select(e => e.ErrorMessage).ToArray();
 
             return new ControlContext()
             {

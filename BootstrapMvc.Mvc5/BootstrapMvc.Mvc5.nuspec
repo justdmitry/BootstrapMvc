@@ -11,7 +11,7 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MVC5 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).</description>
-    <releaseNotes>Fixed NPE possible bug.</releaseNotes>
+    <releaseNotes>NPE bug fixed, new Href() extensions.</releaseNotes>
     <copyright>Dmitry Popov, 2015</copyright>
     <tags>Bootstrap Mvc Mvc5 HelpHelpers</tags>
     <dependencies>
