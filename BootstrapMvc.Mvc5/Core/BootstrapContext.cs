@@ -20,8 +20,6 @@ namespace BootstrapMvc.Core
             this.ViewData = viewData;
         }
 
-        private mvc.ViewContext ViewContext { get; set; }
-
         public TextWriter Writer 
         {
             get
@@ -33,6 +31,8 @@ namespace BootstrapMvc.Core
         protected mvc.UrlHelper Url { get; set; }
 
         protected mvc.ViewDataDictionary ViewData { get; set; }
+
+        private mvc.ViewContext ViewContext { get; set; }
 
         public ITagBuilder CreateTagBuilder(string tagName)
         {

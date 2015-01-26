@@ -7,6 +7,14 @@ namespace BootstrapMvc.Core
     {
         public BootstrapHelper<TModel> Bootstrap { get; protected set; }
 
+        public static void WriteTo(System.IO.TextWriter writer, WritableBlock block)
+        {
+            if (block != null)
+            {
+                block.WriteTo(writer);
+            }
+        }
+
         public override void InitHelpers()
         {
             base.InitHelpers();
@@ -18,14 +26,6 @@ namespace BootstrapMvc.Core
             if (block != null)
             {
                 block.WriteTo(this.ViewContext.Writer);
-            }
-        }
-
-        public static void WriteTo(System.IO.TextWriter writer, WritableBlock block)
-        {
-            if (block != null)
-            {
-                block.WriteTo(writer);
             }
         }
     }
