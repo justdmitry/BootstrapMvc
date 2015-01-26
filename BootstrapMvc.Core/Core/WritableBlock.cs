@@ -3,7 +3,7 @@ using System.IO;
 
 namespace BootstrapMvc.Core
 {
-    public abstract class WritableBlock
+    public abstract class WritableBlock : IWritable
     {
         private WritableBlock next = null;
 

@@ -56,6 +56,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Content.cs" />
+    <Compile Include="Core\IWritable.cs" />
     <Compile Include="Core\OrdinaryElement.cs" />
     <Compile Include="Core\WritableBlock.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>

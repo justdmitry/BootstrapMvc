@@ -11,7 +11,7 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Core library for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>IWritable interface added, WritableBlock implements it.</releaseNotes>
     <copyright>Copyright Dmitry Popov, 2015</copyright>
     <tags>Bootstrap Mvc HtmlHelpers</tags>
   </metadata>
