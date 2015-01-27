@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc
 {
-    public static partial class IAnyContentMarkerExtensions
+    public static partial class AnyContentExtensions
     {
         #region Label
 
@@ -14,16 +14,12 @@ namespace BootstrapMvc
 
         public static Label Label(this IAnyContentMarker contentHelper, LabelType type, object content)
         {
-            var lbl = new Label(contentHelper.Context).Type(type);
-            lbl.Content(content);
-            return lbl;
+            return new Label(contentHelper.Context).Type(type).Content(content);
         }
 
         public static Label Label(this IAnyContentMarker contentHelper, LabelType type, params object[] contents)
         {
-            var lbl = new Label(contentHelper.Context).Type(type);
-            lbl.Content(contents);
-            return lbl;
+            return new Label(contentHelper.Context).Type(type).Content(contents);
         }
 
         public static AnyContent BeginLabel(this IAnyContentMarker contentHelper, LabelType type)
@@ -42,23 +38,17 @@ namespace BootstrapMvc
 
         public static Alert Alert(this IAnyContentMarker contentHelper, AlertType type, object content)
         {
-            var lbl = new Alert(contentHelper.Context).Type(type);
-            lbl.Content(content);
-            return lbl;
+            return new Alert(contentHelper.Context).Type(type).Content(content);
         }
 
         public static Alert Alert(this IAnyContentMarker contentHelper, object content, AlertType type)
         {
-            var lbl = new Alert(contentHelper.Context).Type(type);
-            lbl.Content(content);
-            return lbl;
+            return new Alert(contentHelper.Context).Type(type).Content(content);
         }
 
         public static Alert Alert(this IAnyContentMarker contentHelper, AlertType type, params object[] contents)
         {
-            var lbl = new Alert(contentHelper.Context).Type(type);
-            lbl.Content(contents);
-            return lbl;
+            return new Alert(contentHelper.Context).Type(type).Content(contents);
         }
 
         public static AnyContent BeginAlert(this IAnyContentMarker contentHelper, AlertType type)
@@ -70,35 +60,27 @@ namespace BootstrapMvc
 
         public static Badge Badge(this IAnyContentMarker contentHelper, object content)
         {
-            var b = new Badge(contentHelper.Context);
-            b.Content(content);
-            return b;
+            return new Badge(contentHelper.Context).Content(content);
         }
 
         public static Anchor Anchor(this IAnyContentMarker contentHelper)
         {
-            var obj = new Anchor(contentHelper.Context);
-            return obj;
+            return new Anchor(contentHelper.Context);
         }
 
         public static Anchor Anchor(this IAnyContentMarker contentHelper, object content)
         {
-            var obj = new Anchor(contentHelper.Context);
-            obj.Content(content);
-            return obj;
+            return new Anchor(contentHelper.Context).Content(content);
         }
 
         public static Anchor Anchor(this IAnyContentMarker contentHelper, params object[] contents)
         {
-            var obj = new Anchor(contentHelper.Context);
-            obj.Content(contents);
-            return obj;
+            return new Anchor(contentHelper.Context).Content(contents);
         }
 
         public static AnyContent BeginAnchor(this IAnyContentMarker contentHelper)
         {
-            var obj = new Anchor(contentHelper.Context);
-            return obj.BeginContent();
+            return new Anchor(contentHelper.Context).BeginContent();
         }
 
         public static Anchor Link(this IAnyContentMarker contentHelper)
@@ -120,6 +102,5 @@ namespace BootstrapMvc
         {
             return BeginAnchor(contentHelper);
         }
-
     }
 }

@@ -7,7 +7,7 @@ namespace BootstrapMvc
     {
         public static T HtmlTooltip<T>(this T element, string value) where T : Element
         {
-            element.MergeAttribute("title", value);
+            element.AddAttribute("title", value);
             return element;
         }
 
@@ -36,7 +36,7 @@ namespace BootstrapMvc
 
         public static T Id<T>(this T target, string id) where T : Element
         {
-            target.MergeAttribute("id", id);
+            target.AddAttribute("id", id);
             return target;
         }
     }

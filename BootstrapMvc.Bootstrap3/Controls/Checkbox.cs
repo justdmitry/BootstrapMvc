@@ -4,7 +4,7 @@ using BootstrapMvc.Forms;
 
 namespace BootstrapMvc.Controls
 {
-    public class Checkbox : ControlBase
+    public class Checkbox : Element, IFormControl
     {
         private IControlContext controlContext;
 
@@ -18,13 +18,12 @@ namespace BootstrapMvc.Controls
             // Nothing
         }
 
-        #region Fluent
-
-        public Checkbox ControlContext(IControlContext context)
+        public void SetControlContext(IControlContext context)
         {
             controlContext = context;
-            return this;
         }
+
+        #region Fluent
 
         public Checkbox Text(string text)
         {
@@ -60,7 +59,7 @@ namespace BootstrapMvc.Controls
                 input.MergeAttribute("name", controlContext.Name);
                 input.MergeAttribute("value", "true");
                 var controlValue = controlContext.Value;
-                if (controlValue != null && (bool)controlValue)
+                if (controlValue != null && bool.Parse(controlValue.ToString()))
                 {
                     input.MergeAttribute("checked", "checked");
                 }

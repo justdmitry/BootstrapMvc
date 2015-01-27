@@ -4,7 +4,7 @@ using BootstrapMvc.Forms;
 
 namespace BootstrapMvc.Controls
 {
-    public class Radio : ControlBase
+    public class Radio : Element, IFormControl
     {
         private IControlContext controlContext;
 
@@ -20,13 +20,12 @@ namespace BootstrapMvc.Controls
             // Nothing
         }
 
-        #region Fluent
-
-        public Radio ControlContext(IControlContext context)
+        public void SetControlContext(IControlContext context)
         {
             controlContext = context;
-            return this;
         }
+
+        #region Fluent
 
         public Radio Value(string value)
         {

@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Linq.Expressions;
 using BootstrapMvc.Core;
 using BootstrapMvc.Forms;
 
 namespace BootstrapMvc
 {
-    public static partial class IAnyContentMarkerExtensions
+    public static partial class AnyContentExtensions
     {
         #region Form
 
@@ -95,18 +96,28 @@ namespace BootstrapMvc
             return new FormGroup(contentHelper.Context).Label(label).BeginContent();
         }
 
+        public static FormGroup FormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression)
+        {
+            return new FormGroup(contentHelper.Context).ControlContext(contentHelper.Context.GetControlContext(expression));
+        }
+
+        public static IControlContext For<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression)
+        {
+            return contentHelper.Context.GetControlContext(expression);
+        }
+
         #endregion
 
         #region HelpBlock
 
         public static HelpBlock HelpBlock(this IAnyContentMarker contentHelper, object content)
         {
-            return (HelpBlock)new HelpBlock(contentHelper.Context).Content(content);
+            return new HelpBlock(contentHelper.Context).Content(content);
         }
 
         public static HelpBlock HelpBlock(this IAnyContentMarker contentHelper, params object[] contents)
         {
-            return (HelpBlock)new HelpBlock(contentHelper.Context).Content(contents);
+            return new HelpBlock(contentHelper.Context).Content(contents);
         }
 
         public static AnyContent BeginHelpBlock(this IAnyContentMarker contentHelper)

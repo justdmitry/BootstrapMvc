@@ -13,7 +13,7 @@ namespace BootstrapMvc.Forms
 
         private FormGroupLabel label = null;
 
-        private ControlBase control = null;
+        private IFormControl control = null;
 
         private bool withCheckbox = false;
 
@@ -40,6 +40,15 @@ namespace BootstrapMvc.Forms
             return this;
         }
 
+        public FormGroup Required(bool required = true)
+        {
+            if (controlContext != null)
+            {
+                controlContext.IsRequired = required;
+            }
+            return this;
+        }
+
         public FormGroup Label(object content)
         {
             var labelContent = content as FormGroupLabel;
@@ -53,7 +62,7 @@ namespace BootstrapMvc.Forms
             return this;
         }
 
-        public FormGroup Control(ControlBase control)
+        public FormGroup Control(IFormControl control)
         {
             this.control = control;
             return this;

@@ -15,19 +15,7 @@ namespace BootstrapMvc.Core
 
         #region Fluent
 
-        public AnyContentElement Content(object value)
-        {
-            this.content = new Content(Context).Value(value).WriteWhitespaceSuffix(false);
-            return this;
-        }
-
-        public AnyContentElement Content(params object[] values)
-        {
-            this.content = new Content(Context).Value(values);
-            return this;
-        }
-
-        public AnyContentElement AddContent(object value)
+        public void AddContent(object value)
         {
             var newContent = new Content(Context).Value(value).WriteWhitespaceSuffix(false);
             if (content == null)
@@ -38,7 +26,6 @@ namespace BootstrapMvc.Core
             {
                 content.Append(newContent);
             }
-            return this;
         }
 
         #endregion

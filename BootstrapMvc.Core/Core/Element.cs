@@ -32,13 +32,13 @@ namespace BootstrapMvc.Core
             }
         }
 
-        public void MergeAttribute(string key, string value)
+        public void AddAttribute(string name, string value)
         {
             if (additionalAttributes == null)
             {
                 additionalAttributes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             }
-            additionalAttributes[key] = value;
+            additionalAttributes[name] = value;
         }
 
         protected void ApplyCss(ITagBuilder tag)

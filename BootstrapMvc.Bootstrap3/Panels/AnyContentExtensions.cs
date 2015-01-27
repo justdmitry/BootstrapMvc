@@ -3,7 +3,7 @@ using BootstrapMvc.Panels;
 
 namespace BootstrapMvc
 {
-    public static partial class IAnyContentMarkerExtensions
+    public static partial class AnyContentExtensions
     {
         public static Panel Panel(this IAnyContentMarker contentHelper)
         {
@@ -27,44 +27,32 @@ namespace BootstrapMvc
 
         public static PanelHeader PanelHeader(this IAnyContentMarker contentHelper, object value)
         {
-            var obj = new PanelHeader(contentHelper.Context);
-            obj.Content(value);
-            return obj;
-      }
+            return new PanelHeader(contentHelper.Context).Content(value);
+        }
 
         public static PanelHeader PanelHeader(this IAnyContentMarker contentHelper, params object[] values)
         {
-            var obj = new PanelHeader(contentHelper.Context);
-            obj.Content(values);
-            return obj;
+            return new PanelHeader(contentHelper.Context).Content(values);
         }
 
         public static PanelBody PanelBody(this IAnyContentMarker contentHelper, object value)
         {
-            var obj = new PanelBody(contentHelper.Context);
-            obj.Content(value);
-            return obj;
+            return new PanelBody(contentHelper.Context).Content(value);
         }
 
         public static PanelBody PanelBody(this IAnyContentMarker contentHelper, params object[] values)
         {
-            var obj = new PanelBody(contentHelper.Context);
-            obj.Content(values);
-            return obj;
+            return new PanelBody(contentHelper.Context).Content(values);
         }
 
         public static PanelFooter PanelFooter(this IAnyContentMarker contentHelper, object value)
         {
-            var obj = new PanelFooter(contentHelper.Context);
-            obj.Content(value);
-            return obj;
+            return new PanelFooter(contentHelper.Context).Content(value);
         }
 
         public static PanelFooter PanelFooter(this IAnyContentMarker contentHelper, params object[] values)
         {
-            var obj = new PanelFooter(contentHelper.Context);
-            obj.Content(values);
-            return obj;
+            return new PanelFooter(contentHelper.Context).Content(values);
         }
     }
 }

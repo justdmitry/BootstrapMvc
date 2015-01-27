@@ -10,18 +10,6 @@ namespace BootstrapMvc.Core
             // Nothing
         }
 
-        public new ContentElement<T> AddCssClass(string value)
-        {
-            base.AddCssClass(value);
-            return this;
-        }
-
-        public new ContentElement<T> MergeAttribute(string key, string value)
-        {
-            base.MergeAttribute(key, value);
-            return this;
-        }
-
         public virtual T BeginContent()
         {
             var writer = this.Context.Writer;

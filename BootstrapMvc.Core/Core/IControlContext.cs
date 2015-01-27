@@ -4,16 +4,16 @@ namespace BootstrapMvc.Core
 {
     public interface IControlContext
     {
-        string Name { get; }
+        string Name { get; set; }
 
-        object Value { get; }
+        object Value { get; set; }
 
-        bool IsRequired { get; }
+        bool IsRequired { get; set; }
 
-        string[] Errors { get; }
+        string[] Errors { get; set; }
 
-        bool HasErrors { get; }
+        bool HasErrors { get; set; }
 
-        bool HasWarning { get; }
+        bool HasWarning { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using BootstrapMvc.Elements;
 
 namespace BootstrapMvc
 {
-    public static partial class IAnyContentMarkerExtensions
+    public static partial class AnyContentExtensions
     {
         #region ButtonToolbar
 
@@ -47,27 +47,27 @@ namespace BootstrapMvc
 
         public static Button Button(this IAnyContentMarker contentHelper, object content)
         {
-            return (Button)new Button(contentHelper.Context).Content(content);
+            return new Button(contentHelper.Context).Content(content);
         }
 
         public static Button Button(this IAnyContentMarker contentHelper, ButtonType type, object content)
         {
-            return (Button)new Button(contentHelper.Context).Type(type).Content(content);
+            return new Button(contentHelper.Context).Type(type).Content(content);
         }
 
         public static Button Button(this IAnyContentMarker contentHelper, ButtonType type, params object[] contents)
         {
-            return (Button)new Button(contentHelper.Context).Type(type).Content(contents);
+            return new Button(contentHelper.Context).Type(type).Content(contents);
         }
 
         public static Button Button(this IAnyContentMarker contentHelper, IconType iconType, object content)
         {
-            return (Button)new Button(contentHelper.Context).Content(new Icon(contentHelper.Context).Type(iconType), content);
+            return new Button(contentHelper.Context).Content(new Icon(contentHelper.Context).Type(iconType), content);
         }
 
         public static Button Button(this IAnyContentMarker contentHelper, ButtonType type, IconType iconType, object content)
         {
-            return (Button)new Button(contentHelper.Context).Type(type).Content(new Icon(contentHelper.Context).Type(iconType), content);
+            return new Button(contentHelper.Context).Type(type).Content(new Icon(contentHelper.Context).Type(iconType), content);
         }
     }
 }

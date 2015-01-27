@@ -4,7 +4,7 @@ using BootstrapMvc.Forms;
 
 namespace BootstrapMvc.Controls
 {
-    public class StaticValue : ControlBase
+    public class StaticValue : Element, IFormControl
     {
         private IControlContext controlContext;
 
@@ -14,15 +14,10 @@ namespace BootstrapMvc.Controls
             // Nothing
         }
 
-        #region Fluent
-
-        public StaticValue ControlContext(IControlContext context)
+        public void SetControlContext(IControlContext context)
         {
             controlContext = context;
-            return this;
         }
-
-        #endregion
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {

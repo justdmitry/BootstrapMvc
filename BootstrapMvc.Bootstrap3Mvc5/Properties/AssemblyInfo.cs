@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BootstrapMvc.Core")]
-[assembly: AssemblyDescription("Core library for BootstrapMvc pack")]
+[assembly: AssemblyTitle("BootstrapMvc.Bootstrap3Mvc5")]
+[assembly: AssemblyDescription("Helpers for using [Twitter] Bootstrap 3.3 in MVC5 projects.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BootstrapMvc.Core")]
+[assembly: AssemblyProduct("BootstrapMvc.Bootstrap3Mvc5")]
 [assembly: AssemblyCopyright("Copyright © Dmitry Popov, 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("162cca94-b613-49d8-ae30-a17cf1dc78ec")]
+[assembly: Guid("A51A4B45-52E5-49BD-931C-70EFCACAD271")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.7.50127.1915")]
-[assembly: AssemblyFileVersion("0.7.50127.1915")]
+[assembly: AssemblyVersion("0.2.50127.1353")]
+[assembly: AssemblyFileVersion("0.2.50127.1353")]

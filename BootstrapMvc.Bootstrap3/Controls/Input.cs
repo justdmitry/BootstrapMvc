@@ -4,7 +4,7 @@ using BootstrapMvc.Forms;
 
 namespace BootstrapMvc.Controls
 {
-    public class Input : ControlBase
+    public class Input : Element, IFormControl, IPlaceholderTarget
     {
         private IControlContext controlContext;
 
@@ -15,14 +15,13 @@ namespace BootstrapMvc.Controls
         {
             // Nothing
         }
-
-        #region Fluent
-
-        public Input ControlContext(IControlContext context)
+        
+        public void SetControlContext(IControlContext context)
         {
             controlContext = context;
-            return this;
         }
+
+        #region Fluent
 
         public Input Type(InputType type)
         {

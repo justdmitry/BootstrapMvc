@@ -11,6 +11,8 @@ namespace BootstrapMvc.Core
 {
     public class BootstrapContext : IBootstrapContext
     {
+        private static readonly string CachedDataContextKey = "BootstrapMvc.Mvc5.BootstrapContext.CachedData";
+
         private Dictionary<string, Stack<object>> cachedData = null;
 
         public BootstrapContext(mvc.ViewContext viewContext, mvc.UrlHelper urlHelper, mvc.ViewDataDictionary viewData)
@@ -18,6 +20,17 @@ namespace BootstrapMvc.Core
             this.ViewContext = viewContext;
             this.Url = urlHelper;
             this.ViewData = viewData;
+
+            var httpContext = viewContext.RequestContext.HttpContext;
+            if (httpContext.Items.Contains(CachedDataContextKey))
+            {
+                cachedData = (Dictionary<string, Stack<object>>) httpContext.Items[CachedDataContextKey];
+            }
+            else
+            {
+                cachedData = new Dictionary<string, Stack<object>>();
+                httpContext.Items[CachedDataContextKey] = cachedData;
+            }
         }
 
         public TextWriter Writer 

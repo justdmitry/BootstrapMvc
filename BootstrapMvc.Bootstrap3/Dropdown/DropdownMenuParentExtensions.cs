@@ -8,9 +8,9 @@ namespace BootstrapMvc
     {
         public static T Dropdown<T>(this T parent, DropdownMenu menu) where T : AnyContentElement, IDropdownMenuParentMarker
         {
-            parent.AddCssClass("dropdown-toggle");
-            parent.MergeAttribute("data-toggle", "dropdown");
-            parent.MergeAttribute("aria-expanded", "false");
+            parent.CssClass("dropdown-toggle");
+            parent.AddAttribute("data-toggle", "dropdown");
+            parent.AddAttribute("aria-expanded", "false");
 
             var caret = new Content(parent.Context).Value(" <span class=\"caret\"></span>", true);
             parent.AddContent(caret);
@@ -22,8 +22,8 @@ namespace BootstrapMvc
         public static DropdownMenuContent BeginDropdown<T>(this T parent) where T : AnyContentElement, IDropdownMenuParentMarker
         {
             parent.AddCssClass("dropdown-toggle");
-            parent.MergeAttribute("data-toggle", "dropdown");
-            parent.MergeAttribute("aria-expanded", "false");
+            parent.AddAttribute("data-toggle", "dropdown");
+            parent.AddAttribute("aria-expanded", "false");
 
             var caret = new Content(parent.Context).Value(" <span class=\"caret\"></span>", true);
             parent.AddContent(caret);

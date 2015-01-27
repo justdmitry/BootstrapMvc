@@ -11,11 +11,11 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).</description>
-    <releaseNotes>Forms (all 3 types) are ready.</releaseNotes>
-    <copyright>Dmitry Popov, 2015</copyright>
+    <releaseNotes>Select lists added to Forms; internal Controls changes</releaseNotes>
+    <copyright>© Dmitry Popov, 2015</copyright>
     <tags>Bootstrap Bootstrap3 Mvc HtmlHelpers</tags>
     <dependencies>
-      <dependency id="BootstrapMvc.Core" version="0.6.50111" />
+      <dependency id="BootstrapMvc.Core" version="0.7.50127" />
     </dependencies>
   </metadata>
 </package>

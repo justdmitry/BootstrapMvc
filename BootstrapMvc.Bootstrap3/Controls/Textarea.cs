@@ -5,7 +5,7 @@ using BootstrapMvc.Forms;
 
 namespace BootstrapMvc.Controls
 {
-    public class Textarea : ControlBase
+    public class Textarea : Element, IFormControl, IPlaceholderTarget
     {
         private static readonly byte RowsDefault = 3;
 
@@ -19,13 +19,12 @@ namespace BootstrapMvc.Controls
             // Nothing
         }
 
-        #region Fluent
-        
-        public Textarea ControlContext(IControlContext context)
+        public void SetControlContext(IControlContext context)
         {
             controlContext = context;
-            return this;
         }
+
+        #region Fluent
         
         public Textarea Rows(byte rows)
         {

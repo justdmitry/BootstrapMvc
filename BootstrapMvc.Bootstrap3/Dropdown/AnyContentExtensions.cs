@@ -4,7 +4,7 @@ using BootstrapMvc.Dropdown;
 
 namespace BootstrapMvc
 {
-    public static partial class IAnyContentMarkerExtensions
+    public static partial class AnyContentExtensions
     {
         public static DropdownMenu DropdownMenu(this IAnyContentMarker contentHelper)
         {

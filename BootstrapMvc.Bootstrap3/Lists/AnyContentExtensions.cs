@@ -3,7 +3,7 @@ using BootstrapMvc.Lists;
 
 namespace BootstrapMvc
 {
-    public static partial class IAnyContentMarkerExtensions
+    public static partial class AnyContentExtensions
     {
         #region DenifnitionList
 

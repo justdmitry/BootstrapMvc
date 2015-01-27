@@ -8,7 +8,7 @@ namespace BootstrapMvc
     {
         public static T ColSpan<T>(this T element, int colspan) where T : TableCell
         {
-            element.MergeAttribute("colspan", colspan.ToString(CultureInfo.InvariantCulture));
+            element.AddAttribute("colspan", colspan.ToString(CultureInfo.InvariantCulture));
             return element;
         }
     }

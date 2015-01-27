@@ -43,7 +43,7 @@
     <Compile Include="AlertType.cs" />
     <Compile Include="AnyContentElements\Anchor.cs" />
     <Compile Include="AnyContentElements\Badge.cs" />
-    <Compile Include="AnyContentElements\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="AnyContentElements\AnyContentExtensions.cs" />
     <Compile Include="Buttons\Button.cs" />
     <Compile Include="Buttons\ButtonGroup.cs" />
     <Compile Include="Buttons\ButtonGroupContent.cs" />
@@ -52,14 +52,23 @@
     <Compile Include="Buttons\ButtonToolbarContent.cs" />
     <Compile Include="Buttons\ButtonType.cs" />
     <Compile Include="Buttons\EnumToStringConverter.cs" />
-    <Compile Include="Buttons\IAnyContentMarkerExtensions.cs" />
-    <Compile Include="Controls\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Buttons\AnyContentExtensions.cs" />
+    <Compile Include="Controls\AnyContentExtensions.cs" />
+    <Compile Include="Controls\FormControlExtensions.cs" />
+    <Compile Include="Controls\IFormControl.cs" />
+    <Compile Include="Controls\ControlsExtensions.cs" />
+    <Compile Include="Controls\IPlaceholderTarget.cs" />
+    <Compile Include="Controls\ISelectItem.cs" />
+    <Compile Include="Controls\Select.cs" />
     <Compile Include="Controls\Radio.cs" />
-    <Compile Include="Controls\ControlBase.cs" />
     <Compile Include="Controls\EnumToStringConverter.cs" />
     <Compile Include="Controls\Input.cs" />
     <Compile Include="Controls\Checkbox.cs" />
     <Compile Include="Controls\InputType.cs" />
+    <Compile Include="Controls\SelectOptGroup.cs" />
+    <Compile Include="Controls\SelectContent.cs" />
+    <Compile Include="Controls\SelectOptGroupContent.cs" />
+    <Compile Include="Controls\SelectOption.cs" />
     <Compile Include="Controls\StaticValue.cs" />
     <Compile Include="Controls\Textarea.cs" />
     <Compile Include="GridSize.cs" />
@@ -71,7 +80,7 @@
     <Compile Include="Dropdown\DropdownMenuItemHeader.cs" />
     <Compile Include="Dropdown\DropdownMenuItemLink.cs" />
     <Compile Include="Dropdown\DropdownMenuParentExtensions.cs" />
-    <Compile Include="Dropdown\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Dropdown\AnyContentExtensions.cs" />
     <Compile Include="Dropdown\IDropdownMenuItem.cs" />
     <Compile Include="Dropdown\IDropdownMenuParentMarker.cs" />
     <Compile Include="Forms\EnumToStringConverter.cs" />
@@ -102,20 +111,17 @@
     <Compile Include="Forms\FormMethod.cs" />
     <Compile Include="Forms\FormType.cs" />
     <Compile Include="Forms\HelpBlock.cs" />
-    <Compile Include="Forms\IAnyContentMarkerExtensions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Forms\IAnyContentMarkerTExtensions .cs">
+    <Compile Include="Forms\AnyContentExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Forms\Legend.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GeneralExtensions\ElementExtensions.cs" />
-    <Compile Include="Elements\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="ElementExtensions.cs" />
+    <Compile Include="Elements\AnyContentExtensions.cs" />
     <Compile Include="EnumToStringConverter.cs" />
     <Compile Include="Elements\Icon.cs" />
-    <Compile Include="Grid\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Grid\AnyContentExtensions.cs" />
     <Compile Include="Grid\GridRow.cs" />
     <Compile Include="Grid\GridCol.cs" />
     <Compile Include="Grid\GridRowContent.cs" />
@@ -124,12 +130,12 @@
     <Compile Include="LabelType.cs" />
     <Compile Include="Lists\DefinitionList.cs" />
     <Compile Include="Lists\DefinitionListContent.cs" />
-    <Compile Include="Lists\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Lists\AnyContentExtensions.cs" />
     <Compile Include="Lists\List.cs" />
     <Compile Include="Lists\ListContent.cs" />
     <Compile Include="Lists\ListType.cs" />
     <Compile Include="Panels\EnumToStringConverter.cs" />
-    <Compile Include="Panels\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Panels\AnyContentExtensions.cs" />
     <Compile Include="Panels\Panel.cs" />
     <Compile Include="Panels\PanelBody.cs" />
     <Compile Include="Panels\PanelContent.cs" />
@@ -138,7 +144,7 @@
     <Compile Include="Panels\PanelType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\EnumToStringConverter.cs" />
-    <Compile Include="Tables\IAnyContentMarkerExtensions.cs" />
+    <Compile Include="Tables\AnyContentExtensions.cs" />
     <Compile Include="Tables\Table.cs" />
     <Compile Include="Tables\TableCaption.cs" />
     <Compile Include="Tables\TableBody.cs" />

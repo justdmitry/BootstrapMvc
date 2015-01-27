@@ -6,11 +6,12 @@
       <HashCode>EAAAAAAAAgAAQAAAAAAAAAAAAAAAAQQgAAAAAIJAAAA=</HashCode>
       <FileName>Core\WritableBlock.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="BootstrapMvc.Core.Element">
     <Position X="2.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIAAAAEAAAAAAAAAAAAABAABAAAQAEAAA=</HashCode>
+      <HashCode>AAAAAAgAAAAAAAAAEAAAAAAAAEAAAAAAAABAAQAEAAA=</HashCode>
       <FileName>Core\Element.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -40,14 +41,14 @@
   <Class Name="BootstrapMvc.Core.AnyContentElement">
     <Position X="2.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAQEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAACAQEAAAAAAAAABAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Core\AnyContentElement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BootstrapMvc.Core.ContentElement&lt;T&gt;">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+    <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAABAAAABAAAYCAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAICAAAA=</HashCode>
       <FileName>Core\ContentElementT.cs</FileName>
     </TypeIdentifier>
   </Class>

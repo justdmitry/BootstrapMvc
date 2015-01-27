@@ -4,7 +4,7 @@ using BootstrapMvc.Tables;
 
 namespace BootstrapMvc
 {
-    public static partial class IAnyContentMarkerExtensions
+    public static partial class AnyContentExtensions
     {
         #region Table
 
@@ -34,18 +34,44 @@ namespace BootstrapMvc
 
         public static TableCaption TableCaption(this IAnyContentMarker contentHelper, object value)
         {
-            var obj = new TableCaption(contentHelper.Context);
-            obj.Content(value);
-            return obj;
+            return new TableCaption(contentHelper.Context).Content(value);
         }
 
         public static TableCaption TableCaption(this IAnyContentMarker contentHelper, params object[] values)
         {
-            var obj = new TableCaption(contentHelper.Context);
-            obj.Content(values);
-            return obj;
+            return new TableCaption(contentHelper.Context).Content(values);
+        }
+        
+        public static TableHeader TableHeader(this IAnyContentMarker contentHelper)
+        {
+            return new TableHeader(contentHelper.Context);
         }
 
+        public static TableSectionContent BeginTableHeader(this IAnyContentMarker contentHelper)
+        {
+            return new TableHeader(contentHelper.Context).BeginContent();
+        }
+
+        public static TableBody TableBody(this IAnyContentMarker contentHelper)
+        {
+            return new TableBody(contentHelper.Context);
+        }
+
+        public static TableSectionContent BeginTableBody(this IAnyContentMarker contentHelper)
+        {
+            return new TableBody(contentHelper.Context).BeginContent();
+        }
+
+        public static TableFooter TableFooter(this IAnyContentMarker contentHelper)
+        {
+            return new TableFooter(contentHelper.Context);
+        }
+
+        public static TableSectionContent BeginTableFooter(this IAnyContentMarker contentHelper)
+        {
+            return new TableFooter(contentHelper.Context).BeginContent();
+        }
+       
         #endregion
 
         #region TableRow
@@ -60,22 +86,28 @@ namespace BootstrapMvc
             return new TableRow(contentHelper.Context).Color(color);
         }
 
+        public static TableRowContent BeginTableRow(this IAnyContentMarker contentHelper)
+        {
+            return new TableRow(contentHelper.Context).BeginContent();
+        }
+
+        public static TableRowContent BeginTableRow(this IAnyContentMarker contentHelper, TableRowCellColor color)
+        {
+            return new TableRow(contentHelper.Context).Color(color).BeginContent();
+        }
+
         #endregion
 
         #region Table cells
 
         public static TableCell TableCell(this IAnyContentMarker contentHelper, object value)
         {
-            var obj = new TableCell(contentHelper.Context);
-            obj.Content(value);
-            return obj;
+            return new TableCell(contentHelper.Context).Content(value);
         }
 
         public static TableCell TableCell(this IAnyContentMarker contentHelper, params object[] values)
         {
-            var obj = new TableCell(contentHelper.Context);
-            obj.Content(values);
-            return obj;
+            return new TableCell(contentHelper.Context).Content(values);
         }
 
         public static TableCell TableCell(this IAnyContentMarker contentHelper, TableRowCellColor color, object value)
@@ -100,16 +132,12 @@ namespace BootstrapMvc
 
         public static TableHeaderCell TableHeaderCell(this IAnyContentMarker contentHelper, object value)
         {
-            var obj = new TableHeaderCell(contentHelper.Context);
-            obj.Content(value);
-            return obj;
+            return new TableHeaderCell(contentHelper.Context).Content(value);
         }
 
         public static TableHeaderCell TableHeaderCell(this IAnyContentMarker contentHelper, params object[] values)
         {
-            var obj = new TableHeaderCell(contentHelper.Context);
-            obj.Content(values);
-            return obj;
+            return new TableHeaderCell(contentHelper.Context).Content(values);
         }
 
         public static TableHeaderCell TableHeaderCell(this IAnyContentMarker contentHelper, TableRowCellColor color, object value)
