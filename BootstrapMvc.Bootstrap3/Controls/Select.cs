@@ -6,9 +6,11 @@ using BootstrapMvc.Forms;
 
 namespace BootstrapMvc.Controls
 {
-    public class Select : ContentElement<SelectContent>, IFormControl, IPlaceholderTarget
+    public class Select : ContentElement<SelectContent>, IFormControl, IPlaceholderTarget, ISizableControl
     {
         private IControlContext controlContext;
+
+        private GridSize size;
 
         private IEnumerable<ISelectItem> items;
 
@@ -21,6 +23,16 @@ namespace BootstrapMvc.Controls
         public void SetControlContext(IControlContext context)
         {
             controlContext = context;
+        }
+
+        public void SetSize(GridSize size)
+        {
+            this.size = size;
+        }
+
+        public GridSize GetSize()
+        {
+            return size;
         }
 
         #region Fluent
@@ -46,9 +58,26 @@ namespace BootstrapMvc.Controls
 
         protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
         {
+            var groupContext = FormGroup.GetCurrentContext(Context);
             if (controlContext == null)
             {
-                controlContext = FormGroup.TryGetCurrentControlContext(Context);
+                controlContext = groupContext.ControlContext;
+            }
+
+            ITagBuilder div = null;
+
+            if (!size.IsEmpty())
+            {
+                if (groupContext.WithSizedControls)
+                {
+                    div = Context.CreateTagBuilder("div");
+                    div.AddCssClass(size.ToCssClass());
+                    writer.Write(div.GetStartTag());
+                }
+                else
+                {
+                    throw new InvalidOperationException("Size not allowed - call WithSizedControls() on FormGroup.");
+                }
             }
 
             object value = null;
@@ -62,7 +91,7 @@ namespace BootstrapMvc.Controls
                 tb.MergeAttribute("name", controlContext.Name);
                 value = controlContext.Value;
             }
-
+            
             ApplyCss(tb);
             ApplyAttributes(tb);
 
@@ -76,7 +105,7 @@ namespace BootstrapMvc.Controls
                 }
             }
 
-            return new Content(Context).Value(tb.GetEndTag(), true);
+            return new Content(Context).Value(tb.GetEndTag() + (div == null ? string.Empty : div.GetEndTag()), true);
         }
     }
 }

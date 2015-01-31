@@ -21,9 +21,10 @@ namespace BootstrapMvc.Controls
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
+            var groupContext = FormGroup.GetCurrentContext(Context);
             if (controlContext == null)
             {
-                controlContext = FormGroup.TryGetCurrentControlContext(Context);
+                controlContext = groupContext.ControlContext;
             }
 
             var input = Context.CreateTagBuilder("p");

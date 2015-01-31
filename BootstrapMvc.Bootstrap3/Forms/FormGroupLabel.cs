@@ -14,7 +14,8 @@ namespace BootstrapMvc.Forms
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var formContext = Form.GetCurrentContext(Context);
-            var controlContext = FormGroup.TryGetCurrentControlContext(Context);
+            var groupContext = FormGroup.GetCurrentContext(Context);
+            var controlContext = groupContext.ControlContext;
 
             var required = controlContext == null ? false : controlContext.IsRequired;
             var name = controlContext == null ? null : controlContext.Name;

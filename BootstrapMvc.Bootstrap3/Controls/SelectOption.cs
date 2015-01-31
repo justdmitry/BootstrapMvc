@@ -44,7 +44,8 @@ namespace BootstrapMvc.Controls
                 tb.MergeAttribute("disabled", "disabled");
             }
 
-            var controlContext = FormGroup.TryGetCurrentControlContext(Context);
+            var formContext = FormGroup.GetCurrentContext(Context);
+            var controlContext = formContext.ControlContext;
             if (controlContext != null && controlContext.Value != null && controlContext.Value == value)
             {
                 tb.MergeAttribute("selected", "selected");

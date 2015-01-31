@@ -7,44 +7,48 @@ namespace BootstrapMvc.Forms
 {
     public class FormGroup : AnyContentElement
     {
-        private static readonly string ControlContextContextKey = "BootstrapMvc.FormGroup";
+        private static readonly string ContextKey = "BootstrapMvc.FormGroupContext";
 
-        private IControlContext controlContext;
+        private static readonly FormGroupContext FormGroupContextDefault = new FormGroupContext
+        {
+            ControlContext = null,
+            WithStackedCheckbox = false,
+            WithStackedRadio = false,
+            WithSizedControls = false
+        };
 
         private FormGroupLabel label = null;
 
         private IFormControl control = null;
 
-        private bool withCheckbox = false;
-
-        private bool withRadio = false;
+        private FormGroupContext groupContext;
 
         public FormGroup(IBootstrapContext context)
             : base(context)
         {
-            // Nothing
+            groupContext = (FormGroupContext)FormGroupContextDefault.Clone();
         }
 
-        public static IControlContext TryGetCurrentControlContext(IBootstrapContext context)
+        public static FormGroupContext GetCurrentContext(IBootstrapContext context)
         {
-            IControlContext val;
-            context.TryPeekValue<IControlContext>(ControlContextContextKey, out val);
-            return val;
+            FormGroupContext val;
+            context.TryPeekValue<FormGroupContext>(ContextKey, out val);
+            return val ?? (FormGroupContext)FormGroupContextDefault.Clone();
         }
 
         #region Fluent
 
         public FormGroup ControlContext(IControlContext context)
         {
-            controlContext = context;
+            groupContext.ControlContext = context;
             return this;
         }
 
         public FormGroup Required(bool required = true)
         {
-            if (controlContext != null)
+            if (groupContext.ControlContext != null)
             {
-                controlContext.IsRequired = required;
+                groupContext.ControlContext.IsRequired = required;
             }
             return this;
         }
@@ -65,18 +69,26 @@ namespace BootstrapMvc.Forms
         public FormGroup Control(IFormControl control)
         {
             this.control = control;
+            var sizable = control as ISizableControl;
+            groupContext.WithSizedControls = (sizable != null && !sizable.GetSize().IsEmpty());
             return this;
         }
 
-        public FormGroup WithCheckbox(bool value = true)
+        public FormGroup WithStackedCheckbox(bool value = true)
         {
-            withCheckbox = value;
+            groupContext.WithStackedCheckbox = value;
             return this;
         }
 
-        public FormGroup WithRadio(bool value = true)
+        public FormGroup WithStackedRadio(bool value = true)
         {
-            withRadio = value;
+            groupContext.WithStackedRadio = value;
+            return this;
+        }
+
+        public FormGroup WithSizedControls(bool value = true)
+        {
+            groupContext.WithSizedControls = value;
             return this;
         }
 
@@ -84,13 +96,13 @@ namespace BootstrapMvc.Forms
 
         public AnyContent BeginControls()
         {
-            if (label == null && !withCheckbox && !withRadio)
+            if (label == null && !groupContext.WithStackedCheckbox && !groupContext.WithStackedRadio)
             {
                 label = new FormGroupLabel(Context);
                 label.Content(string.Empty);
             }
             var end = this.WriteSelfStart(Context.Writer);
-            var area = new FormGroupControls(Context).WithCheckbox(withCheckbox).WithRadio(withRadio).WithoutLabel(label == null).BeginContent();
+            var area = new FormGroupControls(Context).WithoutLabel(label == null).BeginContent();
             area.Append(end);
             return area;
         }
@@ -99,13 +111,13 @@ namespace BootstrapMvc.Forms
         {
             var tb = Context.CreateTagBuilder("div");
             tb.AddCssClass("form-group");
-            if (controlContext != null)
+            if (groupContext.ControlContext != null)
             {
-                if (controlContext.HasErrors)
+                if (groupContext.ControlContext.HasErrors)
                 {
                     tb.AddCssClass("has-error");
                 }
-                else if (controlContext.HasWarning)
+                else if (groupContext.ControlContext.HasWarning)
                 {
                     tb.AddCssClass("has-warning");
                 }
@@ -116,7 +128,7 @@ namespace BootstrapMvc.Forms
 
             writer.Write(tb.GetStartTag());
 
-            Context.PushValue(ControlContextContextKey, controlContext);
+            Context.PushValue(ContextKey, groupContext);
 
             if (label != null)
             {
@@ -125,9 +137,7 @@ namespace BootstrapMvc.Forms
 
             if (control != null)
             {
-                var fgc = new FormGroupControls(Context);
-                fgc.WithCheckbox(control is Checkbox).WithRadio(control is Radio);
-                using (var area = fgc.BeginContent())
+                using (new FormGroupControls(Context).BeginContent())
                 {
                     control.WriteTo(writer);
                 }
@@ -138,7 +148,7 @@ namespace BootstrapMvc.Forms
 
         protected override void AfterWrite()
         {
-            Context.PopValue(ControlContextContextKey);
+            Context.PopValue(ContextKey);
             base.AfterWrite();
         }
     }

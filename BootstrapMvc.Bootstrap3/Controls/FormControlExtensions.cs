@@ -11,5 +11,11 @@ namespace BootstrapMvc
             target.SetControlContext(controlContext);
             return target;
         }
+        
+        public static T Size<T>(this T target, GridSize size) where T : Element, ISizableControl
+        {
+            target.SetSize(size);
+            return target;
+        }
     }
 }

@@ -5,11 +5,13 @@ using BootstrapMvc.Forms;
 
 namespace BootstrapMvc.Controls
 {
-    public class Textarea : Element, IFormControl, IPlaceholderTarget
+    public class Textarea : Element, IFormControl, IPlaceholderTarget, ISizableControl
     {
         private static readonly byte RowsDefault = 3;
 
         private IControlContext controlContext;
+
+        private GridSize size;
 
         private byte rows = RowsDefault;
 
@@ -24,6 +26,16 @@ namespace BootstrapMvc.Controls
             controlContext = context;
         }
 
+        public void SetSize(GridSize size)
+        {
+            this.size = size;
+        }
+
+        public GridSize GetSize()
+        {
+            return size;
+        }
+
         #region Fluent
         
         public Textarea Rows(byte rows)
@@ -36,11 +48,28 @@ namespace BootstrapMvc.Controls
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
+            var groupContext = FormGroup.GetCurrentContext(Context);
             if (controlContext == null)
             {
-                controlContext = FormGroup.TryGetCurrentControlContext(Context);
+                controlContext = groupContext.ControlContext;
             }
-            
+
+            ITagBuilder div = null;
+
+            if (!size.IsEmpty())
+            {
+                if (groupContext.WithSizedControls)
+                {
+                    div = Context.CreateTagBuilder("div");
+                    div.AddCssClass(size.ToCssClass());
+                    writer.Write(div.GetStartTag());
+                }
+                else
+                {
+                    throw new InvalidOperationException("Size not allowed - call WithSizedControls() on FormGroup.");
+                }
+            }
+
             var tb = Context.CreateTagBuilder("textarea");
             tb.AddCssClass("form-control");
             if (rows != 0)
@@ -64,6 +93,11 @@ namespace BootstrapMvc.Controls
             }
 
             writer.Write(tb.GetEndTag());
+
+            if (div != null)
+            {
+                writer.Write(div.GetEndTag());
+            }
         }
     }
 }

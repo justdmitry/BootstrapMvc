@@ -21,6 +21,18 @@ namespace BootstrapMvc.Tables
             return this;
         }
 
+        public TableCell RowSpan(int value)
+        {
+            this.AddAttribute("rowspan", value.ToString());
+            return this;
+        }
+
+        public TableCell ColSpan(int value)
+        {
+            this.AddAttribute("colspan", value.ToString());
+            return this;
+        }
+
         #endregion
 
         protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)

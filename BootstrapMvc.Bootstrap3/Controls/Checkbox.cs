@@ -41,12 +41,22 @@ namespace BootstrapMvc.Controls
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
+            var groupContext = FormGroup.GetCurrentContext(Context);
             if (controlContext == null)
             {
-                controlContext = FormGroup.TryGetCurrentControlContext(Context);
+                controlContext = groupContext.ControlContext;
             }
 
             var lbl = Context.CreateTagBuilder("label");
+
+            if (inline && groupContext.WithStackedCheckbox)
+            {
+                throw new InvalidOperationException("Can't generate 'inline' checkbox in 'WithStackedCheckbox' group");
+            }
+            if (!inline && !groupContext.WithStackedCheckbox)
+            {
+                throw new InvalidOperationException("Can't generate 'stacked' checkbox without 'WithStackedCheckbox' in group");
+            }
             lbl.AddCssClass(inline ? "checkbox-inline" : "checkbox");
 
             writer.Write(lbl.GetStartTag());

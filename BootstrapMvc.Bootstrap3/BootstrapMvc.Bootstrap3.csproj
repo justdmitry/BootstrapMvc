@@ -71,6 +71,7 @@
     <Compile Include="Controls\SelectOption.cs" />
     <Compile Include="Controls\StaticValue.cs" />
     <Compile Include="Controls\Textarea.cs" />
+    <Compile Include="Forms\FormGroupContext.cs" />
     <Compile Include="GridSize.cs" />
     <Compile Include="Dropdown\DropdownMenu.cs" />
     <Compile Include="Dropdown\DropdownMenuContent.cs">
@@ -125,6 +126,7 @@
     <Compile Include="Grid\GridRow.cs" />
     <Compile Include="Grid\GridCol.cs" />
     <Compile Include="Grid\GridRowContent.cs" />
+    <Compile Include="Controls\ISizableControl.cs" />
     <Compile Include="IconType.cs" />
     <Compile Include="AnyContentElements\Label.cs" />
     <Compile Include="LabelType.cs" />

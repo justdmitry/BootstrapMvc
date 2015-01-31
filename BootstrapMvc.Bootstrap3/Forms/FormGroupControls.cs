@@ -5,10 +5,6 @@ namespace BootstrapMvc.Forms
 {
     public class FormGroupControls : AnyContentElement
     {
-        private bool withCheckbox = false;
-
-        private bool withRadio = false;
-
         private bool withoutLabel = false;
 
         public FormGroupControls(IBootstrapContext context)
@@ -18,18 +14,6 @@ namespace BootstrapMvc.Forms
         }
 
         #region Fluent
-
-        public FormGroupControls WithCheckbox(bool value = true)
-        {
-            withCheckbox = value;
-            return this;
-        }
-
-        public FormGroupControls WithRadio(bool value = true)
-        {
-            withRadio = value;
-            return this;
-        }
 
         public FormGroupControls WithoutLabel(bool value = true)
         {
@@ -42,8 +26,9 @@ namespace BootstrapMvc.Forms
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var formContext = Form.GetCurrentContext(Context);
+            var groupContext = FormGroup.GetCurrentContext(Context);
 
-            if (formContext.FormType != FormType.Horizontal && !withCheckbox && !withRadio)
+            if (formContext.FormType != FormType.Horizontal && !groupContext.WithStackedCheckbox && !groupContext.WithStackedRadio)
             {
                 return string.Empty;
             }
@@ -57,11 +42,11 @@ namespace BootstrapMvc.Forms
                     tb.AddCssClass(formContext.ControlsWidth.Invert().ToOffsetCssClass());
                 }
             }
-            if (withCheckbox)
+            if (groupContext.WithStackedCheckbox)
             {
                 tb.AddCssClass("checkbox");
             }
-            if (withRadio)
+            if (groupContext.WithStackedRadio)
             {
                 tb.AddCssClass("radio");
             }
@@ -71,7 +56,18 @@ namespace BootstrapMvc.Forms
 
             writer.Write(tb.GetStartTag());
 
-            return tb.GetEndTag();
+            if (groupContext.WithSizedControls)
+            {
+                var tb2 = Context.CreateTagBuilder("div");
+                tb2.AddCssClass("row");
+                writer.Write(tb2.GetStartTag());
+
+                return tb2.GetEndTag() + tb.GetEndTag();
+            }
+            else
+            {
+                return tb.GetEndTag();
+            }
         }
     }
 }
