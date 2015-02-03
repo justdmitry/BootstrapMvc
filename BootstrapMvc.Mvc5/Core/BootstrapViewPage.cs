@@ -5,6 +5,8 @@ namespace BootstrapMvc.Core
 {
     public abstract class BootstrapViewPage : WebViewPage, IBootstrapMvcViewPage
     {
+        public static Func<int, string> BootstrapMessageSource { get; set; }
+
         public BootstrapHelper Bootstrap { get; protected set; }
 
         public static void WriteTo(System.IO.TextWriter writer, WritableBlock block)
@@ -18,7 +20,7 @@ namespace BootstrapMvc.Core
         public override void InitHelpers()
         {
             base.InitHelpers();
-            this.Bootstrap = new BootstrapHelper(new BootstrapContext(this.ViewContext, Url, ViewData));
+            this.Bootstrap = new BootstrapHelper(new BootstrapContext(this.ViewContext, Url, ViewData, BootstrapMessageSource));
         }
 
         public void Write(WritableBlock block)

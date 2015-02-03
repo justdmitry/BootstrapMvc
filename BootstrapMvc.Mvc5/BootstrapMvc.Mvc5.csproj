@@ -73,6 +73,8 @@
     <Compile Include="Core\BootstrapViewPage.cs" />
     <Compile Include="Core\BootstrapViewPageT.cs" />
     <Compile Include="Core\ControlContext.cs" />
+    <Compile Include="Core\ModelValidationError.cs" />
+    <Compile Include="Core\ModelValidationResult.cs" />
     <Compile Include="Core\TagBuilder.cs" />
     <Compile Include="LinkExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

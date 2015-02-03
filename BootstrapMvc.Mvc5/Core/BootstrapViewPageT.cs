@@ -18,7 +18,7 @@ namespace BootstrapMvc.Core
         public override void InitHelpers()
         {
             base.InitHelpers();
-            this.Bootstrap = new BootstrapHelper<TModel>(new BootstrapContext<TModel>(this.ViewContext, Url, ViewData));
+            this.Bootstrap = new BootstrapHelper<TModel>(new BootstrapContext<TModel>(this.ViewContext, Url, ViewData, BootstrapViewPage.BootstrapMessageSource));
         }
 
         public void Write(WritableBlock block)

@@ -15,16 +15,17 @@ namespace BootstrapMvc.Core
 
         private Dictionary<string, Stack<object>> cachedData = null;
 
-        public BootstrapContext(mvc.ViewContext viewContext, mvc.UrlHelper urlHelper, mvc.ViewDataDictionary viewData)
+        public BootstrapContext(mvc.ViewContext viewContext, mvc.UrlHelper urlHelper, mvc.ViewDataDictionary viewData, Func<int, string> messageSource)
         {
             this.ViewContext = viewContext;
             this.Url = urlHelper;
             this.ViewData = viewData;
+            this.MessageSource = messageSource;
 
             var httpContext = viewContext.RequestContext.HttpContext;
             if (httpContext.Items.Contains(CachedDataContextKey))
             {
-                cachedData = (Dictionary<string, Stack<object>>) httpContext.Items[CachedDataContextKey];
+                cachedData = (Dictionary<string, Stack<object>>)httpContext.Items[CachedDataContextKey];
             }
             else
             {
@@ -33,13 +34,15 @@ namespace BootstrapMvc.Core
             }
         }
 
-        public TextWriter Writer 
+        public TextWriter Writer
         {
             get
             {
                 return ViewContext.Writer;
-            }  
+            }
         }
+
+        protected Func<int, string> MessageSource { get; set; }
 
         protected mvc.UrlHelper Url { get; set; }
 
@@ -139,6 +142,11 @@ namespace BootstrapMvc.Core
             }
             value = stack.Peek() as T;
             return value != null;
+        }
+
+        public string GetMessage(int id)
+        {
+            return (MessageSource == null) ? null : MessageSource(id);
         }
     }
 }
