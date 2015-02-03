@@ -23,5 +23,7 @@ namespace BootstrapMvc.Core
         object PopValue(string key);
 
         bool TryPeekValue<TContext>(string key, out TContext value) where TContext : class;
+
+        string GetMessage(int id);
     }
 }
