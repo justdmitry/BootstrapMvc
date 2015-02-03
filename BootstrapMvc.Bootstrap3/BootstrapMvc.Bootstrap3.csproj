@@ -44,6 +44,7 @@
     <Compile Include="AnyContentElements\Anchor.cs" />
     <Compile Include="AnyContentElements\Badge.cs" />
     <Compile Include="AnyContentElements\AnyContentExtensions.cs" />
+    <Compile Include="BootstrapContextExtensions.cs" />
     <Compile Include="Buttons\Button.cs" />
     <Compile Include="Buttons\ButtonGroup.cs" />
     <Compile Include="Buttons\ButtonGroupContent.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Controls\StaticValue.cs" />
     <Compile Include="Controls\Textarea.cs" />
     <Compile Include="Forms\FormGroupContext.cs" />
+    <Compile Include="Forms\ValidationSummary.cs" />
     <Compile Include="GridSize.cs" />
     <Compile Include="Dropdown\DropdownMenu.cs" />
     <Compile Include="Dropdown\DropdownMenuContent.cs">
@@ -129,6 +131,7 @@
     <Compile Include="Controls\ISizableControl.cs" />
     <Compile Include="IconType.cs" />
     <Compile Include="AnyContentElements\Label.cs" />
+    <Compile Include="MessageType.cs" />
     <Compile Include="LabelType.cs" />
     <Compile Include="Lists\DefinitionList.cs" />
     <Compile Include="Lists\DefinitionListContent.cs" />

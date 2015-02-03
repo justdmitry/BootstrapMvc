@@ -126,5 +126,10 @@ namespace BootstrapMvc
         }
 
         #endregion
+
+        public static ValidationSummary<TModel> ValidationSummary<TModel>(this IAnyContentMarker<TModel> contentHelper)
+        {
+            return new ValidationSummary<TModel>(contentHelper.Context);
+        }
     }
 }

@@ -11,8 +11,8 @@ namespace BootstrapMvc.Forms
         private static readonly FormContext FormContextDefault = new FormContext
         {
             FormType = FormType.DefaultNone,
-            LabelWidth = new GridSize(0, 4, 0, 0),
-            ControlsWidth = new GridSize(0, 8, 0, 0)
+            LabelWidth = new GridSize(0, 4, 4, 4),
+            ControlsWidth = new GridSize(0, 8, 8, 8)
         };
 
         private FormMethod method = FormMethod.Post;
