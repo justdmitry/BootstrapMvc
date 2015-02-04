@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace BootstrapMvc.Core
 {
-    public abstract class AnyContentElement : ContentElement<AnyContent>
+    public abstract class AnyContentElement : ContentElement<AnyContentContext>
     {
         private WritableBlock content;
+
+        protected string endTag = null;
 
         public AnyContentElement(IBootstrapContext context)
             : base(context)
@@ -13,11 +15,9 @@ namespace BootstrapMvc.Core
             // nothing
         }
 
-        #region Fluent
-
         public void AddContent(object value)
         {
-            var newContent = new Content(Context).Value(value).WriteWhitespaceSuffix(false);
+            var newContent = new Content(Context).Value(value);
             if (content == null)
             {
                 content = newContent;
@@ -28,23 +28,25 @@ namespace BootstrapMvc.Core
             }
         }
 
-        #endregion
-
         protected abstract string WriteSelfStartTag(System.IO.TextWriter writer);
 
-        protected override AnyContent CreateContent()
+        protected override AnyContentContext CreateContentContext()
         {
-            return new AnyContent(Context);
+            return new AnyContentContext(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var endTag = WriteSelfStartTag(writer);
+            endTag = WriteSelfStartTag(writer);
             if (content != null)
             {
                 content.WriteTo(writer);
             }
-            return new Content(Context).Value(endTag, true);
+        }
+
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write(endTag);
         }
     }
 }

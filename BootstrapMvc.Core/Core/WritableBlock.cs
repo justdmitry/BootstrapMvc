@@ -7,8 +7,6 @@ namespace BootstrapMvc.Core
     {
         private WritableBlock next = null;
 
-        private bool writeWhitespaceSuffix = false;
-
         public WritableBlock(IBootstrapContext context)
         {
             this.Context = context;
@@ -16,32 +14,24 @@ namespace BootstrapMvc.Core
 
         public IBootstrapContext Context { get; private set; }
 
-        #region Fluent
+        public bool WriteWhitespaceSuffix { get; set; }
 
-        public WritableBlock Append(WritableBlock value)
+        public void AppendNextBlock(WritableBlock value)
         {
             if (next == null)
             {
                 next = value;
-                return value;
             }
-            return next.Append(value);
+            else
+            {
+                next.AppendNextBlock(value);
+            }
         }
-
-        public WritableBlock WriteWhitespaceSuffix(bool write = true)
-        {
-            this.writeWhitespaceSuffix = write;
-            return this;
-        }
-
-        #endregion
 
         public void WriteTo(TextWriter writer)
         {
-            BeforeWrite();
             WriteSelf(writer);
-            AfterWrite();
-            if (writeWhitespaceSuffix)
+            if (WriteWhitespaceSuffix)
             {
                 writer.Write(" ");
             }
@@ -52,15 +42,5 @@ namespace BootstrapMvc.Core
         }
 
         protected abstract void WriteSelf(TextWriter writer);
-
-        protected virtual void BeforeWrite()
-        {
-            // Nothing
-        }
-
-        protected virtual void AfterWrite()
-        {
-            // Nothing
-        }
     }
 }

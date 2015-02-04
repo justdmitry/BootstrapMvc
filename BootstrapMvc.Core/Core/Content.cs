@@ -12,7 +12,7 @@ namespace BootstrapMvc.Core
         public Content(IBootstrapContext context)
             : base(context)
         {
-            WriteWhitespaceSuffix(true);
+            // Nothing
         }
 
         #region Fluent
@@ -37,10 +37,9 @@ namespace BootstrapMvc.Core
             if (enumerator.MoveNext())
             {
                 this.value = enumerator.Current;
-                var current = (WritableBlock)this;
                 while (enumerator.MoveNext())
                 {
-                    current = current.Append(new Content(Context).Value(enumerator.Current));
+                    AppendNextBlock(new Content(Context).Value(enumerator.Current));
                 }
             }
             else

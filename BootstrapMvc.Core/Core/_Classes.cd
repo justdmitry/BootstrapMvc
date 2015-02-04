@@ -22,33 +22,33 @@
       <FileName>Core\Content.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BootstrapMvc.Core.DisposableContent">
-    <Position X="8.5" Y="2" Width="1.5" />
+  <Class Name="BootstrapMvc.Core.DisposableContext">
+    <Position X="6.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Core\DisposableContent.cs</FileName>
+      <HashCode>AAIAAAAAAiAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DisposableContext.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BootstrapMvc.Core.AnyContent">
+  <Class Name="BootstrapMvc.Core.AnyContentContext">
     <Position X="8.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Core\AnyContent.cs</FileName>
+      <FileName>Core\AnyContentContext.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="BootstrapMvc.Core.AnyContentElement">
     <Position X="2.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAQEAAAAAAAAABAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAACAQEAAAQAAAAABAAAAAAAAAAQAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Core\AnyContentElement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BootstrapMvc.Core.ContentElement&lt;T&gt;">
     <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAICAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAQBAgAAAAAAIAEAAA=</HashCode>
       <FileName>Core\ContentElementT.cs</FileName>
     </TypeIdentifier>
   </Class>

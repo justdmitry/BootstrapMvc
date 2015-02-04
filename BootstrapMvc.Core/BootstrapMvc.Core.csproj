@@ -38,12 +38,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnyContentElementExtensions.cs" />
-    <Compile Include="Core\AnyContent.cs" />
+    <Compile Include="Core\AnyContentContext.cs" />
     <Compile Include="Core\AnyContentElement.cs" />
     <Compile Include="Core\BootstrapHelper.cs" />
     <Compile Include="Core\BootstrapHelperT.cs" />
     <Compile Include="Core\ContentElementT.cs" />
-    <Compile Include="Core\DisposableContent.cs" />
+    <Compile Include="Core\DisposableContext.cs" />
     <Compile Include="Core\IAnyContentMarkerT.cs" />
     <Compile Include="Core\IBootstrapMvcViewPageT.cs" />
     <Compile Include="Core\IBootstrapMvcViewPage.cs" />
@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="ElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WritableBlockExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BootstrapMvc.Core.nuspec" />

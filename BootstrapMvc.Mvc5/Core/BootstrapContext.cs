@@ -13,7 +13,7 @@ namespace BootstrapMvc.Core
     {
         private static readonly string CachedDataContextKey = "BootstrapMvc.Mvc5.BootstrapContext.CachedData";
 
-        private Dictionary<string, Stack<object>> cachedData = null;
+        private List<DisposableContext> cachedData;
 
         public BootstrapContext(mvc.ViewContext viewContext, mvc.UrlHelper urlHelper, mvc.ViewDataDictionary viewData, Func<int, string> messageSource)
         {
@@ -25,11 +25,11 @@ namespace BootstrapMvc.Core
             var httpContext = viewContext.RequestContext.HttpContext;
             if (httpContext.Items.Contains(CachedDataContextKey))
             {
-                cachedData = (Dictionary<string, Stack<object>>)httpContext.Items[CachedDataContextKey];
+                cachedData = (List<DisposableContext>)httpContext.Items[CachedDataContextKey];
             }
             else
             {
-                cachedData = new Dictionary<string, Stack<object>>();
+                cachedData = new List<DisposableContext>();
                 httpContext.Items[CachedDataContextKey] = cachedData;
             }
         }
@@ -87,66 +87,36 @@ namespace BootstrapMvc.Core
             WebPageExecutingBase.WriteTo(Writer, value);
         }
 
-        public void PushValue(string key, object value)
-        {
-            if (cachedData == null)
-            {
-                cachedData = new Dictionary<string, Stack<object>>();
-            }
-            if (!cachedData.ContainsKey(key))
-            {
-                cachedData.Add(key, new Stack<object>());
-            }
-            cachedData[key].Push(value);
-        }
-
-        public object PopValue(string key)
-        {
-            if (cachedData == null)
-            {
-                throw new InvalidOperationException("Nothing to pop. Call PushValue first");
-            }
-            Stack<object> stack = null;
-            if (!cachedData.TryGetValue(key, out stack))
-            {
-                throw new InvalidOperationException("Nothing to pop. Call PushValue first");
-            }
-            return stack.Pop();
-        }
-
-        public T PeekValue<T>(string key) where T : class
-        {
-            if (cachedData == null)
-            {
-                throw new InvalidOperationException("Nothing to pop. Call PushValue first");
-            }
-            Stack<object> stack = null;
-            if (!cachedData.TryGetValue(key, out stack))
-            {
-                throw new InvalidOperationException("Nothing to pop. Call PushValue first");
-            }
-            return (T)stack.Peek();
-        }
-
-        public bool TryPeekValue<T>(string key, out T value) where T : class
-        {
-            value = null;
-            if (cachedData == null)
-            {
-                return false;
-            }
-            Stack<object> stack = null;
-            if (!cachedData.TryGetValue(key, out stack))
-            {
-                return false;
-            }
-            value = stack.Peek() as T;
-            return value != null;
-        }
-
         public string GetMessage(int id)
         {
             return (MessageSource == null) ? null : MessageSource(id);
+        }
+
+
+        public void Push(DisposableContext value)
+        {
+            cachedData.Insert(0, value);
+        }
+
+        public T Peek<T>() where T : DisposableContext
+        {
+            T res;
+            foreach(var item in cachedData)
+            {
+                res = item as T;
+                if (res != null)
+                {
+                    return res;
+                }
+            }
+            return null;
+        }
+
+        public DisposableContext Pop()
+        {
+            var res = cachedData[0];
+            cachedData.RemoveAt(0);
+            return res;
         }
     }
 }

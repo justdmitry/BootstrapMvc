@@ -31,7 +31,7 @@ namespace BootstrapMvc.Core
             using (var sw = new StringWriter())
             {
                 sc.WriteTo(sw);
-                Assert.AreEqual(sample + " ", sw.ToString());
+                Assert.AreEqual(sample, sw.ToString());
             }
         }
 
@@ -46,7 +46,7 @@ namespace BootstrapMvc.Core
             using (var sw = new StringWriter())
             {
                 sc.WriteTo(sw);
-                Assert.AreEqual(sampleEncoded + " ", sw.ToString());
+                Assert.AreEqual(sampleEncoded, sw.ToString());
             }
         }
 
@@ -63,7 +63,7 @@ namespace BootstrapMvc.Core
 
                 sc.WriteTo(sw);
 
-                Assert.AreEqual(sample + " ", sw.ToString());
+                Assert.AreEqual(sample, sw.ToString());
             }
         }
         
