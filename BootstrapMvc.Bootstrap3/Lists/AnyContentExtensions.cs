@@ -41,7 +41,7 @@ namespace BootstrapMvc
             return new OrdinaryElement(contentHelper.Context, "li");
         }
 
-        public static AnyContent BeginListItem(this IAnyContentMarker contentHelper)
+        public static AnyContentContext BeginListItem(this IAnyContentMarker contentHelper)
         {
             return ListItem(contentHelper).BeginContent();
         }

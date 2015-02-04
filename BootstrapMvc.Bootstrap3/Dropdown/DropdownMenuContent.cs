@@ -4,7 +4,7 @@ using BootstrapMvc.Elements;
 
 namespace BootstrapMvc.Dropdown
 {
-    public class DropdownMenuContent : DisposableContent
+    public class DropdownMenuContent : DisposableContext
     {
         public DropdownMenuContent(IBootstrapContext context)
             : base(context)
@@ -47,7 +47,7 @@ namespace BootstrapMvc.Dropdown
             return (DropdownMenuItemHeader)new DropdownMenuItemHeader(Context).Content(contents);
         }
 
-        public AnyContent BeginLink()
+        public AnyContentContext BeginLink()
         {
             return new DropdownMenuItemLink(Context).BeginContent();
         }

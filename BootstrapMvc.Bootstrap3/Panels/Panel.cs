@@ -11,6 +11,8 @@ namespace BootstrapMvc.Panels
 
         private PanelType type;
 
+        private WritableBlock endTag;
+
         public Panel(IBootstrapContext context)
             : base(context)
         {
@@ -81,12 +83,12 @@ namespace BootstrapMvc.Panels
 
         #endregion
 
-        protected override PanelContent CreateContent()
+        protected override PanelContent CreateContentContext()
         {
             return new PanelContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("div");
             tb.AddCssClass(type.ToCssClass());
@@ -108,13 +110,19 @@ namespace BootstrapMvc.Panels
             var end = new Content(Context).Value(tb.GetEndTag(), true);
             if (footer == null)
             {
-                return end;
+                endTag = end;
             }
             else
             {
                 footer.Append(end);
-                return footer;
+                endTag = footer;
             }
+        }
+
+
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            endTag.WriteTo(writer);
         }
     }
 }

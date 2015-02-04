@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Buttons
 {
-    public class ButtonToolbarContent : DisposableContent
+    public class ButtonToolbarContent : DisposableContext
     {
         public ButtonToolbarContent(IBootstrapContext context)
             : base(context)

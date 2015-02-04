@@ -2,7 +2,7 @@
 
 namespace BootstrapMvc.Panels
 {
-    public class PanelContent : DisposableContent
+    public class PanelContent : DisposableContext
     {
         public PanelContent(IBootstrapContext context)
             : base(context)
@@ -52,17 +52,17 @@ namespace BootstrapMvc.Panels
             return obj;
         }
 
-        public AnyContent BeginHeader()
+        public AnyContentContext BeginHeader()
         {
             return new PanelHeader(Context).BeginContent();
         }
 
-        public AnyContent BeginBody()
+        public AnyContentContext BeginBody()
         {
             return new PanelBody(Context).BeginContent();
         }
 
-        public AnyContent BeginFooter()
+        public AnyContentContext BeginFooter()
         {
             return new PanelFooter(Context).BeginContent();
         }

@@ -57,13 +57,13 @@ namespace BootstrapMvc.Controls
 
             var lbl = Context.CreateTagBuilder("label");
 
-            if (inline && groupContext.WithStackedCheckbox)
+            if (inline && groupContext.WithStackedRadio)
             {
-                throw new InvalidOperationException("Can't generate 'inline' checkbox in 'WithStackedCheckbox' group");
+                throw new InvalidOperationException("Can't generate 'inline' radio in 'WithStackedRadio' group");
             }
-            if (!inline && !groupContext.WithStackedCheckbox)
+            if (!inline && !groupContext.WithStackedRadio)
             {
-                throw new InvalidOperationException("Can't generate 'stacked' checkbox without 'WithStackedCheckbox' in group");
+                throw new InvalidOperationException("Can't generate 'stacked' radio without 'WithStackedRadio' in group");
             }
             lbl.AddCssClass(inline ? "radio-inline" : "radio");
 

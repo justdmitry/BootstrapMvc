@@ -94,7 +94,7 @@ namespace BootstrapMvc.Forms
 
         #endregion
 
-        public AnyContent BeginControls()
+        public AnyContentContext BeginControls()
         {
             if (label == null && !groupContext.WithStackedCheckbox && !groupContext.WithStackedRadio)
             {

@@ -11,12 +11,12 @@ namespace BootstrapMvc.Grid
             // Nothing
         }
 
-        protected override GridRowContent CreateContent()
+        protected override GridRowContent CreateContentContext()
         {
             return new GridRowContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("div");
             tb.AddCssClass("row");
@@ -25,8 +25,11 @@ namespace BootstrapMvc.Grid
             ApplyAttributes(tb);
 
             writer.Write(tb.GetStartTag());
+        }
 
-            return new Content(Context).Value(tb.GetEndTag(), true);
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write("</div>");
         }
     }
 }

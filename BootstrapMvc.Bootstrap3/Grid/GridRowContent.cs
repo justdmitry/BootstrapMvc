@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Grid
 {
-    public class GridRowContent : DisposableContent
+    public class GridRowContent : DisposableContext
     {
         public GridRowContent(IBootstrapContext context)
             : base(context)
@@ -21,12 +21,12 @@ namespace BootstrapMvc.Grid
             return new GridCol(Context).Size(new GridSize(xs, sm, md, lg));
         }
 
-        public AnyContent BeginCol(GridSize size)
+        public AnyContentContext BeginCol(GridSize size)
         {
             return Col(size).BeginContent();
         }
 
-        public AnyContent BeginCol(byte xs, byte sm, byte md, byte lg)
+        public AnyContentContext BeginCol(byte xs, byte sm, byte md, byte lg)
         {
             return Col(xs, sm, md, lg).BeginContent();
         }

@@ -32,17 +32,17 @@ namespace BootstrapMvc
             return new GridCol(contentHelper.Context).Size(new GridSize(xs, sm, md, lg));
         }
 
-        public static AnyContent BeginGridCol(this IAnyContentMarker contentHelper, GridSize size)
+        public static AnyContentContext BeginGridCol(this IAnyContentMarker contentHelper, GridSize size)
         {
             return GridCol(contentHelper, size).BeginContent();
         }
 
-        public static AnyContent BeginGridCol(this IAnyContentMarker contentHelper, GridSize size, GridSize offset)
+        public static AnyContentContext BeginGridCol(this IAnyContentMarker contentHelper, GridSize size, GridSize offset)
         {
             return GridCol(contentHelper, size).Offset(offset).BeginContent();
         }
 
-        public static AnyContent BeginGridCol(this IAnyContentMarker contentHelper, byte xs, byte sm, byte md, byte lg)
+        public static AnyContentContext BeginGridCol(this IAnyContentMarker contentHelper, byte xs, byte sm, byte md, byte lg)
         {
             return GridCol(contentHelper, xs, sm, md, lg).BeginContent();
         }

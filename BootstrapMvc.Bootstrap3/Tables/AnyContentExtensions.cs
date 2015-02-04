@@ -120,12 +120,12 @@ namespace BootstrapMvc
             return TableCell(contentHelper, values).Color(color);
         }
 
-        public static AnyContent BeginTableCell(this IAnyContentMarker contentHelper)
+        public static AnyContentContext BeginTableCell(this IAnyContentMarker contentHelper)
         {
             return new TableCell(contentHelper.Context).BeginContent();
         }
 
-        public static AnyContent BeginTableCell(this IAnyContentMarker contentHelper, TableRowCellColor color)
+        public static AnyContentContext BeginTableCell(this IAnyContentMarker contentHelper, TableRowCellColor color)
         {
             return new TableCell(contentHelper.Context).Color(color).BeginContent();
         }
@@ -150,12 +150,12 @@ namespace BootstrapMvc
             return TableHeaderCell(contentHelper, values).Color(color);
         }
 
-        public static AnyContent BeginTableHeaderCell(this IAnyContentMarker contentHelper)
+        public static AnyContentContext BeginTableHeaderCell(this IAnyContentMarker contentHelper)
         {
             return new TableHeaderCell(contentHelper.Context).BeginContent();
         }
 
-        public static AnyContent BeginTableHeaderCell(this IAnyContentMarker contentHelper, TableRowCellColor color)
+        public static AnyContentContext BeginTableHeaderCell(this IAnyContentMarker contentHelper, TableRowCellColor color)
         {
             return new TableHeaderCell(contentHelper.Context).Color(color).BeginContent();
         }

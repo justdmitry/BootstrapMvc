@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Lists
 {
-    public class DefinitionListContent : DisposableContent
+    public class DefinitionListContent : DisposableContext
     {
         public DefinitionListContent(IBootstrapContext context)
             : base(context)
