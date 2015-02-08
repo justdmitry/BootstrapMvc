@@ -6,78 +6,56 @@ namespace BootstrapMvc.Controls
 {
     public class Radio : Element, IFormControl
     {
-        private IControlContext controlContext;
-
-        private string text;
-
-        private bool inline;
-
-        private string value;
-
         public Radio(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        public void SetControlContext(IControlContext context)
+        public IControlContext ControlContextValue { get; set; }
+
+        public string TextValue { get; set; }
+
+        public bool InlineValue { get; set; }
+
+        public string ValueValue { get; set; }
+
+        void IFormControl.SetControlContext(IControlContext context)
         {
-            controlContext = context;
+            ControlContextValue = context;
         }
-
-        #region Fluent
-
-        public Radio Value(string value)
-        {
-            this.value = value;
-            return this;
-        }
-
-        public Radio Text(string text)
-        {
-            this.text = text;
-            return this;
-        }
-
-        public Radio Inline(bool inline = true)
-        {
-            this.inline = inline;
-            return this;
-        }
-
-        #endregion
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            var groupContext = FormGroup.GetCurrentContext(Context);
-            if (controlContext == null)
+            var formGroup = Context.PeekNearest<FormGroup>();
+            if (formGroup != null && ControlContextValue == null)
             {
-                controlContext = groupContext.ControlContext;
+                ControlContextValue = formGroup.ControlContextValue;
             }
 
             var lbl = Context.CreateTagBuilder("label");
 
-            if (inline && groupContext.WithStackedRadio)
+            if (InlineValue && formGroup != null && formGroup.WithStackedRadioValue)
             {
                 throw new InvalidOperationException("Can't generate 'inline' radio in 'WithStackedRadio' group");
             }
-            if (!inline && !groupContext.WithStackedRadio)
+            if (!InlineValue && formGroup != null && !formGroup.WithStackedRadioValue)
             {
                 throw new InvalidOperationException("Can't generate 'stacked' radio without 'WithStackedRadio' in group");
             }
-            lbl.AddCssClass(inline ? "radio-inline" : "radio");
+            lbl.AddCssClass(InlineValue ? "radio-inline" : "radio");
 
             writer.Write(lbl.GetStartTag());
 
             var input = Context.CreateTagBuilder("input");
             input.MergeAttribute("type", "radio");
-            if (controlContext != null)
+            if (ControlContextValue != null)
             {
-                input.MergeAttribute("id", controlContext.Name);
-                input.MergeAttribute("name", controlContext.Name);
-                input.MergeAttribute("value", value);
-                var controlValue = controlContext.Value;
-                if (controlValue != null && value.Equals(controlValue.ToString()))
+                input.MergeAttribute("id", ControlContextValue.Name);
+                input.MergeAttribute("name", ControlContextValue.Name);
+                input.MergeAttribute("value", ValueValue);
+                var controlValue = ControlContextValue.Value;
+                if (controlValue != null && ValueValue.Equals(controlValue.ToString()))
                 {
                     input.MergeAttribute("checked", "checked");
                 }
@@ -90,7 +68,7 @@ namespace BootstrapMvc.Controls
 
             writer.Write(input.GetFullTag());
 
-            writer.Write(Context.HtmlEncode(text));
+            writer.Write(Context.HtmlEncode(TextValue));
 
             writer.Write(lbl.GetEndTag());
         }

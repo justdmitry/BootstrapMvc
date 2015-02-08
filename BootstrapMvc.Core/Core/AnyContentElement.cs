@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BootstrapMvc.Core
 {
-    public abstract class AnyContentElement : ContentElement<AnyContentContext>
+    public abstract class AnyContentElement : ContentElement<AnyContent>
     {
         private WritableBlock content;
 
@@ -17,7 +17,7 @@ namespace BootstrapMvc.Core
 
         public void AddContent(object value)
         {
-            var newContent = new Content(Context).Value(value);
+            var newContent = new SimpleBlock(Context).Value(value);
             if (content == null)
             {
                 content = newContent;
@@ -30,9 +30,9 @@ namespace BootstrapMvc.Core
 
         protected abstract string WriteSelfStartTag(System.IO.TextWriter writer);
 
-        protected override AnyContentContext CreateContentContext()
+        protected override AnyContent CreateContentContext()
         {
-            return new AnyContentContext(Context);
+            return new AnyContent(Context);
         }
 
         protected override void WriteSelfStart(System.IO.TextWriter writer)

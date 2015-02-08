@@ -2,7 +2,7 @@
 
 namespace BootstrapMvc.Core
 {
-    public abstract class ContentElement<T> : Element where T : DisposableContext
+    public abstract class ContentElement<T> : Element where T : DisposableContent
     {
         public ContentElement(IBootstrapContext context)
             : base(context)
@@ -14,7 +14,7 @@ namespace BootstrapMvc.Core
         {
             WriteSelfStart(this.Context.Writer);
             var retVal = CreateContentContext();
-            retVal.DisposeCallback = OnContentContextDispose;
+            retVal.Disposing += OnContentContextDispose;
             return retVal;
         }
 
@@ -24,7 +24,7 @@ namespace BootstrapMvc.Core
             WriteSelfEnd(writer);
         }
 
-        protected void OnContentContextDispose(DisposableContext sender)
+        protected void OnContentContextDispose(object sender, EventArgs args)
         {
             WriteSelfEnd(this.Context.Writer);
         }

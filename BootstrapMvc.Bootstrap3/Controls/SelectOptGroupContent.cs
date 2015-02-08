@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Controls
 {
-    public class SelectOptGroupContent : DisposableContext
+    public class SelectOptGroupContent : DisposableContent
     {
         public SelectOptGroupContent(IBootstrapContext context)
             : base(context)

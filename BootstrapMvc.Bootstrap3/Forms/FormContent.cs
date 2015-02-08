@@ -4,7 +4,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Forms
 {
-    public class FormContent : DisposableContext
+    public class FormContent : DisposableContent
     {
         public FormContent(IBootstrapContext context)
             : base(context)
@@ -52,12 +52,12 @@ namespace BootstrapMvc.Forms
             return new FormGroup(Context).Label(label);
         }
 
-        public AnyContentContext BeginGroup()
+        public AnyContent BeginGroup()
         {
             return new FormGroup(Context).BeginContent();
         }
 
-        public AnyContentContext BeginGroup(object label)
+        public AnyContent BeginGroup(object label)
         {
             return new FormGroup(Context).Label(label).BeginContent();
         }
@@ -76,7 +76,7 @@ namespace BootstrapMvc.Forms
             return (HelpBlock)new HelpBlock(Context).Content(contents);
         }
 
-        public AnyContentContext BeginHelpBlock()
+        public AnyContent BeginHelpBlock()
         {
             return new HelpBlock(Context).BeginContent();
         }

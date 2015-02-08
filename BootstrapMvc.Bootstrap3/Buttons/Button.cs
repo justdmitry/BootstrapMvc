@@ -4,77 +4,51 @@ using BootstrapMvc.Dropdown;
 
 namespace BootstrapMvc.Buttons
 {
-    public class Button : AnyContentElement, IDropdownMenuParentMarker, ILink<Button>
+    public class Button : AnyContentElement, IDropdownMenuParentMarker, ILink
     {
-        private ButtonType type;
-
-        private ButtonSize size;
-
-        private bool blockSize;
-
-        private bool disabled;
-
-        private string href;
-
         public Button(IBootstrapContext context)
             : base(context)
         {
-            // Nothing
+            var bg = context.PeekNearest<ButtonGroup>();
+            if (bg == null)
+            {
+                WriteWhitespaceSuffix = true;
+            }
+            else
+            {
+                SizeValue = bg.SizeValue;
+            }
         }
 
-        #region Fluent
+        public ButtonType TypeValue { get; set; }
 
-        public Button Type(ButtonType value)
-        {
-            this.type = value;
-            return this;
-        }
+        public ButtonSize SizeValue { get; set; }
 
-        public Button Size(ButtonSize value)
-        {
-            this.size = value;
-            return this;
-        }
+        public bool BlockSizeValue { get; set; }
 
-        public Button BlockSize(bool value = true)
-        {
-            this.blockSize = value;
-            return this;
-        }
+        public bool DisabledValue { get; set; }
 
-        public Button Disabled(bool value = true)
-        {
-            this.disabled = value;
-            return this;
-        }
-
-        public Button Href(string value)
-        {
-            this.href = value;
-            return this;
-        }
-
-        #endregion
-
+        public string HrefValue { get; set; }
+        
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var withHref = !string.IsNullOrEmpty(href);
+            var withHref = !string.IsNullOrEmpty(HrefValue);
             var tb = Context.CreateTagBuilder(withHref ? "a" : "button");
 
-            tb.AddCssClass(type.ToCssClass());
-            tb.AddCssClass(size.ToButtonCssClass());
+            tb.AddCssClass(TypeValue.ToCssClass());
+            tb.AddCssClass(SizeValue.ToButtonCssClass());
 
-            if (disabled)
+            if (DisabledValue)
             {
                 tb.AddCssClass("disabled");
             }
-            if (blockSize)
+            if (BlockSizeValue)
             {
                 tb.AddCssClass("btn-block");
             }
             if (withHref)
             {
-                tb.MergeAttribute("href", href);
+                tb.MergeAttribute("href", HrefValue);
             }
 
             ApplyCss(tb);
@@ -83,6 +57,11 @@ namespace BootstrapMvc.Buttons
             writer.Write(tb.GetStartTag());
 
             return withHref ? "</a>" : "</button>";
+        }
+
+        void ILink.SetHref(string value)
+        {
+            HrefValue = value;
         }
     }
 }

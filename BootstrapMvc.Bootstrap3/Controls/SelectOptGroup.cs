@@ -5,43 +5,28 @@ namespace BootstrapMvc.Controls
 {
     public class SelectOptGroup : ContentElement<SelectOptGroupContent>, ISelectItem
     {
-        private string label;
-        private bool disabled;
-
         public SelectOptGroup(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        #region Fluent
+        public bool DisabledValue { get; set; }
 
-        public SelectOptGroup Label(string value)
-        {
-            this.label = value;
-            return this;
-        }
+        public string LabelValue { get; set; }
 
-        public SelectOptGroup Disabled(bool disabled = true)
-        {
-            this.disabled = disabled;
-            return this;
-        }
-
-        #endregion
-
-        protected override SelectOptGroupContent CreateContent()
+        protected override SelectOptGroupContent CreateContentContext()
         {
             return new SelectOptGroupContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("optgroup");
 
-            tb.MergeAttribute("label", label);
+            tb.MergeAttribute("label", LabelValue);
 
-            if (disabled)
+            if (DisabledValue)
             {
                 tb.MergeAttribute("disabled", "disabled");
             }
@@ -50,8 +35,11 @@ namespace BootstrapMvc.Controls
             ApplyAttributes(tb);
 
             writer.Write(tb.GetStartTag());
+        }
 
-            return new Content(Context).Value(tb.GetEndTag(), true);
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write("</optgroup>");
         }
     }
 }

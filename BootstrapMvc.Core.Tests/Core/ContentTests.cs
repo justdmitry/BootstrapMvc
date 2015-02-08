@@ -26,7 +26,7 @@ namespace BootstrapMvc.Core
         {
             var sample = "<h1>Hello!</h1>";
 
-            var sc = new Content(contextMock.Object).Value(sample, true);
+            var sc = new SimpleBlock(contextMock.Object).Value(sample, true);
 
             using (var sw = new StringWriter())
             {
@@ -41,7 +41,7 @@ namespace BootstrapMvc.Core
             var sample = "<h1>Hello!</h1>";
             var sampleEncoded = "&lt;h1&gt;Hello!&lt;/h1&gt;";
 
-            var sc = new Content(contextMock.Object).Value(sample);
+            var sc = new SimpleBlock(contextMock.Object).Value(sample);
 
             using (var sw = new StringWriter())
             {
@@ -59,7 +59,7 @@ namespace BootstrapMvc.Core
 
             using (var sw = new StringWriter())
             {
-                var sc = new Content(contextMock.Object).Value(obj);
+                var sc = new SimpleBlock(contextMock.Object).Value(obj);
 
                 sc.WriteTo(sw);
 
@@ -76,7 +76,7 @@ namespace BootstrapMvc.Core
 
             using (var sw = new StringWriter())
             {
-                var sc = new Content(contextMock.Object).Value(obj);
+                var sc = new SimpleBlock(contextMock.Object).Value(obj);
 
                 sc.WriteTo(sw);
 

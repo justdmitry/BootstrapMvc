@@ -6,72 +6,58 @@ using BootstrapMvc.Forms;
 
 namespace BootstrapMvc.Controls
 {
-    public class Select : ContentElement<SelectContent>, IFormControl, IPlaceholderTarget, ISizableControl
+    public class Select : ContentElement<SelectContent>, IFormControl, IPlaceholderTarget, IGridSizable
     {
-        private IControlContext controlContext;
-
-        private GridSize size;
-
-        private IEnumerable<ISelectItem> items;
+        private string endTag;
 
         public Select(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
-        
-        public void SetControlContext(IControlContext context)
+
+        public IControlContext ControlContextValue { get; set; }
+
+        public IEnumerable<ISelectItem> ItemsValue { get; set; }
+
+        public GridSize SizeValue { get; set; }
+
+        void IFormControl.SetControlContext(IControlContext context)
         {
-            controlContext = context;
+            ControlContextValue = context;
         }
 
-        public void SetSize(GridSize size)
+        void IGridSizable.SetSize(GridSize value)
         {
-            this.size = size;
+            SizeValue = value;
         }
 
-        public GridSize GetSize()
+        GridSize IGridSizable.Size()
         {
-            return size;
+            return SizeValue;
         }
 
-        #region Fluent
-
-        public Select Items(IEnumerable<ISelectItem> items)
-        {
-            this.items = items.ToArray();
-            return this;
-        }
-
-        public Select Items(params ISelectItem[] items)
-        {
-            this.items = items;
-            return this;
-        }
-
-        #endregion
-
-        protected override SelectContent CreateContent()
+        protected override SelectContent CreateContentContext()
         {
             return new SelectContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var groupContext = FormGroup.GetCurrentContext(Context);
-            if (controlContext == null)
+            var formGroup = Context.PeekNearest<FormGroup>();
+            if (ControlContextValue == null)
             {
-                controlContext = groupContext.ControlContext;
+                ControlContextValue = formGroup.ControlContextValue;
             }
 
             ITagBuilder div = null;
 
-            if (!size.IsEmpty())
+            if (!SizeValue.IsEmpty())
             {
-                if (groupContext.WithSizedControls)
+                if (formGroup != null && formGroup.WithSizedControlValue)
                 {
                     div = Context.CreateTagBuilder("div");
-                    div.AddCssClass(size.ToCssClass());
+                    div.AddCssClass(SizeValue.ToCssClass());
                     writer.Write(div.GetStartTag());
                 }
                 else
@@ -85,27 +71,32 @@ namespace BootstrapMvc.Controls
             var tb = Context.CreateTagBuilder("select");
             tb.AddCssClass("form-control");
 
-            if (controlContext != null)
+            if (ControlContextValue != null)
             {
-                tb.MergeAttribute("id", controlContext.Name);
-                tb.MergeAttribute("name", controlContext.Name);
-                value = controlContext.Value;
+                tb.MergeAttribute("id", ControlContextValue.Name);
+                tb.MergeAttribute("name", ControlContextValue.Name);
+                value = ControlContextValue.Value;
             }
-            
+
             ApplyCss(tb);
             ApplyAttributes(tb);
 
             writer.Write(tb.GetStartTag());
 
-            if (items != null)
+            if (ItemsValue != null)
             {
-                foreach (var item in items)
+                foreach (var item in ItemsValue)
                 {
                     item.WriteTo(writer);
                 }
             }
 
-            return new Content(Context).Value(tb.GetEndTag() + (div == null ? string.Empty : div.GetEndTag()), true);
+            endTag = tb.GetEndTag() + (div == null ? string.Empty : div.GetEndTag());
+        }
+
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write(endTag);
         }
     }
 }

@@ -57,12 +57,12 @@ namespace BootstrapMvc.Tables
 
         #endregion
 
-        protected override TableContent CreateContent()
+        protected override TableContent CreateContentContext()
         {
             return new TableContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("table");
             tb.AddCssClass(styles.ToCssClass());
@@ -80,17 +80,15 @@ namespace BootstrapMvc.Tables
             {
                 header.WriteTo(writer);
             }
+        }
 
-            var end = new Content(Context).Value(tb.GetEndTag(), true);
-            if (footer == null)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            if (footer != null)
             {
-                return end;
+                footer.WriteTo(writer);
             }
-            else
-            {
-                footer.Append(end);
-                return footer;
-            }
+            writer.Write("</table>");
         }
     }
 }

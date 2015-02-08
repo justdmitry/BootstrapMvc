@@ -13,19 +13,19 @@ namespace BootstrapMvc.Forms
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var formContext = Form.GetCurrentContext(Context);
-            var groupContext = FormGroup.GetCurrentContext(Context);
-            var controlContext = groupContext.ControlContext;
+            var formContext = Context.PeekNearest<Form>();
+            var groupContext = Context.PeekNearest<FormGroup>();
+            var controlContext = groupContext == null ? null : groupContext.ControlContextValue;
 
             var required = controlContext == null ? false : controlContext.IsRequired;
             var name = controlContext == null ? null : controlContext.Name;
 
             var tb = Context.CreateTagBuilder("label");
 
-            if (formContext.FormType == FormType.Horizontal)
+            if (formContext != null && formContext.TypeValue == FormType.Horizontal)
             {
                 tb.AddCssClass("control-label");
-                tb.AddCssClass(formContext.LabelWidth.ToCssClass());
+                tb.AddCssClass(formContext.LabelWidthValue.ToCssClass());
             }
 
             if (!string.IsNullOrEmpty(name))

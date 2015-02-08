@@ -23,12 +23,12 @@ namespace BootstrapMvc.Tables
 
         #endregion
 
-        protected override TableSectionContent CreateContent()
+        protected override TableSectionContent CreateContentContext()
         {
             return new TableSectionContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("tbody");
 
@@ -44,8 +44,11 @@ namespace BootstrapMvc.Tables
                     row.WriteTo(writer);
                 }
             }
+        }
 
-            return new Content(Context).Value(tb.GetEndTag(), true);
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write("</tbody>");
         }
     }
 }

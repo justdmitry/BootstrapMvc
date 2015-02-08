@@ -86,12 +86,12 @@ namespace BootstrapMvc
             return new FormGroup(contentHelper.Context);
         }
 
-        public static AnyContentContext BeginFormGroup(this IAnyContentMarker contentHelper)
+        public static AnyContent BeginFormGroup(this IAnyContentMarker contentHelper)
         {
             return new FormGroup(contentHelper.Context).BeginContent();
         }
 
-        public static AnyContentContext BeginFormGroup(this IAnyContentMarker contentHelper, object label)
+        public static AnyContent BeginFormGroup(this IAnyContentMarker contentHelper, object label)
         {
             return new FormGroup(contentHelper.Context).Label(label).BeginContent();
         }
@@ -120,7 +120,7 @@ namespace BootstrapMvc
             return new HelpBlock(contentHelper.Context).Content(contents);
         }
 
-        public static AnyContentContext BeginHelpBlock(this IAnyContentMarker contentHelper)
+        public static AnyContent BeginHelpBlock(this IAnyContentMarker contentHelper)
         {
             return new HelpBlock(contentHelper.Context).BeginContent();
         }

@@ -5,14 +5,6 @@ namespace BootstrapMvc.Buttons
 {
     public class ButtonGroup : ContentElement<ButtonGroupContent>
     {
-        private ButtonSize size;
-
-        private bool vertical;
-
-        private bool dropUp;
-
-        private bool justified;
-
         private WritableBlock content;
 
         public ButtonGroup(IBootstrapContext context)
@@ -21,33 +13,13 @@ namespace BootstrapMvc.Buttons
             // Nothing
         }
 
-        #region Fluent
+        public ButtonSize SizeValue { get; set; }
 
-        public ButtonGroup Size(ButtonSize value)
-        {
-            this.size = value;
-            return this;
-        }
+        public bool VerticalValue { get; set; }
 
-        public ButtonGroup Vertical(bool vertical = true)
-        {
-            this.vertical = vertical;
-            return this;
-        }
+        public bool DropUpValue { get; set; }
 
-        public ButtonGroup DropUp(bool dropUp = true)
-        {
-            this.dropUp = dropUp;
-            return this;
-        }
-
-        public ButtonGroup Justified(bool justified = true)
-        {
-            this.justified = justified;
-            return this;
-        }
-
-        #endregion
+        public bool JustifiedValue { get; set; }
 
         public ButtonGroup AddButton(Button value)
         {
@@ -55,7 +27,6 @@ namespace BootstrapMvc.Buttons
             {
                 return this;
             } 
-            value.WriteWhitespaceSuffix(false);
             if (content == null)
             {
                 content = value;
@@ -75,7 +46,6 @@ namespace BootstrapMvc.Buttons
             }
             foreach (var value in values)
             {
-                value.WriteWhitespaceSuffix(false);
                 if (content == null)
                 {
                     content = value;
@@ -88,25 +58,25 @@ namespace BootstrapMvc.Buttons
             return this;
         }
 
-        protected override ButtonGroupContent CreateContent()
+        protected override ButtonGroupContent CreateContentContext()
         {
             return new ButtonGroupContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("div");
             tb.AddCssClass("btn-group");
-            tb.AddCssClass(size.ToButtonGroupCssClass());
-            if (vertical)
+            tb.AddCssClass(SizeValue.ToButtonGroupCssClass());
+            if (VerticalValue)
             {
                 tb.AddCssClass("btn-group-vertical");
             }
-            if (justified)
+            if (JustifiedValue)
             {
                 tb.AddCssClass("btn-group-justified");
             }
-            if (dropUp)
+            if (DropUpValue)
             {
                 tb.AddCssClass("dropup");
             }
@@ -117,12 +87,18 @@ namespace BootstrapMvc.Buttons
 
             writer.Write(tb.GetStartTag());
 
+            Context.Push(this);
+
             if (content != null)
             {
                 content.WriteTo(writer);
             }
+        }
 
-            return new Content(Context).Value(tb.GetEndTag(), true);
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write("</div>");
+            Context.PopIfEqual(this);
         }
     }
 }

@@ -9,8 +9,6 @@ namespace BootstrapMvc.Panels
         private WritableBlock body;
         private WritableBlock footer;
 
-        private PanelType type;
-
         private WritableBlock endTag;
 
         public Panel(IBootstrapContext context)
@@ -19,13 +17,9 @@ namespace BootstrapMvc.Panels
             // nothing
         }
 
-        #region Fluent
+        public PanelType TypeValue { get; set; }
 
-        public Panel Type(PanelType type)
-        {
-            this.type = type;
-            return this;
-        }
+        #region Fluent
 
         public Panel Header(PanelHeader value)
         {
@@ -91,7 +85,7 @@ namespace BootstrapMvc.Panels
         protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("div");
-            tb.AddCssClass(type.ToCssClass());
+            tb.AddCssClass(TypeValue.ToCssClass());
 
             ApplyCss(tb);
             ApplyAttributes(tb);
@@ -107,7 +101,7 @@ namespace BootstrapMvc.Panels
                 body.WriteTo(writer);
             }
 
-            var end = new Content(Context).Value(tb.GetEndTag(), true);
+            var end = new SimpleBlock(Context).Value(tb.GetEndTag(), true);
             if (footer == null)
             {
                 endTag = end;
@@ -118,7 +112,6 @@ namespace BootstrapMvc.Panels
                 endTag = footer;
             }
         }
-
 
         protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {

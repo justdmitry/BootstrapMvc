@@ -11,31 +11,13 @@ using System.IO;
 using Moq;
 using System.Web.Mvc;
 using BootstrapMvc;
+using System.Web;
 
 namespace BootstrapMvc
 {
     [TestClass]
-    public class FormsTest
+    public class FormsTest : TestBase
     {
-        protected MockRepository mocks;
-
-        protected TextWriter writer;
-        protected IBootstrapContext context;
-        protected BootstrapHelper bootstrap;
-
-        [TestInitialize]
-        public void Init()
-        {
-            writer = new StringWriter();
-            
-            mocks = new MockRepository(MockBehavior.Strict);
-            var viewContextMock = mocks.Create<ViewContext>();
-            viewContextMock.SetupGet(x => x.Writer).Returns(writer);
-
-            context = new BootstrapContext(viewContextMock.Object, null, new ViewDataDictionary());
-            bootstrap = new BootstrapHelper(context); 
-        }
-
         [TestMethod]
         public void Test_Form_Horizontal()
         {
@@ -50,10 +32,10 @@ namespace BootstrapMvc
             var expected = @"
 <form class='form-horizontal' method='post'>
 <fieldset><legend>Legend text</legend>
- <div class='form-group'><label class='col-sm-4 control-label'>label 1</label>
- <div class='col-sm-8'><input class='form-control' type='number'></input></div> </div>
- <div class='form-group'><div class='checkbox col-sm-8'><label class='checkbox'><input type='checkbox'></input>label 2</label></div> </div>
- </fieldset> </form> ";
+<div class='form-group'><label class='col-sm-4 col-md-4 col-lg-4 control-label'>label 1</label>
+<div class='col-sm-8 col-md-8 col-lg-8'><input class='form-control' type='number'></input></div></div>
+<div class='form-group'><div class='checkbox col-sm-8 col-md-8 col-lg-8'><label class='checkbox'><input type='checkbox'></input>label 2</label></div></div>
+</fieldset></form>";
             Assert.AreEqual(expected.Replace('\'', '"').Replace("\r\n", ""), writer.ToString());
         }
 
@@ -71,9 +53,9 @@ namespace BootstrapMvc
             var expected = @"
 <form class='form-inline' method='post'>
 <fieldset><legend>Legend text</legend>
- <div class='form-group'><label>label 1</label> <input class='form-control' type='number'></input> </div>
- <div class='form-group'><div class='checkbox'><label class='checkbox'><input type='checkbox'></input>label 2</label></div> </div>
- </fieldset> </form> ";
+<div class='form-group'><label>label 1</label><input class='form-control' type='number'></input></div>
+<div class='form-group'><div class='checkbox'><label class='checkbox'><input type='checkbox'></input>label 2</label></div></div>
+</fieldset></form>";
             Assert.AreEqual(expected.Replace('\'', '"').Replace("\r\n", ""), writer.ToString());
         }
 
@@ -91,9 +73,9 @@ namespace BootstrapMvc
             var expected = @"
 <form method='post'>
 <fieldset><legend>Legend text</legend>
- <div class='form-group'><label>label 1</label> <input class='form-control' type='number'></input> </div>
- <div class='form-group'><div class='checkbox'><label class='checkbox'><input type='checkbox'></input>label 2</label></div> </div>
- </fieldset> </form> ";
+<div class='form-group'><label>label 1</label><input class='form-control' type='number'></input></div>
+<div class='form-group'><div class='checkbox'><label class='checkbox'><input type='checkbox'></input>label 2</label></div></div>
+</fieldset></form>";
             Assert.AreEqual(expected.Replace('\'', '"').Replace("\r\n", ""), writer.ToString());
         }
     }

@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using mvc = System.Web.Mvc;
 using System.Collections.Generic;
+using BootstrapMvc.Forms;
 
 namespace BootstrapMvc
 {
@@ -15,7 +16,9 @@ namespace BootstrapMvc
         protected Mock<IBootstrapContext> contextMock;
         protected TextWriter writer;
 
-        protected Dictionary<string, Stack<object>> cachedData = new Dictionary<string,Stack<object>>();
+        protected Stack<object> cachedData = new Stack<object>();
+
+        protected BootstrapHelper bootstrap;
 
         [TestInitialize]
         public void Init()
@@ -23,21 +26,41 @@ namespace BootstrapMvc
             writer = new StringWriter();
 
             mocks = new MockRepository(MockBehavior.Strict);
+
             contextMock = mocks.Create<IBootstrapContext>();
             contextMock.Setup(x => x.HtmlEncode(It.IsAny<string>())).Returns((string s) => HttpUtility.HtmlEncode(s));
             contextMock.SetupGet(x => x.Writer).Returns(writer);
             contextMock.Setup(x => x.CreateTagBuilder(It.IsAny<string>())).Returns((string s) => new TagBuilder(s));
 
-            contextMock.Setup(x => x.PushValue(It.IsAny<string>(), It.IsAny<object>())).Callback((string s, object v) =>
+            contextMock.Setup(x => x.Push(It.IsAny<object>())).Callback((object v) =>
             {
-                if (!cachedData.ContainsKey(s))
-                {
-                    cachedData.Add(s, new Stack<object>());
-                }
-                cachedData[s].Push(v);
+                cachedData.Push(v);
             });
 
-            contextMock.Setup(x => x.PopValue(It.IsAny<string>())).Returns((string s) => cachedData[s].Pop());
+            contextMock.Setup(x => x.PopIfEqual(It.IsAny<object>())).Callback((object s) =>
+            {
+                var val = cachedData.Pop();
+                if (!object.ReferenceEquals(s,val))
+                {
+                    throw new ApplicationException("Values does not match.");
+                }
+            });
+            contextMock.Setup(x => x.PeekNearest<Form>()).Returns(PeekNearest<Form>);
+            contextMock.Setup(x => x.PeekNearest<FormGroup>()).Returns(PeekNearest<FormGroup>);
+
+            bootstrap = new BootstrapHelper(contextMock.Object);
+        }
+
+        private T PeekNearest<T>() where T : class
+        {
+            foreach(var item in cachedData)
+            {
+                if (item as T != null)
+                {
+                    return (T)item;
+                }
+            }
+            return null;
         }
 
         protected class TagBuilder : mvc.TagBuilder, ITagBuilder

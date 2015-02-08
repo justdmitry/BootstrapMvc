@@ -13,18 +13,18 @@ namespace BootstrapMvc.Core
         private MockRepository mocks;
         private Mock<IBootstrapContext> contextMock;
 
-        private Stack<DisposableContext> stack;
+        private Stack<object> stack;
 
         [TestInitialize]
         public void Initialize()
         {
-            stack = new Stack<DisposableContext>();
+            stack = new Stack<object>();
 
             mocks = new MockRepository(MockBehavior.Strict);
             contextMock = mocks.Create<IBootstrapContext>();
             contextMock.Setup(x => x.HtmlEncode(It.IsAny<string>())).Returns((string s) => HttpUtility.HtmlEncode(s));
-            contextMock.Setup(x => x.Push(It.IsAny<DisposableContext>())).Callback((DisposableContext x) => stack.Push(x));
-            contextMock.Setup(x => x.Pop()).Returns(() => stack.Pop());
+            contextMock.Setup(x => x.Push(It.IsAny<object>())).Callback((object x) => stack.Push(x));
+            contextMock.Setup(x => x.PopIfEqual(It.IsAny<object>())).Callback((object x) => stack.Pop());
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace BootstrapMvc.Core
             }
         }
 
-        private class DummyDisposableContext : DisposableContext
+        private class DummyDisposableContext : DisposableContent
         {
             public DummyDisposableContext(IBootstrapContext context)
                 : base(context)

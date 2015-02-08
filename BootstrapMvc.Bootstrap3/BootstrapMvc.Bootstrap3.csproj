@@ -44,6 +44,7 @@
     <Compile Include="AnyContentElements\Anchor.cs" />
     <Compile Include="AnyContentElements\Badge.cs" />
     <Compile Include="AnyContentElements\AnyContentExtensions.cs" />
+    <Compile Include="AnyContentElements\FluentExtensions.cs" />
     <Compile Include="BootstrapContextExtensions.cs" />
     <Compile Include="Buttons\Button.cs" />
     <Compile Include="Buttons\ButtonGroup.cs" />
@@ -54,8 +55,9 @@
     <Compile Include="Buttons\ButtonType.cs" />
     <Compile Include="Buttons\EnumToStringConverter.cs" />
     <Compile Include="Buttons\AnyContentExtensions.cs" />
+    <Compile Include="Buttons\FluentExtensions.cs" />
     <Compile Include="Controls\AnyContentExtensions.cs" />
-    <Compile Include="Controls\FormControlExtensions.cs" />
+    <Compile Include="Controls\FluentExtensions.cs" />
     <Compile Include="Controls\IFormControl.cs" />
     <Compile Include="Controls\ControlsExtensions.cs" />
     <Compile Include="Controls\IPlaceholderTarget.cs" />
@@ -72,7 +74,10 @@
     <Compile Include="Controls\SelectOption.cs" />
     <Compile Include="Controls\StaticValue.cs" />
     <Compile Include="Controls\Textarea.cs" />
-    <Compile Include="Forms\FormGroupContext.cs" />
+    <Compile Include="Dropdown\DropdownMenuFluent.cs" />
+    <Compile Include="Dropdown\DropdownMenuItemLinkFluent.cs" />
+    <Compile Include="Elements\FluentExtensions.cs" />
+    <Compile Include="Forms\FluentExtensions.cs" />
     <Compile Include="Forms\ValidationSummary.cs" />
     <Compile Include="GridSize.cs" />
     <Compile Include="Dropdown\DropdownMenu.cs" />
@@ -94,9 +99,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Forms\FormContent.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Forms\FormContext.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Forms\FormEnctype.cs">
@@ -125,12 +127,15 @@
     <Compile Include="EnumToStringConverter.cs" />
     <Compile Include="Elements\Icon.cs" />
     <Compile Include="Grid\AnyContentExtensions.cs" />
+    <Compile Include="Grid\FluentExtensions.cs" />
     <Compile Include="Grid\GridRow.cs" />
     <Compile Include="Grid\GridCol.cs" />
     <Compile Include="Grid\GridRowContent.cs" />
-    <Compile Include="Controls\ISizableControl.cs" />
+    <Compile Include="Grid\IGridSizable.cs" />
+    <Compile Include="Grid\IGridSizableExtensions.cs" />
     <Compile Include="IconType.cs" />
     <Compile Include="AnyContentElements\Label.cs" />
+    <Compile Include="Lists\FluentExtensions.cs" />
     <Compile Include="MessageType.cs" />
     <Compile Include="LabelType.cs" />
     <Compile Include="Lists\DefinitionList.cs" />
@@ -141,6 +146,7 @@
     <Compile Include="Lists\ListType.cs" />
     <Compile Include="Panels\EnumToStringConverter.cs" />
     <Compile Include="Panels\AnyContentExtensions.cs" />
+    <Compile Include="Panels\FluentExtensions.cs" />
     <Compile Include="Panels\Panel.cs" />
     <Compile Include="Panels\PanelBody.cs" />
     <Compile Include="Panels\PanelContent.cs" />

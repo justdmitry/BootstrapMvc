@@ -2,8 +2,8 @@
 
 namespace BootstrapMvc.Core
 {
-    public interface ILink<T> where T : Element
+    public interface ILink
     {
-        T Href(string value);
+        void SetHref(string value);
     }
 }

@@ -5,63 +5,53 @@ using BootstrapMvc.Forms;
 
 namespace BootstrapMvc.Controls
 {
-    public class Textarea : Element, IFormControl, IPlaceholderTarget, ISizableControl
+    public class Textarea : Element, IFormControl, IPlaceholderTarget, IGridSizable
     {
         private static readonly byte RowsDefault = 3;
-
-        private IControlContext controlContext;
-
-        private GridSize size;
-
-        private byte rows = RowsDefault;
 
         public Textarea(IBootstrapContext context)
             : base(context)
         {
-            // Nothing
+            RowsValue = RowsDefault;
         }
 
-        public void SetControlContext(IControlContext context)
+        public IControlContext ControlContextValue { get; set; }
+
+        public GridSize SizeValue { get; set; }
+
+        public int RowsValue { get; set; }
+
+        void IFormControl.SetControlContext(IControlContext context)
         {
-            controlContext = context;
+            ControlContextValue = context;
         }
 
-        public void SetSize(GridSize size)
+        void IGridSizable.SetSize(GridSize value)
         {
-            this.size = size;
+            SizeValue = value;
         }
 
-        public GridSize GetSize()
+        GridSize IGridSizable.Size()
         {
-            return size;
+            return SizeValue;
         }
-
-        #region Fluent
-        
-        public Textarea Rows(byte rows)
-        {
-            this.rows = rows;
-            return this;
-        }
-
-        #endregion
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            var groupContext = FormGroup.GetCurrentContext(Context);
-            if (controlContext == null)
+            var formGroup = Context.PeekNearest<FormGroup>();
+            if (formGroup != null && ControlContextValue == null)
             {
-                controlContext = groupContext.ControlContext;
+                ControlContextValue = formGroup.ControlContextValue;
             }
 
             ITagBuilder div = null;
 
-            if (!size.IsEmpty())
+            if (!SizeValue.IsEmpty())
             {
-                if (groupContext.WithSizedControls)
+                if (formGroup != null && formGroup.WithSizedControlValue)
                 {
                     div = Context.CreateTagBuilder("div");
-                    div.AddCssClass(size.ToCssClass());
+                    div.AddCssClass(SizeValue.ToCssClass());
                     writer.Write(div.GetStartTag());
                 }
                 else
@@ -72,14 +62,14 @@ namespace BootstrapMvc.Controls
 
             var tb = Context.CreateTagBuilder("textarea");
             tb.AddCssClass("form-control");
-            if (rows != 0)
+            if (RowsValue != 0)
             {
-                tb.MergeAttribute("rows", rows.ToString(CultureInfo.InvariantCulture));
+                tb.MergeAttribute("rows", RowsValue.ToString(CultureInfo.InvariantCulture));
             }
-            if (controlContext != null)
+            if (ControlContextValue != null)
             {
-                tb.MergeAttribute("id", controlContext.Name);
-                tb.MergeAttribute("name", controlContext.Name);
+                tb.MergeAttribute("id", ControlContextValue.Name);
+                tb.MergeAttribute("name", ControlContextValue.Name);
             }
 
             ApplyCss(tb);
@@ -87,9 +77,9 @@ namespace BootstrapMvc.Controls
 
             writer.Write(tb.GetStartTag());
 
-            if (controlContext != null && controlContext.Value != null)
+            if (ControlContextValue != null && ControlContextValue.Value != null)
             {
-                writer.Write(Context.HtmlEncode(controlContext.Value.ToString()));
+                writer.Write(Context.HtmlEncode(ControlContextValue.Value.ToString()));
             }
 
             writer.Write(tb.GetEndTag());

@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Tables
 {
-    public class TableSectionContent : DisposableContext
+    public class TableSectionContent : DisposableContent
     {
         public TableSectionContent(IBootstrapContext context)
             : base(context)

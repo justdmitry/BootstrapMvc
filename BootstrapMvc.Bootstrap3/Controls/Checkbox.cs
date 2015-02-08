@@ -6,69 +6,53 @@ namespace BootstrapMvc.Controls
 {
     public class Checkbox : Element, IFormControl
     {
-        private IControlContext controlContext;
-
-        private string text;
-
-        private bool inline;
-
         public Checkbox(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        public void SetControlContext(IControlContext context)
+        public IControlContext ControlContextValue { get; set; }
+
+        public string TextValue { get; set; }
+
+        public bool InlineValue { get; set; }
+
+        void IFormControl.SetControlContext(IControlContext context)
         {
-            controlContext = context;
+            ControlContextValue = context;
         }
-
-        #region Fluent
-
-        public Checkbox Text(string text)
-        {
-            this.text = text;
-            return this;
-        }
-
-        public Checkbox Inline(bool inline = true)
-        {
-            this.inline = inline;
-            return this;
-        }
-
-        #endregion
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            var groupContext = FormGroup.GetCurrentContext(Context);
-            if (controlContext == null)
+            var formGroup = Context.PeekNearest<FormGroup>();
+            if (formGroup != null && ControlContextValue == null)
             {
-                controlContext = groupContext.ControlContext;
+                ControlContextValue = formGroup.ControlContextValue;
             }
 
             var lbl = Context.CreateTagBuilder("label");
 
-            if (inline && groupContext.WithStackedCheckbox)
+            if (InlineValue && formGroup != null && formGroup.WithStackedCheckboxValue)
             {
                 throw new InvalidOperationException("Can't generate 'inline' checkbox in 'WithStackedCheckbox' group");
             }
-            if (!inline && !groupContext.WithStackedCheckbox)
+            if (!InlineValue && formGroup != null && !formGroup.WithStackedCheckboxValue)
             {
                 throw new InvalidOperationException("Can't generate 'stacked' checkbox without 'WithStackedCheckbox' in group");
             }
-            lbl.AddCssClass(inline ? "checkbox-inline" : "checkbox");
+            lbl.AddCssClass(InlineValue ? "checkbox-inline" : "checkbox");
 
             writer.Write(lbl.GetStartTag());
 
             var input = Context.CreateTagBuilder("input");
             input.MergeAttribute("type", "checkbox");
-            if (controlContext != null)
+            if (ControlContextValue != null)
             {
-                input.MergeAttribute("id", controlContext.Name);
-                input.MergeAttribute("name", controlContext.Name);
+                input.MergeAttribute("id", ControlContextValue.Name);
+                input.MergeAttribute("name", ControlContextValue.Name);
                 input.MergeAttribute("value", "true");
-                var controlValue = controlContext.Value;
+                var controlValue = ControlContextValue.Value;
                 if (controlValue != null && bool.Parse(controlValue.ToString()))
                 {
                     input.MergeAttribute("checked", "checked");
@@ -82,7 +66,7 @@ namespace BootstrapMvc.Controls
 
             writer.Write(input.GetFullTag());
 
-            writer.Write(Context.HtmlEncode(text));
+            writer.Write(Context.HtmlEncode(TextValue));
 
             writer.Write(lbl.GetEndTag());
         }

@@ -3,39 +3,23 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Dropdown
 {
-    public class DropdownMenuItemLink : AnyContentElement, IDropdownMenuItem, ILink<DropdownMenuItemLink>
+    public class DropdownMenuItemLink : AnyContentElement, IDropdownMenuItem, ILink
     {
-        private string href = "#";
-
-        private bool disabled = false;
-
         public DropdownMenuItemLink(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        #region Fluent
+        public string HrefValue { get; set; }
 
-        public DropdownMenuItemLink Href(string value)
-        {
-            this.href = value;
-            return this;
-        }
-
-        public DropdownMenuItemLink Disabled(bool disabled = true)
-        {
-            this.disabled = disabled;
-            return this;
-        }
-
-        #endregion
+        public bool DisabledValue { get; set; }
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("li");
             tb.MergeAttribute("role", "presentation");
-            if (disabled)
+            if (DisabledValue)
             {
                 tb.AddCssClass("disabled");
             }
@@ -45,10 +29,15 @@ namespace BootstrapMvc.Dropdown
             var a = Context.CreateTagBuilder("a");
             a.MergeAttribute("role", "menuitem");
             a.MergeAttribute("tabindex", "-1");
-            a.MergeAttribute("href", disabled ? "#" : href);
+            a.MergeAttribute("href", DisabledValue ? "#" : HrefValue);
             writer.Write(a.GetStartTag());
 
             return "</a></li>";
+        }
+
+        void ILink.SetHref(string value)
+        {
+            HrefValue = value;
         }
     }
 }

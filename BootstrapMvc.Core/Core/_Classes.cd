@@ -3,7 +3,7 @@
   <Class Name="BootstrapMvc.Core.WritableBlock">
     <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAgAAQAAAAAAAAAAAAAAAAQQgAAAAAIJAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAIJAAgA=</HashCode>
       <FileName>Core\WritableBlock.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -15,26 +15,26 @@
       <FileName>Core\Element.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BootstrapMvc.Core.Content">
+  <Class Name="BootstrapMvc.Core.SimpleBlock">
     <Position X="6.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAACAAAAAgAIAAAAA=</HashCode>
-      <FileName>Core\Content.cs</FileName>
+      <FileName>Core\SimpleBlock.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BootstrapMvc.Core.DisposableContext">
+  <Class Name="BootstrapMvc.Core.DisposableContent">
     <Position X="6.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAiAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Core\DisposableContext.cs</FileName>
+      <HashCode>AAIAAAAAAiAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DisposableContent.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BootstrapMvc.Core.AnyContentContext">
+  <Class Name="BootstrapMvc.Core.AnyContent">
     <Position X="8.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Core\AnyContentContext.cs</FileName>
+      <FileName>Core\AnyContent.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>

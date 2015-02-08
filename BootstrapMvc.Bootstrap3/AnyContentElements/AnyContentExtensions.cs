@@ -22,7 +22,7 @@ namespace BootstrapMvc
             return new Label(contentHelper.Context).Type(type).Content(contents);
         }
 
-        public static AnyContentContext BeginLabel(this IAnyContentMarker contentHelper, LabelType type)
+        public static AnyContent BeginLabel(this IAnyContentMarker contentHelper, LabelType type)
         {
             return Label(contentHelper, type).BeginContent();
         }
@@ -51,7 +51,7 @@ namespace BootstrapMvc
             return new Alert(contentHelper.Context).Type(type).Content(contents);
         }
 
-        public static AnyContentContext BeginAlert(this IAnyContentMarker contentHelper, AlertType type)
+        public static AnyContent BeginAlert(this IAnyContentMarker contentHelper, AlertType type)
         {
             return Alert(contentHelper, type).BeginContent();
         }
@@ -78,7 +78,7 @@ namespace BootstrapMvc
             return new Anchor(contentHelper.Context).Content(contents);
         }
 
-        public static AnyContentContext BeginAnchor(this IAnyContentMarker contentHelper)
+        public static AnyContent BeginAnchor(this IAnyContentMarker contentHelper)
         {
             return new Anchor(contentHelper.Context).BeginContent();
         }
@@ -98,7 +98,7 @@ namespace BootstrapMvc
             return Anchor(contentHelper, contents);
         }
 
-        public static AnyContentContext BeginLink(this IAnyContentMarker contentHelper)
+        public static AnyContent BeginLink(this IAnyContentMarker contentHelper)
         {
             return BeginAnchor(contentHelper);
         }

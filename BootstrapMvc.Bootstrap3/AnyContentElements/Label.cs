@@ -4,28 +4,18 @@ namespace BootstrapMvc
 {
     public class Label : AnyContentElement
     {
-        private LabelType type;
-        
         public Label(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        #region Fluent
-
-        public Label Type(LabelType value)
-        {
-            this.type = value;
-            return this;
-        }
-
-        #endregion
+        public LabelType TypeValue { get; set; }
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("span");
-            tb.AddCssClass(type.ToCssClass());
+            tb.AddCssClass(TypeValue.ToCssClass());
 
             ApplyCss(tb);
             ApplyAttributes(tb);

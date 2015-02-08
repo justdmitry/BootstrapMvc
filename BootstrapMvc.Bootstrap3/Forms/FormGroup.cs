@@ -7,103 +7,53 @@ namespace BootstrapMvc.Forms
 {
     public class FormGroup : AnyContentElement
     {
-        private static readonly string ContextKey = "BootstrapMvc.FormGroupContext";
-
-        private static readonly FormGroupContext FormGroupContextDefault = new FormGroupContext
-        {
-            ControlContext = null,
-            WithStackedCheckbox = false,
-            WithStackedRadio = false,
-            WithSizedControls = false
-        };
-
-        private FormGroupLabel label = null;
-
         private IFormControl control = null;
-
-        private FormGroupContext groupContext;
 
         public FormGroup(IBootstrapContext context)
             : base(context)
         {
-            groupContext = (FormGroupContext)FormGroupContextDefault.Clone();
+            // Nothing
         }
 
-        public static FormGroupContext GetCurrentContext(IBootstrapContext context)
-        {
-            FormGroupContext val;
-            context.TryPeekValue<FormGroupContext>(ContextKey, out val);
-            return val ?? (FormGroupContext)FormGroupContextDefault.Clone();
-        }
+        public FormGroupLabel LabelValue { get; set; }
 
-        #region Fluent
-
-        public FormGroup ControlContext(IControlContext context)
+        public IFormControl ControlValue
         {
-            groupContext.ControlContext = context;
-            return this;
-        }
-
-        public FormGroup Required(bool required = true)
-        {
-            if (groupContext.ControlContext != null)
+            get
             {
-                groupContext.ControlContext.IsRequired = required;
+                return control;
             }
-            return this;
-        }
 
-        public FormGroup Label(object content)
-        {
-            var labelContent = content as FormGroupLabel;
-            label = labelContent ?? (FormGroupLabel)new FormGroupLabel(Context).Content(content);
-            return this;
-        }
-
-        public FormGroup Label(params object[] contents)
-        {
-            label = (FormGroupLabel)new FormGroupLabel(Context).Content(contents);
-            return this;
-        }
-
-        public FormGroup Control(IFormControl control)
-        {
-            this.control = control;
-            var sizable = control as ISizableControl;
-            groupContext.WithSizedControls = (sizable != null && !sizable.GetSize().IsEmpty());
-            return this;
-        }
-
-        public FormGroup WithStackedCheckbox(bool value = true)
-        {
-            groupContext.WithStackedCheckbox = value;
-            return this;
-        }
-
-        public FormGroup WithStackedRadio(bool value = true)
-        {
-            groupContext.WithStackedRadio = value;
-            return this;
-        }
-
-        public FormGroup WithSizedControls(bool value = true)
-        {
-            groupContext.WithSizedControls = value;
-            return this;
-        }
-
-        #endregion
-
-        public AnyContentContext BeginControls()
-        {
-            if (label == null && !groupContext.WithStackedCheckbox && !groupContext.WithStackedRadio)
+            set
             {
-                label = new FormGroupLabel(Context);
-                label.Content(string.Empty);
+                control = value;
+                var sizable = control as IGridSizable;
+                WithSizedControlValue = sizable != null && !sizable.Size().IsEmpty();
+                var checkbox = control as Checkbox;
+                WithStackedCheckboxValue = checkbox != null && !checkbox.InlineValue;
+                var radio = control as Radio;
+                WithStackedRadioValue = radio != null && !radio.InlineValue;
             }
-            var end = this.WriteSelfStart(Context.Writer);
-            var area = new FormGroupControls(Context).WithoutLabel(label == null).BeginContent();
-            area.Append(end);
+        }
+
+        public IControlContext ControlContextValue { get; set; }
+
+        public bool WithStackedCheckboxValue { get; set; }
+
+        public bool WithStackedRadioValue { get; set; }
+
+        public bool WithSizedControlValue { get; set; }
+
+        public AnyContent BeginControls()
+        {
+            if (LabelValue == null && !WithStackedCheckboxValue && !WithStackedRadioValue)
+            {
+                LabelValue = new FormGroupLabel(Context);
+                LabelValue.Content(string.Empty);
+            }
+            this.WriteSelfStart(Context.Writer);
+            var area = new FormGroupControls(Context).WithoutLabel(LabelValue == null).BeginContent();
+            area.Disposing += (sender, args) => WriteSelfEnd(Context.Writer);
             return area;
         }
 
@@ -111,13 +61,13 @@ namespace BootstrapMvc.Forms
         {
             var tb = Context.CreateTagBuilder("div");
             tb.AddCssClass("form-group");
-            if (groupContext.ControlContext != null)
+            if (ControlContextValue != null)
             {
-                if (groupContext.ControlContext.HasErrors)
+                if (ControlContextValue.HasErrors)
                 {
                     tb.AddCssClass("has-error");
                 }
-                else if (groupContext.ControlContext.HasWarning)
+                else if (ControlContextValue.HasWarning)
                 {
                     tb.AddCssClass("has-warning");
                 }
@@ -128,28 +78,28 @@ namespace BootstrapMvc.Forms
 
             writer.Write(tb.GetStartTag());
 
-            Context.PushValue(ContextKey, groupContext);
+            Context.Push(this);
 
-            if (label != null)
+            if (LabelValue != null)
             {
-                label.WriteTo(writer);
+                LabelValue.WriteTo(writer);
             }
 
-            if (control != null)
+            if (ControlValue != null)
             {
                 using (new FormGroupControls(Context).BeginContent())
                 {
-                    control.WriteTo(writer);
+                    ControlValue.WriteTo(writer);
                 }
             }
 
-            return tb.GetEndTag(); 
+            return "</div>";
         }
 
-        protected override void AfterWrite()
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
-            Context.PopValue(ContextKey);
-            base.AfterWrite();
+            base.WriteSelfEnd(writer);
+            Context.PopIfEqual(this);
         }
     }
 }

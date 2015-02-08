@@ -14,17 +14,19 @@ namespace BootstrapMvc.Controls
             // Nothing
         }
 
-        public void SetControlContext(IControlContext context)
+        public IControlContext ControlContextValue { get; set; }
+
+        void IFormControl.SetControlContext(IControlContext context)
         {
-            controlContext = context;
+            ControlContextValue = context;
         }
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            var groupContext = FormGroup.GetCurrentContext(Context);
-            if (controlContext == null)
+            var formGroup = Context.PeekNearest<FormGroup>();
+            if (formGroup != null && controlContext == null)
             {
-                controlContext = groupContext.ControlContext;
+                controlContext = formGroup.ControlContextValue;
             }
 
             var input = Context.CreateTagBuilder("p");

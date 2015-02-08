@@ -13,7 +13,7 @@ namespace BootstrapMvc.Core
     {
         private static readonly string CachedDataContextKey = "BootstrapMvc.Mvc5.BootstrapContext.CachedData";
 
-        private List<DisposableContext> cachedData;
+        private Stack cachedData;
 
         public BootstrapContext(mvc.ViewContext viewContext, mvc.UrlHelper urlHelper, mvc.ViewDataDictionary viewData, Func<int, string> messageSource)
         {
@@ -25,11 +25,11 @@ namespace BootstrapMvc.Core
             var httpContext = viewContext.RequestContext.HttpContext;
             if (httpContext.Items.Contains(CachedDataContextKey))
             {
-                cachedData = (List<DisposableContext>)httpContext.Items[CachedDataContextKey];
+                cachedData = (Stack)httpContext.Items[CachedDataContextKey];
             }
             else
             {
-                cachedData = new List<DisposableContext>();
+                cachedData = new Stack(5);
                 httpContext.Items[CachedDataContextKey] = cachedData;
             }
         }
@@ -93,12 +93,12 @@ namespace BootstrapMvc.Core
         }
 
 
-        public void Push(DisposableContext value)
+        public void Push(object value)
         {
-            cachedData.Insert(0, value);
+            cachedData.Push(value);
         }
 
-        public T Peek<T>() where T : DisposableContext
+        public T PeekNearest<T>() where T : class
         {
             T res;
             foreach(var item in cachedData)
@@ -112,11 +112,17 @@ namespace BootstrapMvc.Core
             return null;
         }
 
-        public DisposableContext Pop()
+        public void PopIfEqual(object value)
         {
-            var res = cachedData[0];
-            cachedData.RemoveAt(0);
-            return res;
+            var cached = cachedData.Peek();
+            if (object.ReferenceEquals(value, cached))
+            {
+                cachedData.Pop();
+            }
+            else
+            {
+                throw new ArgumentException("Value not equal to pop'ed one.");
+            }
         }
     }
 }

@@ -20,10 +20,10 @@ namespace BootstrapMvc.Core
 
         string GetMessage(int id);
 
-        void Push(DisposableContext value);
+        void Push(object value);
 
-        T Peek<T>() where T : DisposableContext;
+        T PeekNearest<T>() where T : class;
 
-        DisposableContext Pop();
+        void PopIfEqual(object value);
     }
 }

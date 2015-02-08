@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace BootstrapMvc.Core
 {
-    public class Content : WritableBlock
+    public class SimpleBlock : WritableBlock
     {
         private object value = null;
 
         private bool writeWithoutEncoding = false;
 
-        public Content(IBootstrapContext context)
+        public SimpleBlock(IBootstrapContext context)
             : base(context)
         {
             // Nothing
@@ -17,21 +17,21 @@ namespace BootstrapMvc.Core
 
         #region Fluent
 
-        public Content Value(string value, bool writeWithoutEncoding = false)
+        public SimpleBlock Value(string value, bool writeWithoutEncoding = false)
         {
             this.value = value;
             this.writeWithoutEncoding = writeWithoutEncoding;
             return this;
         }
 
-        public Content Value(object value)
+        public SimpleBlock Value(object value)
         {
             this.value = value;
             this.writeWithoutEncoding = false;
             return this;
         }
 
-        public Content Value(IEnumerable<object> values)
+        public SimpleBlock Value(IEnumerable<object> values)
         {
             var enumerator = values.GetEnumerator();
             if (enumerator.MoveNext())
@@ -39,7 +39,7 @@ namespace BootstrapMvc.Core
                 this.value = enumerator.Current;
                 while (enumerator.MoveNext())
                 {
-                    AppendNextBlock(new Content(Context).Value(enumerator.Current));
+                    AppendNextBlock(new SimpleBlock(Context).Value(enumerator.Current));
                 }
             }
             else

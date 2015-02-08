@@ -5,49 +5,39 @@ namespace BootstrapMvc.Forms
 {
     public class Fieldset : ContentElement<FormContent>
     {
-        private Legend legend;
-
-        private bool disabled;
-
         public Fieldset(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        #region Fluent
+        public Legend LegendValue { get; set; }
+
+        public bool DisabledValue { get; set; }
 
         public Fieldset Legend(object value)
         {
             var legendValue = value as Legend;
-            legend = legendValue ?? (Legend)new Legend(Context).Content(value);
+            LegendValue = legendValue ?? (Legend)new Legend(Context).Content(value);
             return this;
         }
 
         public Fieldset Legend(params object[] values)
         {
-            legend = (Legend)new Legend(Context).Content(values);
+            LegendValue = (Legend)new Legend(Context).Content(values);
             return this;
         }
 
-        public Fieldset Disabled(bool disabled = true)
-        {
-            this.disabled = disabled;
-            return this;
-        }
-
-        #endregion
-
-        protected override FormContent CreateContent()
+        protected override FormContent CreateContentContext()
         {
             return new FormContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("fieldset");
 
-            if (disabled)
+            if (DisabledValue)
             {
                 tb.MergeAttribute("disabled", "disabled");
             }
@@ -57,12 +47,15 @@ namespace BootstrapMvc.Forms
 
             writer.Write(tb.GetStartTag());
 
-            if (legend != null)
+            if (LegendValue != null)
             {
-                legend.WriteTo(writer);
+                LegendValue.WriteTo(writer);
             }
+        }
 
-            return new Content(Context).Value(tb.GetEndTag(), true);
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write("</fieldset>");
         }
     }
 }

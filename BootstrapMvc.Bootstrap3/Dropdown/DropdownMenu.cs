@@ -5,34 +5,24 @@ namespace BootstrapMvc.Dropdown
 {
     public class DropdownMenu : ContentElement<DropdownMenuContent>
     {
-        private bool rightAlign;
-
         public DropdownMenu(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        #region Fluent
+        public bool RightAlignValue { get; set; }
 
-        public DropdownMenu Right(bool right = true)
-        {
-            this.rightAlign = right;
-            return this;
-        }
-
-        #endregion
-
-        protected override DropdownMenuContent CreateContent()
+        protected override DropdownMenuContent CreateContentContext()
         {
             return new DropdownMenuContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("ul");
             tb.AddCssClass("dropdown-menu");
-            if (rightAlign)
+            if (RightAlignValue)
             {
                 tb.AddCssClass("dropdown-menu-right");
             }
@@ -42,8 +32,11 @@ namespace BootstrapMvc.Dropdown
             ApplyAttributes(tb);
 
             writer.Write(tb.GetStartTag());
+        }
 
-            return new Content(Context).Value("</ul>", true);
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write("</ul>");
         }
     }
 }

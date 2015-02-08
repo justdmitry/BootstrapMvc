@@ -5,48 +5,38 @@ namespace BootstrapMvc.Forms
 {
     public class FormGroupControls : AnyContentElement
     {
-        private bool withoutLabel = false;
-
         public FormGroupControls(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        #region Fluent
-
-        public FormGroupControls WithoutLabel(bool value = true)
-        {
-            withoutLabel = value;
-            return this;
-        }
-
-        #endregion
+        public bool WithoutLabelValue { get; set; }
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var formContext = Form.GetCurrentContext(Context);
-            var groupContext = FormGroup.GetCurrentContext(Context);
+            var form = Context.PeekNearest<Form>();
+            var formGroup = Context.PeekNearest<FormGroup>();
 
-            if (formContext.FormType != FormType.Horizontal && !groupContext.WithStackedCheckbox && !groupContext.WithStackedRadio)
+            if (form != null && formGroup != null && form.TypeValue != FormType.Horizontal && !formGroup.WithStackedCheckboxValue && !formGroup.WithStackedRadioValue)
             {
                 return string.Empty;
             }
 
             var tb = Context.CreateTagBuilder("div");
-            if (formContext.FormType == FormType.Horizontal)
+            if (form != null && form.TypeValue == FormType.Horizontal)
             {
-                tb.AddCssClass(formContext.ControlsWidth.ToCssClass());
-                if (withoutLabel)
+                tb.AddCssClass(form.ControlsWidthValue.ToCssClass());
+                if (WithoutLabelValue)
                 {
-                    tb.AddCssClass(formContext.ControlsWidth.Invert().ToOffsetCssClass());
+                    tb.AddCssClass(form.ControlsWidthValue.Invert().ToOffsetCssClass());
                 }
             }
-            if (groupContext.WithStackedCheckbox)
+            if (formGroup != null && formGroup.WithStackedCheckboxValue)
             {
                 tb.AddCssClass("checkbox");
             }
-            if (groupContext.WithStackedRadio)
+            if (formGroup != null && formGroup.WithStackedRadioValue)
             {
                 tb.AddCssClass("radio");
             }
@@ -56,7 +46,7 @@ namespace BootstrapMvc.Forms
 
             writer.Write(tb.GetStartTag());
 
-            if (groupContext.WithSizedControls)
+            if (formGroup != null && formGroup.WithSizedControlValue)
             {
                 var tb2 = Context.CreateTagBuilder("div");
                 tb2.AddCssClass("row");

@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\ContentElementTests.cs" />
+    <Compile Include="Core\DisposableContentTests.cs" />
     <Compile Include="Core\DummyWritableBlock.cs" />
     <Compile Include="Core\ContentTests.cs" />
     <Compile Include="Core\WritableBlockTests.cs" />

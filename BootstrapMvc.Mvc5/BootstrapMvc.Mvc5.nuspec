@@ -11,12 +11,12 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MVC5 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).</description>
-    <releaseNotes>New extensions methods: for Select lists; Context (cached) data correctly shared with Partial views</releaseNotes>
+    <releaseNotes>Updated for new BootstrapMvc.Core</releaseNotes>
     <copyright>© Dmitry Popov, 2015</copyright>
     <tags>Bootstrap Mvc Mvc5 HelpHelpers</tags>
     <dependencies>
       <dependency id="Microsoft.AspNet.Mvc" version="5.2.2" />
-      <dependency id="BootstrapMvc.Core" version="0.7.50127" />
+      <dependency id="BootstrapMvc.Core" version="0.11.50208" />
     </dependencies>
   </metadata>
 </package>

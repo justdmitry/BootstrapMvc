@@ -5,27 +5,17 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Forms
 {
-    public class ValidationSummary<T> : WritableBlock
+    public class ValidationSummary<TModel> : WritableBlock
     {
-        private bool hidePropertyErrors = false;
-
-        public ValidationSummary(IBootstrapContext<T> context)
+        public ValidationSummary(IBootstrapContext<TModel> context)
             : base(context)
         {
             this.Context = context;
         }
 
-        public new IBootstrapContext<T> Context { get; private set; }
+        public new IBootstrapContext<TModel> Context { get; private set; }
 
-        #region Fluent
-
-        public ValidationSummary<T> HidePropertyErrors(bool value = true)
-        {
-            this.hidePropertyErrors = value;
-            return this;
-        }
-
-        #endregion
+        public bool HidePropertyErrorsValue { get; set; }
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
@@ -38,10 +28,10 @@ namespace BootstrapMvc.Forms
 
             var haveErrors =
                 validationResult.ModelErrors.Any(x => !x.IsWarning)
-                || (!hidePropertyErrors && validationResult.PropertyErrors.Any(x => x.Value.Any(y => !y.IsWarning)));
+                || (!HidePropertyErrorsValue && validationResult.PropertyErrors.Any(x => x.Value.Any(y => !y.IsWarning)));
             var haveWarnings =
                 validationResult.ModelErrors.Any(x => x.IsWarning)
-                || (!hidePropertyErrors && validationResult.PropertyErrors.Any(x => x.Value.Any(y => y.IsWarning)));
+                || (!HidePropertyErrorsValue && validationResult.PropertyErrors.Any(x => x.Value.Any(y => y.IsWarning)));
 
             string msg;
 

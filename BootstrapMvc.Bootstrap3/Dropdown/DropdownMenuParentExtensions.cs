@@ -12,7 +12,7 @@ namespace BootstrapMvc
             parent.AddAttribute("data-toggle", "dropdown");
             parent.AddAttribute("aria-expanded", "false");
 
-            var caret = new Content(parent.Context).Value(" <span class=\"caret\"></span>", true);
+            var caret = new SimpleBlock(parent.Context).Value(" <span class=\"caret\"></span>", true);
             parent.AddContent(caret);
             parent.AddContent(menu);
 
@@ -25,11 +25,11 @@ namespace BootstrapMvc
             parent.AddAttribute("data-toggle", "dropdown");
             parent.AddAttribute("aria-expanded", "false");
 
-            var caret = new Content(parent.Context).Value(" <span class=\"caret\"></span>", true);
+            var caret = new SimpleBlock(parent.Context).Value(" <span class=\"caret\"></span>", true);
             parent.AddContent(caret);
 
             var parentEnd = parent.BeginContent();
-            parentEnd.WriteTo(parent.Context.Writer);
+            parentEnd.Dispose();
 
             var menu = new DropdownMenu(parent.Context);
             var menuEnd = menu.BeginContent();

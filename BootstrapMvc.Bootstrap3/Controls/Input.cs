@@ -1,64 +1,56 @@
 ﻿using System;
+using BootstrapMvc;
 using BootstrapMvc.Core;
 using BootstrapMvc.Forms;
+using BootstrapMvc.Grid;
 
 namespace BootstrapMvc.Controls
 {
-    public class Input : Element, IFormControl, IPlaceholderTarget, ISizableControl
+    public class Input : Element, IFormControl, IPlaceholderTarget, IGridSizable
     {
-        private IControlContext controlContext;
-
-        private GridSize size;
-
-        private InputType type = InputType.Default;
-
         public Input(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
-        
-        public void SetControlContext(IControlContext context)
+
+        public IControlContext ControlContextValue { get; set; }
+
+        public InputType TypeValue { get; set; }
+
+        public GridSize SizeValue { get; set; }
+
+        void IFormControl.SetControlContext(IControlContext context)
         {
-            controlContext = context;
+            ControlContextValue = context;
         }
 
-        public void SetSize(GridSize size)
+        void IGridSizable.SetSize(GridSize value)
         {
-            this.size = size;
+            SizeValue = value;
         }
 
-        public GridSize GetSize()
+        GridSize IGridSizable.Size()
         {
-            return size;
+            return SizeValue;
         }
-
-        #region Fluent
-
-        public Input Type(InputType type)
-        {
-            this.type = type;
-            return this;
-        }
-
-        #endregion
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            var groupContext = FormGroup.GetCurrentContext(Context);
-            if (controlContext == null)
+            var formGroup = Context.PeekNearest<FormGroup>();
+            if (formGroup != null && ControlContextValue == null)
             {
-                controlContext = groupContext.ControlContext;
+                ControlContextValue = formGroup.ControlContextValue;
             }
 
             ITagBuilder div = null;
 
-            if (!size.IsEmpty())
+            if (!SizeValue.IsEmpty())
             {
-                if (groupContext.WithSizedControls)
+                if (formGroup != null && formGroup.WithSizedControlValue)
                 {
                     div = Context.CreateTagBuilder("div");
-                    div.AddCssClass(size.ToCssClass());
+                    div.AddCssClass(SizeValue.ToCssClass());
                     writer.Write(div.GetStartTag());
                 }
                 else
@@ -69,15 +61,15 @@ namespace BootstrapMvc.Controls
 
             var input = Context.CreateTagBuilder("input");
             input.AddCssClass("form-control");
-            if (type != InputType.Text)
+            if (TypeValue != InputType.Text)
             {
-                input.MergeAttribute("type", type.ToType());
+                input.MergeAttribute("type", TypeValue.ToType());
             }
-            if (controlContext != null)
+            if (ControlContextValue != null)
             {
-                input.MergeAttribute("id", controlContext.Name);
-                input.MergeAttribute("name", controlContext.Name);
-                var value = controlContext.Value;
+                input.MergeAttribute("id", ControlContextValue.Name);
+                input.MergeAttribute("name", ControlContextValue.Name);
+                var value = ControlContextValue.Value;
                 if (value != null)
                 {
                     input.MergeAttribute("value", value.ToString());

@@ -37,12 +37,12 @@ namespace BootstrapMvc.Tables
 
         #endregion
 
-        protected override TableRowContent CreateContent()
+        protected override TableRowContent CreateContentContext()
         {
             return new TableRowContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("tr");
             if (color != TableRowCellColor.DefaultNone)
@@ -62,8 +62,11 @@ namespace BootstrapMvc.Tables
                     cell.WriteTo(writer);
                 }
             }
+        }
 
-            return new Content(Context).Value(tb.GetEndTag(), true).WriteWhitespaceSuffix(false);
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write("</tr>");
         }
     }
 }

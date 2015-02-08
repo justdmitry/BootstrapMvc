@@ -5,33 +5,23 @@ namespace BootstrapMvc.Lists
 {
     public class DefinitionList : ContentElement<DefinitionListContent>
     {
-        private bool horizontal;
-
         public DefinitionList(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        #region Fluent
+        public bool HorizontalValue { get; set; }
 
-        public DefinitionList Horizontal(bool horizontal = true)
-        {
-            this.horizontal = horizontal;
-            return this;
-        }
-
-        #endregion
-
-        protected override DefinitionListContent CreateContent()
+        protected override DefinitionListContent CreateContentContext()
         {
             return new DefinitionListContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("dl");
-            if (horizontal)
+            if (HorizontalValue)
             {
                 tb.AddCssClass("dl-horizontal");
             }
@@ -40,8 +30,11 @@ namespace BootstrapMvc.Lists
             ApplyAttributes(tb);
 
             writer.Write(tb.GetStartTag());
+        }
 
-            return new Content(Context).Value(tb.GetEndTag(), true);
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write("</dl>");
         }
     }
 }

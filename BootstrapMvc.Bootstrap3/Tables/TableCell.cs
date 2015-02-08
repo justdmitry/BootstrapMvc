@@ -35,11 +35,6 @@ namespace BootstrapMvc.Tables
 
         #endregion
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
-        {
-            return base.WriteSelfStart(writer).WriteWhitespaceSuffix(false);
-        }
-
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("td");

@@ -5,7 +5,7 @@ namespace BootstrapMvc.Lists
 {
     public class List : ContentElement<ListContent>
     {
-        private ListType type;
+        private string endTag;
 
         public List(IBootstrapContext context)
             : base(context)
@@ -13,31 +13,23 @@ namespace BootstrapMvc.Lists
             // Nothing
         }
 
-        #region Fluent
+        public ListType TypeValue { get; set; }
 
-        public List Type(ListType type)
-        {
-            this.type = type;
-            return this;
-        }
-
-        #endregion
-
-        protected override ListContent CreateContent()
+        protected override ListContent CreateContentContext()
         {
             return new ListContent(Context);
         }
 
-        protected override WritableBlock WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = Context.CreateTagBuilder(type == ListType.Ordered ? "ol" : "ul");
+            var tb = Context.CreateTagBuilder(TypeValue == ListType.Ordered ? "ol" : "ul");
 
-            if (type == ListType.Unstyled)
+            if (TypeValue == ListType.Unstyled)
             {
                 tb.AddCssClass("list-unstyled");
             }
 
-            if (type == ListType.Inline)
+            if (TypeValue == ListType.Inline)
             {
                 tb.AddCssClass("list-inline");
             }
@@ -47,7 +39,12 @@ namespace BootstrapMvc.Lists
 
             writer.Write(tb.GetStartTag());
 
-            return new Content(Context).Value(tb.GetEndTag(), true);
+            endTag = tb.GetEndTag();
+        }
+
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        {
+            writer.Write(endTag);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
-using BootstrapMvc.Core;
 using BootstrapMvc.Controls;
+using BootstrapMvc.Core;
 
 namespace BootstrapMvc
 {

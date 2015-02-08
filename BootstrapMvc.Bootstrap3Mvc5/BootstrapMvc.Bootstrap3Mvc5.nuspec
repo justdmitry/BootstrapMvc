@@ -11,7 +11,7 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Helpers for using [Twitter] Bootstrap 3.3 in MVC5 projects. Use this package to get correct dependencies from BootstrapMvc pack.</description>
-    <releaseNotes>Now contains code - extensions method for bootstrap3+mvc5 linking.</releaseNotes>
+    <releaseNotes>Updated to new dependecies.</releaseNotes>
     <copyright>© Dmitry Popov, 2015</copyright>
     <tags>Bootstrap Bootstrap3 Mvc Mvc5 HelpHelpers</tags>
     <dependencies>

@@ -3,7 +3,7 @@ using BootstrapMvc.Elements;
 
 namespace BootstrapMvc.Buttons
 {
-    public class ButtonGroupContent : DisposableContext
+    public class ButtonGroupContent : DisposableContent
     {
         public ButtonGroupContent(IBootstrapContext context)
             : base(context)

@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Tables
 {
-    public class TableRowContent : DisposableContext
+    public class TableRowContent : DisposableContent
     {
         public TableRowContent(IBootstrapContext context)
             : base(context)
@@ -35,12 +35,12 @@ namespace BootstrapMvc.Tables
             return Cell(values).Color(color);
         }
 
-        public AnyContentContext BeginCell()
+        public AnyContent BeginCell()
         {
             return new TableCell(Context).BeginContent();
         }
 
-        public AnyContentContext BeginCell(TableRowCellColor color)
+        public AnyContent BeginCell(TableRowCellColor color)
         {
             return new TableCell(Context).Color(color).BeginContent();
         }
@@ -69,12 +69,12 @@ namespace BootstrapMvc.Tables
             return HeaderCell(values).Color(color);
         }
 
-        public AnyContentContext BeginHeaderCell()
+        public AnyContent BeginHeaderCell()
         {
             return new TableHeaderCell(Context).BeginContent();
         }
 
-        public AnyContentContext BeginHeaderCell(TableRowCellColor color)
+        public AnyContent BeginHeaderCell(TableRowCellColor color)
         {
             return new TableHeaderCell(Context).Color(color).BeginContent();
         }

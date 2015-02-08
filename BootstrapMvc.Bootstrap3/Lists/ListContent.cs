@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Lists
 {
-    public class ListContent : DisposableContext
+    public class ListContent : DisposableContent
     {
         public ListContent(IBootstrapContext context)
             : base(context)
@@ -16,7 +16,7 @@ namespace BootstrapMvc.Lists
             return new OrdinaryElement(Context, "li");
         }
 
-        public AnyContentContext BeginItem()
+        public AnyContent BeginItem()
         {
             return Item().BeginContent();
         }

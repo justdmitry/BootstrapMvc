@@ -6,47 +6,32 @@ namespace BootstrapMvc.Controls
 {
     public class SelectOption : AnyContentElement, ISelectItem
     {
-        private object value;
-        private bool disabled;
-
         public SelectOption(IBootstrapContext context)
             : base(context)
         {
             // Nothing
         }
 
-        #region Fluent
+        public object ValueValue { get; set; }
 
-        public SelectOption Value(object value)
-        {
-            this.value = value;
-            return this;
-        }
-
-        public SelectOption Disabled(bool disabled = true)
-        {
-            this.disabled = disabled;
-            return this;
-        }
-
-        #endregion
+        public bool DisabledValue { get; set; }
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("option");
 
-            if (value != null)
+            if (ValueValue != null)
             {
-                tb.MergeAttribute("value", value.ToString());
+                tb.MergeAttribute("value", ValueValue.ToString());
             }
-            if (disabled)
+            if (DisabledValue)
             {
                 tb.MergeAttribute("disabled", "disabled");
             }
 
-            var formContext = FormGroup.GetCurrentContext(Context);
-            var controlContext = formContext.ControlContext;
-            if (controlContext != null && controlContext.Value != null && controlContext.Value == value)
+            var formGroup = Context.PeekNearest<FormGroup>();
+            var controlContext = formGroup == null ? null : formGroup.ControlContextValue;
+            if (controlContext != null && controlContext.Value != null && controlContext.Value == ValueValue)
             {
                 tb.MergeAttribute("selected", "selected");
             }
