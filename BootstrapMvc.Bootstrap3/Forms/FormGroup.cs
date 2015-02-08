@@ -87,7 +87,7 @@ namespace BootstrapMvc.Forms
 
             if (ControlValue != null)
             {
-                using (new FormGroupControls(Context).BeginContent())
+                using (new FormGroupControls(Context).WithoutLabel(LabelValue == null).BeginContent())
                 {
                     ControlValue.WriteTo(writer);
                 }

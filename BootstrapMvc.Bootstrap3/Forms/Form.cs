@@ -12,7 +12,10 @@ namespace BootstrapMvc.Forms
             : base(context)
         {
             LabelWidthValue = new GridSize(0, 4, 4, 4);
+            TypeValue = DefaultType;
         }
+
+        public static FormType DefaultType = FormType.DefaultNone; 
 
         public FormMethod MethodValue { get; set; }
 
