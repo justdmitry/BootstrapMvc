@@ -11,6 +11,8 @@ namespace BootstrapMvc.Core
 {
     public class BootstrapContext : IBootstrapContext
     {
+        public static readonly string WarningSpecialField = "BootstrapContext_WarningField";
+
         private static readonly string CachedDataContextKey = "BootstrapMvc.Mvc5.BootstrapContext.CachedData";
 
         private Stack cachedData;

@@ -8,8 +8,6 @@ namespace BootstrapMvc.Core
 {
     public class BootstrapContext<TModel> : BootstrapContext, IBootstrapContext<TModel>
     {
-        public static readonly string WarningSpecialField = "BootstrapContext_WarningField";
-
         public BootstrapContext(ViewContext viewContext, UrlHelper urlHelper, ViewDataDictionary<TModel> viewData, Func<int, string> messageSource)
             : base(viewContext, urlHelper, viewData, messageSource)
         {
@@ -28,8 +26,8 @@ namespace BootstrapMvc.Core
             var fullHtmlFieldName = ViewData.TemplateInfo.GetFullHtmlFieldName(name);
             ModelState modelState;
             ViewData.ModelState.TryGetValue(fullHtmlFieldName, out modelState);
-            string value = modelState == null || modelState.Value == null
-                ? (modelMetadata.Model == null ? string.Empty : modelMetadata.Model.ToString())
+            var value = modelState == null || modelState.Value == null
+                ? (modelMetadata.Model == null ? null : modelMetadata.Model)
                 : modelState.Value.AttemptedValue;
             var errors = modelState == null || modelState.Errors == null
                 ? null
@@ -38,7 +36,7 @@ namespace BootstrapMvc.Core
             return new ControlContext()
             {
                 Name = fullHtmlFieldName,
-                IsRequired = !modelMetadata.IsNullableValueType,
+                IsRequired = modelMetadata.IsRequired,
                 Value = value,
                 Errors = errors,
                 HasErrors = errors != null && errors.Length > 0,
