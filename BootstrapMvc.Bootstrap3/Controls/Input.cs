@@ -69,10 +69,19 @@ namespace BootstrapMvc.Controls
             {
                 input.MergeAttribute("id", ControlContextValue.Name);
                 input.MergeAttribute("name", ControlContextValue.Name);
+                if (ControlContextValue.IsRequired)
+                {
+                    input.MergeAttribute("required", "required");
+                }
                 var value = ControlContextValue.Value;
                 if (value != null)
                 {
-                    input.MergeAttribute("value", value.ToString());
+                    var valueString = value.ToString();
+                    if (TypeValue == InputType.Date)
+                    {
+                        valueString = ((DateTime)value).ToShortDateString();
+                    }
+                    input.MergeAttribute("value", valueString);
                 }
             }
 

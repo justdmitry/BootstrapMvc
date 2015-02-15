@@ -60,6 +60,7 @@
     <Compile Include="Controls\FluentExtensions.cs" />
     <Compile Include="Controls\IFormControl.cs" />
     <Compile Include="Controls\ControlsExtensions.cs" />
+    <Compile Include="Controls\InputExtensions.cs" />
     <Compile Include="Controls\IPlaceholderTarget.cs" />
     <Compile Include="Controls\ISelectItem.cs" />
     <Compile Include="Controls\Select.cs" />

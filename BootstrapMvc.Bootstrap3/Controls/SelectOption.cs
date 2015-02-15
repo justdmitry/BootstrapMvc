@@ -31,7 +31,7 @@ namespace BootstrapMvc.Controls
 
             var formGroup = Context.PeekNearest<FormGroup>();
             var controlContext = formGroup == null ? null : formGroup.ControlContextValue;
-            if (controlContext != null && controlContext.Value != null && controlContext.Value == ValueValue)
+            if (controlContext != null && controlContext.Value != null && ValueValue != null && ValueValue.ToString().Equals(controlContext.Value.ToString()))
             {
                 tb.MergeAttribute("selected", "selected");
             }

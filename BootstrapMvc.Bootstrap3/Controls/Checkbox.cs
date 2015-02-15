@@ -41,7 +41,10 @@ namespace BootstrapMvc.Controls
             {
                 throw new InvalidOperationException("Can't generate 'stacked' checkbox without 'WithStackedCheckbox' in group");
             }
-            lbl.AddCssClass(InlineValue ? "checkbox-inline" : "checkbox");
+            if (InlineValue)
+            {
+                lbl.AddCssClass("checkbox-inline");
+            }
 
             writer.Write(lbl.GetStartTag());
 

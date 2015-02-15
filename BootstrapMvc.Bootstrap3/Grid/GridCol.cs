@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Grid
 {
-    public class GridCol : AnyContentElement
+    public class GridCol : AnyContentElement, IGridSizable
     {
         public GridCol(IBootstrapContext context)
             : base(context) 
@@ -14,6 +14,16 @@ namespace BootstrapMvc.Grid
         public GridSize SizeValue { get; set; }
 
         public GridSize OffsetValue { get; set; }
+
+        public void SetSize(GridSize value)
+        {
+            SizeValue = value;
+        }
+
+        public GridSize Size()
+        {
+            return SizeValue;
+        }
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {

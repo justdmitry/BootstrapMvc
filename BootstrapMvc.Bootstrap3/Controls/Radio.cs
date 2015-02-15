@@ -43,7 +43,10 @@ namespace BootstrapMvc.Controls
             {
                 throw new InvalidOperationException("Can't generate 'stacked' radio without 'WithStackedRadio' in group");
             }
-            lbl.AddCssClass(InlineValue ? "radio-inline" : "radio");
+            if (InlineValue)
+            {
+                lbl.AddCssClass("radio-inline");
+            }
 
             writer.Write(lbl.GetStartTag());
 

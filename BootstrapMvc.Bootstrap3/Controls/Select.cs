@@ -75,6 +75,10 @@ namespace BootstrapMvc.Controls
             {
                 tb.MergeAttribute("id", ControlContextValue.Name);
                 tb.MergeAttribute("name", ControlContextValue.Name);
+                if (ControlContextValue.IsRequired)
+                {
+                    tb.MergeAttribute("required", "required");
+                }
                 value = ControlContextValue.Value;
             }
 
