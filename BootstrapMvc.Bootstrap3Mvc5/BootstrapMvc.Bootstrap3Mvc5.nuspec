@@ -15,8 +15,8 @@
     <copyright>© Dmitry Popov, 2015</copyright>
     <tags>Bootstrap Bootstrap3 Mvc Mvc5 HelpHelpers</tags>
     <dependencies>
-      <dependency id="BootstrapMvc.Mvc5" version="0.5.50127" />
-      <dependency id="BootstrapMvc.Bootstrap3" version="0.6.50127" />
+      <dependency id="BootstrapMvc.Mvc5" version="0.10.50215" />
+      <dependency id="BootstrapMvc.Bootstrap3" version="0.10.50215" />
     </dependencies>
   </metadata>
   <files>
