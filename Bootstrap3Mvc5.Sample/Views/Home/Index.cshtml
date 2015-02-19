@@ -1,31 +1,50 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model System.Collections.Specialized.NameValueCollection
+@{    
+    ViewBag.Title = "BootstrapMvc";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">Fluent, open-source, extendable packages for simplifying bootstrap markup in your ASP.MVC projects.</p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
+
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(6, 4, 4, 4))
+    {
+        <h2>Efficient</h2>
+        <p>Using <code>TextWriter</code> internally - no <code>IHtmlString</code>, strings concatenating and re-building!</p>
+    }
+    using (Bootstrap.BeginGridCol(6, 4, 4, 4))
+    {
+        <h2>Fluent</h2>
+        <p>Easy to write code, easy to read. Not more html and c# code mix in your razor views!</p>
+    }
+    using (Bootstrap.BeginGridCol(6, 4, 4, 4))
+    {
+        <h2>Extendable</h2>
+        <p>New extensions methods, new 'building blocks' - write your own and use them in any combination.</p>
+    }
+    using (Bootstrap.BeginGridCol(6, 4, 4, 4))
+    {
+        <h2>Install via NuGet</h2>
+        <p><kbd>Install-Package BootstrapMvc.Bootstrap3Mvc5</kbd></p>
+    }
+    using (Bootstrap.BeginGridCol(6, 4, 4, 4))
+    {
+        <h2>Opensource</h2>
+        <p>@Bootstrap.Button("View on GitHub").Href("https://github.com/justdmitry/BootstrapMvc")</p>
+    }
+    @*using (Bootstrap.BeginGridCol(6, 4, 4, 4))
+    {
+        <h2>Live demo</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            This website is a live demo, with:
+            <pre>
+BootstrapMvc.Core       ver @verCore
+BootstrapMvc.Bootstrap3 ver @verBootstrap
+BootstrapMvc.Mvc5       ver @verMvc</pre>
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    }*@
+}
