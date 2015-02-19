@@ -114,7 +114,7 @@
     <Compile Include="Forms\FormGroupLabel.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Forms\FormMethod.cs" />
+    <Compile Include="Forms\SubmitMethod.cs" />
     <Compile Include="Forms\FormType.cs" />
     <Compile Include="Forms\HelpBlock.cs" />
     <Compile Include="Forms\AnyContentExtensions.cs">

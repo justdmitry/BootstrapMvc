@@ -15,9 +15,9 @@ namespace BootstrapMvc.Forms
             TypeValue = DefaultType;
         }
 
-        public static FormType DefaultType = FormType.DefaultNone; 
+        public static FormType DefaultType = FormType.DefaultNone;
 
-        public FormMethod MethodValue { get; set; }
+        public SubmitMethod MethodValue { get; set; }
 
         public FormEnctype EnctypeValue { get; set; }
 
@@ -57,7 +57,7 @@ namespace BootstrapMvc.Forms
             {
                 tb.AddCssClass(TypeValue.ToCssClass());
             }
-            if (MethodValue != FormMethod.Get)
+            if (MethodValue != SubmitMethod.Get)
             {
                 tb.MergeAttribute("method", MethodValue.ToString().ToLowerInvariant());
             }

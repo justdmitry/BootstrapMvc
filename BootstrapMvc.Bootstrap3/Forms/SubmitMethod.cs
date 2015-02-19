@@ -2,7 +2,7 @@
 
 namespace BootstrapMvc
 {
-    public enum FormMethod
+    public enum SubmitMethod
     {
         Post,
         Get

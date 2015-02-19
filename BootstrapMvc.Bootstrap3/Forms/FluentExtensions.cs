@@ -8,7 +8,7 @@ namespace BootstrapMvc
     {
         #region Form
 
-        public static Form Method(this Form target, FormMethod value)
+        public static Form Method(this Form target, SubmitMethod value)
         {
             target.MethodValue = value;
             return target;
