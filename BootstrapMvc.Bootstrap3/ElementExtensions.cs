@@ -17,6 +17,52 @@ namespace BootstrapMvc
             return target;
         }
 
+        public static T PullLeft<T>(this T target) where T : Element
+        {
+            target.AddCssClass("pull-left");
+            return target;
+        }
+
+        public static T PullRight<T>(this T target) where T : Element
+        {
+            target.AddCssClass("pull-right");
+            return target;
+        }
+
+        public static T CenterBlock<T>(this T target) where T : Element
+        {
+            target.AddCssClass("center-block");
+            return target;
+        }
+
+        public static T Clearfix<T>(this T target) where T : Element
+        {
+            target.AddCssClass("clearfix");
+            return target;
+        }
+
+        public static T Visible<T>(this T target, Visibility value) where T : Element
+        {
+            target.AddCssClass(value.ToCssClass());
+            return target;
+        }
+
+        public static T ForScreenReaders<T>(this T target, bool focusable = false) where T : Element
+        {
+            target.AddCssClass("sr-only");
+            if (focusable)
+            {
+                target.AddCssClass("sr-only-focusable");
+            }
+            return target;
+        }
+
+        public static T HiddenText<T>(this T target) where T : Element
+        {
+            target.AddCssClass("text-hide");
+            return target;
+        }
+
         public static T TextColor<T>(this T target, TextColor color) where T : Element
         {
             target.AddCssClass(color.ToCssClass());

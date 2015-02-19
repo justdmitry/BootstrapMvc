@@ -11,7 +11,7 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).</description>
-    <releaseNotes>Enum renamed: FormMethod > SubmitMethod</releaseNotes>
+    <releaseNotes>New extensions methods for helper classes and regular HTML tags</releaseNotes>
     <copyright>© Dmitry Popov, 2015</copyright>
     <tags>Bootstrap Bootstrap3 Mvc HtmlHelpers</tags>
     <dependencies>

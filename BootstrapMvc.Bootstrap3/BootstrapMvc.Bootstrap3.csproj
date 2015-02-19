@@ -145,6 +145,7 @@
     <Compile Include="Lists\List.cs" />
     <Compile Include="Lists\ListContent.cs" />
     <Compile Include="Lists\ListType.cs" />
+    <Compile Include="OrdinaryElementExtensions.cs" />
     <Compile Include="Panels\EnumToStringConverter.cs" />
     <Compile Include="Panels\AnyContentExtensions.cs" />
     <Compile Include="Panels\FluentExtensions.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="Tables\TableStyles.cs" />
     <Compile Include="BaseColor.cs" />
     <Compile Include="TextColor.cs" />
+    <Compile Include="Visibility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BootstrapMvc.Core\BootstrapMvc.Core.csproj">

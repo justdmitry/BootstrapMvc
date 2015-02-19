@@ -86,5 +86,20 @@ namespace BootstrapMvc
                     return string.Empty;
             }
         }
+
+        public static string ToCssClass(this Visibility color)
+        {
+            switch (color)
+            {
+                case Visibility.Visible:
+                    return "show";
+                case Visibility.Hidden:
+                    return "hidden";
+                case Visibility.Invisible:
+                    return "invisible";
+                default:
+                    return string.Empty;
+            }
+        }
     }
 }
