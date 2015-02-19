@@ -1,14 +1,22 @@
 ﻿<h2>Icons</h2>
 
 <p>All icons are identified via enum, you do not need to write classes as strings.</p>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
 <pre>
 @@Bootstrap.Icon(IconType.Arrow_Down) 
 @@Bootstrap.Icon(IconType.Arrow_Left) 
 @@Bootstrap.Icon(IconType.Arrow_Up) 
 @@Bootstrap.Icon(IconType.Arrow_Right)
 </pre>
-@Bootstrap.Icon(IconType.Arrow_Down) 
-@Bootstrap.Icon(IconType.Arrow_Left) 
-@Bootstrap.Icon(IconType.Arrow_Up) 
-@Bootstrap.Icon(IconType.Arrow_Right)
-
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        @Bootstrap.Icon(IconType.Arrow_Down)
+        @Bootstrap.Icon(IconType.Arrow_Left)
+        @Bootstrap.Icon(IconType.Arrow_Up)
+        @Bootstrap.Icon(IconType.Arrow_Right)
+    }
+}
