@@ -26,6 +26,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootstrap3Mvc5.Sample", "Bo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapMvc.Bootstrap3Mvc5", "BootstrapMvc.Bootstrap3Mvc5\BootstrapMvc.Bootstrap3Mvc5.csproj", "{07BCE768-CFBD-46BC-B208-299D2C2EB29E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{91AC3ED2-7CF4-4F0B-9300-36185CC6B831}"
+	ProjectSection(SolutionItems) = preProject
+		create-packages.cmd = create-packages.cmd
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
