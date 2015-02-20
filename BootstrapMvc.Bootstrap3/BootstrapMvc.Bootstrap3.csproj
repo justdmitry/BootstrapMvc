@@ -146,6 +146,13 @@
     <Compile Include="Lists\ListContent.cs" />
     <Compile Include="Lists\ListType.cs" />
     <Compile Include="OrdinaryElementExtensions.cs" />
+    <Compile Include="Paging\FluentExtensions.cs" />
+    <Compile Include="Paging\AnyContentExtensions.cs" />
+    <Compile Include="Paging\Paginator.cs" />
+    <Compile Include="Paging\PaginatorContent.cs" />
+    <Compile Include="PaginatorSize.cs" />
+    <Compile Include="Paging\PaginatorGenerator.cs" />
+    <Compile Include="Paging\PaginatorItem.cs" />
     <Compile Include="Panels\EnumToStringConverter.cs" />
     <Compile Include="Panels\AnyContentExtensions.cs" />
     <Compile Include="Panels\FluentExtensions.cs" />
