@@ -86,6 +86,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BootstrapContextTests.cs" />
+    <Compile Include="LinkExtensionsTest.cs" />
     <Compile Include="TagBuilderTests.cs" />
   </ItemGroup>
   <ItemGroup>
