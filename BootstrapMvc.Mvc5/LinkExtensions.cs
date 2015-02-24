@@ -16,16 +16,28 @@ namespace BootstrapMvc
         public static T Href<T>(this T target, string actionName, string controllerName) where T : Element, ILink
         {
             var dic = new RouteValueDictionary();
-            dic.Add("action", actionName);
-            dic.Add("controller", controllerName);
+            if (!string.IsNullOrEmpty(actionName))
+            {
+                dic.Add("action", actionName);
+            }
+            if (!string.IsNullOrEmpty(controllerName))
+            {
+                dic.Add("controller", controllerName);
+            }
             return Href(target, dic);
         }
 
         public static T Href<T>(this T target, string actionName, string controllerName, object routeValues) where T : Element, ILink
         {
             var dic = new RouteValueDictionary(routeValues);
-            dic.Add("action", actionName);
-            dic.Add("controller", controllerName);
+            if (!string.IsNullOrEmpty(actionName))
+            {
+                dic.Add("action", actionName);
+            }
+            if (!string.IsNullOrEmpty(controllerName))
+            {
+                dic.Add("controller", controllerName);
+            } 
             return Href(target, dic);
         }
     }
