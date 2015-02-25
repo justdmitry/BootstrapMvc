@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.WebPages;
 using mvc = System.Web.Mvc;
@@ -64,7 +65,12 @@ namespace BootstrapMvc.Core
 
         public string CreateUrl(IDictionary<string, object> routeValues, string protocol, string hostName)
         {
-            return Url.RouteUrl(null, new RouteValueDictionary(routeValues), protocol, hostName);
+            var routeVals = routeValues as RouteValueDictionary;
+            if (routeVals == null)
+            {
+                routeVals = new RouteValueDictionary(routeValues);
+            }
+            return UrlHelper.GenerateUrl(null, null, null, protocol, hostName, null, routeVals, Url.RouteCollection, Url.RequestContext, true);
         }
 
         public string HtmlEncode(string value)
