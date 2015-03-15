@@ -18,46 +18,49 @@ namespace BootstrapMvc.Forms
             var form = Context.PeekNearest<Form>();
             var formGroup = Context.PeekNearest<FormGroup>();
 
-            if (form != null && formGroup != null && form.TypeValue != FormType.Horizontal && !formGroup.WithStackedCheckboxValue && !formGroup.WithStackedRadioValue)
+            if (form != null && form.TypeValue == FormType.Inline)
             {
                 return string.Empty;
             }
 
-            var tb = Context.CreateTagBuilder("div");
+            ITagBuilder tb = null;
+            ITagBuilder tb2 = null;
+
             if (form != null && form.TypeValue == FormType.Horizontal)
             {
+                tb = Context.CreateTagBuilder("div");
                 tb.AddCssClass(form.ControlsWidthValue.ToCssClass());
                 if (WithoutLabelValue)
                 {
                     tb.AddCssClass(form.ControlsWidthValue.Invert().ToOffsetCssClass());
                 }
-            }
-            if (formGroup != null && formGroup.WithStackedCheckboxValue)
-            {
-                tb.AddCssClass("checkbox");
-            }
-            if (formGroup != null && formGroup.WithStackedRadioValue)
-            {
-                tb.AddCssClass("radio");
-            }
 
-            ApplyCss(tb);
-            ApplyAttributes(tb);
+                ApplyCss(tb);
+                ApplyAttributes(tb);
 
-            writer.Write(tb.GetStartTag());
+                writer.Write(tb.GetStartTag());
+            }
 
             if (formGroup != null && formGroup.WithSizedControlValue)
             {
-                var tb2 = Context.CreateTagBuilder("div");
+                tb2 = Context.CreateTagBuilder("div");
                 tb2.AddCssClass("row");
                 writer.Write(tb2.GetStartTag());
+            }
 
+            if (tb != null && tb2 != null)
+            {
                 return tb2.GetEndTag() + tb.GetEndTag();
             }
-            else
+            if (tb2 != null)
+            {
+                return tb2.GetEndTag();
+            }
+            if (tb != null)
             {
                 return tb.GetEndTag();
             }
+            return string.Empty;
         }
     }
 }

@@ -85,6 +85,18 @@ namespace BootstrapMvc
             return target;
         }
 
+        public static SelectOptGroup Items(this SelectOptGroup target, IEnumerable<ISelectItem> items)
+        {
+            target.ItemsValue = items.ToArray();
+            return target;
+        }
+
+        public static SelectOptGroup Items(this SelectOptGroup target, params ISelectItem[] items)
+        {
+            target.ItemsValue = items;
+            return target;
+        }
+
         #endregion
 
         #region SelectOption

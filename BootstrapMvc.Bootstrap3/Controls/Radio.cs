@@ -33,21 +33,19 @@ namespace BootstrapMvc.Controls
                 ControlContextValue = formGroup.ControlContextValue;
             }
 
-            var lbl = Context.CreateTagBuilder("label");
+            ITagBuilder div = null;
+            if (!InlineValue)
+            {
+                div = Context.CreateTagBuilder("div");
+                div.AddCssClass("radio");
+                writer.Write(div.GetStartTag());
+            }
 
-            if (InlineValue && formGroup != null && formGroup.WithStackedRadioValue)
-            {
-                throw new InvalidOperationException("Can't generate 'inline' radio in 'WithStackedRadio' group");
-            }
-            if (!InlineValue && formGroup != null && !formGroup.WithStackedRadioValue)
-            {
-                throw new InvalidOperationException("Can't generate 'stacked' radio without 'WithStackedRadio' in group");
-            }
+            var lbl = Context.CreateTagBuilder("label");
             if (InlineValue)
             {
                 lbl.AddCssClass("radio-inline");
             }
-
             writer.Write(lbl.GetStartTag());
 
             var input = Context.CreateTagBuilder("input");
@@ -71,9 +69,16 @@ namespace BootstrapMvc.Controls
 
             writer.Write(input.GetFullTag());
 
+            writer.Write(" "); // writing space to separate text from radio itself
+
             writer.Write(Context.HtmlEncode(TextValue));
 
             writer.Write(lbl.GetEndTag());
+
+            if (div != null)
+            {
+                writer.Write(div.GetEndTag());
+            }
         }
     }
 }

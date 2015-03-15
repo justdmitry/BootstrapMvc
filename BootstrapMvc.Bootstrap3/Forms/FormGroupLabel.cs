@@ -13,19 +13,19 @@ namespace BootstrapMvc.Forms
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var formContext = Context.PeekNearest<Form>();
+            var form = Context.PeekNearest<Form>();
             var groupContext = Context.PeekNearest<FormGroup>();
             var controlContext = groupContext == null ? null : groupContext.ControlContextValue;
 
-            var required = controlContext == null ? false : controlContext.IsRequired;
+            var required = groupContext == null ? false : groupContext.IsRequiredValue;
             var name = controlContext == null ? null : controlContext.Name;
 
             var tb = Context.CreateTagBuilder("label");
 
-            if (formContext != null && formContext.TypeValue == FormType.Horizontal)
+            if (form != null && form.TypeValue == FormType.Horizontal)
             {
                 tb.AddCssClass("control-label");
-                tb.AddCssClass(formContext.LabelWidthValue.ToCssClass());
+                tb.AddCssClass(form.LabelWidthValue.ToCssClass());
             }
 
             if (!string.IsNullOrEmpty(name))
@@ -41,6 +41,11 @@ namespace BootstrapMvc.Forms
             ApplyAttributes(tb);
 
             writer.Write(tb.GetStartTag());
+
+            if (form != null && form.TypeValue == FormType.Inline)
+            {
+                return tb.GetEndTag() + " "; // trailing space is important for inline forms! Bootstrap does not provide spacing between groups in css!
+            }
 
             return tb.GetEndTag();
         }

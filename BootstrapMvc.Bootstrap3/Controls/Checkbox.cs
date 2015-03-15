@@ -31,21 +31,19 @@ namespace BootstrapMvc.Controls
                 ControlContextValue = formGroup.ControlContextValue;
             }
 
-            var lbl = Context.CreateTagBuilder("label");
+            ITagBuilder div = null;
+            if (!InlineValue)
+            {
+                div = Context.CreateTagBuilder("div");
+                div.AddCssClass("checkbox");
+                writer.Write(div.GetStartTag());
+            }
 
-            if (InlineValue && formGroup != null && formGroup.WithStackedCheckboxValue)
-            {
-                throw new InvalidOperationException("Can't generate 'inline' checkbox in 'WithStackedCheckbox' group");
-            }
-            if (!InlineValue && formGroup != null && !formGroup.WithStackedCheckboxValue)
-            {
-                throw new InvalidOperationException("Can't generate 'stacked' checkbox without 'WithStackedCheckbox' in group");
-            }
+            var lbl = Context.CreateTagBuilder("label");
             if (InlineValue)
             {
                 lbl.AddCssClass("checkbox-inline");
             }
-
             writer.Write(lbl.GetStartTag());
 
             var input = Context.CreateTagBuilder("input");
@@ -69,9 +67,16 @@ namespace BootstrapMvc.Controls
 
             writer.Write(input.GetFullTag());
 
+            writer.Write(" "); // writing space to separate text from checkbox itself
+
             writer.Write(Context.HtmlEncode(TextValue));
 
             writer.Write(lbl.GetEndTag());
+
+            if (div != null)
+            {
+                writer.Write(div.GetEndTag());
+            }
         }
     }
 }

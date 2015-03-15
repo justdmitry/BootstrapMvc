@@ -85,19 +85,7 @@ namespace BootstrapMvc
 
         public static FormGroup Required(this FormGroup target, bool value = true)
         {
-            target.ControlContextValue.IsRequired = value;
-            return target;
-        }
-
-        public static FormGroup WithStackedCheckbox(this FormGroup target, bool value = true)
-        {
-            target.WithStackedCheckboxValue = value;
-            return target;
-        }
-
-        public static FormGroup WithStackedRadio(this FormGroup target, bool value = true)
-        {
-            target.WithStackedRadioValue = value;
+            target.IsRequiredValue = value;
             return target;
         }
 

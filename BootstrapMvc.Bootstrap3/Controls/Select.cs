@@ -44,6 +44,7 @@ namespace BootstrapMvc.Controls
 
         protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
+            var form = Context.PeekNearest<Form>();
             var formGroup = Context.PeekNearest<FormGroup>();
             if (ControlContextValue == null)
             {
@@ -54,15 +55,20 @@ namespace BootstrapMvc.Controls
 
             if (!SizeValue.IsEmpty())
             {
-                if (formGroup != null && formGroup.WithSizedControlValue)
+                // Inline forms does not support sized controls (we need 'some other' sizing rules?)
+                if (form != null && form.TypeValue != FormType.Inline)
                 {
-                    div = Context.CreateTagBuilder("div");
-                    div.AddCssClass(SizeValue.ToCssClass());
-                    writer.Write(div.GetStartTag());
-                }
-                else
-                {
-                    throw new InvalidOperationException("Size not allowed - call WithSizedControls() on FormGroup.");
+                    if (formGroup != null && formGroup.WithSizedControlValue)
+                    {
+                        div = Context.CreateTagBuilder("div");
+                        div.AddCssClass(SizeValue.ToCssClass());
+                        writer.Write(div.GetStartTag());
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Size not allowed - call WithSizedControls() on FormGroup.");
+                    }
+
                 }
             }
 
@@ -87,6 +93,8 @@ namespace BootstrapMvc.Controls
 
             writer.Write(tb.GetStartTag());
 
+            Context.Push(this);
+
             if (ItemsValue != null)
             {
                 foreach (var item in ItemsValue)
@@ -101,6 +109,7 @@ namespace BootstrapMvc.Controls
         protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write(endTag);
+            Context.PopIfEqual(this);
         }
     }
 }

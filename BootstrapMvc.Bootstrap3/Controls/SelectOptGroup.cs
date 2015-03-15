@@ -1,5 +1,6 @@
 ﻿using System;
 using BootstrapMvc.Core;
+using System.Collections.Generic;
 
 namespace BootstrapMvc.Controls
 {
@@ -14,6 +15,8 @@ namespace BootstrapMvc.Controls
         public bool DisabledValue { get; set; }
 
         public string LabelValue { get; set; }
+
+        public IEnumerable<ISelectItem> ItemsValue { get; set; }
 
         protected override SelectOptGroupContent CreateContentContext()
         {
@@ -35,6 +38,14 @@ namespace BootstrapMvc.Controls
             ApplyAttributes(tb);
 
             writer.Write(tb.GetStartTag());
+
+            if (ItemsValue != null)
+            {
+                foreach (var item in ItemsValue)
+                {
+                    item.WriteTo(writer);
+                }
+            }
         }
 
         protected override void WriteSelfEnd(System.IO.TextWriter writer)

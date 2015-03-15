@@ -34,7 +34,7 @@ namespace BootstrapMvc
 <fieldset><legend>Legend text</legend>
 <div class='form-group'><label class='col-sm-4 col-md-4 col-lg-4 control-label'>label 1</label>
 <div class='col-sm-8 col-md-8 col-lg-8'><input class='form-control' type='number'></input></div></div>
-<div class='form-group'><div class='checkbox col-xs-offset-0 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-8 col-md-8 col-lg-8'><label><input type='checkbox'></input>label 2</label></div></div>
+<div class='form-group'><div class='col-xs-offset-0 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-8 col-md-8 col-lg-8'><div class='checkbox'><label><input type='checkbox'></input> label 2</label></div></div></div>
 </fieldset></form>";
             Assert.AreEqual(expected.Replace('\'', '"').Replace("\r\n", ""), writer.ToString());
         }
@@ -53,9 +53,9 @@ namespace BootstrapMvc
             var expected = @"
 <form class='form-inline' method='post'>
 <fieldset><legend>Legend text</legend>
-<div class='form-group'><label>label 1</label><input class='form-control' type='number'></input></div>
-<div class='form-group'><div class='checkbox'><label><input type='checkbox'></input>label 2</label></div></div>
-</fieldset></form>";
+<div class='form-group'><label>label 1</label> <input class='form-control' type='number'></input></div>
+ <div class='form-group'><div class='checkbox'><label><input type='checkbox'></input> label 2</label></div></div>
+ </fieldset></form>";
             Assert.AreEqual(expected.Replace('\'', '"').Replace("\r\n", ""), writer.ToString());
         }
 
@@ -74,7 +74,7 @@ namespace BootstrapMvc
 <form method='post'>
 <fieldset><legend>Legend text</legend>
 <div class='form-group'><label>label 1</label><input class='form-control' type='number'></input></div>
-<div class='form-group'><div class='checkbox'><label><input type='checkbox'></input>label 2</label></div></div>
+<div class='form-group'><div class='checkbox'><label><input type='checkbox'></input> label 2</label></div></div>
 </fieldset></form>";
             Assert.AreEqual(expected.Replace('\'', '"').Replace("\r\n", ""), writer.ToString());
         }

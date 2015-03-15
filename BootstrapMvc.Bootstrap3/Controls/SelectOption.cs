@@ -29,7 +29,7 @@ namespace BootstrapMvc.Controls
                 tb.MergeAttribute("disabled", "disabled");
             }
 
-            var formGroup = Context.PeekNearest<FormGroup>();
+            var formGroup = Context.PeekNearest<Select>();
             var controlContext = formGroup == null ? null : formGroup.ControlContextValue;
             if (controlContext != null && controlContext.Value != null && ValueValue != null && ValueValue.ToString().Equals(controlContext.Value.ToString()))
             {

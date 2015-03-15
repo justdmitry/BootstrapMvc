@@ -9,6 +9,10 @@ namespace BootstrapMvc.Forms
     {
         private IFormControl control = null;
 
+        private bool valueRequired = false;
+
+        private bool overrideRequired = false;
+
         public FormGroup(IBootstrapContext context)
             : base(context)
         {
@@ -29,28 +33,32 @@ namespace BootstrapMvc.Forms
                 control = value;
                 var sizable = control as IGridSizable;
                 WithSizedControlValue = sizable != null && !sizable.Size().IsEmpty();
-                var checkbox = control as Checkbox;
-                WithStackedCheckboxValue = checkbox != null && !checkbox.InlineValue;
-                var radio = control as Radio;
-                WithStackedRadioValue = radio != null && !radio.InlineValue;
             }
         }
 
         public IControlContext ControlContextValue { get; set; }
 
-        public bool WithStackedCheckboxValue { get; set; }
-
-        public bool WithStackedRadioValue { get; set; }
-
         public bool WithSizedControlValue { get; set; }
+
+        public bool IsRequiredValue
+        {
+            get
+            {
+                if (overrideRequired)
+                {
+                    return valueRequired;
+                }
+                return ControlContextValue == null ? valueRequired : ControlContextValue.IsRequired;
+            }
+            set
+            {
+                valueRequired = value;
+                overrideRequired = true;
+            }
+        }
 
         public AnyContent BeginControls()
         {
-            if (LabelValue == null && !WithStackedCheckboxValue && !WithStackedRadioValue)
-            {
-                LabelValue = new FormGroupLabel(Context);
-                LabelValue.Content(string.Empty);
-            }
             this.WriteSelfStart(Context.Writer);
             var area = new FormGroupControls(Context).WithoutLabel(LabelValue == null).BeginContent();
             area.Disposing += (sender, args) => WriteSelfEnd(Context.Writer);
@@ -59,6 +67,7 @@ namespace BootstrapMvc.Forms
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
+            var form = Context.PeekNearest<Form>();
             var tb = Context.CreateTagBuilder("div");
             tb.AddCssClass("form-group");
             if (ControlContextValue != null)
@@ -93,6 +102,11 @@ namespace BootstrapMvc.Forms
                 }
             }
 
+            if (form != null && form.TypeValue == FormType.Inline)
+            {
+                return "</div> "; // trailing space is important for inline forms! Bootstrap does not provide spacing between groups in css!
+            }
+            
             return "</div>";
         }
 

@@ -34,6 +34,11 @@ namespace Bootstrap3Mvc5.Sample.Controllers
             return View();
         }
 
+        public ActionResult Forms()
+        {
+            return View(new Bootstrap3Mvc5.Sample.Models.DemoModelOne());
+        }
+
         public ActionResult Extend()
         {
             return View();

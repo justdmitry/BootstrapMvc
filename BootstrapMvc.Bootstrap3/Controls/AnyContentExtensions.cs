@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using BootstrapMvc.Controls;
 using BootstrapMvc.Core;
+using System.Collections.Generic;
 
 namespace BootstrapMvc
 {
@@ -42,9 +43,29 @@ namespace BootstrapMvc
             return new Select(contentHelper.Context);
         }
 
+        public static Select Select(this IAnyContentMarker contentHelper, IEnumerable<ISelectItem> items)
+        {
+            return new Select(contentHelper.Context).Items(items);
+        }
+
+        public static Select Select(this IAnyContentMarker contentHelper, params ISelectItem[] items)
+        {
+            return new Select(contentHelper.Context).Items(items);
+        }
+
         public static SelectOptGroup SelectOptGroup(this IAnyContentMarker contentHelper, string label)
         {
             return new SelectOptGroup(contentHelper.Context).Label(label);
+        }
+
+        public static SelectOptGroup SelectOptGroup(this IAnyContentMarker contentHelper, string label, IEnumerable<ISelectItem> items)
+        {
+            return new SelectOptGroup(contentHelper.Context).Label(label).Items(items);
+        }
+
+        public static SelectOptGroup SelectOptGroup(this IAnyContentMarker contentHelper, string label, params ISelectItem[] items)
+        {
+            return new SelectOptGroup(contentHelper.Context).Label(label).Items(items);
         }
 
         public static SelectOption SelectOption(this IAnyContentMarker contentHelper, object value)
