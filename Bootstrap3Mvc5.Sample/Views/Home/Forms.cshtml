@@ -149,13 +149,24 @@ using (Bootstrap.BeginForm(FormType.Inline))
 using (Bootstrap.BeginForm())
 {
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("regular text"))
-    @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputDate().Placeholder("date"))
-    @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
-    @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputEmail().Placeholder("email"))
-    @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputInt().Placeholder("number"))
+    @@Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Placeholder("number"))
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputTel().Placeholder("tel"))
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputUrl().Placeholder("url"))
+    using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Text"))
+    {
+        BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Text;
+        @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
+        @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
+        @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
+    }
+    using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Html5"))
+    {
+        BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Html5;
+        @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
+        @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
+        @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
+    }
     using (Bootstrap.FormGroup().BeginControls())
     {
         @@Bootstrap.Button(ButtonType.WarningOrange, "Submit")
@@ -168,13 +179,24 @@ using (Bootstrap.BeginForm())
         using (Bootstrap.BeginForm())
         {
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("regular text"))
-            @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputDate().Placeholder("date"))
-            @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
-            @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputEmail().Placeholder("email"))
-            @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputInt().Placeholder("number"))
+            @Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Placeholder("number"))
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputTel().Placeholder("tel"))
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputUrl().Placeholder("url"))
+            using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Text"))
+            {
+                BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Text;
+                @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
+                @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
+                @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
+            }
+            using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Html5"))
+            {
+                BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Html5;
+                @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
+                @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
+                @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
+            }
             using (Bootstrap.FormGroup().BeginControls())
             {
                 @Bootstrap.Button(ButtonType.WarningOrange, "Submit")

@@ -25,12 +25,12 @@ namespace BootstrapMvc
 
         public static Input InputDateTime(this IAnyContentMarker contextHelper)
         {
-            return contextHelper.Input(InputType.Datetime).Size(0, 5, 4, 4);
+            return contextHelper.Input(InputType.Datetime).Size(0, 6, 5, 5);
         }
 
         public static Input InputDateTimeLocal(this IAnyContentMarker contextHelper)
         {
-            return contextHelper.Input(InputType.DatetimeLocal).Size(0, 6, 5, 5);
+            return contextHelper.Input(InputType.DatetimeLocal).Size(0, 5, 4, 4);
         }
 
         public static Input InputEmail(this IAnyContentMarker contextHelper)

@@ -75,6 +75,7 @@
     <Compile Include="Controls\SelectOption.cs" />
     <Compile Include="Controls\StaticValue.cs" />
     <Compile Include="Controls\Textarea.cs" />
+    <Compile Include="DateInputMode.cs" />
     <Compile Include="Dropdown\DropdownMenuFluent.cs" />
     <Compile Include="Dropdown\DropdownMenuItemLinkFluent.cs" />
     <Compile Include="Elements\FluentExtensions.cs" />

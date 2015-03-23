@@ -14,6 +14,8 @@ namespace BootstrapMvc.Controls
             // Nothing
         }
 
+        public static DateInputMode DateInputMode { get; set; }
+
         public IControlContext ControlContextValue { get; set; }
 
         public InputType TypeValue { get; set; }
@@ -66,10 +68,7 @@ namespace BootstrapMvc.Controls
 
             var input = Context.CreateTagBuilder("input");
             input.AddCssClass("form-control");
-            if (TypeValue != InputType.Text)
-            {
-                input.MergeAttribute("type", TypeValue.ToType());
-            }
+            var actualType = TypeValue;
             if (ControlContextValue != null)
             {
                 input.MergeAttribute("id", ControlContextValue.Name);
@@ -82,14 +81,66 @@ namespace BootstrapMvc.Controls
                 if (value != null)
                 {
                     var valueString = value.ToString();
-                    if (TypeValue == InputType.Date)
+                    if (TypeValue == InputType.Date || TypeValue == InputType.Datetime || TypeValue == InputType.DatetimeLocal || TypeValue == InputType.Time)
                     {
-                        valueString = ((DateTime)value).ToShortDateString();
+                        var valueDateTime = value as DateTime?;
+                        var valueDateTimeOffset = value as DateTimeOffset?;
+                        var valueTimeSpan = value as TimeSpan?;
+                        if (valueDateTimeOffset.HasValue)
+                        {
+                            valueDateTime = valueDateTimeOffset.Value.DateTime;
+                        }
+                        if (valueDateTime.HasValue)
+                        {
+                            valueTimeSpan = valueDateTime.Value.TimeOfDay;
+                        }
+                        var asHtml5 = (DateInputMode == BootstrapMvc.DateInputMode.Html5);
+                        if (!asHtml5)
+                        {
+                            actualType = InputType.Text;
+                        }
+                        switch(TypeValue)
+                        {
+                            case InputType.Date:
+                                if (valueDateTime.HasValue)
+                                {
+                                    valueString = asHtml5
+                                        ? valueDateTime.Value.ToString("yyyy-MM-dd")
+                                        : valueDateTime.Value.ToString("d");
+                                }
+                                break;
+                            case InputType.DatetimeLocal:
+                                if (valueDateTime.HasValue)
+                                {
+                                    valueString = asHtml5
+                                        ? valueDateTime.Value.ToString("o")
+                                        : valueDateTime.Value.ToString();
+                                }
+                                break;
+                            case InputType.Datetime:
+                                if (valueDateTime.HasValue)
+                                {
+                                    valueString = asHtml5 
+                                        ? valueDateTimeOffset.Value.ToString("o") 
+                                        : valueDateTimeOffset.Value.ToString();
+                                }
+                                break;
+                            case InputType.Time:
+                                if (valueDateTime.HasValue)
+                                {
+                                    valueString = valueTimeSpan.ToString();
+                                }
+                                break;
+                        }
                     }
                     input.MergeAttribute("value", valueString);
                 }
             }
 
+            if (actualType != InputType.Text)
+            {
+                input.MergeAttribute("type", actualType.ToType());
+            }
             ApplyCss(input);
             ApplyAttributes(input);
 

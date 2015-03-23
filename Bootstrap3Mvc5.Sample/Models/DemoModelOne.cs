@@ -9,5 +9,7 @@ namespace Bootstrap3Mvc5.Sample.Models
         public bool BooleanField { get; set; }
 
         public int IntegerField { get; set; }
+
+        public DateTimeOffset DateTimeOffsetField { get; set; }
     }
 }
