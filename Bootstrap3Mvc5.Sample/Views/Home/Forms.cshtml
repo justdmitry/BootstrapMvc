@@ -240,15 +240,15 @@ using (Bootstrap.BeginForm(FormType.Horizontal))
             @Bootstrap.FormGroupFor(m => m.BooleanField).Label("Single checkbox").Control(Bootstrap.Checkbox("Checkbox text"))
             using (Bootstrap.FormGroup().Label("Inline checkbox").BeginControls())
             {
-                @Bootstrap.Checkbox("option one").Inline().For(Bootstrap.For(m => m.BooleanField))
-                @Bootstrap.Checkbox("option two").Inline().For(Bootstrap.For(m => m.BooleanField))
-                @Bootstrap.Checkbox("option three").Inline().For(Bootstrap.For(m => m.BooleanField))
+                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option one")).Inline()
+                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option two")).Inline()
+                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option three")).Inline()
             }
             using (Bootstrap.FormGroup().Label("Vertical checkbox").BeginControls())
             {
-                @Bootstrap.Checkbox("option one").For(Bootstrap.For(m => m.BooleanField))
-                @Bootstrap.Checkbox("option two").For(Bootstrap.For(m => m.BooleanField))
-                @Bootstrap.Checkbox("option three").For(Bootstrap.For(m => m.BooleanField))
+                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option one"))
+                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option two"))
+                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option three"))
             }
         }
     }

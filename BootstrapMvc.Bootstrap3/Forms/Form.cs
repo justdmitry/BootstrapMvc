@@ -4,7 +4,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Forms
 {
-    public class Form : ContentElement<FormContent>, ILink
+    public class Form: ContentElement<FormContent>, ILink
     {
         private GridSize labelWidth;
 
@@ -44,10 +44,6 @@ namespace BootstrapMvc.Forms
         protected override FormContent CreateContentContext()
         {
             return new FormContent(Context);
-        }
-
-        protected void FormContent_Disposing(object sender, EventArgs e)
-        {
         }
 
         protected override void WriteSelfStart(System.IO.TextWriter writer)

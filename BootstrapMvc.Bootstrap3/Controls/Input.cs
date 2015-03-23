@@ -20,7 +20,7 @@ namespace BootstrapMvc.Controls
 
         public GridSize SizeValue { get; set; }
 
-        void IFormControl.SetControlContext(IControlContext context)
+        void IControlContextHolder.SetControlContext(IControlContext context)
         {
             ControlContextValue = context;
         }

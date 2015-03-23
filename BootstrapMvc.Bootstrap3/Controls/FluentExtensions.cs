@@ -124,21 +124,5 @@ namespace BootstrapMvc
         }
 
         #endregion
-
-        #region IFormControl
-
-        public static T ControlContext<T>(this T target, IControlContext value) where T : IFormControl
-        {
-            target.SetControlContext(value);
-            return target;
-        }
-
-        public static T For<T>(this T target, IControlContext controlContext) where T : IFormControl
-        {
-            target.SetControlContext(controlContext);
-            return target;
-        }
-
-        #endregion
     }
 }

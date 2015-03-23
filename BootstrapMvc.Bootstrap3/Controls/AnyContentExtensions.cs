@@ -77,5 +77,11 @@ namespace BootstrapMvc
         {
             return new SelectOption(contentHelper.Context).Value(value).Content(text);
         }
+
+        public static TControl ControlFor<TModel, TProperty, TControl>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression, TControl control)
+            where TControl : IFormControl
+        {
+            return ControlContextHolderExtensions.ControlContext(control, contentHelper.Context.GetControlContext(expression));
+        }
     }
 }

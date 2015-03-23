@@ -18,7 +18,7 @@ namespace BootstrapMvc.Controls
 
         public bool InlineValue { get; set; }
 
-        void IFormControl.SetControlContext(IControlContext context)
+        void IControlContextHolder.SetControlContext(IControlContext context)
         {
             ControlContextValue = context;
         }

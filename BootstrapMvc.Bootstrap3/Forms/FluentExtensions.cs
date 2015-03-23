@@ -8,7 +8,15 @@ namespace BootstrapMvc
     {
         #region Form
 
+        //// Failed to write all pairs as single generic method(s). Feel free to improve.
+
         public static Form Method(this Form target, SubmitMethod value)
+        {
+            target.MethodValue = value;
+            return target;
+        }
+
+        public static Form<T> Method<T>(this Form<T> target, SubmitMethod value)
         {
             target.MethodValue = value;
             return target;
@@ -20,7 +28,19 @@ namespace BootstrapMvc
             return target;
         }
 
+        public static Form<T> Type<T>(this Form<T> target, FormType value)
+        {
+            target.TypeValue = value;
+            return target;
+        }
+
         public static Form Enctype(this Form target, FormEnctype value)
+        {
+            target.EnctypeValue = value;
+            return target;
+        }
+
+        public static Form<T> Enctype<T>(this Form<T> target, FormEnctype value)
         {
             target.EnctypeValue = value;
             return target;
@@ -32,7 +52,19 @@ namespace BootstrapMvc
             return target;
         }
 
+        public static Form<T> LabelWidth<T>(this Form<T> target, GridSize value)
+        {
+            target.LabelWidthValue = value;
+            return target;
+        }
+
         public static Form ControlsWidth(this Form target, GridSize value)
+        {
+            target.ControlsWidthValue = value;
+            return target;
+        }
+
+        public static Form<T> ControlsWidth<T>(this Form<T> target, GridSize value)
         {
             target.ControlsWidthValue = value;
             return target;
@@ -74,12 +106,6 @@ namespace BootstrapMvc
         public static FormGroup Control(this FormGroup target, IFormControl value)
         {
             target.ControlValue = value;
-            return target;
-        }
-
-        public static FormGroup ControlContext(this FormGroup target, IControlContext controlContext)
-        {
-            target.ControlContextValue = controlContext;
             return target;
         }
 

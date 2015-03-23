@@ -3,8 +3,8 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Controls
 {
-    public interface IFormControl : IWritable
+    public interface IFormControl : IControlContextHolder, IWritable
     {
-        void SetControlContext(IControlContext context);
+        // Nothing more
     }
 }

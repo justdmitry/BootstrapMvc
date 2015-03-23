@@ -51,6 +51,50 @@ namespace BootstrapMvc
 
         #endregion
 
+        #region FormT
+
+        public static Form<T> Form<T>(this IAnyContentMarker<T> contentHelper)
+        {
+            return new Form<T>(contentHelper.Context);
+        }
+
+        public static Form<T> Form<T>(this IAnyContentMarker<T> contentHelper, FormType type)
+        {
+            return new Form<T>(contentHelper.Context).Type(type);
+        }
+
+        public static Form<T> Form<T>(this IAnyContentMarker<T> contentHelper, FormEnctype enctype)
+        {
+            return new Form<T>(contentHelper.Context).Enctype(enctype);
+        }
+
+        public static Form<T> Form<T>(this IAnyContentMarker<T> contentHelper, FormType type, FormEnctype enctype)
+        {
+            return new Form<T>(contentHelper.Context).Type(type).Enctype(enctype);
+        }
+
+        public static FormContent<T> BeginForm<T>(this IAnyContentMarker<T> contentHelper)
+        {
+            return Form(contentHelper).BeginContent();
+        }
+
+        public static FormContent<T> BeginForm<T>(this IAnyContentMarker<T> contentHelper, FormType type)
+        {
+            return Form(contentHelper, type).BeginContent();
+        }
+
+        public static FormContent<T> BeginForm<T>(this IAnyContentMarker<T> contentHelper, FormEnctype enctype)
+        {
+            return Form(contentHelper, enctype).BeginContent();
+        }
+
+        public static FormContent<T> BeginForm<T>(this IAnyContentMarker<T> contentHelper, FormType type, FormEnctype enctype)
+        {
+            return Form(contentHelper, type, enctype).BeginContent();
+        }
+
+        #endregion
+
         #region Fieldset
 
         public static Fieldset FormFieldset(this IAnyContentMarker contentHelper)
@@ -58,12 +102,12 @@ namespace BootstrapMvc
             return new Fieldset(contentHelper.Context);
         }
 
-        public static FormContent BeginFormFieldset(this IAnyContentMarker contentHelper)
+        public static AnyContent BeginFormFieldset(this IAnyContentMarker contentHelper)
         {
             return new Fieldset(contentHelper.Context).BeginContent();
         }
 
-        public static FormContent BeginFormFieldset(this IAnyContentMarker contentHelper, object legend)
+        public static AnyContent BeginFormFieldset(this IAnyContentMarker contentHelper, object legend)
         {
             return new Fieldset(contentHelper.Context).Legend(legend).BeginContent();
         }
@@ -98,12 +142,7 @@ namespace BootstrapMvc
 
         public static FormGroup FormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression)
         {
-            return new FormGroup(contentHelper.Context).ControlContext(contentHelper.Context.GetControlContext(expression));
-        }
-
-        public static IControlContext For<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression)
-        {
-            return contentHelper.Context.GetControlContext(expression);
+            return ControlContextHolderExtensions.ControlContext(new FormGroup(contentHelper.Context), contentHelper.Context.GetControlContext(expression));
         }
 
         #endregion

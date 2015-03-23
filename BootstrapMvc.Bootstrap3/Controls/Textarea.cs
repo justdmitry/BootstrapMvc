@@ -21,7 +21,7 @@ namespace BootstrapMvc.Controls
 
         public int RowsValue { get; set; }
 
-        void IFormControl.SetControlContext(IControlContext context)
+        void IControlContextHolder.SetControlContext(IControlContext context)
         {
             ControlContextValue = context;
         }

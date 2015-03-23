@@ -15,7 +15,7 @@
     <copyright>© Dmitry Popov, 2015</copyright>
     <tags>Bootstrap Bootstrap3 Mvc HtmlHelpers</tags>
     <dependencies>
-      <dependency id="BootstrapMvc.Core" version="0.11.50208" />
+      <dependency id="BootstrapMvc.Core" version="0.12.50323" />
     </dependencies>
   </metadata>
 </package>

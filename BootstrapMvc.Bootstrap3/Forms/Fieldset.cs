@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Forms
 {
-    public class Fieldset : ContentElement<FormContent>
+    public class Fieldset : AnyContentElement
     {
         public Fieldset(IBootstrapContext context)
             : base(context)
@@ -28,12 +28,12 @@ namespace BootstrapMvc.Forms
             return this;
         }
 
-        protected override FormContent CreateContentContext()
+        protected override AnyContent CreateContentContext()
         {
-            return new FormContent(Context);
+            return new AnyContent(Context);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var tb = Context.CreateTagBuilder("fieldset");
 
@@ -51,11 +51,8 @@ namespace BootstrapMvc.Forms
             {
                 LegendValue.WriteTo(writer);
             }
-        }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer)
-        {
-            writer.Write("</fieldset>");
+            return "</fieldset>";
         }
     }
 }

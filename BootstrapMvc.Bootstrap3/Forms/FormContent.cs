@@ -19,12 +19,12 @@ namespace BootstrapMvc.Forms
             return new Fieldset(Context);
         }
 
-        public FormContent BeginFieldset()
+        public AnyContent BeginFieldset()
         {
             return new Fieldset(Context).BeginContent();
         }
 
-        public FormContent BeginFieldset(object legend)
+        public AnyContent BeginFieldset(object legend)
         {
             return new Fieldset(Context).Legend(legend).BeginContent();
         }

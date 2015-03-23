@@ -5,7 +5,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Forms
 {
-    public class FormGroup : AnyContentElement
+    public class FormGroup : AnyContentElement, IControlContextHolder
     {
         private IFormControl control = null;
 
@@ -55,6 +55,11 @@ namespace BootstrapMvc.Forms
                 valueRequired = value;
                 overrideRequired = true;
             }
+        }
+
+        public void SetControlContext(IControlContext context)
+        {
+            this.ControlContextValue = context;
         }
 
         public AnyContent BeginControls()
