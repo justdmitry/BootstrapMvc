@@ -51,6 +51,7 @@
     <Compile Include="Core\IAnyContentMarker.cs" />
     <Compile Include="Core\IBootstrapContext.cs" />
     <Compile Include="Core\IBootstrapContextT.cs" />
+    <Compile Include="Core\IControlContextHolder.cs" />
     <Compile Include="Core\ILink.cs" />
     <Compile Include="Core\ITagBuilder.cs" />
     <Compile Include="Core\Element.cs">
