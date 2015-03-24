@@ -63,7 +63,7 @@ namespace BootstrapMvc.Forms
             }
             if (!string.IsNullOrEmpty(HrefValue))
             {
-                tb.MergeAttribute("href", HrefValue);
+                tb.MergeAttribute("action", HrefValue);
             }
 
             ApplyCss(tb);
