@@ -69,7 +69,7 @@ namespace BootstrapMvc.Controls
             var input = Context.CreateTagBuilder("input");
             input.AddCssClass("form-control");
             var actualType = TypeValue;
-            if (ControlContextValue != null)
+            if (actualType != InputType.File && ControlContextValue != null)
             {
                 input.MergeAttribute("id", ControlContextValue.Name);
                 input.MergeAttribute("name", ControlContextValue.Name);

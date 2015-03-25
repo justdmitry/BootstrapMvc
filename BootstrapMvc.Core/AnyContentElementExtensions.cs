@@ -11,6 +11,12 @@ namespace BootstrapMvc
             return target;
         }
 
+        public static T Content<T>(this T target, params string[] values) where T : AnyContentElement
+        {
+            target.AddContent(string.Concat(values));
+            return target;
+        }
+
         public static T Content<T>(this T target, params object[] values) where T : AnyContentElement
         {
             foreach (var value in values)

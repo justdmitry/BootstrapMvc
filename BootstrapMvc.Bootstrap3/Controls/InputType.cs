@@ -19,5 +19,6 @@ namespace BootstrapMvc
         Time, 
         Url, 
         Week, 
+        File
     }
 }

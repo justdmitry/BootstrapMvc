@@ -70,6 +70,11 @@ namespace BootstrapMvc
             return new Button(contentHelper.Context).Content(new Icon(contentHelper.Context).Type(iconType), content);
         }
 
+        public static Button Button(this IAnyContentMarker contentHelper, ButtonType type, IconType iconType)
+        {
+            return new Button(contentHelper.Context).Type(type).Content(new Icon(contentHelper.Context).Type(iconType));
+        }
+
         public static Button Button(this IAnyContentMarker contentHelper, ButtonType type, IconType iconType, object content)
         {
             return new Button(contentHelper.Context).Type(type).Content(new Icon(contentHelper.Context).Type(iconType), content);
