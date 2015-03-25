@@ -47,5 +47,10 @@ namespace BootstrapMvc
         {
             return contextHelper.Input(InputType.Url);
         }
+
+        public static Input InputFile(this IAnyContentMarker contextHelper)
+        {
+            return contextHelper.Input(InputType.File);
+        }
     }
 }
