@@ -28,6 +28,12 @@ namespace BootstrapMvc
             return target;
         }
 
+        public static GridCol Offset(this GridCol target, byte xs, byte sm, byte md, byte lg)
+        {
+            target.OffsetValue = new GridSize(xs, sm, md, lg);
+            return target;
+        }
+
         #endregion
     }
 }
