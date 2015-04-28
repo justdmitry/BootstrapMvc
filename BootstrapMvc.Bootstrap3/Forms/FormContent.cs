@@ -49,17 +49,17 @@ namespace BootstrapMvc.Forms
 
         public FormGroup Group(object label)
         {
-            return new FormGroup(Context).Label(label);
+            return Group().Label(label);
         }
 
         public AnyContent BeginGroup()
         {
-            return new FormGroup(Context).BeginContent();
+            return Group().BeginContent();
         }
 
         public AnyContent BeginGroup(object label)
         {
-            return new FormGroup(Context).Label(label).BeginContent();
+            return Group(label).BeginContent();
         }
 
         #endregion

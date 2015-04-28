@@ -13,23 +13,22 @@
     using (Bootstrap.BeginGridCol(leftColSize))
     {
 <pre>
-using (Bootstrap.BeginForm())
+using (var form = Bootstrap.BeginForm())
 {
     using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
         @@Bootstrap.FormGroupFor(m => m.StringField)
-             .Label("Label 1")
-             .Control(Bootstrap.Input().Placeholder("placeholder text"))
+            .Label("Label 1")
+            .Control(Bootstrap.Input().Placeholder("placeholder text"))
     }
-    using (Bootstrap.BeginFormFieldset("Fieldset two"))
+    using (form.BeginFieldset("Fieldset two"))
     {
-        @@Bootstrap.FormGroupFor(m => m.IntegerField)
-            .Label("Label 2")
+        @@form.GroupFor(m => m.IntegerField, "Label 2")
             .Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
-        @@Bootstrap.FormGroupFor(m => m.BooleanField)
+        @@form.GroupFor(m => m.BooleanField)
             .Control(Bootstrap.Checkbox("checkbox text"))
     }
-    using (Bootstrap.FormGroup().BeginControls())
+    using (form.Group().BeginControls())
     {
         @@Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
         @@Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
@@ -39,18 +38,18 @@ using (Bootstrap.BeginForm())
     }
     using (Bootstrap.BeginGridCol(rightColSize))
     {
-        using (Bootstrap.BeginForm())
+        using (var form = Bootstrap.BeginForm())
         {
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
                 @Bootstrap.FormGroupFor(m => m.StringField).Label("Label 1").Control(Bootstrap.Input().Placeholder("placeholder text"))
             }
-            using (Bootstrap.BeginFormFieldset("Fieldset two"))
+            using (form.BeginFieldset("Fieldset two"))
             {
-                @Bootstrap.FormGroupFor(m => m.IntegerField).Label("Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
-                @Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
+                @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
+                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
             }
-            using (Bootstrap.FormGroup().BeginControls())
+            using (form.Group().BeginControls())
             {
                 @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
                 @Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
@@ -59,29 +58,28 @@ using (Bootstrap.BeginForm())
     }
 }
 
-@Bootstrap.H3("Same form, but 'horizontal'")
+@Bootstrap.H3("Same form, but 'FormType.Horizontal'")
 @using (Bootstrap.BeginGridRow())
 {
     using (Bootstrap.BeginGridCol(leftColSize))
     {
 <pre>
-using (Bootstrap.BeginForm(FormType.Horizontal))
+using (var form = Bootstrap.BeginForm(FormType.Horizontal))
 {
     using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
         @@Bootstrap.FormGroupFor(m => m.StringField)
-             .Label("Label 1")
-             .Control(Bootstrap.Input().Placeholder("placeholder text"))
+            .Label("Label 1")
+            .Control(Bootstrap.Input().Placeholder("placeholder text"))
     }
-    using (Bootstrap.BeginFormFieldset("Fieldset two"))
+    using (form.BeginFieldset("Fieldset two"))
     {
-        @@Bootstrap.FormGroupFor(m => m.IntegerField)
-            .Label("Label 2")
+        @@form.GroupFor(m => m.IntegerField, "Label 2")
             .Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
-        @@Bootstrap.FormGroupFor(m => m.BooleanField)
+        @@form.GroupFor(m => m.BooleanField)
             .Control(Bootstrap.Checkbox("checkbox text"))
     }
-    using (Bootstrap.FormGroup().BeginControls())
+    using (form.Group().BeginControls())
     {
         @@Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
         @@Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
@@ -91,18 +89,18 @@ using (Bootstrap.BeginForm(FormType.Horizontal))
     }
     using (Bootstrap.BeginGridCol(rightColSize))
     {
-        using (Bootstrap.BeginForm(FormType.Horizontal))
+        using (var form = Bootstrap.BeginForm(FormType.Horizontal))
         {
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
                 @Bootstrap.FormGroupFor(m => m.StringField).Label("Label 1").Control(Bootstrap.Input().Placeholder("placeholder text"))
             }
-            using (Bootstrap.BeginFormFieldset("Fieldset two"))
+            using (form.BeginFieldset("Fieldset two"))
             {
-                @Bootstrap.FormGroupFor(m => m.IntegerField).Label("Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
-                @Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
+                @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
+                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
             }
-            using (Bootstrap.FormGroup().BeginControls())
+            using (form.Group().BeginControls())
             {
                 @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
                 @Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")

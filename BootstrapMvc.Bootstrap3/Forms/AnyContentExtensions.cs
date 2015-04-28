@@ -130,19 +130,39 @@ namespace BootstrapMvc
             return new FormGroup(contentHelper.Context);
         }
 
+        public static FormGroup FormGroup(this IAnyContentMarker contentHelper, object label)
+        {
+            return new FormGroup(contentHelper.Context).Label(label);
+        }
+
         public static AnyContent BeginFormGroup(this IAnyContentMarker contentHelper)
         {
-            return new FormGroup(contentHelper.Context).BeginContent();
+            return FormGroup(contentHelper).BeginContent();
         }
 
         public static AnyContent BeginFormGroup(this IAnyContentMarker contentHelper, object label)
         {
-            return new FormGroup(contentHelper.Context).Label(label).BeginContent();
+            return FormGroup(contentHelper, label).BeginContent();
         }
 
         public static FormGroup FormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression)
         {
             return ControlContextHolderExtensions.ControlContext(new FormGroup(contentHelper.Context), contentHelper.Context.GetControlContext(expression));
+        }
+
+        public static FormGroup FormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression, object label)
+        {
+            return FormGroupFor(contentHelper, expression).Label(label);
+        }
+
+        public static AnyContent BeginFormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression)
+        {
+            return FormGroupFor(contentHelper, expression).BeginContent();
+        }
+
+        public static AnyContent BeginFormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression, object label)
+        {
+            return FormGroupFor(contentHelper, expression, label).BeginContent();
         }
 
         #endregion
