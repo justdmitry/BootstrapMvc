@@ -22,6 +22,8 @@ namespace BootstrapMvc.Controls
 
         public GridSize SizeValue { get; set; }
 
+        public bool DisabledValue { get; set; }
+
         void IControlContextHolder.SetControlContext(IControlContext context)
         {
             ControlContextValue = context;
@@ -35,6 +37,16 @@ namespace BootstrapMvc.Controls
         GridSize IGridSizable.Size()
         {
             return SizeValue;
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            DisabledValue = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return DisabledValue;
         }
 
         protected override SelectContent CreateContentContext()
@@ -86,6 +98,10 @@ namespace BootstrapMvc.Controls
                     tb.MergeAttribute("required", "required");
                 }
                 value = ControlContextValue.Value;
+            }
+            if (DisabledValue)
+            {
+                tb.MergeAttribute("disabled", "disabled");
             }
 
             ApplyCss(tb);

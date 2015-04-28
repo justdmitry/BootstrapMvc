@@ -14,11 +14,23 @@ namespace BootstrapMvc.Controls
             // Nothing
         }
 
+        public bool DisabledValue { get; set; }
+
         public IControlContext ControlContextValue { get; set; }
 
         void IControlContextHolder.SetControlContext(IControlContext context)
         {
             ControlContextValue = context;
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            DisabledValue = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return DisabledValue;
         }
 
         protected override void WriteSelf(System.IO.TextWriter writer)
@@ -39,6 +51,10 @@ namespace BootstrapMvc.Controls
                 {
                     input.SetInnerText(value.ToString());
                 }
+            }
+            if (DisabledValue)
+            {
+                // nothing - already read-only :)
             }
 
             ApplyCss(input);

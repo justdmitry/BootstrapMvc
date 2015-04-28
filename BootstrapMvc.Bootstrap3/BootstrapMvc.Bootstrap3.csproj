@@ -61,7 +61,7 @@
     <Compile Include="Controls\IFormControl.cs" />
     <Compile Include="Controls\ControlsExtensions.cs" />
     <Compile Include="Controls\InputExtensions.cs" />
-    <Compile Include="Controls\IPlaceholderTarget.cs" />
+    <Compile Include="Markers\IPlaceholderTarget.cs" />
     <Compile Include="Controls\ISelectItem.cs" />
     <Compile Include="Controls\Select.cs" />
     <Compile Include="Controls\Radio.cs" />
@@ -77,7 +77,6 @@
     <Compile Include="Controls\Textarea.cs" />
     <Compile Include="DateInputMode.cs" />
     <Compile Include="Dropdown\DropdownMenuFluent.cs" />
-    <Compile Include="Dropdown\DropdownMenuItemLinkFluent.cs" />
     <Compile Include="Elements\FluentExtensions.cs" />
     <Compile Include="Forms\FluentExtensions.cs" />
     <Compile Include="Forms\FormContentT.cs" />
@@ -140,7 +139,10 @@
     <Compile Include="ControlContextHolderExtensions.cs" />
     <Compile Include="IconType.cs" />
     <Compile Include="AnyContentElements\Label.cs" />
+    <Compile Include="IDisableable.cs" />
     <Compile Include="Lists\FluentExtensions.cs" />
+    <Compile Include="IDisableableExtensions.cs" />
+    <Compile Include="Markers\MarkersExtensions.cs" />
     <Compile Include="MessageType.cs" />
     <Compile Include="LabelType.cs" />
     <Compile Include="Lists\DefinitionList.cs" />

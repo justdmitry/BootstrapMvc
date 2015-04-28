@@ -21,6 +21,8 @@ namespace BootstrapMvc.Controls
 
         public int RowsValue { get; set; }
 
+        public bool DisabledValue { get; set; }
+
         void IControlContextHolder.SetControlContext(IControlContext context)
         {
             ControlContextValue = context;
@@ -34,6 +36,16 @@ namespace BootstrapMvc.Controls
         GridSize IGridSizable.Size()
         {
             return SizeValue;
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            DisabledValue = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return DisabledValue;
         }
 
         protected override void WriteSelf(System.IO.TextWriter writer)
@@ -79,6 +91,10 @@ namespace BootstrapMvc.Controls
                 {
                     tb.MergeAttribute("required", "required");
                 }
+            }
+            if (DisabledValue)
+            {
+                tb.MergeAttribute("disabled", "disabled");
             }
 
             ApplyCss(tb);

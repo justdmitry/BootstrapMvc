@@ -315,3 +315,34 @@ using (Bootstrap.BeginForm())
         }
     }
 }
+
+
+
+@Bootstrap.H3("Other features")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(leftColSize))
+    {
+<pre>
+using (Bootstrap.BeginForm())
+{
+    using (Bootstrap.BeginFormFieldset("Fieldset one"))
+    {
+        @@Bootstrap.FormGroupFor(m => m.StringField)
+             .Label("Disabled control")
+             .Control(Bootstrap.Input().Disabled())
+    }
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(rightColSize))
+    {
+        using (Bootstrap.BeginForm())
+        {
+            using (Bootstrap.BeginFormFieldset("Fieldset one"))
+            {
+                @Bootstrap.FormGroupFor(m => m.StringField).Label("Disabled control").Control(Bootstrap.Input().Disabled())
+            }
+        }
+    }
+}

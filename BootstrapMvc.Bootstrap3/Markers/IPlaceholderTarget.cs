@@ -1,8 +1,9 @@
 ﻿using System;
 
-namespace BootstrapMvc.Controls
+namespace BootstrapMvc
 {
     public interface IPlaceholderTarget
     {
+        // Nothing, marker only
     }
 }
