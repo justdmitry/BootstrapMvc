@@ -1,13 +1,12 @@
 ﻿using System;
-using System.IO;
-using System.Web;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using Moq;
+using Xunit;
 
 namespace BootstrapMvc.Core
 {
-    [TestClass]
     public class ContentElementTests
     {
         private MockRepository mocks;
@@ -15,19 +14,18 @@ namespace BootstrapMvc.Core
 
         private Stack<object> stack;
 
-        [TestInitialize]
-        public void Initialize()
+        public ContentElementTests()
         {
             stack = new Stack<object>();
 
             mocks = new MockRepository(MockBehavior.Strict);
             contextMock = mocks.Create<IBootstrapContext>();
-            contextMock.Setup(x => x.HtmlEncode(It.IsAny<string>())).Returns((string s) => HttpUtility.HtmlEncode(s));
+            contextMock.Setup(x => x.HtmlEncode(It.IsAny<string>())).Returns((string s) => WebUtility.HtmlEncode(s));
             contextMock.Setup(x => x.Push(It.IsAny<object>())).Callback((object x) => stack.Push(x));
             contextMock.Setup(x => x.PopIfEqual(It.IsAny<object>())).Callback((object x) => stack.Pop());
         }
 
-        [TestMethod]
+        [Fact]
         public void Test_Writes_Ok()
         {
             using (var sw = new StringWriter())
@@ -37,7 +35,7 @@ namespace BootstrapMvc.Core
                 {
                     sw.Write("-value-");
                 }
-                Assert.AreEqual("start-value-end", sw.ToString());
+                Assert.Equal("start-value-end", sw.ToString());
             }
         }
 
@@ -63,7 +61,7 @@ namespace BootstrapMvc.Core
                 return new DummyDisposableContext(Context);
             }
 
-            protected override void WriteSelfStart(System.IO.TextWriter writer)
+            protected override void WriteSelfStart(TextWriter writer)
             {
                 writer.Write("start");
             }

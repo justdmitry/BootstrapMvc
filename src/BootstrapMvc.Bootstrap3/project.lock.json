@@ -1,0 +1,35 @@
+{
+  "locked": false,
+  "version": 1,
+  "targets": {
+    ".NETFramework,Version=v4.0": {
+      "BootstrapMvc.Core/0.13.50925.1500": {
+        "type": "project"
+      }
+    },
+    ".NETFramework,Version=v4.5": {
+      "BootstrapMvc.Core/0.13.50925.1500": {
+        "type": "project"
+      }
+    },
+    "DNX,Version=v4.5": {
+      "BootstrapMvc.Core/0.13.50925.1500": {
+        "type": "project"
+      }
+    }
+  },
+  "libraries": {
+    "BootstrapMvc.Core/0.13.50925.1500": {
+      "type": "project",
+      "path": "../BootstrapMvc.Core/project.json"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "BootstrapMvc.Core >= 0.13"
+    ],
+    ".NETFramework,Version=v4.0": [],
+    ".NETFramework,Version=v4.5": [],
+    "DNX,Version=v4.5": []
+  }
+}

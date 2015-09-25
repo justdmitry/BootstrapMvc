@@ -1,0 +1,20 @@
+﻿{
+  "version": "0.18.50925.1510",
+  "description": "Bootstrap 3.3 classes for BootstrapMvc pack",
+  "authors": [ "Dmitry" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "title": "BootstrapMvc.Bootstrap3",
+  "copyright": "Copyright © Dmitry Popov, 2015",
+
+  "dependencies": {
+    "BootstrapMvc.Core": "0.13"
+  },
+
+  "frameworks": {
+    "net4": { },
+    "net45": { },
+    "dnx45": { }
+  }
+}

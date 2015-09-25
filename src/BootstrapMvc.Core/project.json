@@ -1,0 +1,18 @@
+﻿{
+  "version": "0.13.50925.1500",
+  "description": "Core library for BootstrapMvc pack",
+  "authors": [ "Dmitry" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "title": "BootstrapMvc.Core",
+  "copyright": "Copyright © Dmitry Popov, 2015",
+
+  "dependencies": { },
+
+  "frameworks": {
+    "net4": { },
+    "net45": { },
+    "dnx45": { }
+  }
+}

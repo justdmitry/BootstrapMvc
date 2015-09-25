@@ -85,14 +85,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <ProjectReference Include="..\BootstrapMvc.Bootstrap3\BootstrapMvc.Bootstrap3.csproj">
-      <Project>{9faee806-c15f-4cee-992b-c5cdc431eab8}</Project>
-      <Name>BootstrapMvc.Bootstrap3</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BootstrapMvc.Core\BootstrapMvc.Core.csproj">
-      <Project>{ea934fa0-71aa-4f8f-bd50-3af7f487785a}</Project>
-      <Name>BootstrapMvc.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BootstrapMvc.Mvc5\BootstrapMvc.Mvc5.csproj">
       <Project>{e4b26ac5-d86e-4a87-8786-506283281ea9}</Project>
       <Name>BootstrapMvc.Mvc5</Name>

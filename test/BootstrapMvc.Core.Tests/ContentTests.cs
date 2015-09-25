@@ -1,27 +1,24 @@
 ﻿using System;
 using System.IO;
-using System.Text;
-using System.Web;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Net;
 using Moq;
+using Xunit;
 
 namespace BootstrapMvc.Core
 {
-    [TestClass]
     public class ContentTests
     {
         private MockRepository mocks;
         private Mock<IBootstrapContext> contextMock;
 
-        [TestInitialize]
-        public void Initialize()
+        public ContentTests()
         {
             mocks = new MockRepository(MockBehavior.Strict);
             contextMock = mocks.Create<IBootstrapContext>();
-            contextMock.Setup(x => x.HtmlEncode(It.IsAny<string>())).Returns((string s) => HttpUtility.HtmlEncode(s));
+            contextMock.Setup(x => x.HtmlEncode(It.IsAny<string>())).Returns((string s) => WebUtility.HtmlEncode(s));
         }
 
-        [TestMethod]
+        [Fact]
         public void Test_Content_StringWithoutEncoding()
         {
             var sample = "<h1>Hello!</h1>";
@@ -31,11 +28,11 @@ namespace BootstrapMvc.Core
             using (var sw = new StringWriter())
             {
                 sc.WriteTo(sw);
-                Assert.AreEqual(sample, sw.ToString());
+                Assert.Equal(sample, sw.ToString());
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void Test_Content_StringWithEncoding()
         {
             var sample = "<h1>Hello!</h1>";
@@ -46,11 +43,11 @@ namespace BootstrapMvc.Core
             using (var sw = new StringWriter())
             {
                 sc.WriteTo(sw);
-                Assert.AreEqual(sampleEncoded, sw.ToString());
+                Assert.Equal(sampleEncoded, sw.ToString());
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void Test_ContentKnows_WritableBlock()
         {
             var sample = "<test>";
@@ -63,11 +60,11 @@ namespace BootstrapMvc.Core
 
                 sc.WriteTo(sw);
 
-                Assert.AreEqual(sample, sw.ToString());
+                Assert.Equal(sample, sw.ToString());
             }
         }
         
-        [TestMethod]
+        [Fact]
         public void Test_Content_Calls_ContextWrite()
         {
             var obj = new object();
