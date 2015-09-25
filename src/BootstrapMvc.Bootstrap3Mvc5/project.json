@@ -1,0 +1,25 @@
+﻿{
+  "version": "0.3.50925.1620",
+  "description": "Helpers for using [Twitter] Bootstrap 3.3 in MVC5 projects.",
+  "authors": [ "Dmitry" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "title": "BootstrapMvc.Bootstrap3Mvc5",
+  "copyright": "Copyright © Dmitry Popov, 2015",
+
+  "dependencies": {
+    "Microsoft.AspNet.Mvc": "5.2.3",
+    "Microsoft.AspNet.Razor": "3.2.3",
+    "BootstrapMvc.Bootstrap3": "0.18",
+    "BootstrapMvc.Mvc5": "0.13"
+  },
+
+  "frameworks": {
+    "net45": {
+      "frameworkAssemblies": {
+        "System.Web": "4.0.0.0"
+      }
+    }
+  }
+}

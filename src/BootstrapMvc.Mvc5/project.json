@@ -1,0 +1,24 @@
+﻿{
+  "version": "0.13.50925.1615",
+  "description": "MVC5 integration for BootstrapMvc pack",
+  "authors": [ "Dmitry" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "title": "BootstrapMvc.Mvc5",
+  "copyright": "Copyright © Dmitry Popov, 2015",
+
+  "dependencies": {
+    "Microsoft.AspNet.Mvc": "5.2.3",
+    "Microsoft.AspNet.Razor": "3.2.3",
+    "BootstrapMvc.Core": "0.13"
+  },
+
+  "frameworks": {
+    "net45": {
+      "frameworkAssemblies": {
+        "System.Web": "4.0.0.0"
+      }
+    }
+  }
+}
