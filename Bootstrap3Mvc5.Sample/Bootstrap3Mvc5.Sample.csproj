@@ -42,6 +42,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BootstrapMvc.Bootstrap3, Version=0.18.50925.1510, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BootstrapMvc.Bootstrap3.0.18.50925.1510\lib\net45\BootstrapMvc.Bootstrap3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BootstrapMvc.Bootstrap3Mvc5, Version=0.3.50925.1620, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BootstrapMvc.Bootstrap3Mvc5.0.3.50925.1620\lib\net45\BootstrapMvc.Bootstrap3Mvc5.dll</HintPath>
+      <Private>True</Private>
+      <Aliases>bootstrap3mvc5</Aliases>
+    </Reference>
+    <Reference Include="BootstrapMvc.Core, Version=0.13.50925.1500, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BootstrapMvc.Core.0.13.50925.1500\lib\net45\BootstrapMvc.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BootstrapMvc.Mvc5, Version=0.13.50925.1615, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BootstrapMvc.Mvc5.0.13.50925.1615\lib\net45\BootstrapMvc.Mvc5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Web.Entity" />
@@ -153,17 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BootstrapMvc.Bootstrap3Mvc5\BootstrapMvc.Bootstrap3Mvc5.csproj">
-      <Project>{07bce768-cfbd-46bc-b208-299d2c2eb29e}</Project>
-      <Name>BootstrapMvc.Bootstrap3Mvc5</Name>
-      <Aliases>global,bootstrap3mvc5</Aliases>
-    </ProjectReference>
-    <ProjectReference Include="..\BootstrapMvc.Mvc5\BootstrapMvc.Mvc5.csproj">
-      <Project>{e4b26ac5-d86e-4a87-8786-506283281ea9}</Project>
-      <Name>BootstrapMvc.Mvc5</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

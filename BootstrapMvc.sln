@@ -12,7 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{91AC3ED2-7CF4-4F0B-9300-36185CC6B831}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		create-packages.cmd = create-packages.cmd
 		global.json = global.json
 		README.md = README.md
 	EndProjectSection
@@ -30,6 +29,13 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BootstrapMvc.Mvc5", "src\BootstrapMvc.Mvc5\BootstrapMvc.Mvc5.xproj", "{9CDE6468-D9FD-46BE-925F-24733C502AD7}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BootstrapMvc.Bootstrap3Mvc5", "src\BootstrapMvc.Bootstrap3Mvc5\BootstrapMvc.Bootstrap3Mvc5.xproj", "{DDDD8A3F-BD6B-4069-84F4-C8B11E7065EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{63779FC3-2F85-44B7-9E85-00424B7E841E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
