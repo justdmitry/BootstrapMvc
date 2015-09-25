@@ -1,17 +1,17 @@
 ﻿{
   "version": "0.13.50925.1500",
-  "description": "Core library for BootstrapMvc pack",
-  "authors": [ "Dmitry" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
   "title": "BootstrapMvc.Core",
+  "description": "Core library for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).",
+  "authors": [ "just_dmitry" ],
+  "tags": [ "Bootstrap", "Mvc", "HtmlHelpers" ],
+  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+  "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
+  "releaseNotes": "Upgrade to vNext",
 
   "dependencies": { },
 
   "frameworks": {
-    "net4": { },
     "net45": { },
     "dnx45": { }
   }

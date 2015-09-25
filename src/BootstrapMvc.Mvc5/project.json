@@ -1,12 +1,13 @@
 ﻿{
   "version": "0.13.50925.1615",
-  "description": "MVC5 integration for BootstrapMvc pack",
-  "authors": [ "Dmitry" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
   "title": "BootstrapMvc.Mvc5",
+  "description": "MVC5 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).",
+  "authors": [ "just_dmitry" ],
+  "tags": [ "Bootstrap", "Mvc", "Mvc5", "HelpHelpers" ],
+  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+  "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
+  "releaseNotes": "Upgrade to vNext",
 
   "dependencies": {
     "Microsoft.AspNet.Mvc": "5.2.3",
