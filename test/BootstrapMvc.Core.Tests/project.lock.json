@@ -3,7 +3,7 @@
   "version": 1,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Core/0.13.50925.1500": {
+      "BootstrapMvc.Core/0.13.50925": {
         "type": "project"
       },
       "Microsoft.CodeAnalysis.Analyzers/1.1.0-beta1-20150812-01": {
@@ -353,7 +353,7 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Core/0.13.50925.1500": {
+    "BootstrapMvc.Core/0.13.50925": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Core/project.json"
     },

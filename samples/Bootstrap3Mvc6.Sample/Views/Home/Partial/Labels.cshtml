@@ -1,0 +1,70 @@
+﻿<h2>Labels</h2>
+
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+@@Bootstrap.Label(LabelType.DefaultGray,   "DefaultGray")
+@@Bootstrap.Label(LabelType.InfoCyan,      "InfoCyan")
+@@Bootstrap.Label(LabelType.PrimaryBlue,   "PrimaryBlue")
+@@Bootstrap.Label(LabelType.WarningOrange, "WarningOrange")
+@@Bootstrap.Label(LabelType.DangerRed,     "DangerRed")
+@@Bootstrap.Label(LabelType.SuccessGreen,  "SuccessGreen")
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        @Bootstrap.Label(LabelType.DefaultGray, "DefaultGray")
+        @Bootstrap.Label(LabelType.InfoCyan, "InfoCyan")
+        @Bootstrap.Label(LabelType.PrimaryBlue, "PrimaryBlue")
+        @Bootstrap.Label(LabelType.WarningOrange, "WarningOrange")
+        @Bootstrap.Label(LabelType.DangerRed, "DangerRed")
+        @Bootstrap.Label(LabelType.SuccessGreen, "SuccessGreen")
+    }
+}
+
+<p>Any content inside</p>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+@@Bootstrap.Label(LabelType.SuccessGreen)
+    .Content("Regular Strings will be encoded (&lt;hi!&gt;);")
+    .Content(MvcHtmlString.Create("&lt;i&gt;HtmlStrings will NOT be encoded&lt;/i&gt; "))
+    .Content(Bootstrap.Icon(IconType.Camera))
+)
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        @(Bootstrap.Label(LabelType.SuccessGreen)
+            .Content("Regular Strings will be encoded (<hi!>);")
+            .Content(MvcHtmlString.Create("<i>HtmlStrings will NOT be encoded</i> "))
+            .Content(Bootstrap.Icon(IconType.Camera))
+        )
+    }
+}
+
+
+<p>Any HTML content</p>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+@@using (Bootstrap.Label(LabelType.SuccessGreen).BeginContent())
+{
+    Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside (at your risk!)
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        using (Bootstrap.Label(LabelType.SuccessGreen).BeginContent())
+        {
+            <text>Use <code>BeginContent()</code> method and place any HTML markup inside (at your risk!)</text>
+        }
+    }
+}

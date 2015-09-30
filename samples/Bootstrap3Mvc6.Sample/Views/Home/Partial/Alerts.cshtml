@@ -1,0 +1,82 @@
+﻿
+<h2>Alerts</h2>
+
+@Bootstrap.H3("Simple alerts")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+@@Bootstrap.Alert(AlertType.DangerRed,     "This is simple danger alert")
+@@Bootstrap.Alert(AlertType.SuccessGreen,  "This is simple success alert")
+@@Bootstrap.Alert(AlertType.WarningOrange, "This is simple warning alert")
+@@Bootstrap.Alert(AlertType.InfoCyan,      "This is simple info alert")
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        @Bootstrap.Alert(AlertType.DangerRed, "This is simple danger alert")
+        @Bootstrap.Alert(AlertType.SuccessGreen, "This is simple success alert")
+        @Bootstrap.Alert(AlertType.WarningOrange, "This is simple warning alert")
+        @Bootstrap.Alert(AlertType.InfoCyan, "This is simple info alert")
+    }
+}
+
+@Bootstrap.H3("Closable alerts")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>@@Bootstrap.Alert(AlertType.WarningOrange, "Alert with close button").Closable()</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        @Bootstrap.Alert(AlertType.WarningOrange, "Alert with close button").Closable()
+    }
+}
+
+@Bootstrap.H3("Any content inside")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+@@Bootstrap.Alert(AlertType.SuccessGreen)
+    .Content("Regular Strings will be encoded (&lt;hi!&gt;);")
+    .Content(MvcHtmlString.Create("&lt;i&gt;HtmlStrings will NOT be encoded&lt;/i&gt; "))
+    .Content(Bootstrap.Label(LabelType.SuccessGreen, "and other Bootstrap objects are accepted"))
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        @(Bootstrap.Alert(AlertType.SuccessGreen)
+            .Content("Regular Strings will be encoded (<hi!>);")
+            .Content(MvcHtmlString.Create("<i>HtmlStrings will NOT be encoded</i> "))
+            .Content(Bootstrap.Label(LabelType.SuccessGreen, "and other Bootstrap objects are accepted")))
+
+    }
+}
+
+
+@Bootstrap.H3("Any HTML content")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+@@using (Bootstrap.Alert(AlertType.SuccessGreen).Closable().BeginContent())
+{
+    &lt;h4&gt;Header inside Alert&lt;/h4&gt;
+    &lt;p&gt;Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside, and mix with bootstrap objects @@Bootstrap.Icon(IconType.Exclamation_Sign)&lt;/p&gt;
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        using(Bootstrap.Alert(AlertType.SuccessGreen).Closable().BeginContent())
+        {
+            <h4>Header inside Alert</h4>
+            <p>Use <code>BeginContent()</code> method and place any HTML markup inside, and mix with bootstrap objects @Bootstrap.Icon(IconType.Exclamation_Sign)</p>
+        }
+    }
+}

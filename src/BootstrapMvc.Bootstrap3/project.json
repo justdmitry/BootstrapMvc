@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.18.50925.1510",
+  "version": "0.18.50925",
   "title": "BootstrapMvc.Bootstrap3",
   "description": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).",
   "authors": [ "just_dmitry" ],
@@ -10,11 +10,12 @@
   "releaseNotes": "Upgrade to vNext",
 
   "dependencies": {
-    "BootstrapMvc.Core": "0.13"
+    "BootstrapMvc.Core": ""
   },
 
   "frameworks": {
     "net45": { },
-    "dnx45": { }
+    "dnx451": { },
+    "dnxcore50": { }
   }
 }

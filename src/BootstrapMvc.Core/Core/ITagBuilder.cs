@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace BootstrapMvc.Core
 {
@@ -48,10 +49,19 @@ namespace BootstrapMvc.Core
         //     The type of the value object.
         void MergeAttributes<TKey, TValue>(IDictionary<TKey, TValue> attributes, bool replaceExisting);
 
+        [Obsolete("Use WriteStartTag(TextWriter)")]
         string GetStartTag();
 
+        [Obsolete("Use WriteEndTag(TextWriter)")]
         string GetEndTag();
 
+        [Obsolete("Use WriteFullTag(TextWriter)")]
         string GetFullTag();
+
+        void WriteStartTag(TextWriter writer);
+
+        void WriteEndTag(TextWriter writer);
+
+        void WriteFullTag(TextWriter writer);
     }
 }

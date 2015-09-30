@@ -1,0 +1,44 @@
+﻿using System;
+using Microsoft.AspNet.Mvc.Razor;
+using Microsoft.AspNet.Mvc.Razor.Internal;
+using Microsoft.AspNet.Mvc;
+
+namespace BootstrapMvc.Core
+{
+    public abstract class BootstrapViewPage<TModel> : RazorPage<TModel>
+    {
+        BootstrapHelper<TModel> bootstrap;
+
+        public BootstrapHelper<TModel> Bootstrap
+        {
+            get
+            {
+                if (bootstrap == null)
+                {
+                    var context = new BootstrapContext<TModel>(ViewContext, UrlHelper, HtmlEncoder, ViewData);
+                    bootstrap = new BootstrapHelper<TModel>(context);
+                }
+                return bootstrap;
+            }
+        }
+
+        [RazorInject]
+        public IUrlHelper UrlHelper { get; set; }
+
+        public static void WriteTo(System.IO.TextWriter writer, WritableBlock block)
+        {
+            if (block != null)
+            {
+                block.WriteTo(writer);
+            }
+        }
+        
+        public void Write(WritableBlock block)
+        {
+            if (block != null)
+            {
+                block.WriteTo(this.ViewContext.Writer);
+            }
+        }
+    }
+}

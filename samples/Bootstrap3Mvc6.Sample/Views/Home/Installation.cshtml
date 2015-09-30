@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "BootstrapMvc: Installation";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<h2>1. Install NuGet package</h2>
+
+<p>
+    Install <code><a href="https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc5/">BootstrapMvc.Bootstrap3Mvc5</a></code>
+    package from NuGet to your ASP.MVC5 project: <br /><br /> <kbd style="padding: 2ex 5ex 2ex 2ex;">Install-Package BootstrapMvc.Bootstrap3Mvc5</kbd>
+</p>
+
+
+<h2>2. Update <code>Views\Web.config</code> file</h2>
+
+<p>
+    Modify your <code>Views\Web.config</code> file (and all <code>Areas\&ltArea&gt;\Views\Web.config</code> too),
+    replace base class for views (in <code>&lt;system.web.webPages.razor&gt;</code> section): <br/>
+    instead: <br/> <code>&lt;pages pageBaseType="System.Web.Mvc.WebViewPage"&gt;</code> <br />
+    write: <br/> <code>&lt;pages pageBaseType="BootstrapMvc.Core.BootstrapViewPage"&gt;</code> <br />
+</p>
+<p>And add one more namespace to namespaces list: <code>&lt;add namespace="BootstrapMvc" /&gt;</code></p>
+
+<h2>3. Clean and Rebuild your project</h2>
+
+<p>Clean and Rebuild you project to activate changes and activate intellisence. Rarely, a Visual Studio restart helps.</p>

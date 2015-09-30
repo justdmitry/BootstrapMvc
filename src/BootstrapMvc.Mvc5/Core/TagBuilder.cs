@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using mvc = System.Web.Mvc;
 
 namespace BootstrapMvc.Core
@@ -32,6 +33,21 @@ namespace BootstrapMvc.Core
         public string GetFullTag()
         {
             return ToString(mvc.TagRenderMode.Normal);
+        }
+
+        public void WriteStartTag(TextWriter writer)
+        {
+            writer.Write(GetStartTag());
+        }
+
+        public void WriteEndTag(TextWriter writer)
+        {
+            writer.Write(GetEndTag());
+        }
+
+        public void WriteFullTag(TextWriter writer)
+        {
+            writer.Write(GetFullTag());
         }
     }
 }

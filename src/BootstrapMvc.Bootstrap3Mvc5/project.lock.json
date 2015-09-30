@@ -3,13 +3,13 @@
   "version": 1,
   "targets": {
     ".NETFramework,Version=v4.5": {
-      "BootstrapMvc.Bootstrap3/0.18.50925.1510": {
+      "BootstrapMvc.Bootstrap3/0.18.50925": {
         "type": "project",
         "dependencies": {
-          "BootstrapMvc.Core": "0.13"
+          "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Core/0.13.50925.1500": {
+      "BootstrapMvc.Core/0.13.50925": {
         "type": "project"
       },
       "BootstrapMvc.Mvc5/0.13.50925.1615": {
@@ -76,11 +76,11 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3/0.18.50925.1510": {
+    "BootstrapMvc.Bootstrap3/0.18.50925": {
       "type": "project",
       "path": "../BootstrapMvc.Bootstrap3/project.json"
     },
-    "BootstrapMvc.Core/0.13.50925.1500": {
+    "BootstrapMvc.Core/0.13.50925": {
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json"
     },

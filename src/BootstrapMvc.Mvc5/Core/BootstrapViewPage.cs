@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace BootstrapMvc.Core
 {
-    public abstract class BootstrapViewPage : WebViewPage, IBootstrapMvcViewPage
+    public abstract class BootstrapViewPage : WebViewPage
     {
         public static Func<int, string> BootstrapMessageSource { get; set; }
 
