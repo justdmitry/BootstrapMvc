@@ -9,12 +9,6 @@ namespace BootstrapMvc.Core
 
         private bool writeWithoutEncoding = false;
 
-        public SimpleBlock(IBootstrapContext context)
-            : base(context)
-        {
-            // Nothing
-        }
-
         #region Fluent
 
         public SimpleBlock Value(string value, bool writeWithoutEncoding = false)
@@ -39,7 +33,7 @@ namespace BootstrapMvc.Core
                 this.value = enumerator.Current;
                 while (enumerator.MoveNext())
                 {
-                    AppendNextBlock(new SimpleBlock(Context).Value(enumerator.Current));
+                    AppendNextBlock(new SimpleBlock().Value(enumerator.Current));
                 }
             }
             else
@@ -51,7 +45,7 @@ namespace BootstrapMvc.Core
 
         #endregion
 
-        protected override void WriteSelf(System.IO.TextWriter writer)
+        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
         {
             if (value == null)
             {
@@ -60,7 +54,7 @@ namespace BootstrapMvc.Core
             var block = value as WritableBlock;
             if (block != null)
             {
-                block.WriteTo(writer);
+                block.WriteTo(writer, context);
                 return;
             }
             var str = value as string;
@@ -72,11 +66,11 @@ namespace BootstrapMvc.Core
                 }
                 else
                 {
-                    writer.Write(Context.HtmlEncode(str));
+                    writer.Write(context.HtmlEncode(str));
                 }
                 return;
             }
-            Context.Write(value);
+            writer.Write(value);
         }
     }
 }

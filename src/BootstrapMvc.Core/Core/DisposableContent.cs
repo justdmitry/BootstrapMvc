@@ -4,16 +4,9 @@ namespace BootstrapMvc.Core
 {
     public abstract class DisposableContent : IDisposable
     {
-        public event EventHandler Disposing;
+        public Action OnDisposing { get; set; }
 
         private bool disposed = false;
-
-        public DisposableContent(IBootstrapContext context)
-        {
-            this.Context = context;
-        }
-
-        public IBootstrapContext Context { get; private set; }
 
         public void Dispose()
         {
@@ -25,9 +18,9 @@ namespace BootstrapMvc.Core
         {
             if (disposing && !disposed)
             {
-                if (Disposing != null)
+                if (OnDisposing != null)
                 {
-                    Disposing(this, EventArgs.Empty);
+                    OnDisposing();
                 }
             }
             disposed = true;

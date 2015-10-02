@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.Framework.DependencyInjection;
-using BootstrapMvc.Core;
+using BootstrapMvc;
 using Microsoft.Framework.Logging;
 
 namespace Bootstrap3Mvc6.Sample
@@ -15,6 +15,8 @@ namespace Bootstrap3Mvc6.Sample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddTransient<BootstrapMvc.Mvc6.BootstrapHelper>();
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)

@@ -10,8 +10,11 @@
   "releaseNotes": "",
 
   "dependencies": {
-    "BootstrapMvc.Bootstrap3": "",
-    "BootstrapMvc.Mvc6": ""
+    "BootstrapMvc.Mvc6": "",
+    "BootstrapMvc.Bootstrap3": {
+      "type": "build",
+      "version": ""   
+    }
   },
 
   "frameworks": {

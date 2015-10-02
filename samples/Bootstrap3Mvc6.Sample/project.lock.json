@@ -9,13 +9,6 @@
           "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Bootstrap3Mvc6/0.2.50930-beta7-alpha1": {
-        "type": "project",
-        "dependencies": {
-          "BootstrapMvc.Bootstrap3": null,
-          "BootstrapMvc.Mvc6": null
-        }
-      },
       "BootstrapMvc.Core/0.13.50925": {
         "type": "project"
       },
@@ -1369,10 +1362,6 @@
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3/project.json"
     },
-    "BootstrapMvc.Bootstrap3Mvc6/0.2.50930-beta7-alpha1": {
-      "type": "project",
-      "path": "../../src/BootstrapMvc.Bootstrap3Mvc6/project.json"
-    },
     "BootstrapMvc.Core/0.13.50925": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Core/project.json"
@@ -2535,7 +2524,8 @@
       "Microsoft.AspNet.Diagnostics >= 1.0.0-beta7",
       "Microsoft.Framework.Logging >= 1.0.0-beta7",
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta7",
-      "BootstrapMvc.Bootstrap3Mvc6 "
+      "BootstrapMvc.Mvc6 ",
+      "BootstrapMvc.Bootstrap3 "
     ],
     "DNX,Version=v4.5.1": []
   }

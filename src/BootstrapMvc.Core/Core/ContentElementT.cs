@@ -4,35 +4,24 @@ namespace BootstrapMvc.Core
 {
     public abstract class ContentElement<T> : Element where T : DisposableContent
     {
-        public ContentElement(IBootstrapContext context)
-            : base(context)
+        public virtual T BeginContent(IBootstrapContext context)
         {
-            // Nothing
-        }
-
-        public virtual T BeginContent()
-        {
-            WriteSelfStart(this.Context.Writer);
-            var retVal = CreateContentContext();
-            retVal.Disposing += OnContentContextDispose;
+            WriteSelfStart(context.Writer, context);
+            var retVal = CreateContentContext(context);
+            retVal.OnDisposing = () => WriteSelfEnd(context.Writer, context);
             return retVal;
         }
 
-        protected override void WriteSelf(System.IO.TextWriter writer)
+        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
         {
-            WriteSelfStart(writer);
-            WriteSelfEnd(writer);
-        }
+            WriteSelfStart(writer, context);
+            WriteSelfEnd(writer, context);
+        }        
 
-        protected void OnContentContextDispose(object sender, EventArgs args)
-        {
-            WriteSelfEnd(this.Context.Writer);
-        }
+        protected abstract T CreateContentContext(IBootstrapContext context);
 
-        protected abstract T CreateContentContext();
+        protected abstract void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context);
 
-        protected abstract void WriteSelfStart(System.IO.TextWriter writer);
-
-        protected abstract void WriteSelfEnd(System.IO.TextWriter writer);
+        protected abstract void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context);
     }
 }

@@ -9,15 +9,9 @@ namespace BootstrapMvc.Core
 
         protected string endTag = null;
 
-        public AnyContentElement(IBootstrapContext context)
-            : base(context)
-        {
-            // nothing
-        }
-
         public void AddContent(object value)
         {
-            var newContent = new SimpleBlock(Context).Value(value);
+            var newContent = new SimpleBlock().Value(value);
             if (content == null)
             {
                 content = newContent;
@@ -28,23 +22,23 @@ namespace BootstrapMvc.Core
             }
         }
 
-        protected abstract string WriteSelfStartTag(System.IO.TextWriter writer);
+        protected abstract string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context);
 
-        protected override AnyContent CreateContentContext()
+        protected override AnyContent CreateContentContext(IBootstrapContext context)
         {
-            return new AnyContent(Context);
+            return new AnyContent(context);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer)
+        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
         {
-            endTag = WriteSelfStartTag(writer);
+            endTag = WriteSelfStartTag(writer, context);
             if (content != null)
             {
-                content.WriteTo(writer);
+                content.WriteTo(writer, context);
             }
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
         {
             writer.Write(endTag);
         }

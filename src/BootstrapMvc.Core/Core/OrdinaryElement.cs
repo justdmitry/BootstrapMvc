@@ -6,20 +6,19 @@ namespace BootstrapMvc.Core
     {
         private string tagName;
 
-        public OrdinaryElement(IBootstrapContext context, string tagName)
-            : base(context)
+        public OrdinaryElement(string tagName)
         {
             this.tagName = tagName;
         }
 
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
         {
-            var tb = Context.CreateTagBuilder(tagName);
+            var tb = context.CreateTagBuilder(tagName);
 
             ApplyCss(tb);
             ApplyAttributes(tb);
 
-            writer.Write(tb.GetStartTag());
+            tb.WriteStartTag(writer);
 
             return tb.GetEndTag();
         }

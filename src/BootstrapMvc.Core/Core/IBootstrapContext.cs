@@ -6,9 +6,11 @@ namespace BootstrapMvc.Core
 {
     public interface IBootstrapContext
     {
+        IWriter<T> CreateWriter<T>() where T : IWritable, new();
+
         TextWriter Writer { get; }
 
-        void Write(object value);
+        //void Write(object value);
 
         ITagBuilder CreateTagBuilder(string tagName);
 

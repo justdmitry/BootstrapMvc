@@ -10,12 +10,6 @@ namespace BootstrapMvc.Core
 
         private IDictionary<string, string> additionalAttributes;
 
-        public Element(IBootstrapContext context)
-            : base(context)
-        {
-            // Nothing
-        }
-
         public void AddCssClass(string value)
         {
             if (string.IsNullOrEmpty(value))

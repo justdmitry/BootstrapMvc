@@ -4,21 +4,15 @@ namespace BootstrapMvc
 {
     public class Alert : AnyContentElement
     {
-        public Alert(IBootstrapContext context) 
-            : base(context)
+        public AlertType Type { get; set; }
+
+        public bool Closable { get; set; }
+
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
         {
-            // Nothing
-        }
-
-        public AlertType TypeValue { get; set; }
-
-        public bool ClosableValue { get; set; }
-
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
-        {
-            var tb = Context.CreateTagBuilder("div");
-            tb.AddCssClass(TypeValue.ToCssClass());
-            if (ClosableValue)
+            var tb = context.CreateTagBuilder("div");
+            tb.AddCssClass(Type.ToCssClass());
+            if (Closable)
             {
                 tb.AddCssClass("alert-dismissable");
             }
@@ -27,17 +21,17 @@ namespace BootstrapMvc
             ApplyCss(tb);
             ApplyAttributes(tb);
 
-            writer.Write(tb.GetStartTag());
+            tb.WriteStartTag(writer);
 
-            if (ClosableValue)
+            if (Closable)
             {
-                var dsmb = Context.CreateTagBuilder("button");
+                var dsmb = context.CreateTagBuilder("button");
                 dsmb.MergeAttribute("type", "button");
                 dsmb.MergeAttribute("class", "close");
                 dsmb.MergeAttribute("data-dismiss", "alert");
                 dsmb.MergeAttribute("aria-hidden", "true");
                 dsmb.InnerHtml = "&times;";
-                writer.Write(dsmb.GetFullTag());
+                dsmb.WriteFullTag(writer);
             }
 
             return tb.GetEndTag();

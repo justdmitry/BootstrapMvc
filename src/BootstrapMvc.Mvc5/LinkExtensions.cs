@@ -4,7 +4,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc
 {
-    public static class LinkExtensions
+    public static partial class LinkExtensions
     {
         public static T Href<T>(this T target, RouteValueDictionary routeValues) where T : Element, ILink
         {

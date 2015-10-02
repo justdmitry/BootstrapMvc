@@ -3,16 +3,9 @@ using System.IO;
 
 namespace BootstrapMvc.Core
 {
-    public abstract class WritableBlock : IWritable
+    public abstract partial class WritableBlock : IWritable
     {
         private WritableBlock next = null;
-
-        public WritableBlock(IBootstrapContext context)
-        {
-            this.Context = context;
-        }
-
-        public IBootstrapContext Context { get; private set; }
 
         public bool WriteWhitespaceSuffix { get; set; }
 
@@ -28,19 +21,19 @@ namespace BootstrapMvc.Core
             }
         }
 
-        public void WriteTo(TextWriter writer)
+        public void WriteTo(TextWriter writer, IBootstrapContext context)
         {
-            WriteSelf(writer);
+            WriteSelf(writer, context);
             if (WriteWhitespaceSuffix)
             {
                 writer.Write(" ");
             }
             if (next != null)
             {
-                next.WriteTo(writer);
+                next.WriteTo(writer, context);
             }
         }
 
-        protected abstract void WriteSelf(TextWriter writer);
+        protected abstract void WriteSelf(TextWriter writer, IBootstrapContext context);
     }
 }

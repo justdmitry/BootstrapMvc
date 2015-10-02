@@ -3,8 +3,20 @@
   "version": 1,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Core/0.13.50925": {
-        "type": "project"
+      "BootstrapMvc.Core/0.13.50925.1500": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx45/BootstrapMvc.Core.dll": {}
+        },
+        "runtime": {
+          "lib/dnx45/BootstrapMvc.Core.dll": {}
+        }
       },
       "Microsoft.CodeAnalysis.Analyzers/1.1.0-beta1-20150812-01": {
         "type": "package",
@@ -353,9 +365,18 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Core/0.13.50925": {
-      "type": "project",
-      "path": "../../src/BootstrapMvc.Core/project.json"
+    "BootstrapMvc.Core/0.13.50925.1500": {
+      "type": "package",
+      "sha512": "fRiMI0QI7GfRizi+iwIv+LIhVzHBOZlf9D5qVsJWMqGZep9PZavhZZJVqQWxH+skEx7qVWYbRmBvmPnosDMJPg==",
+      "files": [
+        "BootstrapMvc.Core.0.13.50925.1500.nupkg",
+        "BootstrapMvc.Core.0.13.50925.1500.nupkg.sha512",
+        "BootstrapMvc.Core.nuspec",
+        "lib/dnx45/BootstrapMvc.Core.dll",
+        "lib/dnx45/BootstrapMvc.Core.xml",
+        "lib/net45/BootstrapMvc.Core.dll",
+        "lib/net45/BootstrapMvc.Core.xml"
+      ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0-beta1-20150812-01": {
       "type": "package",

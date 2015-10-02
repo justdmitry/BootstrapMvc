@@ -4,10 +4,11 @@ namespace BootstrapMvc.Core
 {
     public class AnyContent : DisposableContent, IAnyContentMarker
     {
+        public IBootstrapContext Context { get; private set; }
+
         public AnyContent(IBootstrapContext context)
-            : base(context)
         {
-            // Nothing
+            this.Context = context;
         }
     }
 }
