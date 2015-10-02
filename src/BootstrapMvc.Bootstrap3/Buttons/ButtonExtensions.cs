@@ -21,11 +21,11 @@ namespace BootstrapMvc
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Disabled<T>(this IWriter2<T, AnyContent> target, bool value = true) where T : Button
-        {
-            target.Item.DisabledValue = value;
-            return target;
-        }
+        //public static IWriter2<T, AnyContent> Disabled<T>(this IWriter2<T, AnyContent> target, bool value = true) where T : Button
+        //{
+        //    target.Item.DisabledValue = value;
+        //    return target;
+        //}
 
         #endregion
 

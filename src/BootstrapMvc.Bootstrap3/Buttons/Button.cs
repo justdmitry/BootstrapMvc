@@ -3,7 +3,7 @@ using BootstrapMvc.Dropdown;
 
 namespace BootstrapMvc.Buttons
 {
-    public class Button : AnyContentElement, IDropdownMenuParentMarker, ILink, IButtonSizable
+    public class Button : AnyContentElement, IDropdownMenuParentMarker, ILink, IButtonSizable, IDisableable
     {
         public ButtonType TypeValue { get; set; }
 
@@ -14,7 +14,17 @@ namespace BootstrapMvc.Buttons
         public bool DisabledValue { get; set; }
 
         public string HrefValue { get; set; }
-        
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            DisabledValue = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return DisabledValue;
+        }
+
         protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
         {
             var bg = context.PeekNearest<ButtonGroup>();

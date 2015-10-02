@@ -26,6 +26,25 @@ namespace BootstrapMvc
             return target;
         }
 
+        public static IWriter2<T, ButtonGroupContent> AddButton<T, TButton>(this IWriter2<T, ButtonGroupContent> target, IWriter2<TButton, AnyContent> button) 
+            where T : ButtonGroup
+            where TButton : Button
+        {
+            target.Item.AddButton(button.Item);
+            return target;
+        }
+
+        public static IWriter2<T, ButtonGroupContent> AddButton<T, TButton>(this IWriter2<T, ButtonGroupContent> target, params IWriter2<TButton, AnyContent>[] buttons)
+            where T : ButtonGroup
+            where TButton : Button
+        {
+            foreach (var button in buttons)
+            {
+                target.Item.AddButton(button.Item);
+            }
+            return target;
+        }
+
         #endregion
 
         #region Generation
