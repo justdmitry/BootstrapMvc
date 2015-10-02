@@ -1,14 +1,15 @@
-﻿using System;
+﻿using BootstrapMvc.Core;
 
-namespace BootstrapMvc.Core
+namespace BootstrapMvc
 {
-    public class OrdinaryElement : AnyContentElement
+    public class Label : AnyContentElement
     {
-        public string TagName { get; set; }
+        public LabelType TypeValue { get; set; }
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
         {
-            var tb = context.CreateTagBuilder(TagName);
+            var tb = context.CreateTagBuilder("span");
+            tb.AddCssClass(TypeValue.ToCssClass());
 
             ApplyCss(tb);
             ApplyAttributes(tb);

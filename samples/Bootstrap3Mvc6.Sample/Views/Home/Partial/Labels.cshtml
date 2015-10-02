@@ -18,6 +18,7 @@
         @Bootstrap.Label(LabelType.DefaultGray, "DefaultGray")
         @Bootstrap.Label(LabelType.InfoCyan, "InfoCyan")
         @Bootstrap.Label(LabelType.PrimaryBlue, "PrimaryBlue")
+        <br/>
         @Bootstrap.Label(LabelType.WarningOrange, "WarningOrange")
         @Bootstrap.Label(LabelType.DangerRed, "DangerRed")
         @Bootstrap.Label(LabelType.SuccessGreen, "SuccessGreen")
@@ -32,7 +33,7 @@
 <pre>
 @@Bootstrap.Label(LabelType.SuccessGreen)
     .Content("Regular Strings will be encoded (&lt;hi!&gt;);")
-    .Content(MvcHtmlString.Create("&lt;i&gt;HtmlStrings will NOT be encoded&lt;/i&gt; "))
+    .Content(new HtmlString("&lt;i&gt;HtmlStrings will NOT be encoded&lt;/i&gt; "))
     .Content(Bootstrap.Icon(IconType.Camera))
 )
 </pre>
@@ -41,7 +42,7 @@
     {
         @(Bootstrap.Label(LabelType.SuccessGreen)
             .Content("Regular Strings will be encoded (<hi!>);")
-            .Content(MvcHtmlString.Create("<i>HtmlStrings will NOT be encoded</i> "))
+            .Content(new HtmlString("<i>HtmlStrings will NOT be encoded</i> "))
             .Content(Bootstrap.Icon(IconType.Camera))
         )
     }

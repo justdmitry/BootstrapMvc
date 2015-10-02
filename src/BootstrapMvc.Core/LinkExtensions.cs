@@ -2,11 +2,11 @@
 
 namespace BootstrapMvc
 {
-    public static partial class LinkExtensions
+    public static class LinkExtensions
     {
-        public static T Href<T>(this T target, string value) where T : ILink
+        public static IWriter<T> Href<T>(this IWriter<T> target, string value) where T : ILink, IWritable
         {
-            target.SetHref(value);
+            target.Item.SetHref(value);
             return target;
         }
     }

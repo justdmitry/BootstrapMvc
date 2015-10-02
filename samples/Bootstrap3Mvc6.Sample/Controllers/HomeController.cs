@@ -7,11 +7,11 @@ namespace Bootstrap3Mvc6.Sample.Controllers
     {
         public ActionResult Index()
         {
-            var versions = new string[4][];
-            versions[0] = new[] { "BootstrapMvc.Core", typeof(BootstrapMvc.Core.WritableBlock).Assembly.GetName().Version.ToString() };
-            //versions[1] = new[] { "BootstrapMvc.Bootstrap3", typeof(BootstrapMvc.Elements.Icon).Assembly.GetName().Version.ToString() };
-            //versions[2] = new[] { "BootstrapMvc.Bootstrap3Mvc6", typeof(BootstrapMvc.Bootstrap3Mvc6.Bootstrap3Mvc6Marker).Assembly.GetName().Version.ToString() };
-            versions[3] = new[] { "BootstrapMvc.Mvc6", typeof(BootstrapMvc.Mvc6.BootstrapContext).Assembly.GetName().Version.ToString() };
+            var versions = new string[3][];
+            versions[0] = new[] { "BootstrapMvc.Core", typeof(BootstrapMvc.Core.IWritable).Assembly.GetName().Version.ToString() };
+            versions[1] = new[] { "BootstrapMvc.Bootstrap3", typeof(BootstrapMvc.Elements.Icon).Assembly.GetName().Version.ToString() };
+            versions[2] = new[] { "BootstrapMvc.Mvc6", typeof(BootstrapMvc.Mvc6.BootstrapContext).Assembly.GetName().Version.ToString() };
+            //versions[3] = new[] { "BootstrapMvc.Bootstrap3Mvc6", typeof(BootstrapMvc.Bootstrap3Mvc6.Bootstrap3Mvc6Marker).Assembly.GetName().Version.ToString() };
             return View(versions);
         }
 

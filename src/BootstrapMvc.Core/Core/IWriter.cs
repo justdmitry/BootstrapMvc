@@ -2,7 +2,7 @@
 
 namespace BootstrapMvc.Core
 {
-    public interface IWriter<TItem> where TItem : IWritable
+    public interface IWriter<TItem> : IWritable where TItem : IWritable
     {
         TItem Item { get; set; }
 

@@ -51,7 +51,7 @@ namespace BootstrapMvc.Core
             {
                 return;
             }
-            var block = value as WritableBlock;
+            var block = value as IWritable;
             if (block != null)
             {
                 block.WriteTo(writer, context);

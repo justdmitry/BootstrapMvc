@@ -5,21 +5,27 @@ namespace BootstrapMvc
 {
     public static class AnyContentElementExtensions
     {
-        public static IWriter<T> Content<T>(this IWriter<T> target, object value) 
+        public static IWriter2<T, AnyContent> Content<T>(
+            this IWriter2<T, AnyContent> target,
+            object value)
             where T : AnyContentElement
         {
             target.Item.AddContent(value);
             return target;
         }
 
-        public static IWriter<T> Content<T>(this IWriter<T> target, params string[] values) 
+        public static IWriter2<T, AnyContent> Content<T>(
+            this IWriter2<T, AnyContent> target,
+            params string[] values)
             where T : AnyContentElement
         {
             target.Item.AddContent(string.Concat(values));
             return target;
         }
 
-        public static IWriter<T> Content<T>(this IWriter<T> target, params object[] values)
+        public static IWriter2<T, AnyContent> Content<T>(
+            this IWriter2<T, AnyContent> target,
+            params object[] values)
             where T : AnyContentElement
         {
             foreach (var value in values)

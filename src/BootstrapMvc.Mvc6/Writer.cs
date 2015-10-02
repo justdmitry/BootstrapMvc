@@ -20,5 +20,13 @@ namespace BootstrapMvc.Mvc6
                 Item.WriteTo(writer, Context);
             }
         }
+
+        void IWritable.WriteTo(TextWriter writer, IBootstrapContext context)
+        {
+            if (Item != null)
+            {
+                Item.WriteTo(writer, context);
+            }
+        }
     }
 }

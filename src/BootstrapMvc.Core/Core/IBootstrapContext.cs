@@ -8,9 +8,11 @@ namespace BootstrapMvc.Core
     {
         IWriter<T> CreateWriter<T>() where T : IWritable, new();
 
-        TextWriter Writer { get; }
+        IWriter2<T, TContent> CreateWriter<T, TContent>()
+            where T : ContentElement<TContent>, new()
+            where TContent : DisposableContent;
 
-        //void Write(object value);
+        TextWriter Writer { get; }
 
         ITagBuilder CreateTagBuilder(string tagName);
 

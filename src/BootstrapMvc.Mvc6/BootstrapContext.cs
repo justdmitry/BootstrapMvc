@@ -61,6 +61,14 @@ namespace BootstrapMvc.Mvc6
             return new Writer<T>() { Item = item, Context = this };
         }
 
+        public IWriter2<T, TContent> CreateWriter<T, TContent>()
+            where T : ContentElement<TContent>, new()
+            where TContent : DisposableContent
+        {
+            T item = new T();
+            return new WriterEx<T, TContent>() { Item = item, Context = this };
+        }
+
         public ITagBuilder CreateTagBuilder(string tagName)
         {
             return new TagBuilder(tagName, HtmlEncoder);
