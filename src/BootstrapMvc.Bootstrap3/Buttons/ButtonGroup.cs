@@ -32,26 +32,6 @@ namespace BootstrapMvc.Buttons
             return this;
         }
 
-        public ButtonGroup AddButton(params Button[] values)
-        {
-            if (values == null || values.Length == 0)
-            {
-                return this;
-            }
-            foreach (var value in values)
-            {
-                if (content == null)
-                {
-                    content = value;
-                }
-                else
-                {
-                    content.Append(value);
-                }
-            }
-            return this;
-        }
-
         protected override ButtonGroupContent CreateContentContext(IBootstrapContext context)
         {
             return new ButtonGroupContent(context);
