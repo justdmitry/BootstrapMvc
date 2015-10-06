@@ -4,6 +4,6 @@ namespace BootstrapMvc.Controls
 {
     public interface IValueHolder
     {
-        string ValueValue { get; set; }
+        object ValueValue { get; set; }
     }
 }

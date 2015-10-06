@@ -36,14 +36,14 @@ namespace BootstrapMvc.Mvc6
             ModelState modelState;
             ViewContext.ViewData.ModelState.TryGetValue(fullName, out modelState);
 
-            var value = string.Empty;
-            if (modelState != null && modelState.Value.AttemptedValue != null)
+            object value = null;
+            if (modelState != null && modelState.Value.RawValue != null)
             {
-                value = modelState.Value.AttemptedValue;
+                value = modelState.Value.RawValue;
             }
             else if (modelExplorer.Model != null)
             {
-                value = modelExplorer.Model.ToString();
+                value = modelExplorer.Model;
             }
 
             var errors = modelState == null || modelState.Errors == null

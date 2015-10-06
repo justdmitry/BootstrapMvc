@@ -12,7 +12,7 @@ namespace BootstrapMvc.Controls
 
         public bool InlineValue { get; set; }
 
-        public string ValueValue { get; set; }
+        public object ValueValue { get; set; }
 
         public bool DisabledValue { get; set; }
 
@@ -60,9 +60,9 @@ namespace BootstrapMvc.Controls
             {
                 input.MergeAttribute("id", ControlContextValue.Name);
                 input.MergeAttribute("name", ControlContextValue.Name);
-                input.MergeAttribute("value", ValueValue);
+                input.MergeAttribute("value", ValueValue?.ToString());
                 var controlValue = ControlContextValue.Value;
-                if (controlValue != null && ValueValue.Equals(controlValue.ToString()))
+                if (controlValue != null && ValueValue != null && ValueValue.ToString().Equals(controlValue.ToString()))
                 {
                     input.MergeAttribute("checked", "checked");
                 }

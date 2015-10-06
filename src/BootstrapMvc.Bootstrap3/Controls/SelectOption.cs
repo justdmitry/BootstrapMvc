@@ -6,7 +6,7 @@ namespace BootstrapMvc.Controls
 {
     public class SelectOption : AnyContentElement, ISelectItem, IDisableable, IValueHolder
     {
-        public string ValueValue { get; set; }
+        public object ValueValue { get; set; }
 
         public bool DisabledValue { get; set; }
 
@@ -25,7 +25,7 @@ namespace BootstrapMvc.Controls
 
             var formGroup = context.PeekNearest<Select>();
             var controlContext = formGroup == null ? null : formGroup.ControlContextValue;
-            if (controlContext != null && controlContext.Value != null && ValueValue != null && ValueValue.Equals(controlContext.Value.ToString()))
+            if (controlContext != null && controlContext.Value != null && ValueValue != null && ValueValue.ToString().Equals(controlContext.Value.ToString()))
             {
                 tb.MergeAttribute("selected", "selected");
             }
