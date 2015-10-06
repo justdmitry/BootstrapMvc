@@ -15,10 +15,9 @@
       "BootstrapMvc.Mvc5/0.13.50925.1615": {
         "type": "project",
         "dependencies": {
-          "BootstrapMvc.Core": "0.13",
+          "BootstrapMvc.Mvc.Shared": null,
           "Microsoft.AspNet.Mvc": "5.2.3",
-          "Microsoft.AspNet.Razor": "3.2.3",
-          "TemplateBuilder": "1.1.3"
+          "Microsoft.AspNet.Razor": "3.2.3"
         },
         "frameworkAssemblies": [
           "System.Web"
@@ -72,15 +71,6 @@
         },
         "runtime": {
           "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        }
-      },
-      "TemplateBuilder/1.1.3": {
-        "type": "package",
-        "compile": {
-          "lib/TemplateBuilder.dll": {}
-        },
-        "runtime": {
-          "lib/TemplateBuilder.dll": {}
         }
       }
     }
@@ -152,29 +142,6 @@
         "Microsoft.Web.Infrastructure.1.0.0.nupkg",
         "Microsoft.Web.Infrastructure.1.0.0.nupkg.sha512",
         "Microsoft.Web.Infrastructure.nuspec"
-      ]
-    },
-    "TemplateBuilder/1.1.3": {
-      "type": "package",
-      "sha512": "adaGQrIwmfbjyrNHRHddO4hIR4i++fT8gGadYFxVGeHcRP8xBTXlU6Hx8LkYfaBKkP13oO6GLzGCohwKREuMIQ==",
-      "files": [
-        "content/Properties/template-builder.props",
-        "lib/TemplateBuilder.dll",
-        "readme.txt",
-        "TemplateBuilder.1.1.3.nupkg",
-        "TemplateBuilder.1.1.3.nupkg.sha512",
-        "TemplateBuilder.nuspec",
-        "tools/build-templates.proj",
-        "tools/Install.ps1",
-        "tools/Ionic.Zip.DLL",
-        "tools/LigerShark.FileReplacer.dll",
-        "tools/LigerShark.TemplateBuilder.Tasks.dll",
-        "tools/ligershark.templates.targets",
-        "tools/Microsoft.Web.XmlTransform.dll",
-        "tools/MSBuild.ExtensionPack.dll",
-        "tools/SlowCheetah.Xdt.dll",
-        "tools/TemplateBuilder.dll",
-        "tools/template-builder.psm1"
       ]
     }
   },

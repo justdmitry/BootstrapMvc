@@ -3,16 +3,23 @@
   "version": 1,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Bootstrap3/0.18.50925": {
+      "BootstrapMvc.Bootstrap3/0.19.51012-beta1": {
         "type": "project",
         "dependencies": {
           "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Core/0.13.50925": {
+      "BootstrapMvc.Bootstrap3Mvc6/0.1.51012-beta7-beta1": {
+        "type": "project",
+        "dependencies": {
+          "BootstrapMvc.Bootstrap3": null,
+          "BootstrapMvc.Mvc6": null
+        }
+      },
+      "BootstrapMvc.Core/1.1.51006-beta1": {
         "type": "project"
       },
-      "BootstrapMvc.Mvc6/0.13.50930-beta7-alpha1": {
+      "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
         "type": "project",
         "dependencies": {
           "BootstrapMvc.Core": null,
@@ -1358,15 +1365,19 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3/0.18.50925": {
+    "BootstrapMvc.Bootstrap3/0.19.51012-beta1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3/project.json"
     },
-    "BootstrapMvc.Core/0.13.50925": {
+    "BootstrapMvc.Bootstrap3Mvc6/0.1.51012-beta7-beta1": {
+      "type": "project",
+      "path": "../../src/BootstrapMvc.Bootstrap3Mvc6/project.json"
+    },
+    "BootstrapMvc.Core/1.1.51006-beta1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Core/project.json"
     },
-    "BootstrapMvc.Mvc6/0.13.50930-beta7-alpha1": {
+    "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Mvc6/project.json"
     },
@@ -2524,8 +2535,7 @@
       "Microsoft.AspNet.Diagnostics >= 1.0.0-beta7",
       "Microsoft.Framework.Logging >= 1.0.0-beta7",
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta7",
-      "BootstrapMvc.Mvc6 ",
-      "BootstrapMvc.Bootstrap3 "
+      "BootstrapMvc.Bootstrap3Mvc6 "
     ],
     "DNX,Version=v4.5.1": []
   }

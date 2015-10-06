@@ -3,19 +3,19 @@
   "version": 1,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Bootstrap3/0.18.50925": {
+      "BootstrapMvc.Bootstrap3/0.19.51012-beta1": {
         "type": "project",
         "dependencies": {
-          "BootstrapMvc.Mvc.Shared": null
+          "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Mvc.Shared/0.13.50925": {
+      "BootstrapMvc.Core/1.1.51006-beta1": {
         "type": "project"
       },
-      "BootstrapMvc.Mvc6/0.13.50930-beta7-alpha1": {
+      "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
         "type": "project",
         "dependencies": {
-          "BootstrapMvc.Mvc.Shared": null,
+          "BootstrapMvc.Core": null,
           "Microsoft.AspNet.Mvc": "6.0.0-beta7",
           "Microsoft.AspNet.Razor": "4.0.0-beta7",
           "Microsoft.AspNet.Routing": "1.0.0-beta7"
@@ -1082,13 +1082,13 @@
       }
     },
     "DNXCore,Version=v5.0": {
-      "BootstrapMvc.Bootstrap3/0.18.50925": {
+      "BootstrapMvc.Bootstrap3/0.19.51012-beta1": {
         "type": "project",
         "dependencies": {
-          "BootstrapMvc.Mvc.Shared": null
+          "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Mvc.Shared/0.13.50925": {
+      "BootstrapMvc.Core/1.1.51006-beta1": {
         "type": "project",
         "dependencies": {
           "Microsoft.CSharp": "4.0.0",
@@ -1097,10 +1097,10 @@
           "System.Text.Encoding.Extensions": "4.0.0"
         }
       },
-      "BootstrapMvc.Mvc6/0.13.50930-beta7-alpha1": {
+      "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
         "type": "project",
         "dependencies": {
-          "BootstrapMvc.Mvc.Shared": null,
+          "BootstrapMvc.Core": null,
           "Microsoft.AspNet.Mvc": "6.0.0-beta7",
           "Microsoft.AspNet.Razor": "4.0.0-beta7",
           "Microsoft.AspNet.Routing": "1.0.0-beta7"
@@ -3059,15 +3059,15 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3/0.18.50925": {
+    "BootstrapMvc.Bootstrap3/0.19.51012-beta1": {
       "type": "project",
       "path": "../BootstrapMvc.Bootstrap3/project.json"
     },
-    "BootstrapMvc.Mvc.Shared/0.13.50925": {
+    "BootstrapMvc.Core/1.1.51006-beta1": {
       "type": "project",
-      "path": "../BootstrapMvc.Mvc.Shared/project.json"
+      "path": "../BootstrapMvc.Core/project.json"
     },
-    "BootstrapMvc.Mvc6/0.13.50930-beta7-alpha1": {
+    "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
       "type": "project",
       "path": "../BootstrapMvc.Mvc6/project.json"
     },

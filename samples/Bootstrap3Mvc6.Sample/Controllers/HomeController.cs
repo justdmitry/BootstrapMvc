@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.AspNet.Mvc;
+using System.Linq;
+using System.Reflection;
 
 namespace Bootstrap3Mvc6.Sample.Controllers
 {
@@ -7,11 +9,21 @@ namespace Bootstrap3Mvc6.Sample.Controllers
     {
         public ActionResult Index()
         {
-            var versions = new string[3][];
-            versions[0] = new[] { "BootstrapMvc.Core", typeof(BootstrapMvc.Core.IWritable).Assembly.GetName().Version.ToString() };
-            versions[1] = new[] { "BootstrapMvc.Bootstrap3", typeof(BootstrapMvc.Elements.Icon).Assembly.GetName().Version.ToString() };
-            versions[2] = new[] { "BootstrapMvc.Mvc6", typeof(BootstrapMvc.Mvc6.BootstrapContext).Assembly.GetName().Version.ToString() };
-            //versions[3] = new[] { "BootstrapMvc.Bootstrap3Mvc6", typeof(BootstrapMvc.Bootstrap3Mvc6.Bootstrap3Mvc6Marker).Assembly.GetName().Version.ToString() };
+            var types = new[]
+            {
+                typeof(BootstrapMvc.Core.IWritable),
+                typeof(BootstrapMvc.Elements.Icon),
+                typeof(BootstrapMvc.Mvc6.BootstrapContext),
+                typeof(BootstrapMvc.Bootstrap3Mvc6AnyContentExtensions),
+                typeof(Microsoft.AspNet.Mvc.ActionResult)
+            };
+
+            var versions = types.Select(x => new[]
+            {
+                x.Assembly.GetName().Name,
+                x.Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion
+            }).ToArray();
+
             return View(versions);
         }
 

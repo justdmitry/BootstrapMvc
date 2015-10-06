@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.13.50930-beta7-alpha1",
+  "version": "0.1.51012-beta7-beta1",
   "title": "BootstrapMvc.Mvc6",
   "description": "MVC6 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],

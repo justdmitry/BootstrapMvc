@@ -10,8 +10,7 @@
     "Microsoft.Framework.Logging": "1.0.0-beta7",
     "Microsoft.Framework.Logging.Console": "1.0.0-beta7",
 
-    "BootstrapMvc.Mvc6": "",
-    "BootstrapMvc.Bootstrap3": ""
+    "BootstrapMvc.Bootstrap3Mvc6": ""
   },
 
   "commands": {
