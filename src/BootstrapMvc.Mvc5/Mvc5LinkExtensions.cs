@@ -4,16 +4,16 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc
 {
-    public static partial class LinkExtensions
+    public static class Mvc5LinkExtensions
     {
-        public static T Href<T>(this T target, RouteValueDictionary routeValues) where T : Element, ILink
+        public static IWriter<T> Href<T>(this IWriter<T> target, RouteValueDictionary routeValues) where T : Element, ILink
         {
             var href = target.Context.CreateUrl(routeValues);
-            target.SetHref(href);
+            target.Href(href);
             return target;
         }
 
-        public static T Href<T>(this T target, string actionName, string controllerName) where T : Element, ILink
+        public static IWriter<T> Href<T>(this IWriter<T> target, string actionName, string controllerName) where T : Element, ILink
         {
             var dic = new RouteValueDictionary();
             if (!string.IsNullOrEmpty(actionName))
@@ -27,7 +27,7 @@ namespace BootstrapMvc
             return Href(target, dic);
         }
 
-        public static T Href<T>(this T target, string actionName, string controllerName, object routeValues) where T : Element, ILink
+        public static IWriter<T> Href<T>(this IWriter<T> target, string actionName, string controllerName, object routeValues) where T : Element, ILink
         {
             var dic = new RouteValueDictionary(routeValues);
             if (!string.IsNullOrEmpty(actionName))
@@ -37,7 +37,7 @@ namespace BootstrapMvc
             if (!string.IsNullOrEmpty(controllerName))
             {
                 dic.Add("controller", controllerName);
-            } 
+            }
             return Href(target, dic);
         }
     }

@@ -9,18 +9,15 @@ namespace BootstrapMvc
 {
     public static class AnyContentExtensions
     {
-        public static Select Select(this IAnyContentMarker contentHelper, IEnumerable<SelectListItem> items)
+        public static IWriter2<Select, SelectContent> Select(this IAnyContentMarker contentHelper, IEnumerable<SelectListItem> items)
         {
-            var res = new Select(contentHelper.Context);
-            res.Items(items.Select(x => SelectListItemToSelectOption(contentHelper.Context, x)));
-            return res;
+            var vals = items.Select(x => SelectListItemToSelectOption(contentHelper.Context, x));
+            return contentHelper.Select(vals);
         }
 
-        private static SelectOption SelectListItemToSelectOption(IBootstrapContext context, SelectListItem item)
+        private static IWriter2<SelectOption, AnyContent> SelectListItemToSelectOption(IBootstrapContext context, SelectListItem item)
         {
-            var option = new SelectOption(context);
-            option.Value(item.Value).Disabled(item.Disabled).Content(item.Text);
-            return option;
+            return context.CreateWriter<SelectOption, AnyContent>().Value(item.Value).Disabled(item.Disabled).Content(item.Text);
         }
     }
 }

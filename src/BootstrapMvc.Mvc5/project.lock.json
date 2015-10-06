@@ -3,7 +3,7 @@
   "version": 1,
   "targets": {
     ".NETFramework,Version=v4.5": {
-      "BootstrapMvc.Mvc.Shared/0.13.50925": {
+      "BootstrapMvc.Core/1.1.51006-beta1": {
         "type": "project"
       },
       "Microsoft.AspNet.Mvc/5.2.3": {
@@ -59,9 +59,9 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Mvc.Shared/0.13.50925": {
+    "BootstrapMvc.Core/1.1.51006-beta1": {
       "type": "project",
-      "path": "../BootstrapMvc.Mvc.Shared/project.json"
+      "path": "../BootstrapMvc.Core/project.json"
     },
     "Microsoft.AspNet.Mvc/5.2.3": {
       "type": "package",
@@ -124,7 +124,7 @@
     "": [
       "Microsoft.AspNet.Mvc >= 5.2.3",
       "Microsoft.AspNet.Razor >= 3.2.3",
-      "BootstrapMvc.Mvc.Shared "
+      "BootstrapMvc.Core "
     ],
     ".NETFramework,Version=v4.5": [
       "fx/System.Web >= 4.0.0.0"

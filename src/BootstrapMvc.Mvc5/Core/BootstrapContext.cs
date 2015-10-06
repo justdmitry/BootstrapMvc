@@ -73,28 +73,25 @@ namespace BootstrapMvc.Core
             return UrlHelper.GenerateUrl(null, null, null, protocol, hostName, null, routeVals, Url.RouteCollection, Url.RequestContext, true);
         }
 
+        public IWriter<T> CreateWriter<T>() where T : IWritable, new()
+        {
+            T item = new T();
+            return new Writer<T>() { Item = item, Context = this };
+        }
+
+        public IWriter2<T, TContent> CreateWriter<T, TContent>()
+            where T : ContentElement<TContent>, new()
+            where TContent : DisposableContent
+        {
+            T item = new T();
+            return new WriterEx<T, TContent>() { Item = item, Context = this };
+        }
+
         public string HtmlEncode(string value)
         {
             return HttpUtility.HtmlEncode(value);
         }
-
-        public void Write(object value)
-        {
-            var html = value as IHtmlString;
-            if (html != null)
-            {
-                Writer.Write(html.ToHtmlString());
-                return;
-            }
-            var helperResult = value as HelperResult;
-            if (helperResult != null)
-            {
-                WebPageExecutingBase.WriteTo(Writer, helperResult);
-                return;
-            }
-            WebPageExecutingBase.WriteTo(Writer, value);
-        }
-
+        
         public string GetMessage(int id)
         {
             return (MessageSource == null) ? null : MessageSource(id);

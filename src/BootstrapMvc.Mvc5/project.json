@@ -1,5 +1,5 @@
 {
-  "version": "0.13.50925.1615",
+  "version": "1.1.51012-beta1",
   "title": "BootstrapMvc.Mvc5",
   "description": "MVC5 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).",
   "authors": [ "just_dmitry" ],
@@ -12,10 +12,7 @@
   "dependencies": {
     "Microsoft.AspNet.Mvc": "5.2.3",
     "Microsoft.AspNet.Razor": "3.2.3",
-    "BootstrapMvc.Mvc.Shared": {
-      "type": "build",
-      "version": ""
-    }
+    "BootstrapMvc.Core": ""
   },
 
   "frameworks": {
