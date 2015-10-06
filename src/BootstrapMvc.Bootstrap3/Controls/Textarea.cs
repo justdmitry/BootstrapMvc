@@ -44,7 +44,7 @@ namespace BootstrapMvc.Controls
 
         protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
         {
-            var form = context.PeekNearest<Form<dynamic>>();
+            var form = context.PeekNearest<IFormContext>();
             var formGroup = context.PeekNearest<FormGroup>();
             if (formGroup != null && ControlContextValue == null)
             {

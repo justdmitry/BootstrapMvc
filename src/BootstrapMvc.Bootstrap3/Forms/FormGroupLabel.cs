@@ -7,7 +7,7 @@ namespace BootstrapMvc.Forms
     {
         protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
         {
-            var form = context.PeekNearest<Form<dynamic>>();
+            var form = context.PeekNearest<IFormContext>();
             var groupContext = context.PeekNearest<FormGroup>();
             var controlContext = groupContext == null ? null : groupContext.ControlContextValue;
 

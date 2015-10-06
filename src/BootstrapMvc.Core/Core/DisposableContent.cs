@@ -1,12 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BootstrapMvc.Core
 {
     public abstract class DisposableContent : IDisposable
     {
-        public Action OnDisposing { get; set; }
+        private List<Action> disposingCallbacks;
 
         private bool disposed = false;
+
+        public void OnDisposing(Action action)
+        {
+            if (disposingCallbacks == null)
+            {
+                disposingCallbacks = new List<Action>(5);
+            }
+            disposingCallbacks.Add(action);
+        }
 
         public void Dispose()
         {
@@ -18,9 +28,12 @@ namespace BootstrapMvc.Core
         {
             if (disposing && !disposed)
             {
-                if (OnDisposing != null)
+                if (disposingCallbacks != null)
                 {
-                    OnDisposing();
+                    foreach(var callback in disposingCallbacks)
+                    {
+                        callback();
+                    }
                 }
             }
             disposed = true;

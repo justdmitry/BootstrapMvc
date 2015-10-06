@@ -3,7 +3,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Forms
 {
-    public class Form<TModel>: ContentElement<FormContent<TModel>>, ILink
+    public class Form<TModel>: ContentElement<FormContent<TModel>>, ILink, IFormContext
     {
         private GridSize labelWidth;
 

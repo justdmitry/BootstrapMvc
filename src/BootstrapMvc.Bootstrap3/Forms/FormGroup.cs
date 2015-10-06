@@ -60,13 +60,13 @@ namespace BootstrapMvc.Forms
         {
             this.WriteSelfStart(context.Writer, context);
             var area = context.CreateWriter<FormGroupControls, AnyContent>().WithoutLabel(LabelValue == null).BeginContent();
-            area.OnDisposing = () => WriteSelfEnd(context.Writer, context);
+            area.OnDisposing(() => WriteSelfEnd(context.Writer, context));
             return area;
         }
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
         {
-            var form = context.PeekNearest<Form<dynamic>>();
+            var form = context.PeekNearest<IFormContext>();
             var tb = context.CreateTagBuilder("div");
             tb.AddCssClass("form-group");
             if (ControlContextValue != null)

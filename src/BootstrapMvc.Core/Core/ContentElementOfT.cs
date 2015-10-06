@@ -8,7 +8,7 @@ namespace BootstrapMvc.Core
         {
             WriteSelfStart(context.Writer, context);
             var retVal = CreateContentContext(context);
-            retVal.OnDisposing = () => WriteSelfEnd(context.Writer, context);
+            retVal.OnDisposing(() => WriteSelfEnd(context.Writer, context));
             return retVal;
         }
 
