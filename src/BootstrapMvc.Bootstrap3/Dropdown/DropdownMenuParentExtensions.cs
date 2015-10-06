@@ -9,7 +9,7 @@ namespace BootstrapMvc
         public static IWriter2<T, AnyContent> Dropdown<T>(this IWriter2<T, AnyContent> parent, IWriter<DropdownMenu> menu) 
             where T : AnyContentElement, IDropdownMenuParentMarker
         {
-            parent.Item
+            parent
                 .CssClass("dropdown-toggle")
                 .Attribute("data-toggle", "dropdown")
                 .Attribute("aria-expanded", "false");
@@ -26,7 +26,7 @@ namespace BootstrapMvc
         {
             var context = parent.Context;
 
-            parent.Item
+            parent
                 .CssClass("dropdown-toggle")
                 .Attribute("data-toggle", "dropdown")
                 .Attribute("aria-expanded", "false");

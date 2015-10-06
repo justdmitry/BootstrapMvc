@@ -8,7 +8,7 @@ namespace BootstrapMvc
         public static IWriter<T> Placeholder<T>(this IWriter<T> target, string placeholder) 
             where T : Element, IPlaceholderTarget
         {
-            target.Item.Attribute("placeholder", placeholder);
+            target.Attribute("placeholder", placeholder);
             return target;
         }
 
@@ -16,7 +16,7 @@ namespace BootstrapMvc
             where T : ContentElement<TContent>, IPlaceholderTarget
             where TContent: DisposableContent
         {
-            target.Item.Attribute("placeholder", placeholder);
+            target.Attribute("placeholder", placeholder);
             return target;
         }
     }

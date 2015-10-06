@@ -10,13 +10,10 @@ namespace BootstrapMvc
 
         public static IWriter2<T, TableSectionContent> Rows<T>(
             this IWriter2<T, TableSectionContent> target, 
-            params TableRow[] rows)
+            TableRow row)
             where T : TableSection
         {
-            foreach (var row in rows)
-            {
-                target.Item.AddRow(row);
-            }
+            target.Item.AddRow(row);
             return target;
         }
 

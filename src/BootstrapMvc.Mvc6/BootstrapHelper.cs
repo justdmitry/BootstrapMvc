@@ -8,7 +8,7 @@ namespace BootstrapMvc.Mvc6
 {
     public class BootstrapHelper: IAnyContentMarker, ICanHasViewContext
     {
-        private IBootstrapContext bootstrapContext;
+        protected IBootstrapContext bootstrapContext;
 
         public BootstrapHelper(IUrlHelper urlHelper, IHtmlEncoder htmlEncoder)
         {
@@ -16,26 +16,31 @@ namespace BootstrapMvc.Mvc6
             this.HtmlEncoder = htmlEncoder;
         }
 
-        public ViewContext ViewContext { get; private set; }
+        protected ViewContext ViewContext { get; set; }
 
         protected IUrlHelper UrlHelper { get; set; }
 
         protected IHtmlEncoder HtmlEncoder { get; set; }
 
-        public IBootstrapContext Context {
+        public virtual IBootstrapContext Context {
             get
             {
                 if (bootstrapContext == null)
                 {
-                    bootstrapContext = new BootstrapContext(ViewContext, UrlHelper, HtmlEncoder);
+                    bootstrapContext = CreateBootstrapContext();
                 }
                 return bootstrapContext;
             }
         }
 
-        public void Contextualize(ViewContext viewContext)
+        public virtual void Contextualize(ViewContext viewContext)
         {
             ViewContext = viewContext;
+        }
+
+        protected virtual IBootstrapContext CreateBootstrapContext()
+        {
+            return new BootstrapContext(ViewContext, UrlHelper, HtmlEncoder);
         }
     }
 }

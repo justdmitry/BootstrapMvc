@@ -4,6 +4,19 @@ namespace BootstrapMvc
 {
     public static class OrdinaryElementExtensions
     {
+        #region Fluent
+
+        public static IWriter2<T, AnyContent> TagName<T>(this IWriter2<T, AnyContent> target, string tagName)
+            where T : OrdinaryElement
+        {
+            target.Item.TagName = tagName;
+            return target;
+        }
+
+        #endregion
+
+        #region Generation
+
         /// <summary>
         /// Any HTML tag (by tag name)
         /// </summary>
@@ -55,6 +68,8 @@ namespace BootstrapMvc
         {
             return contentHelper.Tag("span").Content(content);
         }
+
+        #endregion
 
         #region Headers
 

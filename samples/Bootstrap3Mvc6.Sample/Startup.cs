@@ -16,7 +16,7 @@ namespace Bootstrap3Mvc6.Sample
         {
             services.AddMvc();
 
-            services.AddTransient<BootstrapMvc.Mvc6.BootstrapHelper>();
+            services.AddTransient(typeof(BootstrapMvc.Mvc6.BootstrapHelper<>));
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
