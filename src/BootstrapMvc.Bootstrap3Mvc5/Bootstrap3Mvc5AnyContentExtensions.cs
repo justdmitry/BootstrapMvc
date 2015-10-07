@@ -7,7 +7,7 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc
 {
-    public static class AnyContentExtensions
+    public static class Bootstrap3Mvc5AnyContentExtensions
     {
         public static IWriter2<Select, SelectContent> Select(this IAnyContentMarker contentHelper, IEnumerable<SelectListItem> items)
         {
