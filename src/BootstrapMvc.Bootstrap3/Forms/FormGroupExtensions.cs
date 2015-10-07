@@ -25,9 +25,8 @@ namespace BootstrapMvc
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Control<T, TControl>(this IWriter2<T, AnyContent> target, TControl value)
+        public static IWriter2<T, AnyContent> Control<T>(this IWriter2<T, AnyContent> target, IFormControl value)
             where T : FormGroup
-            where TControl : IFormControl
         {
             target.Item.ControlValue = value;
             return target;
