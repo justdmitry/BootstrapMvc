@@ -7,7 +7,7 @@
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Upgrade to vNext",
+  "releaseNotes": "Initial release",
 
   "dependencies": {
     "Microsoft.AspNet.Mvc": "6.0.0-beta7",

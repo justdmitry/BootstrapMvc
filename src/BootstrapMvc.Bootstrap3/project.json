@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.1.51007-beta1",
   "title": "BootstrapMvc.Bootstrap3",
-  "description": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).",
+  "description": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],
   "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "HtmlHelpers" ],
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Upgrade to vNext",
+  "releaseNotes": "Upgrade to new Core",
 
   "dependencies": {
     "BootstrapMvc.Core": ""

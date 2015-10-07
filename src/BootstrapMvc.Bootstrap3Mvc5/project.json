@@ -7,7 +7,7 @@
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Upgrade to vNext",
+  "releaseNotes": "Upgrade to new Core (mvc6-compatible)",
 
   "dependencies": {
     "Microsoft.AspNet.Mvc": "5.2.3",
