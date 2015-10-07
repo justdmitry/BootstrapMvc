@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Web.Routing;
+using BootstrapMvc;
 using BootstrapMvc.Core;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Xunit;
 
 namespace BootstrapMvc.Mvc5.Tests
 {
-    [TestClass]
     public class LinkExtensionsTest
     {
         private MockRepository mocks;
         private Mock<IBootstrapContext> contextMock;
         private IDictionary<string, object> testDictionary;
 
-        [TestInitialize]
-        public void Setup()
+        public LinkExtensionsTest()
         {
             mocks = new MockRepository(MockBehavior.Default);
             contextMock = mocks.Create<IBootstrapContext>();
@@ -24,62 +23,56 @@ namespace BootstrapMvc.Mvc5.Tests
             testDictionary = null;
         }
 
-        [TestMethod]
+        [Fact]
         public void DictionaryOk()
         {
-            var elm = new TestElement(contextMock.Object);
+            var elm = new Writer<TestElement>() { Context = contextMock.Object, Item = new TestElement() };
 
             var dic = new RouteValueDictionary();
             dic.Add("x", "xx");
 
             elm.Href(dic);
 
-            Assert.AreEqual(1, testDictionary.Count);
-            Assert.AreEqual("xx", testDictionary["x"]);
+            Assert.Equal(1, testDictionary.Count);
+            Assert.Equal("xx", testDictionary["x"]);
         }
 
-        [TestMethod]
+        [Fact]
         public void ActionControllerOk()
         {
-            var elm = new TestElement(contextMock.Object);
+            var elm = new Writer<TestElement>() { Context = contextMock.Object, Item = new TestElement() };
             elm.Href("action1", "controller1");
 
-            Assert.AreEqual(2, testDictionary.Count);
-            Assert.AreEqual("action1", testDictionary["action"]);
-            Assert.AreEqual("controller1", testDictionary["controller"]);
+            Assert.Equal(2, testDictionary.Count);
+            Assert.Equal("action1", testDictionary["action"]);
+            Assert.Equal("controller1", testDictionary["controller"]);
         }
 
-        [TestMethod]
+        [Fact]
         public void ActionControllerRouteValuesOk()
         {
             var obj = new { a = "aa" };
-            var elm = new TestElement(contextMock.Object);
+            var elm = new Writer<TestElement>() { Context = contextMock.Object, Item = new TestElement() };
             elm.Href("action1", "controller1", obj);
 
-            Assert.AreEqual(3, testDictionary.Count);
-            Assert.AreEqual("action1", testDictionary["action"]);
-            Assert.AreEqual("controller1", testDictionary["controller"]);
-            Assert.AreEqual("aa", testDictionary["a"]);
+            Assert.Equal(3, testDictionary.Count);
+            Assert.Equal("action1", testDictionary["action"]);
+            Assert.Equal("controller1", testDictionary["controller"]);
+            Assert.Equal("aa", testDictionary["a"]);
         }
 
-        [TestMethod]
+        [Fact]
         public void NullController()
         {
-            var elm = new TestElement(contextMock.Object);
+            var elm = new Writer<TestElement>() { Context = contextMock.Object, Item = new TestElement() };
             elm.Href("action1", null);
 
-            Assert.AreEqual(1, testDictionary.Count);
-            Assert.IsFalse(testDictionary.ContainsKey("controller"));
+            Assert.Equal(1, testDictionary.Count);
+            Assert.False(testDictionary.ContainsKey("controller"));
         }
 
         private class TestElement : Element, ILink
         {
-            public TestElement(IBootstrapContext context)
-                : base(context)
-            {
-                // Nothing
-            }
-
             public string HrefValue { get; set; }
 
             public void SetHref(string value)
@@ -87,7 +80,7 @@ namespace BootstrapMvc.Mvc5.Tests
                 HrefValue = value;
             }
 
-            protected override void WriteSelf(System.IO.TextWriter writer)
+            protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
             {
                 writer.Write(string.Empty);
             }

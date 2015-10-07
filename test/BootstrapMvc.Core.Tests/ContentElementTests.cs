@@ -31,7 +31,7 @@ namespace BootstrapMvc.Core
             using (var sw = new StringWriter())
             {
                 contextMock.SetupGet(x => x.Writer).Returns(sw);
-                using (var cnt = new DummyContentElement(contextMock.Object).BeginContent())
+                using (var cnt = new DummyContentElement().BeginContent(contextMock.Object))
                 {
                     sw.Write("-value-");
                 }
@@ -42,7 +42,6 @@ namespace BootstrapMvc.Core
         private class DummyDisposableContext : DisposableContent
         {
             public DummyDisposableContext(IBootstrapContext context)
-                : base(context)
             {
                 // Nothing
             }
@@ -50,23 +49,17 @@ namespace BootstrapMvc.Core
 
         private class DummyContentElement : ContentElement<DummyDisposableContext>
         {
-            public DummyContentElement(IBootstrapContext context)
-                : base(context)
+            protected override DummyDisposableContext CreateContentContext(IBootstrapContext context)
             {
-                // Nothing
+                return new DummyDisposableContext(context);
             }
 
-            protected override DummyDisposableContext CreateContentContext()
-            {
-                return new DummyDisposableContext(Context);
-            }
-
-            protected override void WriteSelfStart(TextWriter writer)
+            protected override void WriteSelfStart(TextWriter writer, IBootstrapContext context)
             {
                 writer.Write("start");
             }
 
-            protected override void WriteSelfEnd(TextWriter writer)
+            protected override void WriteSelfEnd(TextWriter writer, IBootstrapContext context)
             {
                 writer.Write("end");
             }

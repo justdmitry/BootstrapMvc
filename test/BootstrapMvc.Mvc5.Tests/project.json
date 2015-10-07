@@ -1,6 +1,6 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "BootstrapMvc.Core.Tests test project",
+  "description": "BootstrapMvc.Mvc5.Tests Class Library",
   "authors": [ "Dmitry" ],
   "tags": [ "" ],
   "projectUrl": "",
@@ -9,7 +9,7 @@
   "dependencies": {
     "xunit": "2.1.0-rc1-build3168",
     "xunit.runner.dnx": "2.1.0-beta5-build169",
-    "BootstrapMvc.Core": "",
+    "BootstrapMvc.Mvc5": "",
     "Moq": "4.2"
   },
   "commands": {

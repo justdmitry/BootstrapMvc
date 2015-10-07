@@ -1,22 +1,19 @@
 ﻿using System;
-using BootstrapMvc.Core;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Web;
-using System.Collections;
+using BootstrapMvc.Core;
+using Moq;
+using Xunit;
 
 namespace BootstrapMvc.Mvc5.Tests
 {
-    [TestClass]
     public class BootstrapContextTests
     {
         private MockRepository mocks;
         private ViewContext viewContext;
 
-        [TestInitialize]
-        public void Initialize()
+        public BootstrapContextTests()
         {
             mocks = new MockRepository(MockBehavior.Strict);
             var httpMock = mocks.Create<HttpContextBase>();
@@ -27,7 +24,7 @@ namespace BootstrapMvc.Mvc5.Tests
             viewContext.RequestContext.HttpContext = httpMock.Object;
         }
 
-        [TestMethod]
+        [Fact]
         public void PeekNearest_Ok()
         {
             var obj = new BootstrapContext(viewContext, null, null, null);
@@ -39,10 +36,10 @@ namespace BootstrapMvc.Mvc5.Tests
             obj.Push(obj2);
             obj.Push(obj3);
 
-            Assert.ReferenceEquals(obj2, obj.PeekNearest<Class2>());
+            Assert.Same(obj2, obj.PeekNearest<Class2>());
         }
 
-        [TestMethod]
+        [Fact]
         public void Pop_Ok()
         {
             var obj = new BootstrapContext(viewContext, null, null, null);
@@ -58,7 +55,7 @@ namespace BootstrapMvc.Mvc5.Tests
             try
             {
                 obj.PopIfEqual(obj2);
-                Assert.Fail("Should not got there :(");
+                Assert.True(false, "Should not got there :(");
             } catch (ArgumentException)
             {
                 // It,s Ok
@@ -75,7 +72,7 @@ namespace BootstrapMvc.Mvc5.Tests
             obj.PopIfEqual(obj1);
 
             // nothing more
-            Assert.IsNull(obj.PeekNearest<object>());
+            Assert.Null(obj.PeekNearest<object>());
         }
 
 

@@ -21,7 +21,7 @@ namespace BootstrapMvc.Core
             var raised = false;
 
             var obj = new DummyDisposableContent(contextMock.Object);
-            obj.Disposing += (s, a) => { raised = true; };
+            obj.OnDisposing(() => { raised = true; });
             using (obj)
             {
                 Assert.False(raised);
@@ -32,7 +32,6 @@ namespace BootstrapMvc.Core
         private class DummyDisposableContent : DisposableContent
         {
             public DummyDisposableContent(IBootstrapContext context)
-                : base(context)
             {
                 // Nothing
             }

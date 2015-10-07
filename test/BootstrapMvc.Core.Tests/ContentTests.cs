@@ -23,11 +23,11 @@ namespace BootstrapMvc.Core
         {
             var sample = "<h1>Hello!</h1>";
 
-            var sc = new SimpleBlock(contextMock.Object).Value(sample, true);
+            var sc = new SimpleBlock().Value(sample, true);
 
             using (var sw = new StringWriter())
             {
-                sc.WriteTo(sw);
+                sc.WriteTo(sw, contextMock.Object);
                 Assert.Equal(sample, sw.ToString());
             }
         }
@@ -38,11 +38,11 @@ namespace BootstrapMvc.Core
             var sample = "<h1>Hello!</h1>";
             var sampleEncoded = "&lt;h1&gt;Hello!&lt;/h1&gt;";
 
-            var sc = new SimpleBlock(contextMock.Object).Value(sample);
+            var sc = new SimpleBlock().Value(sample);
 
             using (var sw = new StringWriter())
             {
-                sc.WriteTo(sw);
+                sc.WriteTo(sw, contextMock.Object);
                 Assert.Equal(sampleEncoded, sw.ToString());
             }
         }
@@ -52,13 +52,13 @@ namespace BootstrapMvc.Core
         {
             var sample = "<test>";
 
-            var obj = new DummyWritableBlock(contextMock.Object) { Content = sample };
+            var obj = new DummyWritableBlock() { Content = sample };
 
             using (var sw = new StringWriter())
             {
-                var sc = new SimpleBlock(contextMock.Object).Value(obj);
+                var sc = new SimpleBlock().Value(obj);
 
-                sc.WriteTo(sw);
+                sc.WriteTo(sw, contextMock.Object);
 
                 Assert.Equal(sample, sw.ToString());
             }
@@ -69,13 +69,11 @@ namespace BootstrapMvc.Core
         {
             var obj = new object();
 
-            contextMock.Setup(x => x.Write(It.Is((object y) => object.ReferenceEquals(y, obj))));
-
             using (var sw = new StringWriter())
             {
-                var sc = new SimpleBlock(contextMock.Object).Value(obj);
+                var sc = new SimpleBlock().Value(obj);
 
-                sc.WriteTo(sw);
+                sc.WriteTo(sw, contextMock.Object);
 
                 contextMock.Verify();
             }

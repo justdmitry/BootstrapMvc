@@ -1,32 +1,31 @@
 ﻿using System;
 using BootstrapMvc.Core;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace BootstrapMvc.Mvc5
 {
-    [TestClass]
     public class TagBuilderTests
     {
-        [TestMethod]
+        [Fact]
         public void Test_EmptyCssClassesNotAdded()
         {
             var tb = new TagBuilder("test");
             tb.AddCssClass(string.Empty);
             tb.InnerHtml = "aaa";
 
-            Assert.AreEqual("<test>aaa</test>", tb.GetFullTag());
+            Assert.Equal("<test>aaa</test>", tb.GetFullTag());
         }
 
-        [TestMethod]
+        [Fact]
         public void Test_GetStartEndFullTag()
         {
             var tb = new TagBuilder("test");
             tb.MergeAttribute("a", "b");
             tb.InnerHtml = "aaa";
 
-            Assert.AreEqual("<test a=\"b\">", tb.GetStartTag());
-            Assert.AreEqual("</test>", tb.GetEndTag());
-            Assert.AreEqual("<test a=\"b\">aaa</test>", tb.GetFullTag());
+            Assert.Equal("<test a=\"b\">", tb.GetStartTag());
+            Assert.Equal("</test>", tb.GetEndTag());
+            Assert.Equal("<test a=\"b\">aaa</test>", tb.GetFullTag());
         }
     }
 }
