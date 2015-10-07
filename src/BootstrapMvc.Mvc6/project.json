@@ -1,0 +1,23 @@
+﻿{
+  "version": "1.0.51007-beta7-beta5",
+  "title": "BootstrapMvc.Mvc6",
+  "description": "MVC6 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc6 package).",
+  "authors": [ "just_dmitry" ],
+  "tags": [ "Bootstrap", "Mvc", "Mvc6", "HelpHelpers" ],
+  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+  "licenseUrl": "",
+  "copyright": "Copyright © Dmitry Popov, 2015",
+  "releaseNotes": "Initial release",
+
+  "dependencies": {
+    "Microsoft.AspNet.Mvc": "6.0.0-beta7",
+    "Microsoft.AspNet.Razor": "4.0.0-beta7",
+    "Microsoft.AspNet.Routing": "1.0.0-beta7",
+    "BootstrapMvc.Core": ""
+  },
+
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  }
+}

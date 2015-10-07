@@ -1,0 +1,19 @@
+﻿<h2>Badges</h2>
+
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+@@Bootstrap.Badge("42") 
+@@Bootstrap.Badge(new HtmlString("To be or &lt;s&gt;not&lt;/s&gt; to be?"))
+@@Bootstrap.Badge("Hello World!").Content(Bootstrap.Icon(IconType.Gift))
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        @Bootstrap.Badge("42")
+        @Bootstrap.Badge(new HtmlString("To be or <s>not</s> to be?"))
+        @Bootstrap.Badge("Hello World!").Content(Bootstrap.Icon(IconType.Gift))
+    }
+}

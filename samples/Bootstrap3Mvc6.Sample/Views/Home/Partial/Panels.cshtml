@@ -1,0 +1,55 @@
+﻿<h2>Panels</h2>
+
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+@@Bootstrap.Panel(PanelType.SuccessGreen)
+  .Footer("This is sample footer ", Bootstrap.Label(LabelType.PrimaryBlue, "with Label"))
+  .Header(Bootstrap.Icon(IconType.Flag), "Hello, World!")
+  .Body("Sample body", Bootstrap.Alert(AlertType.InfoCyan, "Use rich content"))
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        @Bootstrap.Panel(PanelType.SuccessGreen).Footer("This is sample footer ", Bootstrap.Label(LabelType.PrimaryBlue, "with Label")).Header(Bootstrap.Icon(IconType.Flag), "Hello, World!").Body("Sample body", Bootstrap.Alert(AlertType.InfoCyan, "Use rich content"))
+    }
+}
+
+
+<p>Complex content</p>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+@@using (var panelContent = Bootstrap.Panel(PanelType.DefaultGray).BeginContent())
+{
+    @@panelContent.Header(Bootstrap.Icon(IconType.Globe), "Panel header")
+    using (panelContent.BeginBody()) {
+        &lt;p&gt;Write any HTML markup, using &lt;code&gt;BeginContent()&lt;/code&gt;&lt;/p&gt;
+    }
+    using (panelContent.BeginFooter())
+    {
+        @@Bootstrap.Label(LabelType.SuccessGreen, "Anything you want!")
+    }
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        using (var panelContent = Bootstrap.Panel(PanelType.DefaultGray).BeginContent())
+        {
+            @panelContent.Header(Bootstrap.Icon(IconType.Globe), "Panel header")
+            using (panelContent.BeginBody())
+            {
+                <p>Write any HTML markup, using <code>BeginContent()</code></p>
+            }
+            using (panelContent.BeginFooter())
+            {
+                @Bootstrap.Label(LabelType.SuccessGreen, "Anything you want!")
+            }
+        }    
+    }
+}

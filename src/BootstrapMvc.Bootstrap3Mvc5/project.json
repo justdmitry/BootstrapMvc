@@ -1,0 +1,26 @@
+﻿{
+  "version": "0.4.51007-beta5",
+  "title": "BootstrapMvc.Bootstrap3Mvc5",
+  "description": "Helpers for using [Twitter] Bootstrap 3.3 in MVC5 projects. Use this package to get correct dependencies from BootstrapMvc pack.",
+  "authors": [ "just_dmitry" ],
+  "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "Mvc5", "HelpHelpers" ],
+  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+  "licenseUrl": "",
+  "copyright": "Copyright © Dmitry Popov, 2015",
+  "releaseNotes": "Upgrade to new Core (mvc6-compatible)",
+
+  "dependencies": {
+    "Microsoft.AspNet.Mvc": "5.2.3",
+    "Microsoft.AspNet.Razor": "3.2.3",
+    "BootstrapMvc.Bootstrap3": "",
+    "BootstrapMvc.Mvc5": ""
+  },
+
+  "frameworks": {
+    "net45": {
+      "frameworkAssemblies": {
+        "System.Web": "4.0.0.0"
+      }
+    }
+  }
+}

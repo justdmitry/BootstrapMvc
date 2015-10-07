@@ -1,0 +1,56 @@
+﻿@model string[][]
+@{
+    ViewBag.Title = "BootstrapMvc";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">Fluent, open-source, extendable packages for simplifying bootstrap markup in your ASP.MVC projects.</p>
+</div>
+
+
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(6, 4, 4, 4))
+    {
+        <h2>Efficient</h2>
+        <p>Using <code>TextWriter</code> internally - no <code>IHtmlString</code>, strings concatenating and re-building!</p>
+    }
+    using (Bootstrap.BeginGridCol(6, 3, 3, 3))
+    {
+        <h2>Fluent</h2>
+        <p>Easy to write code, easy to read. Not more html and c# code mix in your razor views!</p>
+    }
+    using (Bootstrap.BeginGridCol(6, 5, 5, 5))
+    {
+        <h2>Extendable</h2>
+        <p>New extensions methods, new 'building blocks' - write your own and use them in any combination.</p>
+    }
+}
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(6, 4, 4, 4))
+    {
+        <h2>Install via NuGet</h2>
+        <p><kbd>Install-Package BootstrapMvc.Bootstrap3Mvc5</kbd></p>
+    } 
+    using (Bootstrap.BeginGridCol(6, 3, 3, 3))
+    {
+        <h2>Opensource</h2>
+        <p>@Bootstrap.Button("View on GitHub").Href("https://github.com/justdmitry/BootstrapMvc")</p>
+    }
+    using (Bootstrap.BeginGridCol(6, 5, 5, 5))
+    {
+        <h2>Live demo</h2>
+        using (Bootstrap.P().Content("This site runs with:").BeginContent())
+        {
+            using (var list = Bootstrap.BeginList(ListType.Unstyled))
+            {
+                foreach (var pair in Model)
+                {
+                    @list.Item().Content(Bootstrap.Span(pair[0]), Bootstrap.Span(pair[1]).PullRight())
+                }
+            }
+        }
+    }
+}

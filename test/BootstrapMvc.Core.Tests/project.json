@@ -1,0 +1,22 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "BootstrapMvc.Core.Tests test project",
+  "authors": [ "Dmitry" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "dependencies": {
+    "xunit": "2.1.0-rc1-build3168",
+    "xunit.runner.dnx": "2.1.0-beta5-build169",
+    "BootstrapMvc.Core": "",
+    "Moq": "4.2"
+  },
+  "commands": {
+    "test": "xunit.runner.dnx"
+  },
+
+  "frameworks" : {
+    "dnx451": { }
+  }
+}

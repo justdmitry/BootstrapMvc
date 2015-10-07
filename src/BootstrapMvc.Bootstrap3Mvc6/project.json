@@ -1,0 +1,21 @@
+﻿{
+  "version": "0.1.51007-beta7-beta5",
+  "title": "BootstrapMvc.Bootstrap3Mvc6",
+  "description": "Helpers for using [Twitter] Bootstrap 3.3 in MVC6 projects. Use this package to get correct dependencies from BootstrapMvc pack.",
+  "authors": [ "just_dmitry" ],
+  "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "Mvc6", "HelpHelpers" ],
+  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+  "licenseUrl": "",
+  "copyright": "Copyright © Dmitry Popov, 2015",
+  "releaseNotes": "Initial release",
+
+  "dependencies": {
+    "BootstrapMvc.Mvc6": "",
+    "BootstrapMvc.Bootstrap3": ""
+  },
+
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  }
+}

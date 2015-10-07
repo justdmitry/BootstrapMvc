@@ -6,3 +6,5 @@
 StyleCop.Cache
 bin
 obj
+/.vs
+/artifacts

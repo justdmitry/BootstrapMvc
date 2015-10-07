@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "BootstrapMvc: Installation";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<h2>1. Install NuGet package</h2>
+
+<p>
+    Install <code><a href="https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc6/">BootstrapMvc.Bootstrap3Mvc6</a></code>
+    package from NuGet to your ASP.MVC6 project: <br /><br /> <kbd style="padding: 2ex 5ex 2ex 2ex;">Install-Package BootstrapMvc.Bootstrap3Mvc6</kbd>
+</p>
+
+
+<h2>2. Update <code>Views\_ViewImports.cshtml</code> file</h2>
+
+<p>
+    Add two lines to <code>Views\_ViewImports.cshtml</code> file:
+    <pre>@@using BootstrapMvc
+@@inject BootstrapMvc.Mvc6.BootstrapHelper<TModel> Bootstrap</pre>
+</p>
+
+<h2>3. Register in DI container</h2>
+
+<p>
+    Append to <code>ConfigureServices()</code> method in <code>Startup.cs</code>:
+    <pre>services.AddTransient(typeof(BootstrapMvc.Mvc6.BootstrapHelper<>));</pre>
+</p>
