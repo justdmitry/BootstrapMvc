@@ -4,11 +4,11 @@ namespace BootstrapMvc.Core
 {
     public abstract class ContentElement<T> : Element where T : DisposableContent
     {
-        public virtual T BeginContent(IBootstrapContext context)
+        public virtual T BeginContent(System.IO.TextWriter writer, IBootstrapContext context)
         {
-            WriteSelfStart(context.Writer, context);
+            WriteSelfStart(writer, context);
             var retVal = CreateContentContext(context);
-            retVal.OnDisposing(() => WriteSelfEnd(context.Writer, context));
+            retVal.OnDisposing(() => WriteSelfEnd(writer, context));
             return retVal;
         }
 

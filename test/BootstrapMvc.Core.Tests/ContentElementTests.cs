@@ -31,7 +31,7 @@ namespace BootstrapMvc.Core
             using (var sw = new StringWriter())
             {
                 contextMock.SetupGet(x => x.Writer).Returns(sw);
-                using (var cnt = new DummyContentElement().BeginContent(contextMock.Object))
+                using (var cnt = new DummyContentElement().BeginContent(sw, contextMock.Object))
                 {
                     sw.Write("-value-");
                 }

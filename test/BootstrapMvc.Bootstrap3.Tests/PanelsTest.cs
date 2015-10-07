@@ -31,7 +31,7 @@ namespace BootstrapMvc
                 PanelFooterValue = (PanelFooter)new PanelFooter().AddContent("some footer"),
                 PanelHeaderValue = (PanelHeader)new PanelHeader().AddContent("some header")
             };
-            using (panel.BeginContent(contextMock.Object))
+            using (panel.BeginContent(writer, contextMock.Object))
             {
                 new PanelBody().AddContent("some body").WriteTo(writer, contextMock.Object);
             }

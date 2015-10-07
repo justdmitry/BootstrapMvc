@@ -9,7 +9,7 @@ namespace BootstrapMvc
         [Fact]
         public void Test_Form_Horizontal()
         {
-            using (var form = new Form<dynamic>() { TypeValue = FormType.Horizontal }.BeginContent(contextMock.Object))
+            using (var form = new Form<dynamic>() { TypeValue = FormType.Horizontal }.BeginContent(writer, contextMock.Object))
             {
                 using (form.BeginFieldset("Legend text"))
                 {
@@ -30,7 +30,7 @@ namespace BootstrapMvc
         [Fact]
         public void Test_Form_Inline()
         {
-            using (var form = new Form<dynamic>() { TypeValue = FormType.Inline }.BeginContent(contextMock.Object))
+            using (var form = new Form<dynamic>() { TypeValue = FormType.Inline }.BeginContent(writer, contextMock.Object))
             {
                 using (form.BeginFieldset("Legend text"))
                 {
@@ -50,7 +50,7 @@ namespace BootstrapMvc
         [Fact]
         public void Test_Form_Default()
         {
-            using (var form = new Form<dynamic>() { TypeValue = FormType.DefaultNone }.BeginContent(contextMock.Object))
+            using (var form = new Form<dynamic>() { TypeValue = FormType.DefaultNone }.BeginContent(writer, contextMock.Object))
             {
                 using (form.BeginFieldset("Legend text"))
                 {

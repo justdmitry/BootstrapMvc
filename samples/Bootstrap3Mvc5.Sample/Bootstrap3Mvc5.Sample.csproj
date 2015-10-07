@@ -42,21 +42,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BootstrapMvc.Bootstrap3, Version=0.18.50925.1510, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BootstrapMvc.Bootstrap3.0.18.50925.1510\lib\net45\BootstrapMvc.Bootstrap3.dll</HintPath>
+    <Reference Include="BootstrapMvc.Bootstrap3, Version=1.1.51007.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3.1.1.51007-beta4\lib\net45\BootstrapMvc.Bootstrap3.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="BootstrapMvc.Bootstrap3Mvc5, Version=0.3.50925.1620, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BootstrapMvc.Bootstrap3Mvc5.0.3.50925.1620\lib\net45\BootstrapMvc.Bootstrap3Mvc5.dll</HintPath>
-      <Private>True</Private>
-      <Aliases>bootstrap3mvc5</Aliases>
-    </Reference>
-    <Reference Include="BootstrapMvc.Core, Version=0.13.50925.1500, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BootstrapMvc.Core.0.13.50925.1500\lib\net45\BootstrapMvc.Core.dll</HintPath>
+    <Reference Include="BootstrapMvc.Bootstrap3Mvc5, Version=0.4.51007.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3Mvc5.0.4.51007-beta2\lib\net45\BootstrapMvc.Bootstrap3Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="BootstrapMvc.Mvc5, Version=0.13.50925.1615, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BootstrapMvc.Mvc5.0.13.50925.1615\lib\net45\BootstrapMvc.Mvc5.dll</HintPath>
+    <Reference Include="BootstrapMvc.Core, Version=1.2.51007.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BootstrapMvc.Core.1.2.51007\lib\net45\BootstrapMvc.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BootstrapMvc.Mvc5, Version=1.1.51007.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BootstrapMvc.Mvc5.1.1.51007-alpha4\lib\net45\BootstrapMvc.Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -68,29 +67,29 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />

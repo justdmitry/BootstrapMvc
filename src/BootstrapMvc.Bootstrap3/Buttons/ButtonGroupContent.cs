@@ -14,14 +14,14 @@ namespace BootstrapMvc.Buttons
 
         #region ButtonGroup
 
-        public IWriter<ButtonGroup> ButtonGroup()
+        public IWriter2<ButtonGroup, ButtonGroupContent> ButtonGroup()
         {
-            return Context.CreateWriter<ButtonGroup>();
+            return Context.CreateWriter<ButtonGroup, ButtonGroupContent>();
         }
 
         public ButtonGroupContent BeginButtonGroup()
         {
-            return ButtonGroup().Item.BeginContent(Context);
+            return ButtonGroup().BeginContent();
         }
 
         #endregion

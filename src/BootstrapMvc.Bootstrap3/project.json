@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.1.51007-beta2",
+  "version": "1.1.51007-beta5",
   "title": "BootstrapMvc.Bootstrap3",
   "description": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],

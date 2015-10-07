@@ -10,7 +10,12 @@ namespace BootstrapMvc.Mvc6
     {
         public TContent BeginContent()
         {
-            return Item.BeginContent(Context);
+            return Item.BeginContent(Context.Writer, Context);
+        }
+
+        public TContent BeginContent(System.IO.TextWriter writer)
+        {
+            return Item.BeginContent(writer, Context);
         }
     }
 }

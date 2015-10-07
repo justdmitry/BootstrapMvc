@@ -1,6 +1,6 @@
 ﻿{
-  "version": "1.1.51007",
-  "title": "BootstrapMvc.Mvc.Shared",
+  "version": "1.2.51007",
+  "title": "BootstrapMvc.Core",
   "description": "Core library for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],
   "tags": [ "Bootstrap", "Mvc", "HtmlHelpers" ],

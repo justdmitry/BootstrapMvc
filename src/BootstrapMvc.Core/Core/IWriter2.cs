@@ -7,5 +7,7 @@ namespace BootstrapMvc.Core
         where TContent : DisposableContent
     {
         TContent BeginContent();
+
+        TContent BeginContent(System.IO.TextWriter writer);
     }
 }

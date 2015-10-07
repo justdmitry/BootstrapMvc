@@ -31,7 +31,7 @@ namespace BootstrapMvc.Forms
 
             if (haveErrors)
             {
-                using (context.CreateWriter<Alert, AnyContent>().Type(AlertType.DangerRed).BeginContent())
+                using (context.CreateWriter<Alert, AnyContent>().Type(AlertType.DangerRed).BeginContent(writer))
                 {
                     msg = context.GetMessage(MessageType.ValidationResultErrorsFoundHeader);
                     if (!string.IsNullOrEmpty(msg))
@@ -62,7 +62,7 @@ namespace BootstrapMvc.Forms
 
             if (haveWarnings)
             {
-                using (context.CreateWriter<Alert, AnyContent>().Type(AlertType.WarningOrange).BeginContent())
+                using (context.CreateWriter<Alert, AnyContent>().Type(AlertType.WarningOrange).BeginContent(writer))
                 {
                     msg = context.GetMessage(MessageType.ValidationResultWarningnsFoundHeader);
                     if (!string.IsNullOrEmpty(msg))

@@ -32,7 +32,7 @@ namespace BootstrapMvc
                 HeaderValue = (TableHeader)thead,
                 FooterValue = (TableFooter)tfoot
             };
-            using (table.BeginContent(contextMock.Object))
+            using (table.BeginContent(writer, contextMock.Object))
             {
                 tbody.WriteTo(writer, contextMock.Object);
             }

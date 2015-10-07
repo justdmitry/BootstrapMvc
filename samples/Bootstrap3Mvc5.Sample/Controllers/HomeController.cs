@@ -1,6 +1,6 @@
-﻿extern alias bootstrap3mvc5;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Linq;
+using System.Reflection;
 using System.Web.Mvc;
 using System.Web.UI;
 
@@ -11,11 +11,21 @@ namespace Bootstrap3Mvc5.Sample.Controllers
         [OutputCache(Duration = 60 * 60, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
-            var versions = new string[4][];
-            versions[0] = new[] { "BootstrapMvc.Core", typeof(BootstrapMvc.Core.WritableBlock).Assembly.GetName().Version.ToString() };
-            versions[1] = new[] { "BootstrapMvc.Bootstrap3", typeof(BootstrapMvc.Elements.Icon).Assembly.GetName().Version.ToString() };
-            versions[2] = new[] { "BootstrapMvc.Bootstrap3Mvc5", typeof(bootstrap3mvc5::BootstrapMvc.AnyContentExtensions).Assembly.GetName().Version.ToString() };
-            versions[3] = new[] { "BootstrapMvc.Mvc5", typeof(BootstrapMvc.Core.BootstrapContext).Assembly.GetName().Version.ToString() };
+            var types = new[]
+            {
+                typeof(BootstrapMvc.Core.IWritable),
+                typeof(BootstrapMvc.Elements.Icon),
+                typeof(BootstrapMvc.Mvc5LinkExtensions),
+                typeof(BootstrapMvc.Bootstrap3Mvc5AnyContentExtensions),
+                typeof(System.Web.Mvc.ActionResult)
+            };
+
+            var versions = types.Select(x => new[]
+            {
+                x.Assembly.GetName().Name,
+                x.Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion
+            }).ToArray();
+
             return View(versions);
         }
 

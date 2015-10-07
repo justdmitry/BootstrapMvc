@@ -60,7 +60,7 @@ namespace BootstrapMvc.Paging
             var pageStart = (PageButtonsCountBackValue == -1) ? 1 : Math.Max(1, CurrentPageValue - PageButtonsCountBackValue);
             var pageEnd = (PageButtonsCountForwardValue == -1) ? TotalPagesValue : Math.Min(TotalPagesValue, CurrentPageValue + PageButtonsCountForwardValue);
 
-            using (Paginator.BeginContent(context))
+            using (Paginator.BeginContent(writer, context))
             {
                 if (!HidePreviousNextButtonsValue)
                 {
