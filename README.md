@@ -7,9 +7,9 @@ Extendable packages pack for simplifying Bootstrap markup in your ASP.MVC projec
 * [BootstrapMvc.Core](https://www.nuget.org/packages/BootstrapMvc.Core/) - core library, containing base clasess only;
 * [BootstrapMvc.Bootstrap3](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3/) - helper classes for Bootstrap 3.3 (not complete at this moment), not bound to any MVC version;
 * [BootstrapMvc.Mvc5](https://www.nuget.org/packages/BootstrapMvc.Mvc5/) - classes for integrating with ASP.MVC5 infrastructure;
-* **[BootstrapMvc.Bootstrap3Mvc5](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc5/) - empty package (but with correct dependencies) for using in your MVC5 projects.**
-
-In the future, *BootstrapMvc.Mvc6* and *BootstrapMvc.Bootstrap3Mvc6* will be added.
+* [BootstrapMvc.Mvc6](https://www.nuget.org/packages/BootstrapMvc.Mvc6/) - classes for integrating with ASP.NET5 / MVC6 infrastructure (currently for beta7);
+* **[BootstrapMvc.Bootstrap3Mvc5](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc5/) - 'use-this' package (with correct dependencies) for using in your MVC5 projects.**
+* **[BootstrapMvc.Bootstrap3Mvc6](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc6/) - 'use-this' package (with correct dependencies) for using in your ASP.NET5 / MVC6 projects (currently for beta7).**
 
 ## Key features
 
@@ -19,7 +19,29 @@ In the future, *BootstrapMvc.Mvc6* and *BootstrapMvc.Bootstrap3Mvc6* will be add
 4. **TextWriter-based** - internally, all HTML is written directry to `TextWriter-s`, minimizing String allocation and concatenation;
 5. **Open source** - fork it, extend it, use it!
 
-## Installation
+## Usage
+
+Just one sample - toolbar with button with dropdown menu. You remember how much markup you should write. Now you can: 
+
+    using (Bootstrap.BeginButtonToolbar()) 
+    {
+        using (Bootstrap.BeginButtonGroup(ButtonSize.Small))
+        {
+            @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Ok, "Hello, world!").Href("/hello.html")
+            @using (var dropdown = Bootstrap.Button(ButtonType.InfoCyan, "This is dropdown").BeginDropdown()) 
+            {
+                @dropdown.Link(IconType.Plus_Sign, "Link 1").Href("/page1.html")
+                @dropdown.Divider()
+                @dropdown.Link(IconType.Plus_Sign, "Link 2").Href("/page2.html")
+            }
+        }
+    }
+    
+Of course you can do more than simple buttons and create URLs better than using string values - look for more extension methods.
+
+Also, view sample sites for [ASP.NET MVC5](http://bootstrap3mvc5.azurewebsites.net/) and (ASP.NET5 MVC6)[http://bootstrap3mvc6.azurewebsites.net/]
+
+## Installation for MVC5
 
 ### 1. Install package via NuGet
 
@@ -43,22 +65,26 @@ And add one more `namespace` to namespaces list:
 
 Clean and Rebuild you project to activate changes and activate intellisence. Rarely, a Visual Studio restart also needed.
 
-## Using
+## Installation for MVC6
 
-Just one sample - toolbar with button with dropdown menu. You remember how much markup you should write. Now you can: 
+### 1. Add dependency to `project.json`
 
-    using (Bootstrap.BeginButtonToolbar()) 
-    {
-        using (Bootstrap.BeginButtonGroup(ButtonSize.Small))
-        {
-            @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Ok, "Hello, world!").Href("/hello.html")
-            @using (var dropdown = Bootstrap.Button(ButtonType.InfoCyan, "This is dropdown").BeginDropdown()) 
-            {
-                @dropdown.Link(IconType.Plus_Sign, "Link 1").Href("/page1.html")
-                @dropdown.Divider()
-                @dropdown.Link(IconType.Plus_Sign, "Link 2").Href("/page2.html")
-            }
-        }
+    "dependencies": {
+        ....
+        "BootstrapMvc.Bootstrap3Mvc6": "0.1.51007-beta7-*"
     }
+
+Currently, **beta7** of ASP.NET5 / MVC6 is supported - because beta8 is in progress and not available in Azure.
+
+### 2. Update `Views\_ViewImports.cshtml` file
+
+Add two lines to `Views\_ViewImports.cshtml` file (create it if not exists):
+
+    @using BootstrapMvc
+    @inject BootstrapMvc.Mvc6.BootstrapHelper<TModel> Bootstrap
+
+### 3. Register in DI container
+
+Append to `ConfigureServices()` method in `Startup.cs` file:
     
-Of course you can do more than simple buttons and create URLs better than using string values - look for more extension methods.
+    services.AddTransient(typeof(BootstrapMvc.Mvc6.BootstrapHelper<>));
