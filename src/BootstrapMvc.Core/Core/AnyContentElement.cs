@@ -9,7 +9,7 @@ namespace BootstrapMvc.Core
 
         protected string endTag = null;
 
-        public void AddContent(object value)
+        public AnyContentElement AddContent(object value)
         {
             var newContent = new SimpleBlock().Value(value);
             if (content == null)
@@ -20,6 +20,7 @@ namespace BootstrapMvc.Core
             {
                 content.Append(newContent);
             }
+            return this;
         }
 
         protected abstract string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context);

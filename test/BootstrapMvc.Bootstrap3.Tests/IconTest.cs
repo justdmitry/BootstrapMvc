@@ -1,26 +1,25 @@
 ﻿using System;
 using BootstrapMvc.Elements;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace BootstrapMvc
 {
-    [TestClass]
     public class IconTest : TestBase
     {
-        [TestMethod]
+        [Fact]
         public void Test_Icon_Normal()
         {
-            var icon = new Icon(contextMock.Object).Type(IconType.Home);
-            icon.WriteTo(writer);
-            Assert.AreEqual(" <i class=\"glyphicon glyphicon-home\"></i> ", writer.ToString());
+            var icon = new Icon() { TypeValue = IconType.Home };
+            icon.WriteTo(writer, contextMock.Object);
+            Assert.Equal(" <i class=\"glyphicon glyphicon-home\"></i> ", writer.ToString());
         }
 
-        [TestMethod]
+        [Fact]
         public void Test_Icon_NoSpacing()
         {
-            var icon = new Icon(contextMock.Object).Type(IconType.Home).NoSpacing();
-            icon.WriteTo(writer);
-            Assert.AreEqual("<i class=\"glyphicon glyphicon-home\"></i>", writer.ToString());
+            var icon = new Icon() { TypeValue = IconType.Home, NoSpacingValue = true };
+            icon.WriteTo(writer, contextMock.Object);
+            Assert.Equal("<i class=\"glyphicon glyphicon-home\"></i>", writer.ToString());
         }
     }
 }

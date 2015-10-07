@@ -1,31 +1,41 @@
 ﻿using System;
 using BootstrapMvc.Panels;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace BootstrapMvc
 {
-    [TestClass]
     public class PanelTest : TestBase
     {
-        [TestMethod]
+        [Fact]
         public void Test_Panel_Normal()
         {
-            var panel = bootstrap.Panel(PanelType.DangerRed).Footer("some footer").Body("some body").Header("some header");
-            panel.WriteTo(writer);
-            Assert.AreEqual(
+            var panel = new Panel()
+            {
+                TypeValue = PanelType.DangerRed,
+                PanelFooterValue = (PanelFooter)new PanelFooter().AddContent("some footer"),
+                PanelBodyValue = (PanelBody)new PanelBody().AddContent("some body"),
+                PanelHeaderValue = (PanelHeader)new PanelHeader().AddContent("some header")
+            };
+            panel.WriteTo(writer, contextMock.Object);
+            Assert.Equal(
                 "<div class=\"panel panel-danger\"><div class=\"panel-heading\">some header</div><div class=\"panel-body\">some body</div><div class=\"panel-footer\">some footer</div></div>", 
                 writer.ToString());
         }
 
-        [TestMethod]
+        [Fact]
         public void Test_Panel_Content()
         {
-            var panel = bootstrap.Panel(PanelType.DangerRed).Footer("some footer").Header("some header");
-            using (panel.BeginContent())
+            var panel = new Panel()
             {
-                new PanelBody(contextMock.Object).Content("some body").WriteTo(writer);
+                TypeValue = PanelType.DangerRed,
+                PanelFooterValue = (PanelFooter)new PanelFooter().AddContent("some footer"),
+                PanelHeaderValue = (PanelHeader)new PanelHeader().AddContent("some header")
+            };
+            using (panel.BeginContent(contextMock.Object))
+            {
+                new PanelBody().AddContent("some body").WriteTo(writer, contextMock.Object);
             }
-            Assert.AreEqual(
+            Assert.Equal(
                 "<div class=\"panel panel-danger\"><div class=\"panel-heading\">some header</div><div class=\"panel-body\">some body</div><div class=\"panel-footer\">some footer</div></div>",
                 writer.ToString());
         }
