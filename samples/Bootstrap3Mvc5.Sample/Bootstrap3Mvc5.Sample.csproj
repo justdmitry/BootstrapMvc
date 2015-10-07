@@ -43,11 +43,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BootstrapMvc.Bootstrap3, Version=1.1.51007.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3.1.1.51007-beta4\lib\net45\BootstrapMvc.Bootstrap3.dll</HintPath>
+      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3.1.1.51007-beta5\lib\net45\BootstrapMvc.Bootstrap3.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="BootstrapMvc.Bootstrap3Mvc5, Version=0.4.51007.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3Mvc5.0.4.51007-beta2\lib\net45\BootstrapMvc.Bootstrap3Mvc5.dll</HintPath>
+      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3Mvc5.0.4.51007-beta5\lib\net45\BootstrapMvc.Bootstrap3Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="BootstrapMvc.Core, Version=1.2.51007.0, Culture=neutral, processorArchitecture=MSIL">
@@ -55,7 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="BootstrapMvc.Mvc5, Version=1.1.51007.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Mvc5.1.1.51007-alpha4\lib\net45\BootstrapMvc.Mvc5.dll</HintPath>
+      <HintPath>..\..\packages\BootstrapMvc.Mvc5.1.1.51007-beta5\lib\net45\BootstrapMvc.Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
