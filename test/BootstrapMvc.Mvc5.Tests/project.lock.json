@@ -3,10 +3,10 @@
   "version": 1,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Core/1.1.51006-beta1": {
+      "BootstrapMvc.Core/1.1.51007": {
         "type": "project"
       },
-      "BootstrapMvc.Mvc5/1.1.51012-beta1": {
+      "BootstrapMvc.Mvc5/1.1.51007-alpha1": {
         "type": "project",
         "dependencies": {
           "BootstrapMvc.Core": null,
@@ -414,11 +414,11 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Core/1.1.51006-beta1": {
+    "BootstrapMvc.Core/1.1.51007": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Core/project.json"
     },
-    "BootstrapMvc.Mvc5/1.1.51012-beta1": {
+    "BootstrapMvc.Mvc5/1.1.51007-alpha1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Mvc5/project.json"
     },

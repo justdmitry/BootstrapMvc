@@ -3,23 +3,23 @@
   "version": 1,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Bootstrap3/0.19.51012-beta1": {
+      "BootstrapMvc.Bootstrap3/1.1.51007-beta1": {
         "type": "project",
         "dependencies": {
           "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Bootstrap3Mvc6/0.1.51012-beta7-beta1": {
+      "BootstrapMvc.Bootstrap3Mvc6/0.1.51007-beta7-beta1": {
         "type": "project",
         "dependencies": {
           "BootstrapMvc.Bootstrap3": null,
           "BootstrapMvc.Mvc6": null
         }
       },
-      "BootstrapMvc.Core/1.1.51006-beta1": {
+      "BootstrapMvc.Core/1.1.51007": {
         "type": "project"
       },
-      "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
+      "BootstrapMvc.Mvc6/1.0.51007-beta7-beta1": {
         "type": "project",
         "dependencies": {
           "BootstrapMvc.Core": null,
@@ -1365,19 +1365,19 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3/0.19.51012-beta1": {
+    "BootstrapMvc.Bootstrap3/1.1.51007-beta1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3/project.json"
     },
-    "BootstrapMvc.Bootstrap3Mvc6/0.1.51012-beta7-beta1": {
+    "BootstrapMvc.Bootstrap3Mvc6/0.1.51007-beta7-beta1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3Mvc6/project.json"
     },
-    "BootstrapMvc.Core/1.1.51006-beta1": {
+    "BootstrapMvc.Core/1.1.51007": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Core/project.json"
     },
-    "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
+    "BootstrapMvc.Mvc6/1.0.51007-beta7-beta1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Mvc6/project.json"
     },

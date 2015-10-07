@@ -9,10 +9,10 @@
           "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Core/1.1.51006-beta1": {
+      "BootstrapMvc.Core/1.1.51007": {
         "type": "project"
       },
-      "BootstrapMvc.Mvc5/1.1.51012-beta1": {
+      "BootstrapMvc.Mvc5/1.1.51007-alpha1": {
         "type": "project",
         "dependencies": {
           "BootstrapMvc.Core": null,
@@ -424,11 +424,11 @@
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3/project.json"
     },
-    "BootstrapMvc.Core/1.1.51006-beta1": {
+    "BootstrapMvc.Core/1.1.51007": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Core/project.json"
     },
-    "BootstrapMvc.Mvc5/1.1.51012-beta1": {
+    "BootstrapMvc.Mvc5/1.1.51007-alpha1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Mvc5/project.json"
     },

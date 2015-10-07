@@ -9,10 +9,10 @@
           "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Core/1.1.51006-beta1": {
+      "BootstrapMvc.Core/1.1.51007": {
         "type": "project"
       },
-      "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
+      "BootstrapMvc.Mvc6/0.1.51007-beta7-beta1": {
         "type": "project",
         "dependencies": {
           "BootstrapMvc.Core": null,
@@ -1088,7 +1088,7 @@
           "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Core/1.1.51006-beta1": {
+      "BootstrapMvc.Core/1.1.51007": {
         "type": "project",
         "dependencies": {
           "Microsoft.CSharp": "4.0.0",
@@ -1097,7 +1097,7 @@
           "System.Text.Encoding.Extensions": "4.0.0"
         }
       },
-      "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
+      "BootstrapMvc.Mvc6/0.1.51007-beta7-beta1": {
         "type": "project",
         "dependencies": {
           "BootstrapMvc.Core": null,
@@ -3063,11 +3063,11 @@
       "type": "project",
       "path": "../BootstrapMvc.Bootstrap3/project.json"
     },
-    "BootstrapMvc.Core/1.1.51006-beta1": {
+    "BootstrapMvc.Core/1.1.51007": {
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json"
     },
-    "BootstrapMvc.Mvc6/0.1.51012-beta7-beta1": {
+    "BootstrapMvc.Mvc6/0.1.51007-beta7-beta1": {
       "type": "project",
       "path": "../BootstrapMvc.Mvc6/project.json"
     },
