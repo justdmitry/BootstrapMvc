@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.4.51007-beta1",
+  "version": "0.4.51007-beta2",
   "title": "BootstrapMvc.Bootstrap3Mvc5",
   "description": "Helpers for using [Twitter] Bootstrap 3.3 in MVC5 projects. Use this package to get correct dependencies from BootstrapMvc pack.",
   "authors": [ "just_dmitry" ],
