@@ -1,11 +1,11 @@
 ﻿@model string[][]
 @{
-    ViewBag.Title = "BootstrapMvc";
+    ViewBag.Title = "Bootstrap3Mvc6";
 }
 
 <div class="jumbotron">
     <h1>@ViewBag.Title</h1>
-    <p class="lead">Fluent, open-source, extendable packages for simplifying bootstrap markup in your ASP.MVC projects.</p>
+    <p class="lead">Fluent, open-source, extendable packages for simplifying bootstrap markup in your ASP.NET5 MVC6 projects <small>(for previous MVC5 see <a href="http://bootstrap3mvc5.azurewebsites.net">bootstrap3mvc5</a> site)</small>.</p>
 </div>
 
 @using (Bootstrap.BeginGridRow())
@@ -31,7 +31,8 @@
     using (Bootstrap.BeginGridCol(6, 4, 4, 4))
     {
         <h2>Install via NuGet</h2>
-        <p><kbd>Install-Package BootstrapMvc.Bootstrap3Mvc5</kbd></p>
+
+        <p><kbd>Install-Package BootstrapMvc.Bootstrap3Mvc6</kbd></p>
     }
     using (Bootstrap.BeginGridCol(6, 3, 3, 3))
     {
