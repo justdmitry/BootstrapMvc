@@ -65,7 +65,7 @@ namespace BootstrapMvc
 
         public static IWriter2<Table, TableContent> Table(this IAnyContentMarker contentHelper, TableStyles styles)
         {
-            return Table(contentHelper);//.Style(styles);
+            return Table(contentHelper).Style(styles);
         }
 
         public static TableContent BeginTable(this IAnyContentMarker contentHelper)
