@@ -27,7 +27,7 @@ namespace BootstrapMvc
             return target;
         }
 
-        public static IWriter<T> Attribute<T, TContent>(this IWriter2<T, TContent> target, string name, string value)
+        public static IWriter2<T, TContent> Attribute<T, TContent>(this IWriter2<T, TContent> target, string name, string value)
             where T : ContentElement<TContent>
             where TContent : DisposableContent
         {

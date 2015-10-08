@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.2.51007",
+  "version": "1.2.51008",
   "title": "BootstrapMvc.Core",
   "description": "Core library for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],
