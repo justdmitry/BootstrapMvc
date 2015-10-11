@@ -2,7 +2,7 @@
 using BootstrapMvc.Core;
 using BootstrapMvc.Forms;
 
-namespace BootstrapMvc.Bootstrap3.Forms
+namespace BootstrapMvc
 {
     public static class ValidationSummaryExtensions
     {
