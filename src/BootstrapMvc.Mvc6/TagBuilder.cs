@@ -25,7 +25,10 @@ namespace BootstrapMvc.Mvc6
 
             set
             {
-                InnerHtml = string.IsNullOrEmpty(value) ? null : new mvc.HtmlString(value);
+                InnerHtml.Clear();
+                if (!string.IsNullOrEmpty(value)) {
+                    InnerHtml.AppendEncoded(value);
+                }
             }
         }
 
@@ -80,6 +83,15 @@ namespace BootstrapMvc.Mvc6
         {
             TagRenderMode = mvc.TagRenderMode.Normal;
             WriteTo(writer, HtmlEncoder);
+        }
+
+        public void SetInnerText(string text)
+        {
+            InnerHtml.Clear();
+            if (!string.IsNullOrEmpty(text))
+            {
+                InnerHtml.Append(new mvc.HtmlString(text));
+            }
         }
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.AspNet.Mvc;
-using Microsoft.Framework.WebEncoders;
 using Microsoft.AspNet.Mvc.ModelBinding;
-using Microsoft.AspNet.Mvc.Rendering.Expressions;
+using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.AspNet.Mvc.ViewFeatures;
 using Microsoft.Framework.DependencyInjection;
+using Microsoft.Framework.WebEncoders;
 using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Mvc6
@@ -37,9 +38,9 @@ namespace BootstrapMvc.Mvc6
             ViewContext.ViewData.ModelState.TryGetValue(fullName, out modelState);
 
             object value = null;
-            if (modelState != null && modelState.Value.RawValue != null)
+            if (modelState != null && modelState.RawValue != null)
             {
-                value = modelState.Value.RawValue;
+                value = modelState.RawValue;
             }
             else if (modelExplorer.Model != null)
             {

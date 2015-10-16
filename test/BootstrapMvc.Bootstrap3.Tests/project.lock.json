@@ -1,19 +1,22 @@
 {
   "locked": false,
-  "version": 1,
+  "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Bootstrap3/1.1.51007-beta2": {
+      "BootstrapMvc.Bootstrap3/1.2.0-beta-51012": {
         "type": "project",
+        "framework": "DNX,Version=v4.5.1",
         "dependencies": {
           "BootstrapMvc.Core": null
         }
       },
-      "BootstrapMvc.Core/1.1.51007": {
-        "type": "project"
-      },
-      "BootstrapMvc.Mvc5/1.1.51007-alpha": {
+      "BootstrapMvc.Core/1.3.0-beta-51012": {
         "type": "project",
+        "framework": "DNX,Version=v4.5.1"
+      },
+      "BootstrapMvc.Mvc5/1.2.0-beta-51012": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5",
         "dependencies": {
           "BootstrapMvc.Core": null,
           "Microsoft.AspNet.Mvc": "5.2.3",
@@ -49,7 +52,7 @@
         "type": "package",
         "dependencies": {
           "Microsoft.AspNet.Razor": "[3.2.3, 3.3.0)",
-          "Microsoft.Web.Infrastructure": "1.0.0.0"
+          "Microsoft.Web.Infrastructure": "1.0.0"
         },
         "compile": {
           "lib/net45/System.Web.Helpers.dll": {},
@@ -263,7 +266,845 @@
           "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll": {}
         }
       },
-      "Microsoft.Web.Infrastructure/1.0.0.0": {
+      "Microsoft.Web.Infrastructure/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+        }
+      },
+      "Moq/4.2.1312.1319": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
+      "Newtonsoft.Json/7.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.Collections.Immutable/1.1.36": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll": {}
+        }
+      },
+      "System.Reflection.Metadata/1.1.0-alpha-00009": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections.Immutable": "1.1.37-beta-23024"
+        },
+        "compile": {
+          "lib/portable-net45+win8/System.Reflection.Metadata.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8/System.Reflection.Metadata.dll": {}
+        }
+      },
+      "xunit/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.assert": "[2.1.0-rc1-build3168]",
+          "xunit.core": "[2.1.0-rc1-build3168]"
+        }
+      },
+      "xunit.abstractions/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net35/xunit.abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net35/xunit.abstractions.dll": {}
+        }
+      },
+      "xunit.assert/2.1.0-rc1-build3168": {
+        "type": "package",
+        "compile": {
+          "lib/dotnet/xunit.assert.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/xunit.assert.dll": {}
+        }
+      },
+      "xunit.core/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.1.0-rc1-build3168]",
+          "xunit.extensibility.execution": "[2.1.0-rc1-build3168]"
+        }
+      },
+      "xunit.extensibility.core/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.abstractions": "[2.0.0]"
+        },
+        "compile": {
+          "lib/dotnet/xunit.core.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/xunit.core.dll": {},
+          "lib/dotnet/xunit.runner.tdnet.dll": {},
+          "lib/dotnet/xunit.runner.utility.desktop.dll": {}
+        }
+      },
+      "xunit.extensibility.execution/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.1.0-rc1-build3168]"
+        },
+        "compile": {
+          "lib/dnx451/xunit.execution.dotnet.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/xunit.execution.dotnet.dll": {}
+        }
+      },
+      "xunit.runner.dnx/2.1.0-beta5-build169": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta7",
+          "Microsoft.Dnx.TestAdapter": "1.0.0-beta7",
+          "Microsoft.Dnx.TestHost": "1.0.0-beta7",
+          "xunit.runner.reporters": "2.1.0-rc1-build3168",
+          "xunit.runner.utility": "2.1.0-rc1-build3168"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "System.Threading"
+        ],
+        "compile": {
+          "lib/dnx451/xunit.runner.dnx.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/xunit.runner.dnx.dll": {}
+        }
+      },
+      "xunit.runner.reporters/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "xunit.runner.utility": "[2.1.0-rc1-build3168]"
+        },
+        "compile": {
+          "lib/dnx451/xunit.runner.reporters.dotnet.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/xunit.runner.reporters.dotnet.dll": {}
+        }
+      },
+      "xunit.runner.utility/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.abstractions": "[2.0.0]"
+        },
+        "compile": {
+          "lib/dnx451/xunit.runner.utility.dotnet.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/xunit.runner.utility.dotnet.dll": {}
+        }
+      }
+    },
+    "DNX,Version=v4.5.1/win7-x86": {
+      "BootstrapMvc.Bootstrap3/1.2.0-beta-51012": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "BootstrapMvc.Core": null
+        }
+      },
+      "BootstrapMvc.Core/1.3.0-beta-51012": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1"
+      },
+      "BootstrapMvc.Mvc5/1.2.0-beta-51012": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5",
+        "dependencies": {
+          "BootstrapMvc.Core": null,
+          "Microsoft.AspNet.Mvc": "5.2.3",
+          "Microsoft.AspNet.Razor": "3.2.3"
+        },
+        "frameworkAssemblies": [
+          "System.Web"
+        ]
+      },
+      "Microsoft.AspNet.Mvc/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "[3.2.3, 3.3.0)",
+          "Microsoft.AspNet.WebPages": "[3.2.3, 3.3.0)"
+        },
+        "compile": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/3.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebPages/3.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "[3.2.3, 3.3.0)",
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {}
+        }
+      },
+      "Microsoft.CodeAnalysis.Analyzers/1.1.0-beta1-20150812-01": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System"
+        ]
+      },
+      "Microsoft.CodeAnalysis.Common/1.1.0-beta1-20150812-01": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Analyzers": "[1.1.0-beta1-20150812-01]",
+          "System.Collections.Immutable": "1.1.36",
+          "System.Reflection.Metadata": "1.1.0-alpha-00009"
+        },
+        "compile": {
+          "lib/net45/Microsoft.CodeAnalysis.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.CodeAnalysis.dll": {}
+        }
+      },
+      "Microsoft.CodeAnalysis.CSharp/1.1.0-beta1-20150812-01": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Common": "[1.1.0-beta1-20150812-01]"
+        },
+        "compile": {
+          "lib/net45/Microsoft.CodeAnalysis.CSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.CodeAnalysis.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Dnx.Compilation.Abstractions/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta7"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.Compilation.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.Compilation.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Dnx.Loader/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta7"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.Loader.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.Loader.dll": {}
+        }
+      },
+      "Microsoft.Dnx.Runtime/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.CSharp": "1.1.0-beta1-20150812-01",
+          "Microsoft.Dnx.Loader": "1.0.0-beta7",
+          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta7"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Collections",
+          "System.Core",
+          "System.IO",
+          "System.IO.Compression",
+          "System.IO.Compression.FileSystem",
+          "System.Runtime",
+          "System.Text.Encoding",
+          "System.Threading.Tasks",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.dll": {}
+        }
+      },
+      "Microsoft.Dnx.Runtime.Abstractions/1.0.0-beta7": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Dnx.TestAdapter/1.0.0-beta7": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.TestAdapter.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.TestAdapter.dll": {}
+        }
+      },
+      "Microsoft.Dnx.TestHost/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-beta7",
+          "Microsoft.Dnx.Runtime": "1.0.0-beta7",
+          "Microsoft.Dnx.TestAdapter": "1.0.0-beta7",
+          "Microsoft.Framework.Logging": "1.0.0-beta7",
+          "Newtonsoft.Json": "6.0.6"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.TestHost.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.TestHost.dll": {}
+        }
+      },
+      "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta7": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Framework.Logging/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta7",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta7"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Collections.Concurrent",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Logging.dll": {}
+        }
+      },
+      "Microsoft.Framework.Logging.Abstractions/1.0.0-beta7": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Web.Infrastructure/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+        }
+      },
+      "Moq/4.2.1312.1319": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
+      "Newtonsoft.Json/7.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.Collections.Immutable/1.1.36": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll": {}
+        }
+      },
+      "System.Reflection.Metadata/1.1.0-alpha-00009": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections.Immutable": "1.1.37-beta-23024"
+        },
+        "compile": {
+          "lib/portable-net45+win8/System.Reflection.Metadata.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8/System.Reflection.Metadata.dll": {}
+        }
+      },
+      "xunit/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.assert": "[2.1.0-rc1-build3168]",
+          "xunit.core": "[2.1.0-rc1-build3168]"
+        }
+      },
+      "xunit.abstractions/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net35/xunit.abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net35/xunit.abstractions.dll": {}
+        }
+      },
+      "xunit.assert/2.1.0-rc1-build3168": {
+        "type": "package",
+        "compile": {
+          "lib/dotnet/xunit.assert.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/xunit.assert.dll": {}
+        }
+      },
+      "xunit.core/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.1.0-rc1-build3168]",
+          "xunit.extensibility.execution": "[2.1.0-rc1-build3168]"
+        }
+      },
+      "xunit.extensibility.core/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.abstractions": "[2.0.0]"
+        },
+        "compile": {
+          "lib/dotnet/xunit.core.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/xunit.core.dll": {},
+          "lib/dotnet/xunit.runner.tdnet.dll": {},
+          "lib/dotnet/xunit.runner.utility.desktop.dll": {}
+        }
+      },
+      "xunit.extensibility.execution/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.1.0-rc1-build3168]"
+        },
+        "compile": {
+          "lib/dnx451/xunit.execution.dotnet.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/xunit.execution.dotnet.dll": {}
+        }
+      },
+      "xunit.runner.dnx/2.1.0-beta5-build169": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta7",
+          "Microsoft.Dnx.TestAdapter": "1.0.0-beta7",
+          "Microsoft.Dnx.TestHost": "1.0.0-beta7",
+          "xunit.runner.reporters": "2.1.0-rc1-build3168",
+          "xunit.runner.utility": "2.1.0-rc1-build3168"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "System.Threading"
+        ],
+        "compile": {
+          "lib/dnx451/xunit.runner.dnx.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/xunit.runner.dnx.dll": {}
+        }
+      },
+      "xunit.runner.reporters/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "xunit.runner.utility": "[2.1.0-rc1-build3168]"
+        },
+        "compile": {
+          "lib/dnx451/xunit.runner.reporters.dotnet.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/xunit.runner.reporters.dotnet.dll": {}
+        }
+      },
+      "xunit.runner.utility/2.1.0-rc1-build3168": {
+        "type": "package",
+        "dependencies": {
+          "xunit.abstractions": "[2.0.0]"
+        },
+        "compile": {
+          "lib/dnx451/xunit.runner.utility.dotnet.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/xunit.runner.utility.dotnet.dll": {}
+        }
+      }
+    },
+    "DNX,Version=v4.5.1/win7-x64": {
+      "BootstrapMvc.Bootstrap3/1.2.0-beta-51012": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "BootstrapMvc.Core": null
+        }
+      },
+      "BootstrapMvc.Core/1.3.0-beta-51012": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1"
+      },
+      "BootstrapMvc.Mvc5/1.2.0-beta-51012": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5",
+        "dependencies": {
+          "BootstrapMvc.Core": null,
+          "Microsoft.AspNet.Mvc": "5.2.3",
+          "Microsoft.AspNet.Razor": "3.2.3"
+        },
+        "frameworkAssemblies": [
+          "System.Web"
+        ]
+      },
+      "Microsoft.AspNet.Mvc/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "[3.2.3, 3.3.0)",
+          "Microsoft.AspNet.WebPages": "[3.2.3, 3.3.0)"
+        },
+        "compile": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/3.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebPages/3.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "[3.2.3, 3.3.0)",
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {}
+        }
+      },
+      "Microsoft.CodeAnalysis.Analyzers/1.1.0-beta1-20150812-01": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System"
+        ]
+      },
+      "Microsoft.CodeAnalysis.Common/1.1.0-beta1-20150812-01": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Analyzers": "[1.1.0-beta1-20150812-01]",
+          "System.Collections.Immutable": "1.1.36",
+          "System.Reflection.Metadata": "1.1.0-alpha-00009"
+        },
+        "compile": {
+          "lib/net45/Microsoft.CodeAnalysis.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.CodeAnalysis.dll": {}
+        }
+      },
+      "Microsoft.CodeAnalysis.CSharp/1.1.0-beta1-20150812-01": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Common": "[1.1.0-beta1-20150812-01]"
+        },
+        "compile": {
+          "lib/net45/Microsoft.CodeAnalysis.CSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.CodeAnalysis.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Dnx.Compilation.Abstractions/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta7"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.Compilation.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.Compilation.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Dnx.Loader/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta7"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.Loader.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.Loader.dll": {}
+        }
+      },
+      "Microsoft.Dnx.Runtime/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.CSharp": "1.1.0-beta1-20150812-01",
+          "Microsoft.Dnx.Loader": "1.0.0-beta7",
+          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta7"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Collections",
+          "System.Core",
+          "System.IO",
+          "System.IO.Compression",
+          "System.IO.Compression.FileSystem",
+          "System.Runtime",
+          "System.Text.Encoding",
+          "System.Threading.Tasks",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.dll": {}
+        }
+      },
+      "Microsoft.Dnx.Runtime.Abstractions/1.0.0-beta7": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Dnx.TestAdapter/1.0.0-beta7": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.TestAdapter.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.TestAdapter.dll": {}
+        }
+      },
+      "Microsoft.Dnx.TestHost/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-beta7",
+          "Microsoft.Dnx.Runtime": "1.0.0-beta7",
+          "Microsoft.Dnx.TestAdapter": "1.0.0-beta7",
+          "Microsoft.Framework.Logging": "1.0.0-beta7",
+          "Newtonsoft.Json": "6.0.6"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.TestHost.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.TestHost.dll": {}
+        }
+      },
+      "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta7": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Framework.Logging/1.0.0-beta7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta7",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta7"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Collections.Concurrent",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Logging.dll": {}
+        }
+      },
+      "Microsoft.Framework.Logging.Abstractions/1.0.0-beta7": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Web.Infrastructure/1.0.0": {
         "type": "package",
         "compile": {
           "lib/net40/Microsoft.Web.Infrastructure.dll": {}
@@ -420,15 +1261,15 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3/1.1.51007-beta2": {
+    "BootstrapMvc.Bootstrap3/1.2.0-beta-51012": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3/project.json"
     },
-    "BootstrapMvc.Core/1.1.51007": {
+    "BootstrapMvc.Core/1.3.0-beta-51012": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Core/project.json"
     },
-    "BootstrapMvc.Mvc5/1.1.51007-alpha": {
+    "BootstrapMvc.Mvc5/1.2.0-beta-51012": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Mvc5/project.json"
     },
@@ -660,7 +1501,7 @@
         "repo.json"
       ]
     },
-    "Microsoft.Web.Infrastructure/1.0.0.0": {
+    "Microsoft.Web.Infrastructure/1.0.0": {
       "type": "package",
       "sha512": "FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
       "files": [
@@ -904,7 +1745,7 @@
       "xunit.runner.dnx >= 2.1.0-beta5-build169",
       "BootstrapMvc.Bootstrap3 ",
       "BootstrapMvc.Mvc5 ",
-      "Moq >= 4.2"
+      "Moq >= 4.2.0"
     ],
     "DNX,Version=v4.5.1": []
   }

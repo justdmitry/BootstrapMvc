@@ -2,6 +2,7 @@
 using BootstrapMvc.Core;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.AspNet.Mvc.ViewFeatures.Internal;
 using Microsoft.Framework.WebEncoders;
 
 namespace BootstrapMvc.Mvc6
