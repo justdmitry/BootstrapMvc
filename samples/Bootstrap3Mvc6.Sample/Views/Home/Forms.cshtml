@@ -326,9 +326,15 @@ using (Bootstrap.BeginForm())
 {
     using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
+        @@Bootstrap.ValidationSummary()
+             .ErrorHeader("You have errors!")
+             .ErrorFooter("Fix please")
         @@Bootstrap.FormGroupFor(m => m.StringField)
              .Label("Disabled control")
              .Control(Bootstrap.Input().Disabled())
+        @@Bootstrap.FormGroupFor(m => m.FieldWithError)
+             .Label("Field with error")
+             .Control(Bootstrap.Input())
     }
 }
 </pre>
@@ -337,9 +343,12 @@ using (Bootstrap.BeginForm())
     {
         using (Bootstrap.BeginForm())
         {
+            @Bootstrap.ValidationSummary().ErrorHeader("You have errors!").ErrorFooter("Fix please")
+
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
                 @Bootstrap.FormGroupFor(m => m.StringField).Label("Disabled control").Control(Bootstrap.Input().Disabled())
+                @Bootstrap.FormGroupFor(m => m.FieldWithError).Label("Field with error").Control(Bootstrap.Input())
             }
         }
     }

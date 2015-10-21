@@ -11,5 +11,7 @@ namespace Bootstrap3Mvc5.Sample.Models
         public int IntegerField { get; set; }
 
         public DateTimeOffset DateTimeOffsetField { get; set; }
+
+        public string FieldWithError { get; set; }
     }
 }

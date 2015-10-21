@@ -44,7 +44,11 @@ namespace Bootstrap3Mvc6.Sample.Controllers
 
         public ActionResult Forms()
         {
-            return View(new Bootstrap3Mvc6.Sample.Models.DemoModelOne());
+            var model = new Bootstrap3Mvc6.Sample.Models.DemoModelOne();
+            model.FieldWithError = "Some wrong value";
+            ModelState.AddModelError("FieldWithError", "Demo error message for field FieldWithError");
+            ModelState.AddModelError(string.Empty, "Demo error message for whole model");
+            return View(model);
         }
 
         public ActionResult Extend()

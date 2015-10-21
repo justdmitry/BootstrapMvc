@@ -125,11 +125,6 @@
             return HttpUtility.HtmlEncode(value);
         }
 
-        string IWritingHelper.GetMessage(int id)
-        {
-            return (MessageSource == null) ? null : MessageSource(id);
-        }
-
         #endregion
     }
 }

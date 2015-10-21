@@ -18,7 +18,5 @@
         string CreateUrl(IDictionary<string, object> routeValues, string protocol, string hostName);
 
         string HtmlEncode(string value);
-
-        string GetMessage(int id);
     }
 }
