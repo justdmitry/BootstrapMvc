@@ -18,5 +18,7 @@
         string CreateUrl(IDictionary<string, object> routeValues, string protocol, string hostName);
 
         string HtmlEncode(string value);
+
+        void WriteValue(System.IO.TextWriter writer, object value);
     }
 }

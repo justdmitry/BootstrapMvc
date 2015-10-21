@@ -14,12 +14,6 @@
             {
                 return;
             }
-            var block = Value as IWritable;
-            if (block != null)
-            {
-                block.WriteTo(writer);
-                return;
-            }
             var str = Value as string;
             if (str != null)
             {
@@ -33,7 +27,7 @@
                 }
                 return;
             }
-            writer.Write(Value);
+            Helper.WriteValue(writer, Value);
         }
     }
 }

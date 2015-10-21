@@ -125,6 +125,27 @@
             return HttpUtility.HtmlEncode(value);
         }
 
+        void IWritingHelper.WriteValue(System.IO.TextWriter writer, object value)
+        {
+            if (value == null)
+            {
+                return;
+            }
+            var writable = value as IWritable;
+            if (writable != null)
+            {
+                writable.WriteTo(writer);
+                return;
+            }
+            var htmlString = value as IHtmlString;
+            if (htmlString != null)
+            {
+                writer.Write(htmlString.ToHtmlString());
+                return;
+            }
+            writer.Write(value);
+        }
+
         #endregion
     }
 }

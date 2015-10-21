@@ -1,13 +1,14 @@
 ﻿namespace BootstrapMvc.Mvc6
 {
     using System;
-    using BootstrapMvc.Core;
+    using System.Collections.Generic;
     using Microsoft.AspNet.Mvc;
     using Microsoft.AspNet.Mvc.Rendering;
     using Microsoft.AspNet.Mvc.ViewFeatures.Internal;
     using Microsoft.Framework.WebEncoders;
-    using System.Collections.Generic;
     using Microsoft.AspNet.Routing;
+    using Microsoft.AspNet.Html.Abstractions;
+    using BootstrapMvc.Core;
 
     public class BootstrapHelper: IAnyContentMarker, ICanHasViewContext, IWritingHelper, IBootstrapContext
     {
@@ -126,6 +127,34 @@
         string IWritingHelper.HtmlEncode(string value)
         {
             return HtmlEncoder.HtmlEncode(value);
+        }
+
+        void IWritingHelper.WriteValue(System.IO.TextWriter writer, object value)
+        {
+            if (value == null)
+            {
+                return;
+            }
+            var writable = value as IWritable;
+            if (writable != null)
+            {
+                writable.WriteTo(writer);
+                return;
+            }
+            var htmlContent = value as IHtmlContent;
+            if (htmlContent != null)
+            {
+                htmlContent.WriteTo(writer, HtmlEncoder);
+                return;
+            }
+            var str = value as string;
+            if (str != null)
+            {
+                writer.Write(HtmlEncoder.HtmlEncode(str));
+                return;
+            }
+
+            writer.Write(value);
         }
 
         #endregion
