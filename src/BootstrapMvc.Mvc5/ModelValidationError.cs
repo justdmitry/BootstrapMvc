@@ -1,7 +1,8 @@
-﻿using System;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Mvc5
 {
+    using Core;
+    using System;
+
     public class ModelValidationError : IModelValidationError
     {
         public ModelValidationError(string message)

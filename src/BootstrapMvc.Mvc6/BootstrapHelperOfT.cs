@@ -19,8 +19,7 @@
         public BootstrapHelper(IUrlHelper urlHelper, IHtmlEncoder htmlEncoder)
             : base(urlHelper, htmlEncoder)
         {
-            this.UrlHelper = urlHelper;
-            this.HtmlEncoder = htmlEncoder;
+            // Nothing
         }
 
         public IModelValidationResult ValidationResult { get; private set; }

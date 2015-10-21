@@ -1,9 +1,10 @@
-﻿using System;
-using System.IO;
-using mvc = System.Web.Mvc;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Mvc5
 {
+    using System;
+    using System.IO;
+    using BootstrapMvc.Core;
+    using mvc = System.Web.Mvc;
+
     public class TagBuilder : mvc.TagBuilder, ITagBuilder
     {
         public TagBuilder(string tagName)
