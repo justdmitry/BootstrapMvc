@@ -1,13 +1,13 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Dropdown
+﻿namespace BootstrapMvc.Dropdown
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class DropdownMenuItemDivider : Element, IDropdownMenuItem
     {
-        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("li");
+            var tb = Helper.CreateTagBuilder("li");
             tb.AddCssClass("divider");
             tb.MergeAttribute("role", "presentation");
 

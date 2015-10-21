@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BootstrapMvc.Tables
+﻿namespace BootstrapMvc.Tables
 {
+    using System;
+
     public class TableBody : TableSection
     {
         protected override string GetTagName()

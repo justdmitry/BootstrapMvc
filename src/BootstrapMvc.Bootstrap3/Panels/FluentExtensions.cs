@@ -1,12 +1,15 @@
-﻿using BootstrapMvc.Panels;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using Core;
+    using BootstrapMvc.Panels;
+
     public static partial class FluentExtensions
     {
-        public static Panel Type(this Panel target, PanelType value)
+        public static TWriter Type<TWriter, TItem>(this TWriter target, PanelType value)
+            where TWriter: IItemWriter<TItem>
+            where TItem: Panel
         {
-            target.TypeValue = value;
+            target.Item.Type = value;
             return target;
         }
     }

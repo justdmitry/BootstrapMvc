@@ -1,19 +1,20 @@
-﻿using System;
-
-namespace BootstrapMvc.Forms
+﻿namespace BootstrapMvc.Forms
 {
-    public interface IFormContext
+    using System;
+    using BootstrapMvc.Core;
+
+    public interface IForm : IWritableItem
     {
-        SubmitMethod MethodValue { get; }
+        SubmitMethod Method { get; }
 
-        FormEnctype EnctypeValue { get; }
+        FormEnctype Enctype { get; }
 
-        FormType TypeValue { get; }
+        FormType Type { get; }
 
-        string HrefValue { get; }
+        string Href { get; }
 
-        GridSize LabelWidthValue { get; }
+        GridSize LabelWidth { get; }
 
-        GridSize ControlsWidthValue { get; }
+        GridSize ControlsWidth { get; }
     }
 }

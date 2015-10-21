@@ -1,10 +1,10 @@
-﻿using System;
-using System.IO;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
+    using System;
+    using System.IO;
+
     public interface IWritable
     {
-        void WriteTo(TextWriter writer, IBootstrapContext context);
+        void WriteTo(TextWriter writer);
     }
 }

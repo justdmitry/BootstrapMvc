@@ -1,36 +1,46 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public static class AnyContentElementExtensions
     {
-        public static IWriter2<T, AnyContent> Content<T>(
-            this IWriter2<T, AnyContent> target,
+        public static IItemWriter<T, AnyContent> Content<T>(
+            this IItemWriter<T, AnyContent> target,
             object value)
             where T : AnyContentElement
         {
-            target.Item.AddContent(value);
+            var itemWriter = value as IItemWriter;
+            if (itemWriter != null)
+            {
+                target.Item.AddContent(itemWriter.Item);
+            }
+            else
+            {
+                var block = new SimpleBlock();
+                block.Value = value;
+                block.Helper = target.Helper;
+                target.Item.AddContent(block);
+            }
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Content<T>(
-            this IWriter2<T, AnyContent> target,
+        public static IItemWriter<T, AnyContent> Content<T>(
+            this IItemWriter<T, AnyContent> target,
             params string[] values)
             where T : AnyContentElement
         {
-            target.Item.AddContent(string.Concat(values));
-            return target;
+            return Content(target, (object)string.Concat(values));
         }
 
-        public static IWriter2<T, AnyContent> Content<T>(
-            this IWriter2<T, AnyContent> target,
+        public static IItemWriter<T, AnyContent> Content<T>(
+            this IItemWriter<T, AnyContent> target,
             params object[] values)
             where T : AnyContentElement
         {
             foreach (var value in values)
             {
-                target.Item.AddContent(value);
+                target.Content(value);
             }
             return target;
         }

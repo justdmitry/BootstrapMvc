@@ -1,76 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
-    public class SimpleBlock : WritableBlock
+    using System;
+
+    public class SimpleBlock : WritableItem
     {
-        private object value = null;
+        public object Value { get; set; }
 
-        private bool writeWithoutEncoding = false;
+        public bool DisableEncoding { get; set; } = false;
 
-        #region Fluent
-
-        public SimpleBlock Value(string value, bool writeWithoutEncoding = false)
+        protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            this.value = value;
-            this.writeWithoutEncoding = writeWithoutEncoding;
-            return this;
-        }
-
-        public SimpleBlock Value(object value)
-        {
-            this.value = value;
-            this.writeWithoutEncoding = false;
-            return this;
-        }
-
-        public SimpleBlock Value(IEnumerable<object> values)
-        {
-            var enumerator = values.GetEnumerator();
-            if (enumerator.MoveNext())
-            {
-                this.value = enumerator.Current;
-                while (enumerator.MoveNext())
-                {
-                    AppendNextBlock(new SimpleBlock().Value(enumerator.Current));
-                }
-            }
-            else
-            {
-                this.value = null;
-            }
-            return this;
-        }
-
-        #endregion
-
-        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
-        {
-            if (value == null)
+            if (Value == null)
             {
                 return;
             }
-            var block = value as IWritable;
+            var block = Value as IWritable;
             if (block != null)
             {
-                block.WriteTo(writer, context);
+                block.WriteTo(writer);
                 return;
             }
-            var str = value as string;
+            var str = Value as string;
             if (str != null)
             {
-                if (writeWithoutEncoding)
+                if (DisableEncoding)
                 {
                     writer.Write(str);
                 }
                 else
                 {
-                    writer.Write(context.HtmlEncode(str));
+                    writer.Write(Helper.HtmlEncode(str));
                 }
                 return;
             }
-            writer.Write(value);
+            writer.Write(Value);
         }
     }
 }

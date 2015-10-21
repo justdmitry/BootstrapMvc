@@ -1,56 +1,54 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Buttons
+﻿namespace BootstrapMvc.Buttons
 {
+    using System;
+    using BootstrapMvc.Core;
+    using System.Collections.Generic;
+
     public class ButtonGroup : ContentElement<ButtonGroupContent>, IButtonSizable
     {
-        private WritableBlock content;
+        private List<Button> buttons;
 
-        public ButtonSize SizeValue { get; set; }
+        public ButtonSize Size { get; set; }
 
-        public bool VerticalValue { get; set; }
+        public bool Vertical { get; set; }
 
-        public bool DropUpValue { get; set; }
+        public bool DropUp { get; set; }
 
-        public bool JustifiedValue { get; set; }
-
-        public ButtonGroup AddButton(Button value)
+        public bool Justified { get; set; }
+        
+        public void AddButton(Button value)
         {
             if (value == null)
             {
-                return this;
-            } 
-            if (content == null)
-            {
-                content = value;
+                return;
             }
-            else
+            value.Parent = this;
+            if (buttons == null)
             {
-                content.Append(value);
+                buttons = new List<Button>();
             }
-            return this;
+            buttons.Add(value);
         }
 
         protected override ButtonGroupContent CreateContentContext(IBootstrapContext context)
         {
-            return new ButtonGroupContent(context);
+            return new ButtonGroupContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("div");
+            var tb = Helper.CreateTagBuilder("div");
             tb.AddCssClass("btn-group");
-            tb.AddCssClass(SizeValue.ToButtonGroupCssClass());
-            if (VerticalValue)
+            tb.AddCssClass(Size.ToButtonGroupCssClass());
+            if (Vertical)
             {
                 tb.AddCssClass("btn-group-vertical");
             }
-            if (JustifiedValue)
+            if (Justified)
             {
                 tb.AddCssClass("btn-group-justified");
             }
-            if (DropUpValue)
+            if (DropUp)
             {
                 tb.AddCssClass("dropup");
             }
@@ -61,18 +59,18 @@ namespace BootstrapMvc.Buttons
 
             tb.WriteStartTag(writer);
 
-            context.Push(this);
-
-            if (content != null)
+            if (buttons != null)
             {
-                content.WriteTo(writer, context);
+                foreach (var button in buttons)
+                {
+                    button.WriteTo(writer);
+                }
             }
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write("</div>");
-            context.PopIfEqual(this);
         }
     }
 }

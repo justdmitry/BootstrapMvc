@@ -1,16 +1,16 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Tables
+﻿namespace BootstrapMvc.Tables
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class TableHeaderCell : TableCell
     {
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("th");
-            if (ColorValue != TableRowCellColor.DefaultNone)
+            var tb = Helper.CreateTagBuilder("th");
+            if (Color != TableRowCellColor.DefaultNone)
             {
-                tb.AddCssClass(ColorValue.ToCssClass());
+                tb.AddCssClass(Color.ToCssClass());
             }
 
             ApplyCss(tb);

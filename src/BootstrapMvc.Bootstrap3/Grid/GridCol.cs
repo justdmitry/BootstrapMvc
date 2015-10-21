@@ -1,29 +1,29 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Grid
+﻿namespace BootstrapMvc.Grid
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class GridCol : AnyContentElement, IGridSizable
     {
-        public GridSize SizeValue { get; set; }
+        public GridSize Size { get; set; }
 
-        public GridSize OffsetValue { get; set; }
+        public GridSize Offset { get; set; }
 
-        public void SetSize(GridSize value)
+        void IGridSizable.SetSize(GridSize value)
         {
-            SizeValue = value;
+            Size = value;
         }
 
-        public GridSize Size()
+        GridSize IGridSizable.GetSize()
         {
-            return SizeValue;
+            return Size;
         }
 
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("div");
-            tb.AddCssClass(SizeValue.ToCssClass());
-            tb.AddCssClass(OffsetValue.ToOffsetCssClass());
+            var tb = Helper.CreateTagBuilder("div");
+            tb.AddCssClass(Size.ToCssClass());
+            tb.AddCssClass(Offset.ToOffsetCssClass());
 
             ApplyCss(tb);
             ApplyAttributes(tb);

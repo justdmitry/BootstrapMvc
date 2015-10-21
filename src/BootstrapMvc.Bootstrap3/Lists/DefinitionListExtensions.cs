@@ -1,16 +1,16 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Lists;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Lists;
+
     public static class DefinitionListExtensions
     {
         #region Fluent
 
-        public static IWriter2<T, DefinitionListContent> Horizontal<T>(this IWriter2<T, DefinitionListContent> target, bool value = true) where T : DefinitionList
+        public static IItemWriter<T, DefinitionListContent> Horizontal<T>(this IItemWriter<T, DefinitionListContent> target, bool value = true) where T : DefinitionList
         {
-            target.Item.HorizontalValue = value;
+            target.Item.Horizontal = value;
             return target;
         }
 
@@ -18,9 +18,9 @@ namespace BootstrapMvc
 
         #region Generation
 
-        public static IWriter2<DefinitionList, DefinitionListContent> DefinitionList(this IAnyContentMarker contentHelper)
+        public static IItemWriter<DefinitionList, DefinitionListContent> DefinitionList(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<DefinitionList, DefinitionListContent>();
+            return contentHelper.CreateWriter<DefinitionList, DefinitionListContent>();
         }
 
         public static DefinitionListContent BeginDefinitionList(this IAnyContentMarker contentHelper)

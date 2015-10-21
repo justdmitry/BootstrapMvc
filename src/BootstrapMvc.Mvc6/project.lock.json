@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Core/1.3.0-beta-51012": {
+      "BootstrapMvc.Core/1.3.1-beta-51016": {
         "type": "project",
         "framework": "DNX,Version=v4.5.1"
       },
@@ -1215,7 +1215,7 @@
       }
     },
     "DNXCore,Version=v5.0": {
-      "BootstrapMvc.Core/1.3.0-beta-51012": {
+      "BootstrapMvc.Core/1.3.1-beta-51016": {
         "type": "project",
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
@@ -2991,7 +2991,7 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
-      "BootstrapMvc.Core/1.3.0-beta-51012": {
+      "BootstrapMvc.Core/1.3.1-beta-51016": {
         "type": "project",
         "framework": "DNX,Version=v4.5.1"
       },
@@ -4203,7 +4203,7 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
-      "BootstrapMvc.Core/1.3.0-beta-51012": {
+      "BootstrapMvc.Core/1.3.1-beta-51016": {
         "type": "project",
         "framework": "DNX,Version=v4.5.1"
       },
@@ -5415,7 +5415,7 @@
       }
     },
     "DNXCore,Version=v5.0/win7-x86": {
-      "BootstrapMvc.Core/1.3.0-beta-51012": {
+      "BootstrapMvc.Core/1.3.1-beta-51016": {
         "type": "project",
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
@@ -7545,7 +7545,7 @@
       }
     },
     "DNXCore,Version=v5.0/win7-x64": {
-      "BootstrapMvc.Core/1.3.0-beta-51012": {
+      "BootstrapMvc.Core/1.3.1-beta-51016": {
         "type": "project",
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
@@ -9676,7 +9676,7 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Core/1.3.0-beta-51012": {
+    "BootstrapMvc.Core/1.3.1-beta-51016": {
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json"
     },

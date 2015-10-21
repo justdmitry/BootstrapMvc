@@ -1,22 +1,25 @@
-﻿using BootstrapMvc.Core;
-using BootstrapMvc.Elements;
-
-namespace BootstrapMvc.Buttons
+﻿namespace BootstrapMvc.Buttons
 {
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Elements;
+
     public class ButtonGroupContent : DisposableContent
     {
-        public ButtonGroupContent(IBootstrapContext context)
+        public ButtonGroupContent(IBootstrapContext context, ButtonGroup parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
+
+        private ButtonGroup Parent { get; set; }
 
         #region ButtonGroup
 
-        public IWriter2<ButtonGroup, ButtonGroupContent> ButtonGroup()
+        public IItemWriter<ButtonGroup, ButtonGroupContent> ButtonGroup()
         {
-            return Context.CreateWriter<ButtonGroup, ButtonGroupContent>();
+            return Context.Helper.CreateWriter<ButtonGroup, ButtonGroupContent>(Parent);
         }
 
         public ButtonGroupContent BeginButtonGroup()
@@ -28,44 +31,46 @@ namespace BootstrapMvc.Buttons
 
         #region Button
 
-        public IWriter2<Button, AnyContent> Button()
+        public IItemWriter<Button, AnyContent> Button()
         {
-            return Context.CreateWriter<Button, AnyContent>();
+            return Context.Helper.CreateWriter<Button, AnyContent>(Parent);
         }
 
-        public IWriter2<Button, AnyContent> Button(object content)
+        public IItemWriter<Button, AnyContent> Button(object content)
         {
-            return Context.CreateWriter<Button, AnyContent>().Content(content);
+            return Button().Content(content);
         }
 
-        public IWriter2<Button, AnyContent> Button(ButtonType type, object content)
+        public IItemWriter<Button, AnyContent> Button(ButtonType type, object content)
         {
-            return Context.CreateWriter<Button, AnyContent>().Type(type).Content(content);
+            return Button().Type(type).Content(content);
         }
 
-        public IWriter2<Button, AnyContent> Button(ButtonType type, params object[] contents)
+        public IItemWriter<Button, AnyContent> Button(ButtonType type, params object[] contents)
         {
-            return Context.CreateWriter<Button, AnyContent>().Type(type).Content(contents);
+            return Button().Type(type).Content(contents);
         }
 
-        public IWriter2<Button, AnyContent> Button(IconType iconType)
+        public IItemWriter<Button, AnyContent> Button(IconType iconType)
         {
-            return Context.CreateWriter<Button, AnyContent>().Content(Context.CreateWriter<Icon>().Type(iconType));
+            var btn = Button();
+            btn.Content(Context.Helper.CreateWriter<Icon>(btn.Item).Type(iconType));
+            return btn;
         }
 
-        public IWriter2<Button, AnyContent> Button(IconType iconType, object content)
+        public IItemWriter<Button, AnyContent> Button(IconType iconType, object content)
         {
-            return Context.CreateWriter<Button, AnyContent>().Content(Context.CreateWriter<Icon>().Type(iconType), content);
+            return Button(iconType).Content(content);
         }
 
-        public IWriter2<Button, AnyContent> Button(ButtonType type, IconType iconType)
+        public IItemWriter<Button, AnyContent> Button(ButtonType type, IconType iconType)
         {
-            return Context.CreateWriter<Button, AnyContent>().Type(type).Content(Context.CreateWriter<Icon>().Type(iconType));
+            return Button(iconType).Type(type);
         }
 
-        public IWriter2<Button, AnyContent> Button(ButtonType type, IconType iconType, object content)
+        public IItemWriter<Button, AnyContent> Button(ButtonType type, IconType iconType, object content)
         {
-            return Context.CreateWriter<Button, AnyContent>().Type(type).Content(Context.CreateWriter<Icon>().Type(iconType), content);
+            return Button(iconType).Type(type).Content(content);
         }
 
         #endregion

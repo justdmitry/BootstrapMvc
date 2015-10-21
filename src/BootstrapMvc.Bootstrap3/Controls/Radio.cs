@@ -1,73 +1,52 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Forms;
+
     public class Radio : Element, IFormControl, ITextDisplay, IValueHolder, IInlineDisplay
     {
-        public IControlContext ControlContextValue { get; set; }
+        public string Text { get; set; }
 
-        public string TextValue { get; set; }
+        public bool Inline { get; set; }
 
-        public bool InlineValue { get; set; }
+        public object Value { get; set; }
 
-        public object ValueValue { get; set; }
+        public bool Disabled { get; set; }
 
-        public bool DisabledValue { get; set; }
-
-        void IControlContextHolder.SetControlContext(IControlContext context)
+        protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            ControlContextValue = context;
-        }
-
-        void IDisableable.SetDisabled(bool disabled)
-        {
-            DisabledValue = disabled;
-        }
-
-        bool IDisableable.Disabled()
-        {
-            return DisabledValue;
-        }
-
-        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
-        {
-            var formGroup = context.PeekNearest<FormGroup>();
-            if (formGroup != null && ControlContextValue == null)
-            {
-                ControlContextValue = formGroup.ControlContextValue;
-            }
+            var controlContext = GetNearestParent<IControlContext>();
 
             ITagBuilder div = null;
-            if (!InlineValue)
+            if (!Inline)
             {
-                div = context.CreateTagBuilder("div");
+                div = Helper.CreateTagBuilder("div");
                 div.AddCssClass("radio");
-                writer.Write(div.GetStartTag());
+                div.WriteStartTag(writer);
             }
 
-            var lbl = context.CreateTagBuilder("label");
-            if (InlineValue)
+            var lbl = Helper.CreateTagBuilder("label");
+            if (Inline)
             {
                 lbl.AddCssClass("radio-inline");
             }
-            writer.Write(lbl.GetStartTag());
+            lbl.WriteStartTag(writer);
 
-            var input = context.CreateTagBuilder("input");
+            var input = Helper.CreateTagBuilder("input");
             input.MergeAttribute("type", "radio");
-            if (ControlContextValue != null)
+            if (controlContext != null)
             {
-                input.MergeAttribute("id", ControlContextValue.Name);
-                input.MergeAttribute("name", ControlContextValue.Name);
-                input.MergeAttribute("value", ValueValue?.ToString());
-                var controlValue = ControlContextValue.Value;
-                if (controlValue != null && ValueValue != null && ValueValue.ToString().Equals(controlValue.ToString()))
+                input.MergeAttribute("id", controlContext.FieldName);
+                input.MergeAttribute("name", controlContext.FieldName);
+                input.MergeAttribute("value", Value?.ToString());
+                var controlValue = controlContext.FieldValue;
+                if (controlValue != null && Value != null && Value.ToString().Equals(controlValue.ToString()))
                 {
                     input.MergeAttribute("checked", "checked");
                 }
             }
-            if (DisabledValue)
+            if (Disabled)
             {
                 input.MergeAttribute("disabled", "disabled");
             }
@@ -77,28 +56,38 @@ namespace BootstrapMvc.Controls
 
             ////input.MergeAttributes(helper.HtmlHelper.GetUnobtrusiveValidationAttributes(context.ExpressionText, context.Metadata));
 
-            writer.Write(input.GetFullTag());
+            input.WriteFullTag(writer);
 
             writer.Write(" "); // writing space to separate text from radio itself
 
-            writer.Write(context.HtmlEncode(TextValue));
+            writer.Write(Helper.HtmlEncode(Text));
 
-            writer.Write(lbl.GetEndTag());
+            lbl.WriteEndTag(writer);
 
             if (div != null)
             {
-                writer.Write(div.GetEndTag());
+                div.WriteEndTag(writer);
             }
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            Disabled = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return Disabled;
         }
 
         bool IInlineDisplay.IsInline()
         {
-            return InlineValue;
+            return Inline;
         }
 
         void IInlineDisplay.SetInline(bool inline)
         {
-            InlineValue = inline;
+            Inline = inline;
         }
     }
 }

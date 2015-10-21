@@ -1,21 +1,16 @@
-﻿using System;
-using System.Linq.Expressions;
-using BootstrapMvc.Controls;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Forms
+﻿namespace BootstrapMvc.Forms
 {
-    public class FormGroup : AnyContentElement, IControlContextHolder
+    using System;
+    using BootstrapMvc.Controls;
+    using BootstrapMvc.Core;
+
+    public class FormGroup : AnyContentElement, IControlContext
     {
         private IFormControl control = null;
 
-        private bool valueRequired = false;
+        public FormGroupLabel Label { get; set; }
 
-        private bool overrideRequired = false;
-
-        public FormGroupLabel LabelValue { get; set; }
-
-        public IFormControl ControlValue
+        public IFormControl Control
         {
             get
             {
@@ -26,59 +21,41 @@ namespace BootstrapMvc.Forms
             {
                 control = value;
                 var sizable = control as IGridSizable;
-                WithSizedControlValue = sizable != null && !sizable.Size().IsEmpty();
+                WithSizedControl = sizable != null && !sizable.GetSize().IsEmpty();
             }
         }
 
-        public IControlContext ControlContextValue { get; set; }
+        public bool WithSizedControl { get; set; }
 
-        public bool WithSizedControlValue { get; set; }
+        #region IControlContext
 
-        public bool IsRequiredValue
+        public string FieldName { get; set; }
+
+        public object FieldValue { get; set; }
+
+        public bool IsRequired { get; set; }
+
+        public string[] Errors { get; set; }
+
+        public bool HasErrors { get; set; }
+
+        public bool HasWarning { get; set; }
+
+        #endregion
+
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            get
-            {
-                if (overrideRequired)
-                {
-                    return valueRequired;
-                }
-                return ControlContextValue == null ? valueRequired : ControlContextValue.IsRequired;
-            }
-            set
-            {
-                valueRequired = value;
-                overrideRequired = true;
-            }
-        }
+            var formContext = GetNearestParent<IForm>();
 
-        public void SetControlContext(IControlContext context)
-        {
-            this.ControlContextValue = context;
-        }
-
-        public AnyContent BeginControls(IBootstrapContext context)
-        {
-            this.WriteSelfStart(context.Writer, context);
-            var area = context.CreateWriter<FormGroupControls, AnyContent>().WithoutLabel(LabelValue == null).BeginContent();
-            area.OnDisposing(() => WriteSelfEnd(context.Writer, context));
-            return area;
-        }
-
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
-        {
-            var form = context.PeekNearest<IFormContext>();
-            var tb = context.CreateTagBuilder("div");
+            var tb = Helper.CreateTagBuilder("div");
             tb.AddCssClass("form-group");
-            if (ControlContextValue != null)
+            if (HasErrors)
             {
-                if (ControlContextValue.HasErrors)
-                {
-                    tb.AddCssClass("has-error");
-                }
-                else if (ControlContextValue.HasWarning)
-                {
-                    tb.AddCssClass("has-warning");
-                }
+                tb.AddCssClass("has-error");
+            }
+            else if (HasWarning)
+            {
+                tb.AddCssClass("has-warning");
             }
 
             ApplyCss(tb);
@@ -86,33 +63,72 @@ namespace BootstrapMvc.Forms
 
             tb.WriteStartTag(writer);
 
-            context.Push(this);
-
-            if (LabelValue != null)
+            if (Label != null)
             {
-                LabelValue.WriteTo(writer, context);
+                Label.Parent = this;
+                Label.WriteTo(writer);
             }
 
-            if (ControlValue != null)
+            var controlsEnd = WriteControlsStart(writer, formContext, Label == null);
+
+            if (Control != null)
             {
-                using (context.CreateWriter<FormGroupControls, AnyContent>().WithoutLabel(LabelValue == null).BeginContent(writer))
-                {
-                    ControlValue.WriteTo(writer, context);
-                }
+                Control.Parent = this;
+                Control.WriteTo(writer);
             }
 
-            if (form != null && form.TypeValue == FormType.Inline)
+            if (formContext != null && formContext.Type == FormType.Inline)
             {
-                return "</div> "; // trailing space is important for inline forms! Bootstrap does not provide spacing between groups in css!
+                return controlsEnd + "</div> "; // trailing space is important for inline forms! Bootstrap does not provide spacing between groups in css!
             }
-            
-            return "</div>";
+            return controlsEnd + "</div>";
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        private string WriteControlsStart(System.IO.TextWriter writer, IForm formContext, bool noLabel)
         {
-            base.WriteSelfEnd(writer, context);
-            context.PopIfEqual(this);
+            if (formContext != null && formContext.Type == FormType.Inline)
+            {
+                return string.Empty;
+            }
+
+            ITagBuilder tb = null;
+            ITagBuilder tb2 = null;
+
+            if (formContext != null && formContext.Type == FormType.Horizontal)
+            {
+                tb = Helper.CreateTagBuilder("div");
+                tb.AddCssClass(formContext.ControlsWidth.ToCssClass());
+                if (noLabel)
+                {
+                    tb.AddCssClass(formContext.ControlsWidth.Invert().ToOffsetCssClass());
+                }
+
+                ApplyCss(tb);
+                ApplyAttributes(tb);
+
+                tb.WriteStartTag(writer);
+            }
+
+            if (WithSizedControl)
+            {
+                tb2 = Helper.CreateTagBuilder("div");
+                tb2.AddCssClass("row");
+                tb2.WriteStartTag(writer);
+            }
+
+            if (tb != null && tb2 != null)
+            {
+                return tb2.GetEndTag() + tb.GetEndTag();
+            }
+            if (tb2 != null)
+            {
+                return tb2.GetEndTag();
+            }
+            if (tb != null)
+            {
+                return tb.GetEndTag();
+            }
+            return string.Empty;
         }
     }
 }

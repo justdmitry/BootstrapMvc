@@ -1,34 +1,37 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Lists
+﻿namespace BootstrapMvc.Lists
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class DefinitionListContent : DisposableContent
     {
-        public DefinitionListContent(IBootstrapContext context)
+        public DefinitionListContent(IBootstrapContext context, DefinitionList parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; set; }
+        private IBootstrapContext Context { get; set; }
 
-        public IWriter2<OrdinaryElement, AnyContent> Name(object content)
+        private DefinitionList Parent { get; set; }
+
+        public IItemWriter<OrdinaryElement, AnyContent> Name(object content)
         {
-            var res = Context.CreateWriter<OrdinaryElement, AnyContent>().Content(content);
+            var res = Context.Helper.CreateWriter<OrdinaryElement, AnyContent>(Parent).Content(content);
             res.Item.TagName = "dt";
             return res;
         }
 
-        public IWriter2<OrdinaryElement, AnyContent> Value(object content)
+        public IItemWriter<OrdinaryElement, AnyContent> Value(object content)
         {
-            var res = Context.CreateWriter<OrdinaryElement, AnyContent>().Content(content);
+            var res = Context.Helper.CreateWriter<OrdinaryElement, AnyContent>(Parent).Content(content);
             res.Item.TagName = "dd";
             return res;
         }
 
-        public IWriter2<OrdinaryElement, AnyContent> Value(params object[] contents)
+        public IItemWriter<OrdinaryElement, AnyContent> Value(params object[] contents)
         {
-            var res = Context.CreateWriter<OrdinaryElement, AnyContent>().Content(contents);
+            var res = Context.Helper.CreateWriter<OrdinaryElement, AnyContent>(Parent).Content(contents);
             res.Item.TagName = "dd";
             return res;
         }        

@@ -1,9 +1,9 @@
-﻿using System;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+
     public interface ITextDisplay
     {
-        string TextValue { get; set; }
+        string Text { get; set; }
     }
 }

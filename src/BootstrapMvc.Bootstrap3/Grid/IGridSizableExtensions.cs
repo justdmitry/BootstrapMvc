@@ -1,25 +1,25 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public static class IGridSizableExtensions
     {
-        public static IWriter<T> Size<T>(this IWriter<T> target, GridSize value) 
-            where T : IGridSizable, IWritable
+        public static IItemWriter<T> Size<T>(this IItemWriter<T> target, GridSize value) 
+            where T : IGridSizable, IWritableItem
         {
             target.Item.SetSize(value);
             return target;
         }
 
-        public static IWriter<T> Size<T>(this IWriter<T> target, byte xs, byte sm, byte md, byte lg) 
-            where T : IGridSizable, IWritable
+        public static IItemWriter<T> Size<T>(this IItemWriter<T> target, byte xs, byte sm, byte md, byte lg) 
+            where T : IGridSizable, IWritableItem
         {
             target.Item.SetSize(new GridSize(xs, sm, md, lg));
             return target;
         }
 
-        public static IWriter2<T, TContent> Size<T, TContent>(this IWriter2<T, TContent> target, GridSize value)
+        public static IItemWriter<T, TContent> Size<T, TContent>(this IItemWriter<T, TContent> target, GridSize value)
             where T : ContentElement<TContent>, IGridSizable
             where TContent : DisposableContent
         {
@@ -27,7 +27,7 @@ namespace BootstrapMvc
             return target;
         }
 
-        public static IWriter2<T, TContent> Size<T, TContent>(this IWriter2<T, TContent> target, byte xs, byte sm, byte md, byte lg)
+        public static IItemWriter<T, TContent> Size<T, TContent>(this IItemWriter<T, TContent> target, byte xs, byte sm, byte md, byte lg)
             where T : ContentElement<TContent>, IGridSizable
             where TContent : DisposableContent
         {

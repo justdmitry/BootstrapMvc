@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+
     public static partial class EnumToStringConverter
     {
         public static string ToCssClass(this PanelType type)

@@ -1,33 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
+    using System;
+
     public interface IBootstrapContext
     {
-        IWriter<T> CreateWriter<T>() where T : IWritable, new();
+        IWritableItem GetCurrentParent();
 
-        IWriter2<T, TContent> CreateWriter<T, TContent>()
-            where T : ContentElement<TContent>, new()
-            where TContent : DisposableContent;
+        void PushParent(IWritableItem parent);
 
-        TextWriter Writer { get; }
+        void PopParent(IWritableItem parentToMatch);
 
-        ITagBuilder CreateTagBuilder(string tagName);
-
-        string CreateUrl(IDictionary<string, object> routeValues);
-
-        string CreateUrl(IDictionary<string, object> routeValues, string protocol, string hostName);
-
-        string HtmlEncode(string value);
-
-        string GetMessage(int id);
-
-        void Push(object value);
-
-        T PeekNearest<T>() where T : class;
-
-        void PopIfEqual(object value);
+        IWritingHelper Helper { get; }
     }
 }

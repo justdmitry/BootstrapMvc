@@ -1,12 +1,12 @@
-﻿using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Panels
+﻿namespace BootstrapMvc.Panels
 {
+    using BootstrapMvc.Core;
+
     public class PanelHeader : AnyContentElement
     {
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("div");
+            var tb = Helper.CreateTagBuilder("div");
             tb.AddCssClass("panel-heading");
 
             ApplyCss(tb);

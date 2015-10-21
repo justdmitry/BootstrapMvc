@@ -1,23 +1,26 @@
-﻿using System;
-using System.Linq.Expressions;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Forms
+﻿namespace BootstrapMvc.Forms
 {
+    using System;
+    using System.Linq.Expressions;
+    using BootstrapMvc.Core;
+
     public abstract class FormContentBase : DisposableContent
     {
-        public FormContentBase(IBootstrapContext context)
+        public FormContentBase(IBootstrapContext context, IForm parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
+
+        protected IForm Parent { get; set; }
 
         #region Fieldset
 
-        public IWriter2<Fieldset, AnyContent> Fieldset()
+        public IItemWriter<Fieldset, AnyContent> Fieldset()
         {
-            return Context.CreateWriter<Fieldset, AnyContent>();
+            return Context.Helper.CreateWriter<Fieldset, AnyContent>(Parent);
         }
 
         public AnyContent BeginFieldset()
@@ -34,21 +37,21 @@ namespace BootstrapMvc.Forms
 
         #region Legend
 
-        public IWriter2<Legend, AnyContent> Legend()
+        public IItemWriter<Legend, AnyContent> Legend()
         {
-            return Context.CreateWriter<Legend, AnyContent>();
+            return Context.Helper.CreateWriter<Legend, AnyContent>(Parent);
         }
 
         #endregion
 
         #region FormGroup
 
-        public IWriter2<FormGroup, AnyContent> Group()
+        public IItemWriter<FormGroup, AnyContent> Group()
         {
-            return Context.CreateWriter<FormGroup, AnyContent>();
+            return Context.Helper.CreateWriter<FormGroup, AnyContent>(Parent);
         }
 
-        public IWriter2<FormGroup, AnyContent> Group(object label)
+        public IItemWriter<FormGroup, AnyContent> Group(object label)
         {
             return Group().Label(label);
         }
@@ -67,14 +70,14 @@ namespace BootstrapMvc.Forms
 
         #region HelpBlock
 
-        public IWriter2<HelpBlock, AnyContent> HelpBlock(object content)
+        public IItemWriter<HelpBlock, AnyContent> HelpBlock(object content)
         {
-            return Context.CreateWriter<HelpBlock, AnyContent>().Content(content);
+            return Context.Helper.CreateWriter<HelpBlock, AnyContent>(Parent).Content(content);
         }
 
-        public IWriter2<HelpBlock, AnyContent> HelpBlock(params object[] contents)
+        public IItemWriter<HelpBlock, AnyContent> HelpBlock(params object[] contents)
         {
-            return Context.CreateWriter<HelpBlock, AnyContent>().Content(contents);
+            return Context.Helper.CreateWriter<HelpBlock, AnyContent>(Parent).Content(contents);
         }
 
         public AnyContent BeginHelpBlock()

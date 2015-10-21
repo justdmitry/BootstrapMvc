@@ -7,7 +7,7 @@
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Initial release",
+  "releaseNotes": "Update for beta8",
 
   "dependencies": {
     "BootstrapMvc.Mvc6": "",

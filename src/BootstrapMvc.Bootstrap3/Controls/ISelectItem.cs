@@ -1,9 +1,9 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
-    public interface ISelectItem : IWritable
+    using System;
+    using BootstrapMvc.Core;
+
+    public interface ISelectItem : IWritableItem
     {
         // Nothing
     }

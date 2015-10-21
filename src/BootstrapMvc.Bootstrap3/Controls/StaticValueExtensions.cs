@@ -1,14 +1,14 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Controls;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Controls;
+
     public static class StaticValueExtensions
     {
-        public static IWriter<StaticValue> StaticValue(this IAnyContentMarker contentHelper)
+        public static IItemWriter<StaticValue> StaticValue(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<StaticValue>();
+            return contentHelper.CreateWriter<StaticValue>();
         }
     }
 }

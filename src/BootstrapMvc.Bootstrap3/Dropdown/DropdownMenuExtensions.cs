@@ -6,18 +6,18 @@ namespace BootstrapMvc
 {
     public static class DropdownMenuExtensions
     {
-        public static IWriter2<T, DropdownMenuContent> RightAlign<T>(this IWriter2<T, DropdownMenuContent> target, bool value = true) 
+        public static IItemWriter<T, DropdownMenuContent> RightAlign<T>(this IItemWriter<T, DropdownMenuContent> target, bool value = true) 
             where T : DropdownMenu
         {
-            target.Item.RightAlignValue = value;
+            target.Item.RightAlign = value;
             return target;
         }
 
         #region Generating
 
-        public static IWriter2<DropdownMenu, DropdownMenuContent> DropdownMenu(this IAnyContentMarker contentHelper)
+        public static IItemWriter<DropdownMenu, DropdownMenuContent> DropdownMenu(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<DropdownMenu, DropdownMenuContent>();
+            return contentHelper.CreateWriter<DropdownMenu, DropdownMenuContent>();
         }
 
         #endregion

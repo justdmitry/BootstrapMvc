@@ -1,94 +1,100 @@
-﻿using BootstrapMvc.Core;
-using BootstrapMvc.Panels;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Panels;
+
     public static class PanelExtensions
     {
         #region Fluent
 
-        public static IWriter2<T, PanelContent> Type<T>(this IWriter2<T, PanelContent> target, PanelType value)
+        public static IItemWriter<T, PanelContent> Type<T>(this IItemWriter<T, PanelContent> target, PanelType value)
             where T : Panel
         {
-            target.Item.TypeValue = value;
-            return target;
-        }
-
-        public static IWriter2<T, PanelContent> Header<T>(this IWriter2<T, PanelContent> target, PanelHeader value)
-            where T : Panel
-        {
-            target.Item.PanelHeaderValue = value;
+            target.Item.Type = value;
             return target;
         }
         
-        public static IWriter2<T, PanelContent> Header<T>(this IWriter2<T, PanelContent> target, object value)
+        public static IItemWriter<T, PanelContent> Header<T>(this IItemWriter<T, PanelContent> target, object value)
             where T : Panel
         {
-            var ph = target.Item.PanelHeaderValue = new PanelHeader();
-            ph.AddContent(value);
-            return target;
-        }
-
-        public static IWriter2<T, PanelContent> Header<T>(this IWriter2<T, PanelContent> target, params object[] values)
-            where T : Panel
-        {
-            var ph = target.Item.PanelHeaderValue = new PanelHeader();
-            foreach (var value in values)
+            var writer = value as IItemWriter<PanelHeader>;
+            if (writer != null)
             {
-                ph.AddContent(value);
+                target.Item.PanelHeader = writer.Item;
+                return target;
             }
-            return target;
-        }
 
-        public static IWriter2<T, PanelContent> Body<T>(this IWriter2<T, PanelContent> target, PanelBody value)
-            where T : Panel
-        {
-            target.Item.PanelBodyValue = value;
-            return target;
-        }
-
-        public static IWriter2<T, PanelContent> Body<T>(this IWriter2<T, PanelContent> target, object value)
-            where T : Panel
-        {
-            var ph = target.Item.PanelBodyValue = new PanelBody();
-            ph.AddContent(value);
-            return target;
-        }
-
-        public static IWriter2<T, PanelContent> Body<T>(this IWriter2<T, PanelContent> target, params object[] values)
-            where T : Panel
-        {
-            var ph = target.Item.PanelBodyValue = new PanelBody();
-            foreach (var value in values)
+            var header = value as PanelHeader;
+            if (header != null)
             {
-                ph.AddContent(value);
+                target.Item.PanelHeader = header;
+                return target;
             }
+
+            target.Item.PanelHeader = target.Helper.CreateWriter<PanelHeader, AnyContent>(target.Item).Content(value).Item;
             return target;
         }
 
-        public static IWriter2<T, PanelContent> Footer<T>(this IWriter2<T, PanelContent> target, PanelFooter value)
+        public static IItemWriter<T, PanelContent> Header<T>(this IItemWriter<T, PanelContent> target, params object[] values)
             where T : Panel
         {
-            target.Item.PanelFooterValue = value;
+            target.Item.PanelHeader = target.Helper.CreateWriter<PanelHeader, AnyContent>(target.Item).Content(values).Item;
             return target;
         }
 
-        public static IWriter2<T, PanelContent> Footer<T>(this IWriter2<T, PanelContent> target, object value)
+        public static IItemWriter<T, PanelContent> Body<T>(this IItemWriter<T, PanelContent> target, object value)
             where T : Panel
         {
-            var ph = target.Item.PanelFooterValue = new PanelFooter();
-            ph.AddContent(value);
-            return target;
-        }
-
-        public static IWriter2<T, PanelContent> Footer<T>(this IWriter2<T, PanelContent> target, params object[] values)
-            where T : Panel
-        {
-            var ph = target.Item.PanelFooterValue = new PanelFooter();
-            foreach (var value in values)
+            var writer = value as IItemWriter<PanelBody>;
+            if (writer != null)
             {
-                ph.AddContent(value);
+                target.Item.PanelBody = writer.Item;
+                return target;
             }
+
+            var header = value as PanelBody;
+            if (header != null)
+            {
+                target.Item.PanelBody = header;
+                return target;
+            }
+
+            target.Item.PanelBody = target.Helper.CreateWriter<PanelBody, AnyContent>(target.Item).Content(value).Item;
+            return target;
+        }
+
+        public static IItemWriter<T, PanelContent> Body<T>(this IItemWriter<T, PanelContent> target, params object[] values)
+            where T : Panel
+        {
+            target.Item.PanelBody = target.Helper.CreateWriter<PanelBody, AnyContent>(target.Item).Content(values).Item;
+            return target;
+        }
+
+        public static IItemWriter<T, PanelContent> Footer<T>(this IItemWriter<T, PanelContent> target, object value)
+            where T : Panel
+        {
+            var writer = value as IItemWriter<PanelFooter>;
+            if (writer != null)
+            {
+                target.Item.PanelFooter = writer.Item;
+                return target;
+            }
+
+            var header = value as PanelFooter;
+            if (header != null)
+            {
+                target.Item.PanelFooter = header;
+                return target;
+            }
+
+            target.Item.PanelFooter = target.Helper.CreateWriter<PanelFooter, AnyContent>(target.Item).Content(value).Item;
+            return target;
+        }
+
+        public static IItemWriter<T, PanelContent> Footer<T>(this IItemWriter<T, PanelContent> target, params object[] values)
+            where T : Panel
+        {
+            target.Item.PanelFooter = target.Helper.CreateWriter<PanelFooter, AnyContent>(target.Item).Content(values).Item;
             return target;
         }
 
@@ -96,12 +102,12 @@ namespace BootstrapMvc
 
         #region Generating
 
-        public static IWriter2<Panel, PanelContent> Panel(this IAnyContentMarker contentHelper)
+        public static IItemWriter<Panel, PanelContent> Panel(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<Panel, PanelContent>();
+            return contentHelper.CreateWriter<Panel, PanelContent>();
         }
 
-        public static IWriter2<Panel, PanelContent> Panel(this IAnyContentMarker contentHelper, PanelType type)
+        public static IItemWriter<Panel, PanelContent> Panel(this IAnyContentMarker contentHelper, PanelType type)
         {
             return Panel(contentHelper).Type(type);
         }
@@ -116,34 +122,34 @@ namespace BootstrapMvc
             return Panel(contentHelper, type).BeginContent();
         }
 
-        public static IWriter2<PanelHeader, AnyContent> PanelHeader(this IAnyContentMarker contentHelper, object value)
+        public static IItemWriter<PanelHeader, AnyContent> PanelHeader(this IAnyContentMarker contentHelper, object value)
         {
-            return contentHelper.Context.CreateWriter<PanelHeader, AnyContent>().Content(value);
+            return contentHelper.CreateWriter<PanelHeader, AnyContent>().Content(value);
         }
 
-        public static IWriter2<PanelHeader, AnyContent> PanelHeader(this IAnyContentMarker contentHelper, params object[] values)
+        public static IItemWriter<PanelHeader, AnyContent> PanelHeader(this IAnyContentMarker contentHelper, params object[] values)
         {
-            return contentHelper.Context.CreateWriter<PanelHeader, AnyContent>().Content(values);
+            return contentHelper.CreateWriter<PanelHeader, AnyContent>().Content(values);
         }
 
-        public static IWriter2<PanelBody, AnyContent> PanelBody(this IAnyContentMarker contentHelper, object value)
+        public static IItemWriter<PanelBody, AnyContent> PanelBody(this IAnyContentMarker contentHelper, object value)
         {
-            return contentHelper.Context.CreateWriter<PanelBody, AnyContent>().Content(value);
+            return contentHelper.CreateWriter<PanelBody, AnyContent>().Content(value);
         }
 
-        public static IWriter2<PanelBody, AnyContent> PanelBody(this IAnyContentMarker contentHelper, params object[] values)
+        public static IItemWriter<PanelBody, AnyContent> PanelBody(this IAnyContentMarker contentHelper, params object[] values)
         {
-            return contentHelper.Context.CreateWriter<PanelBody, AnyContent>().Content(values);
+            return contentHelper.CreateWriter<PanelBody, AnyContent>().Content(values);
         }
 
-        public static IWriter2<PanelFooter, AnyContent> PanelFooter(this IAnyContentMarker contentHelper, object value)
+        public static IItemWriter<PanelFooter, AnyContent> PanelFooter(this IAnyContentMarker contentHelper, object value)
         {
-            return contentHelper.Context.CreateWriter<PanelFooter, AnyContent>().Content(value);
+            return contentHelper.CreateWriter<PanelFooter, AnyContent>().Content(value);
         }
 
-        public static IWriter2<PanelFooter, AnyContent> PanelFooter(this IAnyContentMarker contentHelper, params object[] values)
+        public static IItemWriter<PanelFooter, AnyContent> PanelFooter(this IAnyContentMarker contentHelper, params object[] values)
         {
-            return contentHelper.Context.CreateWriter<PanelFooter, AnyContent>().Content(values);
+            return contentHelper.CreateWriter<PanelFooter, AnyContent>().Content(values);
         }
 
         #endregion

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+
     public interface ITagBuilder
     {
         string InnerHtml { get; set; }
-
-        void SetInnerText(string text);
 
         // Summary:
         //     Adds a CSS class to the list of CSS classes in the tag.
@@ -52,7 +50,6 @@ namespace BootstrapMvc.Core
         [Obsolete("Use WriteStartTag(TextWriter)")]
         string GetStartTag();
 
-        [Obsolete("Use WriteEndTag(TextWriter)")]
         string GetEndTag();
 
         [Obsolete("Use WriteFullTag(TextWriter)")]

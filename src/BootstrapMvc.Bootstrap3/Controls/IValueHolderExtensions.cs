@@ -1,23 +1,23 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Controls;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Controls;
+
     public static class IValueHolderExtensions
     {
-        public static IWriter<T> Value<T>(this IWriter<T> target, object value)
-            where T : IValueHolder, IWritable
+        public static IItemWriter<T> Value<T>(this IItemWriter<T> target, object value)
+            where T : IValueHolder, IWritableItem
         {
-            target.Item.ValueValue = value;
+            target.Item.Value = value;
             return target;
         }
 
-        public static IWriter2<T, TContent> Value<T, TContent>(this IWriter2<T, TContent> target, object value)
+        public static IItemWriter<T, TContent> Value<T, TContent>(this IItemWriter<T, TContent> target, object value)
             where T : ContentElement<TContent>, IValueHolder
             where TContent : DisposableContent
         {
-            target.Item.ValueValue = value;
+            target.Item.Value = value;
             return target;
         }
     }

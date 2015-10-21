@@ -1,29 +1,29 @@
-﻿using System;
-using BootstrapMvc.Core;
-using System.Collections.Generic;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+    using BootstrapMvc.Core;
+    using System.Collections.Generic;
+
     public class SelectOptGroup : ContentElement<SelectOptGroupContent>, ISelectItem, IDisableable
     {
-        public bool DisabledValue { get; set; }
+        public bool Disabled { get; set; }
 
-        public string LabelValue { get; set; }
+        public string Label { get; set; }
 
         public IEnumerable<ISelectItem> ItemsValue { get; set; }
 
         protected override SelectOptGroupContent CreateContentContext(IBootstrapContext context)
         {
-            return new SelectOptGroupContent(context);
+            return new SelectOptGroupContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("optgroup");
+            var tb = Helper.CreateTagBuilder("optgroup");
 
-            tb.MergeAttribute("label", LabelValue);
+            tb.MergeAttribute("label", Label);
 
-            if (DisabledValue)
+            if (Disabled)
             {
                 tb.MergeAttribute("disabled", "disabled");
             }
@@ -37,24 +37,25 @@ namespace BootstrapMvc.Controls
             {
                 foreach (var item in ItemsValue)
                 {
-                    item.WriteTo(writer, context);
+                    item.Parent = this;
+                    item.WriteTo(writer);
                 }
             }
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write("</optgroup>");
         }
 
         void IDisableable.SetDisabled(bool disabled)
         {
-            DisabledValue = disabled;
+            Disabled = disabled;
         }
 
         bool IDisableable.Disabled()
         {
-            return DisabledValue;
+            return Disabled;
         }
     }
 }

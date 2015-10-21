@@ -1,34 +1,24 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Forms
+﻿namespace BootstrapMvc.Forms
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class Fieldset : AnyContentElement, IDisableable
     {
-        public Legend LegendValue { get; set; }
+        public Legend Legend { get; set; }
 
-        public bool DisabledValue { get; set; }
-
-        public void SetDisabled(bool disabled = true)
-        {
-            DisabledValue = disabled;
-        }
-
-        public bool Disabled()
-        {
-            return DisabledValue;
-        }
+        public bool Disabled { get; set; }
 
         protected override AnyContent CreateContentContext(IBootstrapContext context)
         {
             return new AnyContent(context);
         }
 
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("fieldset");
+            var tb = Helper.CreateTagBuilder("fieldset");
 
-            if (DisabledValue)
+            if (Disabled)
             {
                 tb.MergeAttribute("disabled", "disabled");
             }
@@ -38,12 +28,23 @@ namespace BootstrapMvc.Forms
 
             tb.WriteStartTag(writer);
 
-            if (LegendValue != null)
+            if (Legend != null)
             {
-                LegendValue.WriteTo(writer, context);
+                Legend.Parent = this;
+                Legend.WriteTo(writer);
             }
 
             return "</fieldset>";
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            Disabled = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return Disabled;
         }
     }
 }

@@ -1,18 +1,18 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public static class IDisableableExtensions
     {
-        public static IWriter<T> Disabled<T>(this IWriter<T> target, bool disabled = true) 
-            where T : IDisableable, IWritable
+        public static IItemWriter<T> Disabled<T>(this IItemWriter<T> target, bool disabled = true) 
+            where T : IDisableable, IWritableItem
         {
             target.Item.SetDisabled(disabled);
             return target;
         }
 
-        public static IWriter2<T, TContent> Disabled<T, TContent>(this IWriter2<T, TContent> target, bool disabled = true)
+        public static IItemWriter<T, TContent> Disabled<T, TContent>(this IItemWriter<T, TContent> target, bool disabled = true)
             where T : ContentElement<TContent>, IDisableable
             where TContent : DisposableContent
         {

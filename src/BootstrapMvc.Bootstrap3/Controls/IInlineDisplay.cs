@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+
     public interface IInlineDisplay
     {
         void SetInline(bool inline = true);

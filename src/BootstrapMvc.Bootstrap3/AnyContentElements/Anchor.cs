@@ -1,17 +1,17 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Dropdown;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Dropdown;
+
     public class Anchor : AnyContentElement, ILink, IDropdownMenuParentMarker
     {
-        public string HrefValue { get; set; }
+        public string Href { get; set; }
 
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("a");
-            tb.MergeAttribute("href", HrefValue);
+            var tb = Helper.CreateTagBuilder("a");
+            tb.MergeAttribute("href", Href);
 
             ApplyCss(tb);
             ApplyAttributes(tb);
@@ -23,7 +23,7 @@ namespace BootstrapMvc
 
         void ILink.SetHref(string value)
         {
-            HrefValue = value;
+            Href = value;
         }
     }
 }

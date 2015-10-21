@@ -1,12 +1,9 @@
-﻿using System;
-using System.Linq.Expressions;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
+    using System;
+
     public interface IBootstrapContext<TModel> : IBootstrapContext
     {
-        IControlContext GetControlContext<TProperty>(Expression<Func<TModel, TProperty>> expression);
-
-        IModelValidationResult ValidationResult { get; }
+        new IWritingHelper<TModel> Helper { get; }
     }
 }

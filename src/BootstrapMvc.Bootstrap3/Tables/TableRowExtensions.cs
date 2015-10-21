@@ -1,24 +1,24 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Tables;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Tables;
+
     public static class TableRowExtensions
     {
         #region Fluent
 
-        public static IWriter2<T, TableRowContent> Color<T>(this IWriter2<T, TableRowContent> target, TableRowCellColor color)
+        public static IItemWriter<T, TableRowContent> Color<T>(this IItemWriter<T, TableRowContent> target, TableRowCellColor color)
             where T : TableRow
         {
-            target.Item.ColorValue = color;
+            target.Item.Color = color;
             return target;
         }
 
-        public static IWriter2<T, TableRowContent> Cells<T>(this IWriter2<T, TableRowContent> target, object value)
+        public static IItemWriter<T, TableRowContent> Cells<T>(this IItemWriter<T, TableRowContent> target, object value)
             where T : TableRow
         {
-            var tcw = value as IWriter2<TableCell, AnyContent>;
+            var tcw = value as IItemWriter<TableCell, AnyContent>;
             if (tcw != null)
             {
                 target.Item.AddCell(tcw.Item);
@@ -32,13 +32,11 @@ namespace BootstrapMvc
                 return target;
             }
 
-            tc = new TableCell();
-            tc.AddContent(value);
-            target.Item.AddCell(tc);
+            target.Item.AddCell(target.Helper.CreateWriter<TableCell, AnyContent>(target.Item).Content(value).Item);
             return target;
         }
 
-        public static IWriter2<T, TableRowContent> Cells<T>(this IWriter2<T, TableRowContent> target, params object[] values)
+        public static IItemWriter<T, TableRowContent> Cells<T>(this IItemWriter<T, TableRowContent> target, params object[] values)
             where T : TableRow
         {
             foreach (var value in values)
@@ -48,10 +46,10 @@ namespace BootstrapMvc
             return target;
         }
 
-        public static IWriter2<T, TableRowContent> HeaderCells<T>(this IWriter2<T, TableRowContent> target, object value)
+        public static IItemWriter<T, TableRowContent> HeaderCells<T>(this IItemWriter<T, TableRowContent> target, object value)
             where T : TableRow
         {
-            var tcw = value as IWriter2<TableHeaderCell, AnyContent>;
+            var tcw = value as IItemWriter<TableHeaderCell, AnyContent>;
             if (tcw != null)
             {
                 target.Item.AddCell(tcw.Item);
@@ -65,13 +63,11 @@ namespace BootstrapMvc
                 return target;
             }
 
-            tc = new TableHeaderCell();
-            tc.AddContent(value);
-            target.Item.AddCell(tc);
+            target.Item.AddCell(target.Helper.CreateWriter<TableHeaderCell, AnyContent>(target.Item).Content(value).Item);
             return target;
         }
 
-        public static IWriter2<T, TableRowContent> HeaderCells<T>(this IWriter2<T, TableRowContent> target, params object[] values)
+        public static IItemWriter<T, TableRowContent> HeaderCells<T>(this IItemWriter<T, TableRowContent> target, params object[] values)
             where T : TableRow
         {
             foreach (var value in values)
@@ -85,12 +81,12 @@ namespace BootstrapMvc
 
         #region Generating
 
-        public static IWriter2<TableRow, TableRowContent> TableRow(this IAnyContentMarker contentHelper)
+        public static IItemWriter<TableRow, TableRowContent> TableRow(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<TableRow, TableRowContent>();
+            return contentHelper.CreateWriter<TableRow, TableRowContent>();
         }
 
-        public static IWriter2<TableRow, TableRowContent> TableRow(this IAnyContentMarker contentHelper, TableRowCellColor color)
+        public static IItemWriter<TableRow, TableRowContent> TableRow(this IAnyContentMarker contentHelper, TableRowCellColor color)
         {
             return TableRow(contentHelper).Color(color);
         }

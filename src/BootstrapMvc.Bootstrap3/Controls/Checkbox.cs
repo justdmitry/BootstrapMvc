@@ -1,71 +1,50 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Forms;
+
     public class Checkbox : Element, IFormControl, ITextDisplay, IInlineDisplay
     {
-        public IControlContext ControlContextValue { get; set; }
+        public string Text { get; set; }
 
-        public string TextValue { get; set; }
+        public bool Inline { get; set; }
 
-        public bool InlineValue { get; set; }
+        public bool Disabled { get; set; }
 
-        public bool DisabledValue { get; set; }
-
-        void IControlContextHolder.SetControlContext(IControlContext context)
+        protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            ControlContextValue = context;
-        }
-
-        void IDisableable.SetDisabled(bool disabled)
-        {
-            DisabledValue = disabled;
-        }
-
-        bool IDisableable.Disabled()
-        {
-            return DisabledValue;
-        }
-
-        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
-        {
-            var formGroup = context.PeekNearest<FormGroup>();
-            if (formGroup != null && ControlContextValue == null)
-            {
-                ControlContextValue = formGroup.ControlContextValue;
-            }
+            var controlContext = GetNearestParent<IControlContext>();
 
             ITagBuilder div = null;
-            if (!InlineValue)
+            if (!Inline)
             {
-                div = context.CreateTagBuilder("div");
+                div = Helper.CreateTagBuilder("div");
                 div.AddCssClass("checkbox");
                 div.WriteStartTag(writer);
             }
 
-            var lbl = context.CreateTagBuilder("label");
-            if (InlineValue)
+            var lbl = Helper.CreateTagBuilder("label");
+            if (Inline)
             {
                 lbl.AddCssClass("checkbox-inline");
             }
             lbl.WriteStartTag(writer);
 
-            var input = context.CreateTagBuilder("input");
+            var input = Helper.CreateTagBuilder("input");
             input.MergeAttribute("type", "checkbox");
-            if (ControlContextValue != null)
+            if (controlContext != null)
             {
-                input.MergeAttribute("id", ControlContextValue.Name);
-                input.MergeAttribute("name", ControlContextValue.Name);
+                input.MergeAttribute("id", controlContext.FieldName);
+                input.MergeAttribute("name", controlContext.FieldName);
                 input.MergeAttribute("value", "true");
-                var controlValue = ControlContextValue.Value;
+                var controlValue = controlContext.FieldValue;
                 if (controlValue != null && bool.Parse(controlValue.ToString()))
                 {
                     input.MergeAttribute("checked", "checked");
                 }
             }
-            if (DisabledValue)
+            if (Disabled)
             {
                 input.MergeAttribute("disabled", "disabled");
             }
@@ -79,7 +58,7 @@ namespace BootstrapMvc.Controls
 
             writer.Write(" "); // writing space to separate text from checkbox itself
 
-            writer.Write(context.HtmlEncode(TextValue));
+            writer.Write(Helper.HtmlEncode(Text));
 
             lbl.WriteEndTag(writer);
 
@@ -89,14 +68,24 @@ namespace BootstrapMvc.Controls
             }
         }
 
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            Disabled = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return Disabled;
+        }
+
         void IInlineDisplay.SetInline(bool inline)
         {
-            InlineValue = inline;
+            Inline = inline;
         }
 
         bool IInlineDisplay.IsInline()
         {
-            return InlineValue;
+            return Inline;
         }
     }
 }

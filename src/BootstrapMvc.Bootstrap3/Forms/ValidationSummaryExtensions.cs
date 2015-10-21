@@ -1,28 +1,28 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
+﻿//namespace BootstrapMvc
+//{
+//    using System;
+//    using BootstrapMvc.Core;
+//    using BootstrapMvc.Forms;
 
-namespace BootstrapMvc
-{
-    public static class ValidationSummaryExtensions
-    {
-        #region Fluent
+//    public static class ValidationSummaryExtensions
+//    {
+//        #region Fluent
 
-        public static IWriter<ValidationSummary<TModel>> HidePropertyErrors<TModel>(this IWriter<ValidationSummary<TModel>> target, bool hide = true)
-        {
-            target.Item.HidePropertyErrorsValue = hide;
-            return target;
-        }
+//        public static IItemWriter<ValidationSummary<TModel>> HidePropertyErrors<TModel>(this IItemWriter<ValidationSummary<TModel>> target, bool hide = true)
+//        {
+//            target.Item.HidePropertyErrors = hide;
+//            return target;
+//        }
 
-        #endregion
+//        #endregion
 
-        #region Generation
+//        #region Generation
 
-        public static IWriter<ValidationSummary<TModel>> ValidationSummary<TModel>(this IAnyContentMarker<TModel> contentHelper)
-        {
-            return contentHelper.Context.CreateWriter<ValidationSummary<TModel>>();
-        }
+//        public static IItemWriter<ValidationSummary<TModel>> ValidationSummary<TModel>(this IAnyContentMarker<TModel> contentHelper)
+//        {
+//            return contentHelper.CreateWriter<ValidationSummary<TModel>>();
+//        }
 
-        #endregion
-    }
-}
+//        #endregion
+//    }
+//}

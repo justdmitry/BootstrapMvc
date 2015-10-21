@@ -1,75 +1,69 @@
-﻿using System;
-using System.Linq.Expressions;
-using BootstrapMvc.Controls;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using System.Linq.Expressions;
+    using BootstrapMvc.Controls;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Forms;
+
     public static class FormGroupExtensions
     {
         #region Fluent
 
-        public static IWriter2<T, AnyContent> Label<T>(this IWriter2<T, AnyContent> target, object content)
+        public static IItemWriter<T, AnyContent> Label<T>(this IItemWriter<T, AnyContent> target, object content)
             where T : FormGroup
         {
             var labelContent = content as FormGroupLabel;
-            target.Item.LabelValue = labelContent ?? target.Context.CreateWriter<FormGroupLabel, AnyContent>().Content(content).Item;
+            target.Item.Label = labelContent ?? target.Helper.CreateWriter<FormGroupLabel, AnyContent>(target.Item).Content(content).Item;
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Label<T>(this IWriter2<T, AnyContent> target, params object[] contents)
+        public static IItemWriter<T, AnyContent> Label<T>(this IItemWriter<T, AnyContent> target, params object[] contents)
             where T : FormGroup
         {
-            target.Item.LabelValue = target.Context.CreateWriter<FormGroupLabel, AnyContent>().Content(contents).Item;
+            target.Item.Label = target.Helper.CreateWriter<FormGroupLabel, AnyContent>(target.Item).Content(contents).Item;
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Control<T>(this IWriter2<T, AnyContent> target, IFormControl value)
+        public static IItemWriter<T, AnyContent> Control<T>(this IItemWriter<T, AnyContent> target, IFormControl value)
             where T : FormGroup
         {
-            target.Item.ControlValue = value;
+            target.Item.Control = value;
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Control<T, TControl>(this IWriter2<T, AnyContent> target, IWriter<TControl> value)
+        public static IItemWriter<T, AnyContent> Control<T, TControl>(this IItemWriter<T, AnyContent> target, IItemWriter<TControl> value)
             where T : FormGroup
             where TControl : IFormControl
         {
-            target.Item.ControlValue = value.Item;
+            target.Item.Control = value.Item;
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Required<T>(this IWriter2<T, AnyContent> target, bool value = true)
+        public static IItemWriter<T, AnyContent> Required<T>(this IItemWriter<T, AnyContent> target, bool value = true)
             where T : FormGroup
         {
-            target.Item.IsRequiredValue = value;
+            target.Item.IsRequired = value;
             return target;
         }
 
-        public static IWriter2<T, AnyContent> WithSizedControls<T>(this IWriter2<T, AnyContent> target, bool value = true)
+        public static IItemWriter<T, AnyContent> WithSizedControls<T>(this IItemWriter<T, AnyContent> target, bool value = true)
             where T : FormGroup
         {
-            target.Item.WithSizedControlValue = value;
+            target.Item.WithSizedControl = value;
             return target;
-        }
-
-        public static AnyContent BeginControls<T>(this IWriter2<T, AnyContent> target)
-            where T : FormGroup
-        {
-            return target.Item.BeginControls(target.Context);
         }
 
         #endregion
 
         #region Generating
 
-        public static IWriter2<FormGroup, AnyContent> FormGroup(this IAnyContentMarker contentHelper)
+        public static IItemWriter<FormGroup, AnyContent> FormGroup(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<FormGroup, AnyContent>();
+            return contentHelper.CreateWriter<FormGroup, AnyContent>();
         }
 
-        public static IWriter2<FormGroup, AnyContent> FormGroup(this IAnyContentMarker contentHelper, object label)
+        public static IItemWriter<FormGroup, AnyContent> FormGroup(this IAnyContentMarker contentHelper, object label)
         {
             return FormGroup(contentHelper).Label(label);
         }
@@ -84,13 +78,14 @@ namespace BootstrapMvc
             return FormGroup(contentHelper, label).BeginContent();
         }
 
-        public static IWriter2<FormGroup, AnyContent> FormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression)
+        public static IItemWriter<FormGroup, AnyContent> FormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression)
         {
-            var fg = contentHelper.Context.CreateWriter<FormGroup, AnyContent>();
-            return ControlContextHolderExtensions.ControlContext(fg, contentHelper.Context.GetControlContext(expression));
+            var fg = contentHelper.CreateWriter<FormGroup, AnyContent>();
+            contentHelper.Context.Helper.FillControlContext(fg.Item, expression);
+            return fg;
         }
 
-        public static IWriter2<FormGroup, AnyContent> FormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression, object label)
+        public static IItemWriter<FormGroup, AnyContent> FormGroupFor<TModel, TProperty>(this IAnyContentMarker<TModel> contentHelper, Expression<Func<TModel, TProperty>> expression, object label)
         {
             return FormGroupFor(contentHelper, expression).Label(label);
         }

@@ -1,43 +1,43 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public static class AnchorExtensions
     {
         #region Generation
 
-        public static IWriter2<Anchor, AnyContent> Anchor(this IAnyContentMarker contentHelper)
+        public static IItemWriter<Anchor, AnyContent> Anchor(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<Anchor, AnyContent>();
+            return contentHelper.CreateWriter<Anchor, AnyContent>();
         }
 
-        public static IWriter2<Anchor, AnyContent> Anchor(this IAnyContentMarker contentHelper, object content)
+        public static IItemWriter<Anchor, AnyContent> Anchor(this IAnyContentMarker contentHelper, object content)
         {
-            return contentHelper.Context.CreateWriter<Anchor, AnyContent>().Content(content);
+            return contentHelper.CreateWriter<Anchor, AnyContent>().Content(content);
         }
 
-        public static IWriter2<Anchor, AnyContent> Anchor(this IAnyContentMarker contentHelper, params object[] contents)
+        public static IItemWriter<Anchor, AnyContent> Anchor(this IAnyContentMarker contentHelper, params object[] contents)
         {
-            return contentHelper.Context.CreateWriter<Anchor, AnyContent>().Content(contents);
+            return contentHelper.CreateWriter<Anchor, AnyContent>().Content(contents);
         }
 
         public static AnyContent BeginAnchor(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<Anchor, AnyContent>().BeginContent();
+            return contentHelper.CreateWriter<Anchor, AnyContent>().BeginContent();
         }
 
-        public static IWriter2<Anchor, AnyContent> Link(this IAnyContentMarker contentHelper)
+        public static IItemWriter<Anchor, AnyContent> Link(this IAnyContentMarker contentHelper)
         {
             return Anchor(contentHelper);
         }
 
-        public static IWriter2<Anchor, AnyContent> Link(this IAnyContentMarker contentHelper, object content)
+        public static IItemWriter<Anchor, AnyContent> Link(this IAnyContentMarker contentHelper, object content)
         {
             return Anchor(contentHelper, content);
         }
 
-        public static IWriter2<Anchor, AnyContent> Link(this IAnyContentMarker contentHelper, params object[] contents)
+        public static IItemWriter<Anchor, AnyContent> Link(this IAnyContentMarker contentHelper, params object[] contents)
         {
             return Anchor(contentHelper, contents);
         }

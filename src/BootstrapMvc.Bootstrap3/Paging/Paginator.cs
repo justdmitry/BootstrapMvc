@@ -1,29 +1,29 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Paging
+﻿namespace BootstrapMvc.Paging
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class Paginator : ContentElement<PaginatorContent>
     {
-        public PaginatorSize SizeValue { get; set; }
+        public PaginatorSize Size { get; set; }
 
         protected override PaginatorContent CreateContentContext(IBootstrapContext context)
         {
-            return new PaginatorContent(context);
+            return new PaginatorContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             writer.Write("<nav>");
 
-            var tb = context.CreateTagBuilder("ul");
+            var tb = Helper.CreateTagBuilder("ul");
             tb.AddCssClass("pagination");
-            tb.AddCssClass(SizeValue.ToCssClass());
+            tb.AddCssClass(Size.ToCssClass());
 
             tb.WriteStartTag(writer);
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write("</ul></nav>");
         }

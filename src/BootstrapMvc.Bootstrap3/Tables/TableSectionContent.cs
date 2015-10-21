@@ -1,23 +1,26 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Tables
+﻿namespace BootstrapMvc.Tables
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class TableSectionContent : DisposableContent
     {
-        public TableSectionContent(IBootstrapContext context)
+        public TableSectionContent(IBootstrapContext context, TableSection parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
 
-        public IWriter2<TableRow, TableRowContent> Row()
+        private TableSection Parent { get; set; }
+
+        public IItemWriter<TableRow, TableRowContent> Row()
         {
-            return Context.CreateWriter<TableRow, TableRowContent>();
+            return Context.Helper.CreateWriter<TableRow, TableRowContent>(Parent);
         }
 
-        public IWriter2<TableRow, TableRowContent> Row(TableRowCellColor color)
+        public IItemWriter<TableRow, TableRowContent> Row(TableRowCellColor color)
         {
             return Row().Color(color);
         }

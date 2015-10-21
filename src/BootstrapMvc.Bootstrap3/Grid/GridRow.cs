@@ -1,18 +1,18 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Grid
+﻿namespace BootstrapMvc.Grid
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class GridRow : ContentElement<GridRowContent>
     {
         protected override GridRowContent CreateContentContext(IBootstrapContext context)
         {
-            return new GridRowContent(context);
+            return new GridRowContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("div");
+            var tb = Helper.CreateTagBuilder("div");
             tb.AddCssClass("row");
 
             ApplyCss(tb);
@@ -21,7 +21,7 @@ namespace BootstrapMvc.Grid
             tb.WriteStartTag(writer);
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write("</div>");
         }

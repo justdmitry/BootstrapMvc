@@ -1,68 +1,38 @@
-﻿using System;
-using System.Globalization;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+    using System.Globalization;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Forms;
+
     public class Textarea : Element, IFormControl, IPlaceholderTarget, IGridSizable
     {
         public static readonly byte RowsDefault = 3;
 
-        public IControlContext ControlContextValue { get; set; }
+        public GridSize Size { get; set; }
 
-        public GridSize SizeValue { get; set; }
+        public int Rows { get; set; } = RowsDefault;
 
-        public int RowsValue { get; set; } = RowsDefault;
+        public bool Disabled { get; set; }
 
-        public bool DisabledValue { get; set; }
-
-        void IControlContextHolder.SetControlContext(IControlContext context)
+        protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            ControlContextValue = context;
-        }
-
-        void IGridSizable.SetSize(GridSize value)
-        {
-            SizeValue = value;
-        }
-
-        GridSize IGridSizable.Size()
-        {
-            return SizeValue;
-        }
-
-        void IDisableable.SetDisabled(bool disabled)
-        {
-            DisabledValue = disabled;
-        }
-
-        bool IDisableable.Disabled()
-        {
-            return DisabledValue;
-        }
-
-        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
-        {
-            var form = context.PeekNearest<IFormContext>();
-            var formGroup = context.PeekNearest<FormGroup>();
-            if (formGroup != null && ControlContextValue == null)
-            {
-                ControlContextValue = formGroup.ControlContextValue;
-            }
+            var formContext = GetNearestParent<IForm>();
+            var formGroupContext = GetNearestParent<FormGroup>();
+            var controlContext = GetNearestParent<IControlContext>();
 
             ITagBuilder div = null;
 
-            if (!SizeValue.IsEmpty())
+            if (!Size.IsEmpty())
             {
                 // Inline forms does not support sized controls (we need 'some other' sizing rules?)
-                if (form != null && form.TypeValue != FormType.Inline)
+                if (formContext != null && formContext.Type != FormType.Inline)
                 {
-                    if (formGroup != null && formGroup.WithSizedControlValue)
+                    if (formGroupContext != null && formGroupContext.WithSizedControl)
                     {
-                        div = context.CreateTagBuilder("div");
-                        div.AddCssClass(SizeValue.ToCssClass());
-                        writer.Write(div.GetStartTag());
+                        div = Helper.CreateTagBuilder("div");
+                        div.AddCssClass(Size.ToCssClass());
+                        div.WriteStartTag(writer);
                     }
                     else
                     {
@@ -71,22 +41,22 @@ namespace BootstrapMvc.Controls
                 }
             }
 
-            var tb = context.CreateTagBuilder("textarea");
+            var tb = Helper.CreateTagBuilder("textarea");
             tb.AddCssClass("form-control");
-            if (RowsValue != 0)
+            if (Rows != 0)
             {
-                tb.MergeAttribute("rows", RowsValue.ToString(CultureInfo.InvariantCulture));
+                tb.MergeAttribute("rows", Rows.ToString(CultureInfo.InvariantCulture));
             }
-            if (ControlContextValue != null)
+            if (controlContext != null)
             {
-                tb.MergeAttribute("id", ControlContextValue.Name);
-                tb.MergeAttribute("name", ControlContextValue.Name);
-                if (ControlContextValue.IsRequired)
+                tb.MergeAttribute("id", controlContext.FieldName);
+                tb.MergeAttribute("name", controlContext.FieldName);
+                if (controlContext.IsRequired)
                 {
                     tb.MergeAttribute("required", "required");
                 }
             }
-            if (DisabledValue)
+            if (Disabled)
             {
                 tb.MergeAttribute("disabled", "disabled");
             }
@@ -94,19 +64,39 @@ namespace BootstrapMvc.Controls
             ApplyCss(tb);
             ApplyAttributes(tb);
 
-            writer.Write(tb.GetStartTag());
+            tb.WriteStartTag(writer);
 
-            if (ControlContextValue != null && ControlContextValue.Value != null)
+            if (controlContext != null && controlContext.FieldValue != null)
             {
-                writer.Write(context.HtmlEncode(ControlContextValue.Value.ToString()));
+                writer.Write(Helper.HtmlEncode(controlContext.FieldValue.ToString()));
             }
 
-            writer.Write(tb.GetEndTag());
+            tb.WriteEndTag(writer);
 
             if (div != null)
             {
-                writer.Write(div.GetEndTag());
+                div.WriteEndTag(writer);
             }
+        }
+
+        void IGridSizable.SetSize(GridSize value)
+        {
+            Size = value;
+        }
+
+        GridSize IGridSizable.GetSize()
+        {
+            return Size;
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            Disabled = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return Disabled;
         }
     }
 }

@@ -1,17 +1,17 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Controls;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Controls;
+
     public static class TextareaExtensions
     {
         #region Fluent
 
-        public static IWriter<T> Rows<T>(this IWriter<T> target, int value)
+        public static IItemWriter<T> Rows<T>(this IItemWriter<T> target, int value)
             where T : Textarea
         {
-            target.Item.RowsValue = value;
+            target.Item.Rows = value;
             return target;
         }
 
@@ -19,9 +19,9 @@ namespace BootstrapMvc
 
         #region Generating
 
-        public static IWriter<Textarea> Textarea(this IAnyContentMarker contentHelper)
+        public static IItemWriter<Textarea> Textarea(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<Textarea>();
+            return contentHelper.CreateWriter<Textarea>();
         }
 
         #endregion

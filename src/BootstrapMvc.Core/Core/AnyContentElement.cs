@@ -1,45 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
+    using System;
+    using System.Collections.Generic;
+
     public abstract class AnyContentElement : ContentElement<AnyContent>
     {
-        private WritableBlock content;
+        private List<IWritableItem> contents;
 
         protected string endTag = null;
 
-        public AnyContentElement AddContent(object value)
+        public void AddContent(IWritableItem value)
         {
-            var newContent = new SimpleBlock().Value(value);
-            if (content == null)
+            if (value == null)
             {
-                content = newContent;
+                return;
             }
-            else
+
+            value.Parent = this;
+
+            if (contents == null)
             {
-                content.Append(newContent);
+                contents = new List<IWritableItem>();
             }
-            return this;
+
+            contents.Add(value);
         }
 
-        protected abstract string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context);
+        protected abstract string WriteSelfStartTag(System.IO.TextWriter writer);
 
         protected override AnyContent CreateContentContext(IBootstrapContext context)
         {
             return new AnyContent(context);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            endTag = WriteSelfStartTag(writer, context);
-            if (content != null)
+            endTag = WriteSelfStartTag(writer);
+            if (contents != null)
             {
-                content.WriteTo(writer, context);
+                foreach (var content in contents)
+                {
+                    content.WriteTo(writer);
+                }
             }
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write(endTag);
         }

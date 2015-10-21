@@ -10,17 +10,17 @@ namespace BootstrapMvc
     {
         #region Select
 
-        public static IWriter2<T, SelectContent> Items<T>(this IWriter2<T, SelectContent> target, IEnumerable<ISelectItem> items)
+        public static IItemWriter<T, SelectContent> Items<T>(this IItemWriter<T, SelectContent> target, IEnumerable<ISelectItem> items)
             where T : Select
         {
-            target.Item.ItemsValue = items;
+            target.Item.Items = items;
             return target;
         }
 
-        public static IWriter2<T, SelectContent> Items<T>(this IWriter2<T, SelectContent> target, params ISelectItem[] items)
+        public static IItemWriter<T, SelectContent> Items<T>(this IItemWriter<T, SelectContent> target, params ISelectItem[] items)
             where T : Select
         {
-            target.Item.ItemsValue = items;
+            target.Item.Items = items;
             return target;
         }
 
@@ -28,18 +28,18 @@ namespace BootstrapMvc
 
         #region Generating
 
-        public static IWriter2<Select, SelectContent> Select(this IAnyContentMarker contentHelper)
+        public static IItemWriter<Select, SelectContent> Select(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<Select, SelectContent>();
+            return contentHelper.CreateWriter<Select, SelectContent>();
         }
 
-        public static IWriter2<Select, SelectContent> Select<TItem>(this IAnyContentMarker contentHelper, IEnumerable<IWriter<TItem>> items)
+        public static IItemWriter<Select, SelectContent> Select<TItem>(this IAnyContentMarker contentHelper, IEnumerable<IItemWriter<TItem>> items)
             where TItem : ISelectItem
         {
             return Select(contentHelper).Items(items.Select(x => (ISelectItem)x.Item));
         }
 
-        public static IWriter2<Select, SelectContent> Select<TItem>(this IAnyContentMarker contentHelper, params IWriter<TItem>[] items)
+        public static IItemWriter<Select, SelectContent> Select<TItem>(this IAnyContentMarker contentHelper, params IItemWriter<TItem>[] items)
             where TItem : ISelectItem
         {
             return Select(contentHelper).Items(items.Select(x => (ISelectItem)x.Item));

@@ -1,52 +1,53 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Tables
+﻿namespace BootstrapMvc.Tables
 {
+    using System;
+    using System.Collections.Generic;
+    using BootstrapMvc.Core;
+
     public abstract class TableSection : ContentElement<TableSectionContent>
     {
-        private WritableBlock content;
+        private List<TableRow> rows;
 
         protected abstract string GetTagName();
 
-        public TableSection AddRow(TableRow value)
+        public void AddRow(TableRow value)
         {
             if (value == null)
             {
-                return this;
+                return;
             }
-            if (content == null)
+            if (rows == null)
             {
-                content = value;
+                rows = new List<TableRow>();
             }
-            else
-            {
-                content.Append(value);
-            }
-            return this;
+            rows.Add(value);
         }
 
         protected override TableSectionContent CreateContentContext(IBootstrapContext context)
         {
-            return new TableSectionContent(context);
+            return new TableSectionContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder(GetTagName());
+            var tb = Helper.CreateTagBuilder(GetTagName());
 
             ApplyCss(tb);
             ApplyAttributes(tb);
 
             tb.WriteStartTag(writer);
 
-            if (content != null)
+            if (rows != null)
             {
-                content.WriteTo(writer, context);
+                foreach (var row in rows)
+                {
+                    row.Parent = this;
+                    row.WriteTo(writer);
+                }
             }
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write("</");
             writer.Write(GetTagName());
