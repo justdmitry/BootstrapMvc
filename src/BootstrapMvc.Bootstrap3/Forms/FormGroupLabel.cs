@@ -1,25 +1,24 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Forms
+﻿namespace BootstrapMvc.Forms
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class FormGroupLabel : AnyContentElement
     {
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var form = context.PeekNearest<IFormContext>();
-            var groupContext = context.PeekNearest<FormGroup>();
-            var controlContext = groupContext == null ? null : groupContext.ControlContextValue;
+            var formContext = GetNearestParent<IForm>();
+            var formGroupContext = GetNearestParent<FormGroup>();
 
-            var required = groupContext == null ? false : groupContext.IsRequiredValue;
-            var name = controlContext == null ? null : controlContext.Name;
+            var required = formGroupContext.IsRequired;
+            var name = formGroupContext.FieldName;
 
-            var tb = context.CreateTagBuilder("label");
+            var tb = Helper.CreateTagBuilder("label");
 
-            if (form != null && form.TypeValue == FormType.Horizontal)
+            if (formContext != null && formContext.Type == FormType.Horizontal)
             {
                 tb.AddCssClass("control-label");
-                tb.AddCssClass(form.LabelWidthValue.ToCssClass());
+                tb.AddCssClass(formContext.LabelWidth.ToCssClass());
             }
 
             if (!string.IsNullOrEmpty(name))
@@ -36,7 +35,7 @@ namespace BootstrapMvc.Forms
 
             tb.WriteStartTag(writer);
 
-            if (form != null && form.TypeValue == FormType.Inline)
+            if (formContext != null && formContext.Type == FormType.Inline)
             {
                 return tb.GetEndTag() + " "; // trailing space is important for inline forms! Bootstrap does not provide spacing between groups in css!
             }

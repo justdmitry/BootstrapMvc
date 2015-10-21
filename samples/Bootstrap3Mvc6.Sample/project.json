@@ -3,18 +3,17 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Microsoft.AspNet.Server.IIS": "1.0.0-beta7",
-    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta7",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-beta7",
-    "Microsoft.AspNet.Diagnostics": "1.0.0-beta7",
-    "Microsoft.Framework.Logging": "1.0.0-beta7",
-    "Microsoft.Framework.Logging.Console": "1.0.0-beta7",
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta8",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-beta8",
+    "Microsoft.AspNet.Diagnostics": "1.0.0-beta8",
+    "Microsoft.Framework.Logging": "1.0.0-beta8",
+    "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
 
-    "BootstrapMvc.Bootstrap3Mvc6": ""
+    "BootstrapMvc.Bootstrap3Mvc6": "2.0.0-*"
   },
 
   "commands": {
-    "web": "Microsoft.AspNet.Hosting --config hosting.ini"
+    "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000"
   },
 
   "frameworks": {

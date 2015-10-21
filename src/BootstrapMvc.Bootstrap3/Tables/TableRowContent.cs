@@ -1,38 +1,41 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Tables
+﻿namespace BootstrapMvc.Tables
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class TableRowContent : DisposableContent
     {
-        public TableRowContent(IBootstrapContext context)
+        public TableRowContent(IBootstrapContext context, TableRow parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
 
-        public IWriter2<TableCell, AnyContent> Cell()
+        private TableRow Parent { get; set; }
+
+        public IItemWriter<TableCell, AnyContent> Cell()
         {
-            return Context.CreateWriter<TableCell, AnyContent>();
+            return Context.Helper.CreateWriter<TableCell, AnyContent>(Parent);
         }
 
-        public IWriter2<TableCell, AnyContent> Cell(object value)
+        public IItemWriter<TableCell, AnyContent> Cell(object value)
         {
             return Cell().Content(value);
         }
 
-        public IWriter2<TableCell, AnyContent> Cell(params object[] values)
+        public IItemWriter<TableCell, AnyContent> Cell(params object[] values)
         {
             return Cell().Content(values);
         }
 
-        public IWriter2<TableCell, AnyContent> Cell(TableRowCellColor color, object value)
+        public IItemWriter<TableCell, AnyContent> Cell(TableRowCellColor color, object value)
         {
             return Cell(value).Color(color);
         }
 
-        public IWriter2<TableCell, AnyContent> Cell(TableRowCellColor color, params object[] values)
+        public IItemWriter<TableCell, AnyContent> Cell(TableRowCellColor color, params object[] values)
         {
             return Cell(values).Color(color);
         }
@@ -47,27 +50,27 @@ namespace BootstrapMvc.Tables
             return Cell().Color(color).BeginContent();
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> HeaderCell()
+        public IItemWriter<TableHeaderCell, AnyContent> HeaderCell()
         {
-            return Context.CreateWriter<TableHeaderCell, AnyContent>();
+            return Context.Helper.CreateWriter<TableHeaderCell, AnyContent>(Parent);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> HeaderCell(object value)
+        public IItemWriter<TableHeaderCell, AnyContent> HeaderCell(object value)
         {
             return HeaderCell().Content(value);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> HeaderCell(params object[] values)
+        public IItemWriter<TableHeaderCell, AnyContent> HeaderCell(params object[] values)
         {
             return HeaderCell().Content(values);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> HeaderCell(TableRowCellColor color, object value)
+        public IItemWriter<TableHeaderCell, AnyContent> HeaderCell(TableRowCellColor color, object value)
         {
             return HeaderCell(value).Color(color);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> HeaderCell(TableRowCellColor color, params object[] values)
+        public IItemWriter<TableHeaderCell, AnyContent> HeaderCell(TableRowCellColor color, params object[] values)
         {
             return HeaderCell(values).Color(color);
         }

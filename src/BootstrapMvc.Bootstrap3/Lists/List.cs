@@ -1,29 +1,29 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Lists
+﻿namespace BootstrapMvc.Lists
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class List : ContentElement<ListContent>
     {
         private string endTag;
 
-        public ListType TypeValue { get; set; }
+        public ListType Type { get; set; }
 
         protected override ListContent CreateContentContext(IBootstrapContext context)
         {
-            return new ListContent(context);
+            return new ListContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder(TypeValue == ListType.Ordered ? "ol" : "ul");
+            var tb = Helper.CreateTagBuilder(Type == ListType.Ordered ? "ol" : "ul");
 
-            if (TypeValue == ListType.Unstyled)
+            if (Type == ListType.Unstyled)
             {
                 tb.AddCssClass("list-unstyled");
             }
 
-            if (TypeValue == ListType.Inline)
+            if (Type == ListType.Inline)
             {
                 tb.AddCssClass("list-inline");
             }
@@ -36,7 +36,7 @@ namespace BootstrapMvc.Lists
             endTag = tb.GetEndTag();
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write(endTag);
         }

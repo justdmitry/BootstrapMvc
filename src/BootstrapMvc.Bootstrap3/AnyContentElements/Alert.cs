@@ -1,16 +1,16 @@
-﻿using BootstrapMvc.Core;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using BootstrapMvc.Core;
+
     public class Alert : AnyContentElement
     {
         public AlertType Type { get; set; }
 
         public bool Closable { get; set; }
 
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("div");
+            var tb = Helper.CreateTagBuilder("div");
             tb.AddCssClass(Type.ToCssClass());
             if (Closable)
             {
@@ -25,7 +25,7 @@ namespace BootstrapMvc
 
             if (Closable)
             {
-                var dsmb = context.CreateTagBuilder("button");
+                var dsmb = Helper.CreateTagBuilder("button");
                 dsmb.MergeAttribute("type", "button");
                 dsmb.MergeAttribute("class", "close");
                 dsmb.MergeAttribute("data-dismiss", "alert");

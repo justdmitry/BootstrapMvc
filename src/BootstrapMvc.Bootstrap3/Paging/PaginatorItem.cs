@@ -1,42 +1,27 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Paging
+﻿namespace BootstrapMvc.Paging
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class PaginatorItem : AnyContentElement, ILink, IDisableable
     {
-        public string HrefValue { get; set; }
+        public string Href { get; set; }
 
-        public bool DisabledValue { get; set; }
+        public bool Disabled { get; set; }
 
-        public bool ActiveValue { get; set; }
+        public bool Active { get; set; }
 
-        public void SetHref(string value)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            HrefValue = value;
-        }
+            var li = Helper.CreateTagBuilder("li");
 
-        void IDisableable.SetDisabled(bool disabled)
-        {
-            DisabledValue = disabled;
-        }
-
-        bool IDisableable.Disabled()
-        {
-            return DisabledValue;
-        }
-
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
-        {
-            var li = context.CreateTagBuilder("li");
-
-            if (DisabledValue)
+            if (Disabled)
             {
                 li.AddCssClass("disabled");
             }
             else
             {
-                if (ActiveValue)
+                if (Active)
                 {
                     li.AddCssClass("active");
                 }
@@ -44,15 +29,30 @@ namespace BootstrapMvc.Paging
 
             li.WriteStartTag(writer);
 
-            var link = context.CreateTagBuilder(DisabledValue ? "span" : "a");
-            if (!DisabledValue)
+            var link = Helper.CreateTagBuilder(Disabled ? "span" : "a");
+            if (!Disabled)
             {
-                link.MergeAttribute("href", HrefValue);
+                link.MergeAttribute("href", Href);
             }
 
             link.WriteStartTag(writer);
 
             return link.GetEndTag() + li.GetEndTag();
+        }
+
+        void ILink.SetHref(string value)
+        {
+            Href = value;
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            Disabled = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return Disabled;
         }
     }
 }

@@ -1,51 +1,56 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Elements;
-
-namespace BootstrapMvc.Dropdown
+﻿namespace BootstrapMvc.Dropdown
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Elements;
+
     public class DropdownMenuContent : DisposableContent
     {
-        public DropdownMenuContent(IBootstrapContext context)
+        public DropdownMenuContent(IBootstrapContext context, DropdownMenu parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
 
-        public IWriter2<DropdownMenuItemLink, AnyContent> Link()
+        private DropdownMenu Parent { get; set; }
+
+        public IItemWriter<DropdownMenuItemLink, AnyContent> Link()
         {
-            return Context.CreateWriter<DropdownMenuItemLink, AnyContent>();
+            return Context.Helper.CreateWriter<DropdownMenuItemLink, AnyContent>(Parent);
         }
 
-        public IWriter2<DropdownMenuItemLink, AnyContent> Link(object content)
+        public IItemWriter<DropdownMenuItemLink, AnyContent> Link(object content)
         {
-            return Context.CreateWriter<DropdownMenuItemLink, AnyContent>().Content(content);
+            return Link().Content(content);
         }
 
-        public IWriter2<DropdownMenuItemLink, AnyContent> Link(IconType iconType, object content)
+        public IItemWriter<DropdownMenuItemLink, AnyContent> Link(IconType iconType, object content)
         {
-            return Context.CreateWriter<DropdownMenuItemLink, AnyContent>().Content(Context.CreateWriter<Icon>().Type(iconType), content);
+            var link = Link();
+            link.Content(Context.Helper.CreateWriter<Icon>(link.Item).Type(iconType), content);
+            return link;
         }
 
-        public IWriter2<DropdownMenuItemLink, AnyContent> Link(params object[] contents)
+        public IItemWriter<DropdownMenuItemLink, AnyContent> Link(params object[] contents)
         {
-            return Context.CreateWriter<DropdownMenuItemLink, AnyContent>().Content(contents);
+            return Link().Content(contents);
         }
 
-        public IWriter<DropdownMenuItemDivider> Divider()
+        public IItemWriter<DropdownMenuItemDivider> Divider()
         {
-            return Context.CreateWriter<DropdownMenuItemDivider>();
+            return Context.Helper.CreateWriter<DropdownMenuItemDivider>(Parent);
         }
 
-        public IWriter2<DropdownMenuItemHeader, AnyContent> Header(object content)
+        public IItemWriter<DropdownMenuItemHeader, AnyContent> Header(object content)
         {
-            return Context.CreateWriter<DropdownMenuItemHeader, AnyContent>().Content(content);
+            return Context.Helper.CreateWriter<DropdownMenuItemHeader, AnyContent>(Parent).Content(content);
         }
 
-        public IWriter2<DropdownMenuItemHeader, AnyContent> Header(params object[] contents)
+        public IItemWriter<DropdownMenuItemHeader, AnyContent> Header(params object[] contents)
         {
-            return Context.CreateWriter<DropdownMenuItemHeader, AnyContent>().Content(contents);
+            return Context.Helper.CreateWriter<DropdownMenuItemHeader, AnyContent>(Parent).Content(contents);
         }
 
         public AnyContent BeginLink()

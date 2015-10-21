@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BootstrapMvc.Controls;
-using BootstrapMvc.Core;
-using Microsoft.AspNet.Mvc.Rendering;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.AspNet.Mvc.Rendering;
+    using BootstrapMvc;
+    using BootstrapMvc.Controls;
+    using BootstrapMvc.Core;
+
     public static class Bootstrap3Mvc6AnyContentExtensions
     {
-        public static IWriter2<Select, SelectContent> Select(this IAnyContentMarker contentHelper, IEnumerable<SelectListItem> items)
+        public static IItemWriter<Select, SelectContent> Select(this IAnyContentMarker contentHelper, IEnumerable<SelectListItem> items)
         {
-            var vals = items.Select(x => SelectListItemToSelectOption(contentHelper.Context, x));
-            return contentHelper.Select(vals);
+            var select = contentHelper.Select();
+            select.Item.Items = items.Select(x => SelectListItemToSelectOption(contentHelper.Context, x));
+            return select;
         }
 
-        private static IWriter2<SelectOption, AnyContent> SelectListItemToSelectOption(IBootstrapContext context, SelectListItem item)
+        private static SelectOption SelectListItemToSelectOption(IBootstrapContext context, SelectListItem item)
         {
-            return context.CreateWriter<SelectOption, AnyContent>().Value(item.Value).Disabled(item.Disabled).Content(item.Text);
+            return context.Helper.CreateWriter<SelectOption, AnyContent>(null).Value(item.Value).Disabled(item.Disabled).Content(item.Text).Item;
         }
     }
 }

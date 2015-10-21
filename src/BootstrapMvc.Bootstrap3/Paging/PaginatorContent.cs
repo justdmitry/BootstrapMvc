@@ -1,27 +1,30 @@
-﻿using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Paging
+﻿namespace BootstrapMvc.Paging
 {
+    using BootstrapMvc.Core;
+
     public class PaginatorContent : DisposableContent
     {
-        public PaginatorContent(IBootstrapContext context)
+        public PaginatorContent(IBootstrapContext context, Paginator parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
 
-        public IWriter2<PaginatorItem, AnyContent> Item(object content)
+        private Paginator Parent { get; set; }
+
+        public IItemWriter<PaginatorItem, AnyContent> Item(object content)
         {
-            return Context.CreateWriter<PaginatorItem, AnyContent>().Content(content);
+            return Context.Helper.CreateWriter<PaginatorItem, AnyContent>(Parent).Content(content);
         }
 
-        public IWriter2<PaginatorItem, AnyContent> ItemNext()
+        public IItemWriter<PaginatorItem, AnyContent> ItemNext()
         {
             return Item("»");
         }
 
-        public IWriter2<PaginatorItem, AnyContent> ItemPrevious()
+        public IItemWriter<PaginatorItem, AnyContent> ItemPrevious()
         {
             return Item("«");
         }

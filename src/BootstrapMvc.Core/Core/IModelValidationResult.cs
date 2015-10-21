@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
+    using System;
+    using System.Collections.Generic;
+
     public interface IModelValidationResult
     {
         bool IsValid { get; }

@@ -1,43 +1,40 @@
-﻿using System;
-using System.Linq;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Tables
+﻿namespace BootstrapMvc.Tables
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using BootstrapMvc.Core;
+
     public class TableRow : ContentElement<TableRowContent>
     {
-        private WritableBlock content;
+        private List<TableCell> cells;
 
-        public TableRowCellColor ColorValue { get; set; } = TableRowCellColor.DefaultNone;
+        public TableRowCellColor Color { get; set; } = TableRowCellColor.DefaultNone;
 
-        public TableRow AddCell(TableCell value)
+        public void AddCell(TableCell value)
         {
             if (value == null)
             {
-                return this;
+                return;
             }
-            if (content == null)
+            if (cells == null)
             {
-                content = value;
+                cells = new List<TableCell>();
             }
-            else
-            {
-                content.Append(value);
-            }
-            return this;
+            cells.Add(value);
         }
 
         protected override TableRowContent CreateContentContext(IBootstrapContext context)
         {
-            return new TableRowContent(context);
+            return new TableRowContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("tr");
-            if (ColorValue != TableRowCellColor.DefaultNone)
+            var tb = Helper.CreateTagBuilder("tr");
+            if (Color != TableRowCellColor.DefaultNone)
             {
-                tb.AddCssClass(ColorValue.ToCssClass());
+                tb.AddCssClass(Color.ToCssClass());
             }
 
             ApplyCss(tb);
@@ -45,13 +42,16 @@ namespace BootstrapMvc.Tables
 
             tb.WriteStartTag(writer);
 
-            if (content != null)
+            if (cells != null)
             {
-                content.WriteTo(writer, context);
+                foreach(var cell in cells)
+                {
+                    cell.WriteTo(writer);
+                }
             }
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write("</tr>");
         }

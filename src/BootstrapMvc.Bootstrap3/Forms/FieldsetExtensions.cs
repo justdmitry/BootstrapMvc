@@ -1,35 +1,35 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Forms;
+
     public static class FieldsetExtensions
     {
         #region Fluent
 
-        public static IWriter2<T, AnyContent> Legend<T>(this IWriter2<T, AnyContent> target, Legend value)
+        public static IItemWriter<T, AnyContent> Legend<T>(this IItemWriter<T, AnyContent> target, Legend value)
             where T : Fieldset
         {
-            target.Item.LegendValue = value;
+            target.Item.Legend = value;
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Legend<T>(this IWriter2<T, AnyContent> target, object value)
+        public static IItemWriter<T, AnyContent> Legend<T>(this IItemWriter<T, AnyContent> target, object value)
             where T : Fieldset
         {
-            var leg = target.Context.CreateWriter<Legend, AnyContent>();
+            var leg = target.Helper.CreateWriter<Legend, AnyContent>(target.Item);
             leg.Content(value);
-            target.Item.LegendValue = leg.Item;
+            target.Item.Legend = leg.Item;
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Legend<T>(this IWriter2<T, AnyContent> target, params object[] values)
+        public static IItemWriter<T, AnyContent> Legend<T>(this IItemWriter<T, AnyContent> target, params object[] values)
             where T : Fieldset
         {
-            var leg = target.Context.CreateWriter<Legend, AnyContent>();
+            var leg = target.Helper.CreateWriter<Legend, AnyContent>(target.Item);
             leg.Content(values);
-            target.Item.LegendValue = leg.Item;
+            target.Item.Legend = leg.Item;
             return target;
         }
 
@@ -37,9 +37,9 @@ namespace BootstrapMvc
 
         #region Generation
 
-        public static IWriter2<Fieldset, AnyContent> FormFieldset(this IAnyContentMarker contentHelper)
+        public static IItemWriter<Fieldset, AnyContent> FormFieldset(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<Fieldset, AnyContent>();
+            return contentHelper.CreateWriter<Fieldset, AnyContent>();
         }
 
         public static AnyContent BeginFormFieldset(this IAnyContentMarker contentHelper)

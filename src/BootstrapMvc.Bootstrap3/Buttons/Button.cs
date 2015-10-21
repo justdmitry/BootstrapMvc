@@ -1,59 +1,50 @@
-﻿using BootstrapMvc.Core;
-using BootstrapMvc.Dropdown;
-
-namespace BootstrapMvc.Buttons
+﻿namespace BootstrapMvc.Buttons
 {
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Dropdown;
+
     public class Button : AnyContentElement, IDropdownMenuParentMarker, ILink, IButtonSizable, IDisableable
     {
-        public ButtonType TypeValue { get; set; }
+        public ButtonType Type { get; set; }
 
-        public ButtonSize SizeValue { get; set; }
+        public ButtonSize Size { get; set; }
 
-        public bool BlockSizeValue { get; set; }
+        public bool BlockSize { get; set; }
 
-        public bool DisabledValue { get; set; }
+        public bool Disabled { get; set; }
 
-        public string HrefValue { get; set; }
+        public string Href { get; set; }
 
-        void IDisableable.SetDisabled(bool disabled)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            DisabledValue = disabled;
-        }
+            var buttonGroupContext = GetNearestParent<ButtonGroup>();
 
-        bool IDisableable.Disabled()
-        {
-            return DisabledValue;
-        }
-
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
-        {
-            var bg = context.PeekNearest<ButtonGroup>();
-            if (bg == null)
+            if (buttonGroupContext == null)
             {
-                WriteWhitespaceSuffix = true;
+                WithWhitespaceSuffix = true;
             }
             else
             {
-                SizeValue = bg.SizeValue;
+                Size = buttonGroupContext.Size;
             }
 
-            var withHref = !string.IsNullOrEmpty(HrefValue);
-            var tb = context.CreateTagBuilder(withHref ? "a" : "button");
+            var withHref = !string.IsNullOrEmpty(Href);
+            var tb = Helper.CreateTagBuilder(withHref ? "a" : "button");
 
-            tb.AddCssClass(TypeValue.ToCssClass());
-            tb.AddCssClass(SizeValue.ToButtonCssClass());
+            tb.AddCssClass(Type.ToCssClass());
+            tb.AddCssClass(Size.ToButtonCssClass());
 
-            if (DisabledValue)
+            if (Disabled)
             {
                 tb.AddCssClass("disabled");
             }
-            if (BlockSizeValue)
+            if (BlockSize)
             {
                 tb.AddCssClass("btn-block");
             }
             if (withHref)
             {
-                tb.MergeAttribute("href", HrefValue);
+                tb.MergeAttribute("href", Href);
             }
 
             ApplyCss(tb);
@@ -64,9 +55,19 @@ namespace BootstrapMvc.Buttons
             return withHref ? "</a>" : "</button>";
         }
 
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            Disabled = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return Disabled;
+        }
+
         void ILink.SetHref(string value)
         {
-            HrefValue = value;
+            Href = value;
         }
     }
 }

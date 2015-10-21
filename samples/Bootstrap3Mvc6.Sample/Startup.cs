@@ -25,7 +25,7 @@ namespace Bootstrap3Mvc6.Sample
             loggerFactory.AddConsole();
 
             app.UseStatusCodePages();
-            app.UseErrorPage();
+            app.UseDeveloperExceptionPage();
 
             app.UseStaticFiles();
 

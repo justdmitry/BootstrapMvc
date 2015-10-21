@@ -1,25 +1,29 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Buttons
+﻿namespace BootstrapMvc.Buttons
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class ButtonToolbarContent : DisposableContent
     {
-        public ButtonToolbarContent(IBootstrapContext context)
+        public ButtonToolbarContent(IBootstrapContext context, ButtonToolbar parent)
         {
             this.Context = context;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
 
-        public IWriter2<ButtonGroup, ButtonGroupContent> ButtonGroup()
+        private ButtonToolbar Parent { get; set; }
+
+        #region ButtonGroup
+
+        public IItemWriter<ButtonGroup, ButtonGroupContent> ButtonGroup()
         {
-            return Context.CreateWriter<ButtonGroup, ButtonGroupContent>();
+            return Context.Helper.CreateWriter<ButtonGroup, ButtonGroupContent>(Parent);
         }
 
-        public IWriter2<ButtonGroup, ButtonGroupContent> ButtonGroup(ButtonSize size)
+        public IItemWriter<ButtonGroup, ButtonGroupContent> ButtonGroup(ButtonSize size)
         {
-            return Context.CreateWriter<ButtonGroup, ButtonGroupContent>().Size(size);
+            return ButtonGroup().Size(size);
         }
 
         public ButtonGroupContent BeginButtonGroup()
@@ -29,7 +33,9 @@ namespace BootstrapMvc.Buttons
 
         public ButtonGroupContent BeginButtonGroup(ButtonSize size)
         {
-            return ButtonGroup().Size(size).BeginContent();
+            return ButtonGroup(size).BeginContent();
         }
+
+        #endregion
     }
 }

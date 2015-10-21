@@ -3,27 +3,27 @@ using BootstrapMvc.Core;
 
 namespace BootstrapMvc.Forms
 {
-    public class Form<TModel>: ContentElement<FormContent<TModel>>, ILink, IFormContext
+    public class Form<TModel>: ContentElement<FormContent<TModel>>, ILink, IForm
     {
         private GridSize labelWidth;
 
         public Form()
         {
-            LabelWidthValue = new GridSize(0, 4, 4, 4);
-            TypeValue = DefaultType;
+            LabelWidth = new GridSize(0, 4, 4, 4);
+            Type = DefaultType;
         }
 
         public static FormType DefaultType = FormType.DefaultNone;
 
-        public SubmitMethod MethodValue { get; set; } = SubmitMethod.Post;
+        public SubmitMethod Method { get; set; } = SubmitMethod.Post;
 
-        public FormEnctype EnctypeValue { get; set; }
+        public FormEnctype Enctype { get; set; }
 
-        public FormType TypeValue { get; set; }
+        public FormType Type { get; set; }
 
-        public string HrefValue { get; set; }
+        public string Href { get; set; }
 
-        public GridSize LabelWidthValue
+        public GridSize LabelWidth
         {
             get
             {
@@ -33,54 +33,51 @@ namespace BootstrapMvc.Forms
             set
             {
                 labelWidth = value;
-                ControlsWidthValue = labelWidth.Invert();
+                ControlsWidth = labelWidth.Invert();
             }
         }
 
-        public GridSize ControlsWidthValue { get; set; }
+        public GridSize ControlsWidth { get; set; }
 
         protected override FormContent<TModel> CreateContentContext(IBootstrapContext context)
         {
-            return new FormContent<TModel>((IBootstrapContext<TModel>)context);
+            return new FormContent<TModel>((IBootstrapContext<TModel>)context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("form");
-            if (TypeValue != FormType.DefaultNone)
+            var tb = Helper.CreateTagBuilder("form");
+            if (Type != FormType.DefaultNone)
             {
-                tb.AddCssClass(TypeValue.ToCssClass());
+                tb.AddCssClass(Type.ToCssClass());
             }
-            if (MethodValue != SubmitMethod.Get)
+            if (Method != SubmitMethod.Get)
             {
-                tb.MergeAttribute("method", MethodValue.ToString().ToLowerInvariant());
+                tb.MergeAttribute("method", Method.ToString().ToLowerInvariant());
             }
-            if (EnctypeValue != FormEnctype.NoValue)
+            if (Enctype != FormEnctype.NoValue)
             {
-                tb.MergeAttribute("enctype", EnctypeValue.ToEnctype());
+                tb.MergeAttribute("enctype", Enctype.ToEnctype());
             }
-            if (!string.IsNullOrEmpty(HrefValue))
+            if (!string.IsNullOrEmpty(Href))
             {
-                tb.MergeAttribute("action", HrefValue);
+                tb.MergeAttribute("action", Href);
             }
 
             ApplyCss(tb);
             ApplyAttributes(tb);
 
             tb.WriteStartTag(writer);
-
-            context.Push(this);
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write("</form>");
-            context.PopIfEqual(this);
         }
 
         void ILink.SetHref(string value)
         {
-            HrefValue = value;
+            Href = value;
         }
     }
 }

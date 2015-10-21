@@ -1,19 +1,19 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class SelectContent : SelectOptGroupContent
     {
-        public SelectContent(IBootstrapContext context)
-            : base(context)
+        public SelectContent(IBootstrapContext context, IWritableItem parent)
+            : base(context, parent)
         {
             // Nothing
         }
 
-        public IWriter2<SelectOptGroup, SelectOptGroupContent> OptGroup(string label)
+        public IItemWriter<SelectOptGroup, SelectOptGroupContent> OptGroup(string label)
         {
-            return Context.CreateWriter<SelectOptGroup, SelectOptGroupContent>().Label(label);
+            return Context.Helper.CreateWriter<SelectOptGroup, SelectOptGroupContent>(Parent).Label(label);
         }
     }
 }

@@ -1,52 +1,28 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class StaticValue : Element, IFormControl
     {
-        private IControlContext controlContext;
+        public bool Disabled { get; set; }
 
-        public bool DisabledValue { get; set; }
-
-        public IControlContext ControlContextValue { get; set; }
-
-        void IControlContextHolder.SetControlContext(IControlContext context)
+        protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            ControlContextValue = context;
-        }
+            var controlContext = GetNearestParent<IControlContext>();
 
-        void IDisableable.SetDisabled(bool disabled)
-        {
-            DisabledValue = disabled;
-        }
-
-        bool IDisableable.Disabled()
-        {
-            return DisabledValue;
-        }
-
-        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
-        {
-            var formGroup = context.PeekNearest<FormGroup>();
-            if (formGroup != null && controlContext == null)
-            {
-                controlContext = formGroup.ControlContextValue;
-            }
-
-            var input = context.CreateTagBuilder("p");
+            var input = Helper.CreateTagBuilder("p");
             input.AddCssClass("form-control-static");
             if (controlContext != null)
             {
-                input.MergeAttribute("id", controlContext.Name);
-                var value = controlContext.Value;
+                input.MergeAttribute("id", controlContext.FieldName);
+                var value = controlContext.FieldValue;
                 if (value != null)
                 {
-                    input.SetInnerText(value.ToString());
+                    input.InnerHtml = Helper.HtmlEncode(value.ToString());
                 }
             }
-            if (DisabledValue)
+            if (Disabled)
             {
                 // nothing - already read-only :)
             }
@@ -54,7 +30,17 @@ namespace BootstrapMvc.Controls
             ApplyCss(input);
             ApplyAttributes(input);
 
-            writer.Write(input.GetFullTag());
+            input.WriteFullTag(writer);
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            Disabled = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return Disabled;
         }
     }
 }

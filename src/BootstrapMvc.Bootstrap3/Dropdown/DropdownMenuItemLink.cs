@@ -19,9 +19,9 @@ namespace BootstrapMvc.Dropdown
             return DisabledValue;
         }
 
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("li");
+            var tb = Helper.CreateTagBuilder("li");
             tb.MergeAttribute("role", "presentation");
             if (DisabledValue)
             {
@@ -30,7 +30,7 @@ namespace BootstrapMvc.Dropdown
 
             tb.WriteStartTag(writer);
 
-            var a = context.CreateTagBuilder("a");
+            var a = Helper.CreateTagBuilder("a");
             a.MergeAttribute("role", "menuitem");
             a.MergeAttribute("tabindex", "-1");
             a.MergeAttribute("href", DisabledValue ? "#" : HrefValue);

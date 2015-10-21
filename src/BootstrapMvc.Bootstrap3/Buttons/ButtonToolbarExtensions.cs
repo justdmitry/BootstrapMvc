@@ -8,9 +8,9 @@ namespace BootstrapMvc
     {
         #region Generation
 
-        public static IWriter2<ButtonToolbar, ButtonToolbarContent> ButtonToolbar(this IAnyContentMarker contentHelper)
+        public static IItemWriter<ButtonToolbar, ButtonToolbarContent> ButtonToolbar(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<ButtonToolbar, ButtonToolbarContent>();
+            return contentHelper.CreateWriter<ButtonToolbar, ButtonToolbarContent>();
         }
 
         public static ButtonToolbarContent BeginButtonToolbar(this IAnyContentMarker contentHelper)

@@ -1,9 +1,9 @@
-﻿using System;
-
-namespace BootstrapMvc.Buttons
+﻿namespace BootstrapMvc.Buttons
 {
+    using System;
+
     public interface IButtonSizable
     {
-        ButtonSize SizeValue { get; set; }
+        ButtonSize Size { get; set; }
     }
 }

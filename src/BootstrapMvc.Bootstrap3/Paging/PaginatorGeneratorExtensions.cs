@@ -8,48 +8,48 @@ namespace BootstrapMvc
     {
         #region Fluent
         
-        public static IWriter<PaginatorGenerator> CurrentPage(this IWriter<PaginatorGenerator> target, int value)
+        public static IItemWriter<PaginatorGenerator> CurrentPage(this IItemWriter<PaginatorGenerator> target, int value)
         {
-            target.Item.CurrentPageValue = value;
+            target.Item.CurrentPage = value;
             return target;
         }
 
-        public static IWriter<PaginatorGenerator> TotalPages(this IWriter<PaginatorGenerator> target, int value)
+        public static IItemWriter<PaginatorGenerator> TotalPages(this IItemWriter<PaginatorGenerator> target, int value)
         {
-            target.Item.TotalPagesValue = value;
+            target.Item.TotalPages = value;
             return target;
         }
 
-        public static IWriter<PaginatorGenerator> PageButtonsCount(this IWriter<PaginatorGenerator> target, int countBack, int countForward)
+        public static IItemWriter<PaginatorGenerator> PageButtonsCount(this IItemWriter<PaginatorGenerator> target, int countBack, int countForward)
         {
-            target.Item.PageButtonsCountBackValue = countBack;
-            target.Item.PageButtonsCountForwardValue = countForward;
+            target.Item.PageButtonsCountBack = countBack;
+            target.Item.PageButtonsCountForward = countForward;
             return target;
         }
 
-        public static IWriter<PaginatorGenerator> HidePreviousNextButtons(this IWriter<PaginatorGenerator> target, bool hide = true)
+        public static IItemWriter<PaginatorGenerator> HidePreviousNextButtons(this IItemWriter<PaginatorGenerator> target, bool hide = true)
         {
-            target.Item.HidePreviousNextButtonsValue = hide;
+            target.Item.HidePreviousNextButtons = hide;
             return target;
         }
 
-        public static IWriter<PaginatorGenerator> ButtonsText(this IWriter<PaginatorGenerator> target, string currentPageButtonTemplate)
+        public static IItemWriter<PaginatorGenerator> ButtonsText(this IItemWriter<PaginatorGenerator> target, string currentPageButtonTemplate)
         {
-            target.Item.ButtonPageTextTemplateValue = currentPageButtonTemplate;
+            target.Item.ButtonPageTextTemplate = currentPageButtonTemplate;
             return target;
         }
 
-        public static IWriter<PaginatorGenerator> ButtonsText(this IWriter<PaginatorGenerator> target, string currentPageTemplate, string previousPageText, string nextPageText)
+        public static IItemWriter<PaginatorGenerator> ButtonsText(this IItemWriter<PaginatorGenerator> target, string currentPageTemplate, string previousPageText, string nextPageText)
         {
-            target.Item.ButtonPageTextTemplateValue = currentPageTemplate;
-            target.Item.ButtonPreviousTextValue = previousPageText;
-            target.Item.ButtonNextTextValue = nextPageText;
+            target.Item.ButtonPageTextTemplate = currentPageTemplate;
+            target.Item.ButtonPreviousText = previousPageText;
+            target.Item.ButtonNextText = nextPageText;
             return target;
         }
 
-        public static IWriter<PaginatorGenerator> HrefTemplate(this IWriter<PaginatorGenerator> target, string value)
+        public static IItemWriter<PaginatorGenerator> HrefTemplate(this IItemWriter<PaginatorGenerator> target, string value)
         {
-            target.Item.HrefTemplateValue = value;
+            target.Item.HrefTemplate = value;
             return target;
         } 
         

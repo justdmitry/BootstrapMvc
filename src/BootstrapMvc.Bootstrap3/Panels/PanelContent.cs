@@ -1,44 +1,47 @@
-﻿using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Panels
+﻿namespace BootstrapMvc.Panels
 {
+    using BootstrapMvc.Core;
+
     public class PanelContent : DisposableContent
     {
-        public PanelContent(IBootstrapContext context)
+        public PanelContent(IBootstrapContext context, Panel parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
 
-        public IWriter2<PanelHeader, AnyContent> Header(object value)
+        private Panel Parent { get; set; }
+
+        public IItemWriter<PanelHeader, AnyContent> Header(object value)
         {
-            return Context.CreateWriter<PanelHeader, AnyContent>().Content(value);
+            return Context.Helper.CreateWriter<PanelHeader, AnyContent>(Parent).Content(value);
         }
 
-        public IWriter2<PanelHeader, AnyContent> Header(params object[] values)
+        public IItemWriter<PanelHeader, AnyContent> Header(params object[] values)
         {
-            return Context.CreateWriter<PanelHeader, AnyContent>().Content(values);
+            return Context.Helper.CreateWriter<PanelHeader, AnyContent>(Parent).Content(values);
         }
 
-        public IWriter2<PanelBody, AnyContent> Body(object value)
+        public IItemWriter<PanelBody, AnyContent> Body(object value)
         {
-            return Context.CreateWriter<PanelBody, AnyContent>().Content(value);
+            return Context.Helper.CreateWriter<PanelBody, AnyContent>(Parent).Content(value);
         }
 
-        public IWriter2<PanelBody, AnyContent> Body(params object[] values)
+        public IItemWriter<PanelBody, AnyContent> Body(params object[] values)
         {
-            return Context.CreateWriter<PanelBody, AnyContent>().Content(values);
+            return Context.Helper.CreateWriter<PanelBody, AnyContent>(Parent).Content(values);
         }
 
-        public IWriter2<PanelFooter, AnyContent> Footer(object value)
+        public IItemWriter<PanelFooter, AnyContent> Footer(object value)
         {
-            return Context.CreateWriter<PanelFooter, AnyContent>().Content(value);
+            return Context.Helper.CreateWriter<PanelFooter, AnyContent>(Parent).Content(value);
         }
 
-        public IWriter2<PanelFooter, AnyContent> Footer(params object[] values)
+        public IItemWriter<PanelFooter, AnyContent> Footer(params object[] values)
         {
-            return Context.CreateWriter<PanelFooter, AnyContent>().Content(values);
+            return Context.Helper.CreateWriter<PanelFooter, AnyContent>(Parent).Content(values);
         }
 
         public AnyContent BeginHeader()

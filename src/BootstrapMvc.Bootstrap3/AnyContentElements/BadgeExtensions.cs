@@ -1,15 +1,15 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public static class BadgeExtensions
     {
         #region Generation
 
-        public static IWriter2<Badge, AnyContent> Badge(this IAnyContentMarker contentHelper, object content)
+        public static IItemWriter<Badge, AnyContent> Badge(this IAnyContentMarker contentHelper, object content)
         {
-            return contentHelper.Context.CreateWriter<Badge, AnyContent>().Content(content);
+            return contentHelper.CreateWriter<Badge, AnyContent>().Content(content);
         }
 
         #endregion

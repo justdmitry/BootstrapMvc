@@ -1,25 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web.Mvc;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Mvc5
 {
-    public class BootstrapContext<TModel> : BootstrapContext, IBootstrapContext<TModel>
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.Web.Mvc;
+    using BootstrapMvc.Core;
+
+    public class BootstrapHelper<TModel> : BootstrapHelper, IAnyContentMarker<TModel>, IWritingHelper<TModel>, IBootstrapContext<TModel>
     {
-        public BootstrapContext(ViewContext viewContext, UrlHelper urlHelper, ViewDataDictionary<TModel> viewData, Func<int, string> messageSource)
-            : base(viewContext, urlHelper, viewData, messageSource)
+        private static readonly string WarningSpecialField = "BootstrapContext_WarningField";
+
+        public BootstrapHelper(ViewContext viewContext, UrlHelper urlHelper, ViewDataDictionary<TModel> viewData, Func<int, string> messageSource)
+            : base(viewContext, urlHelper, messageSource)
         {
             this.ViewData = viewData;
             this.ValidationResult = GetModelValidationResult(viewData.ModelState);
         }
 
-        public IModelValidationResult ValidationResult { get; set; }
+        public IModelValidationResult ValidationResult { get; private set; }
 
-        protected new ViewDataDictionary<TModel> ViewData { get; set; }
+        protected ViewDataDictionary<TModel> ViewData { get; set; }
 
-        public IControlContext GetControlContext<TProperty>(Expression<Func<TModel, TProperty>> expression)
+        IWritingHelper<TModel> IBootstrapContext<TModel>.Helper
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+        IBootstrapContext<TModel> IAnyContentMarker<TModel>.Context
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+        public void FillControlContext<TProperty>(IControlContext target, Expression<Func<TModel, TProperty>> expression)
         {
             var modelMetadata = ModelMetadata.FromLambdaExpression<TModel, TProperty>(expression, ViewData);
             var name = ExpressionHelper.GetExpressionText(expression);
@@ -33,15 +52,12 @@ namespace BootstrapMvc.Core
                 ? null
                 : modelState.Errors.Select(e => e.ErrorMessage).ToArray();
 
-            return new ControlContext()
-            {
-                Name = fullHtmlFieldName,
-                IsRequired = modelMetadata.IsRequired,
-                Value = value,
-                Errors = errors,
-                HasErrors = errors != null && errors.Length > 0,
-                HasWarning = false
-            };
+            target.FieldName = fullHtmlFieldName;
+            target.IsRequired = modelMetadata.IsRequired;
+            target.FieldValue = value;
+            target.Errors = errors;
+            target.HasErrors = errors != null && errors.Length > 0;
+            target.HasWarning = false;
         }
 
         protected ModelValidationResult GetModelValidationResult(ModelStateDictionary modelState)

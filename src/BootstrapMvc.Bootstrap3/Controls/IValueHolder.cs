@@ -1,9 +1,9 @@
-﻿using System;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+
     public interface IValueHolder
     {
-        object ValueValue { get; set; }
+        object Value { get; set; }
     }
 }

@@ -1,14 +1,14 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Controls;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Controls;
+
     public static class RadioExtensions
     {
-        public static IWriter<Radio> Radio(this IAnyContentMarker contentHelper, object value, string text)
+        public static IItemWriter<Radio> Radio(this IAnyContentMarker contentHelper, object value, string text)
         {
-            return contentHelper.Context.CreateWriter<Radio>().Text(text).Value(value.ToString());
+            return contentHelper.CreateWriter<Radio>().Text(text).Value(value.ToString());
         }
     }
 }

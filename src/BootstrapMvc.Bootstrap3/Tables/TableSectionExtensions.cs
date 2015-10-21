@@ -8,8 +8,8 @@ namespace BootstrapMvc
     {
         #region Fluent
 
-        public static IWriter2<T, TableSectionContent> Rows<T>(
-            this IWriter2<T, TableSectionContent> target, 
+        public static IItemWriter<T, TableSectionContent> Rows<T>(
+            this IItemWriter<T, TableSectionContent> target, 
             TableRow row)
             where T : TableSection
         {
@@ -17,9 +17,9 @@ namespace BootstrapMvc
             return target;
         }
 
-        public static IWriter2<T, TableSectionContent> Rows<T>(
-            this IWriter2<T, TableSectionContent> target, 
-            params IWriter2<TableRow, TableRowContent>[] rows)
+        public static IItemWriter<T, TableSectionContent> Rows<T>(
+            this IItemWriter<T, TableSectionContent> target, 
+            params IItemWriter<TableRow, TableRowContent>[] rows)
             where T : TableSection
         {
             foreach (var row in rows)
@@ -33,14 +33,14 @@ namespace BootstrapMvc
 
         #region Generation
 
-        public static IWriter2<TableCaption, AnyContent> TableCaption(this IAnyContentMarker contentHelper, object value)
+        public static IItemWriter<TableCaption, AnyContent> TableCaption(this IAnyContentMarker contentHelper, object value)
         {
-            return contentHelper.Context.CreateWriter<TableCaption, AnyContent>().Content(value);
+            return contentHelper.CreateWriter<TableCaption, AnyContent>().Content(value);
         }
 
-        public static IWriter2<TableCaption, AnyContent> TableCaption(this IAnyContentMarker contentHelper, params object[] values)
+        public static IItemWriter<TableCaption, AnyContent> TableCaption(this IAnyContentMarker contentHelper, params object[] values)
         {
-            return contentHelper.Context.CreateWriter<TableCaption, AnyContent>().Content(values);
+            return contentHelper.CreateWriter<TableCaption, AnyContent>().Content(values);
         }
 
         public static AnyContent BeginTableCaption(this IAnyContentMarker contentHelper)
@@ -48,9 +48,9 @@ namespace BootstrapMvc
             return TableCaption(contentHelper).BeginContent();
         }
 
-        public static IWriter2<TableHeader, TableSectionContent> TableHeader(this IAnyContentMarker contentHelper)
+        public static IItemWriter<TableHeader, TableSectionContent> TableHeader(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<TableHeader, TableSectionContent>();
+            return contentHelper.CreateWriter<TableHeader, TableSectionContent>();
         }
 
         public static TableSectionContent BeginTableHeader(this IAnyContentMarker contentHelper)
@@ -58,9 +58,9 @@ namespace BootstrapMvc
             return TableHeader(contentHelper).BeginContent();
         }
 
-        public static IWriter2<TableBody, TableSectionContent> TableBody(this IAnyContentMarker contentHelper)
+        public static IItemWriter<TableBody, TableSectionContent> TableBody(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<TableBody, TableSectionContent>();
+            return contentHelper.CreateWriter<TableBody, TableSectionContent>();
         }
 
         public static TableSectionContent BeginTableBody(this IAnyContentMarker contentHelper)
@@ -68,9 +68,9 @@ namespace BootstrapMvc
             return TableBody(contentHelper).BeginContent();
         }
 
-        public static IWriter2<TableFooter, TableSectionContent> TableFooter(this IAnyContentMarker contentHelper)
+        public static IItemWriter<TableFooter, TableSectionContent> TableFooter(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<TableFooter, TableSectionContent>();
+            return contentHelper.CreateWriter<TableFooter, TableSectionContent>();
         }
 
         public static TableSectionContent BeginTableFooter(this IAnyContentMarker contentHelper)

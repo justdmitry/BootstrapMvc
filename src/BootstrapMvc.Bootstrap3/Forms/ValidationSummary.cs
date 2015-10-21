@@ -1,19 +1,33 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using BootstrapMvc;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Forms
+﻿namespace BootstrapMvc.Forms
 {
-    public class ValidationSummary<TModel> : WritableBlock
-    {
-        public bool HidePropertyErrorsValue { get; set; }
+    using System;
+    using System.Linq;
+    using BootstrapMvc;
+    using BootstrapMvc.Core;
 
-        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
+    public class ValidationSummary<TModel> : WritableItem
+    {
+        public static string ErrorHeaderDefault { get; set; }
+
+        public static string ErrorFooterDefault { get; set; }
+
+        public static string WarningHeaderDefault { get; set; }
+
+        public static string WarningFooterDefault { get; set; }
+
+        public bool HidePropertyErrors { get; set; }
+
+        public string ErrorHeader { get; set; } = ErrorHeaderDefault;
+
+        public string ErrorFooter { get; set; } = ErrorFooterDefault;
+
+        public string WarningHeader { get; set; } = WarningHeaderDefault;
+
+        public string WarningFooter { get; set; } = WarningFooterDefault;
+
+        protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            var contextOfT = (IBootstrapContext<TModel>)context;
-            var validationResult = contextOfT.ValidationResult;
+            var validationResult = ((IWritingHelper<TModel>)Helper).ValidationResult;
 
             if (validationResult.IsValid)
             {
@@ -22,71 +36,73 @@ namespace BootstrapMvc.Forms
 
             var haveErrors =
                 validationResult.ModelErrors.Any(x => !x.IsWarning)
-                || (!HidePropertyErrorsValue && validationResult.PropertyErrors.Any(x => x.Value.Any(y => !y.IsWarning)));
+                || (!HidePropertyErrors && validationResult.PropertyErrors.Any(x => x.Value.Any(y => !y.IsWarning)));
             var haveWarnings =
                 validationResult.ModelErrors.Any(x => x.IsWarning)
-                || (!HidePropertyErrorsValue && validationResult.PropertyErrors.Any(x => x.Value.Any(y => y.IsWarning)));
-
-            string msg;
+                || (!HidePropertyErrors && validationResult.PropertyErrors.Any(x => x.Value.Any(y => y.IsWarning)));
 
             if (haveErrors)
             {
-                using (context.CreateWriter<Alert, AnyContent>().Type(AlertType.DangerRed).BeginContent(writer))
+                using (Helper.CreateWriter<Alert, AnyContent>(this).Type(AlertType.DangerRed).BeginContent(writer))
                 {
-                    msg = context.GetMessage(MessageType.ValidationResultErrorsFoundHeader);
-                    if (!string.IsNullOrEmpty(msg))
+                    if (!string.IsNullOrEmpty(ErrorHeader))
                     {
-                        context.CreateWriter<OrdinaryElement, AnyContent>().TagName("h4").Content(msg).WriteTo(writer, context);
+                        writer.Write("<h4>");
+                        writer.Write(Helper.HtmlEncode(ErrorHeader));
+                        writer.Write("</h4>");
                     }
                     writer.Write("<ul>");
                     foreach (var err in validationResult.ModelErrors.Where(x => !x.IsWarning))
                     {
                         writer.Write("<li>");
-                        writer.Write(context.HtmlEncode(err.Message));
+                        writer.Write(Helper.HtmlEncode(err.Message));
                         writer.Write("</li>");
                     }
                     foreach (var err in validationResult.PropertyErrors.SelectMany(x => x.Value.Where(y => !y.IsWarning)))
                     {
                         writer.Write("<li>");
-                        writer.Write(context.HtmlEncode(err.Message));
+                        writer.Write(Helper.HtmlEncode(err.Message));
                         writer.Write("</li>");
                     }
                     writer.Write("</ul>");
-                    msg = context.GetMessage(MessageType.ValidationResultErrorsFoundFooter);
-                    if (!string.IsNullOrEmpty(msg))
+                    if (!string.IsNullOrEmpty(ErrorFooter))
                     {
-                        context.CreateWriter<OrdinaryElement, AnyContent>().TagName("p").Content(msg).WriteTo(writer, context);
+                        writer.Write("<p>");
+                        writer.Write(Helper.HtmlEncode(ErrorFooter));
+                        writer.Write("</p>");
                     }
                 }
             }
 
             if (haveWarnings)
             {
-                using (context.CreateWriter<Alert, AnyContent>().Type(AlertType.WarningOrange).BeginContent(writer))
+                using (Helper.CreateWriter<Alert, AnyContent>(this).Type(AlertType.WarningOrange).BeginContent(writer))
                 {
-                    msg = context.GetMessage(MessageType.ValidationResultWarningnsFoundHeader);
-                    if (!string.IsNullOrEmpty(msg))
+                    if (!string.IsNullOrEmpty(WarningHeader))
                     {
-                        context.CreateWriter<OrdinaryElement, AnyContent>().TagName("h4").Content(msg).WriteTo(writer, context);
+                        writer.Write("<h4>");
+                        writer.Write(Helper.HtmlEncode(WarningHeader));
+                        writer.Write("</h4>");
                     }
                     writer.Write("<ul>");
                     foreach (var err in validationResult.ModelErrors.Where(x => x.IsWarning))
                     {
                         writer.Write("<li>");
-                        writer.Write(context.HtmlEncode(err.Message));
+                        writer.Write(Helper.HtmlEncode(err.Message));
                         writer.Write("</li>");
                     }
                     foreach (var err in validationResult.PropertyErrors.SelectMany(x => x.Value.Where(y => y.IsWarning)))
                     {
                         writer.Write("<li>");
-                        writer.Write(context.HtmlEncode(err.Message));
+                        writer.Write(Helper.HtmlEncode(err.Message));
                         writer.Write("</li>");
                     }
                     writer.Write("</ul>");
-                    msg = context.GetMessage(MessageType.ValidationResultWarningnsFoundFooter);
-                    if (!string.IsNullOrEmpty(msg))
+                    if (!string.IsNullOrEmpty(WarningFooter))
                     {
-                        context.CreateWriter<OrdinaryElement, AnyContent>().TagName("p").Content(msg).WriteTo(writer, context);
+                        writer.Write("<p>");
+                        writer.Write(Helper.HtmlEncode(WarningFooter));
+                        writer.Write("</p>");
                     }
                 }
             }

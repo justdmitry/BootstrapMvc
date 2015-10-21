@@ -1,19 +1,21 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public static class AlertExtensions
     {
         #region Fluent
 
-        public static IWriter2<T, AnyContent> Type<T>(this IWriter2<T, AnyContent> target, AlertType value) where T : Alert
+        public static IItemWriter<T, AnyContent> Type<T>(this IItemWriter<T, AnyContent> target, AlertType value) 
+            where T : Alert
         {
             target.Item.Type = value;
             return target;
         }
 
-        public static IWriter2<T, AnyContent> Closable<T>(this IWriter2<T, AnyContent> target, bool value = true) where T : Alert
+        public static IItemWriter<T, AnyContent> Closable<T>(this IItemWriter<T, AnyContent> target, bool value = true) 
+            where T : Alert
         {
             target.Item.Closable = value;
             return target;
@@ -23,24 +25,24 @@ namespace BootstrapMvc
 
         #region Generation
 
-        public static IWriter2<Alert, AnyContent> Alert(this IAnyContentMarker contentHelper, AlertType type)
+        public static IItemWriter<Alert, AnyContent> Alert(this IAnyContentMarker contentHelper, AlertType type)
         {
-            return contentHelper.Context.CreateWriter<Alert, AnyContent>().Type(type);
+            return contentHelper.CreateWriter<Alert, AnyContent>().Type(type);
         }
 
-        public static IWriter2<Alert, AnyContent> Alert(this IAnyContentMarker contentHelper, AlertType type, object content)
+        public static IItemWriter<Alert, AnyContent> Alert(this IAnyContentMarker contentHelper, AlertType type, object content)
         {
-            return contentHelper.Context.CreateWriter<Alert, AnyContent>().Type(type).Content(content);
+            return contentHelper.CreateWriter<Alert, AnyContent>().Type(type).Content(content);
         }
 
-        public static IWriter2<Alert, AnyContent> Alert(this IAnyContentMarker contentHelper, object content, AlertType type)
+        public static IItemWriter<Alert, AnyContent> Alert(this IAnyContentMarker contentHelper, object content, AlertType type)
         {
-            return contentHelper.Context.CreateWriter<Alert, AnyContent>().Type(type).Content(content);
+            return contentHelper.CreateWriter<Alert, AnyContent>().Type(type).Content(content);
         }
 
-        public static IWriter2<Alert, AnyContent> Alert(this IAnyContentMarker contentHelper, AlertType type, params object[] contents)
+        public static IItemWriter<Alert, AnyContent> Alert(this IAnyContentMarker contentHelper, AlertType type, params object[] contents)
         {
-            return contentHelper.Context.CreateWriter<Alert, AnyContent>().Type(type).Content(contents);
+            return contentHelper.CreateWriter<Alert, AnyContent>().Type(type).Content(contents);
         }
 
         public static AnyContent BeginAlert(this IAnyContentMarker contentHelper, AlertType type)

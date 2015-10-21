@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
+    using System;
+
     public interface IAnyContentMarker
     {
         IBootstrapContext Context { get; }

@@ -1,22 +1,22 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Dropdown
+﻿namespace BootstrapMvc.Dropdown
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class DropdownMenu : ContentElement<DropdownMenuContent>
     {
-        public bool RightAlignValue { get; set; }
+        public bool RightAlign { get; set; }
 
         protected override DropdownMenuContent CreateContentContext(IBootstrapContext context)
         {
-            return new DropdownMenuContent(context);
+            return new DropdownMenuContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("ul");
+            var tb = Helper.CreateTagBuilder("ul");
             tb.AddCssClass("dropdown-menu");
-            if (RightAlignValue)
+            if (RightAlign)
             {
                 tb.AddCssClass("dropdown-menu-right");
             }
@@ -28,7 +28,7 @@ namespace BootstrapMvc.Dropdown
             tb.WriteStartTag(writer);
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write("</ul>");
         }

@@ -1,69 +1,40 @@
-﻿using System;
-using BootstrapMvc;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-using BootstrapMvc.Grid;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+    using BootstrapMvc;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Forms;
+
     public class Input : Element, IFormControl, IPlaceholderTarget, IGridSizable
     {
-        public static DateInputMode DateInputMode { get; set; }
+        public static DateInputMode DateInputModeDefault { get; set; } = DateInputMode.Text;
 
-        public IControlContext ControlContextValue { get; set; }
+        public DateInputMode DateInputMode { get; set; } = DateInputModeDefault;
 
-        public InputType TypeValue { get; set; }
+        public InputType Type { get; set; }
 
-        public GridSize SizeValue { get; set; }
+        public GridSize Size { get; set; }
 
-        public bool DisabledValue { get; set; }
+        public bool Disabled { get; set; }
 
-        void IControlContextHolder.SetControlContext(IControlContext context)
+        protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            ControlContextValue = context;
-        }
-
-        void IGridSizable.SetSize(GridSize value)
-        {
-            SizeValue = value;
-        }
-
-        GridSize IGridSizable.Size()
-        {
-            return SizeValue;
-        }
-
-        void IDisableable.SetDisabled(bool disabled)
-        {
-            DisabledValue = disabled;
-        }
-
-        bool IDisableable.Disabled()
-        {
-            return DisabledValue;
-        }
-
-        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
-        {
-            var form = context.PeekNearest<IFormContext>();
-            var formGroup = context.PeekNearest<FormGroup>();
-            if (formGroup != null && ControlContextValue == null)
-            {
-                ControlContextValue = formGroup.ControlContextValue;
-            }
+            var formContext = GetNearestParent<IForm>();
+            var formGroupContext = GetNearestParent<FormGroup>();
+            var controlContext = GetNearestParent<IControlContext>();
 
             ITagBuilder div = null;
 
-            if (!SizeValue.IsEmpty())
+            if (!Size.IsEmpty())
             {
                 // Inline forms does not support sized controls (we need 'some other' sizing rules?)
-                if (form != null && form.TypeValue != FormType.Inline)
+                if (formContext != null && formContext.Type != FormType.Inline)
                 {
-                    if (formGroup != null && formGroup.WithSizedControlValue)
+                    if (formGroupContext != null && formGroupContext.WithSizedControl)
                     {
-                        div = context.CreateTagBuilder("div");
-                        div.AddCssClass(SizeValue.ToCssClass());
-                        writer.Write(div.GetStartTag());
+                        div = Helper.CreateTagBuilder("div");
+                        div.AddCssClass(Size.ToCssClass());
+                        div.WriteStartTag(writer);
                     }
                     else
                     {
@@ -72,22 +43,22 @@ namespace BootstrapMvc.Controls
                 }
             }
 
-            var input = context.CreateTagBuilder("input");
+            var input = Helper.CreateTagBuilder("input");
             input.AddCssClass("form-control");
-            var actualType = TypeValue;
-            if (actualType != InputType.File && ControlContextValue != null)
+            var actualType = Type;
+            if (actualType != InputType.File && controlContext != null)
             {
-                input.MergeAttribute("id", ControlContextValue.Name);
-                input.MergeAttribute("name", ControlContextValue.Name);
-                if (ControlContextValue.IsRequired)
+                input.MergeAttribute("id", controlContext.FieldName);
+                input.MergeAttribute("name", controlContext.FieldName);
+                if (controlContext.IsRequired)
                 {
                     input.MergeAttribute("required", "required");
                 }
-                var value = ControlContextValue.Value;
+                var value = controlContext.FieldValue;
                 if (value != null)
                 {
                     var valueString = value.ToString();
-                    if (TypeValue == InputType.Date || TypeValue == InputType.Datetime || TypeValue == InputType.DatetimeLocal || TypeValue == InputType.Time)
+                    if (Type == InputType.Date || Type == InputType.Datetime || Type == InputType.DatetimeLocal || Type == InputType.Time)
                     {
                         var valueDateTime = value as DateTime?;
                         var valueDateTimeOffset = value as DateTimeOffset?;
@@ -105,7 +76,7 @@ namespace BootstrapMvc.Controls
                         {
                             actualType = InputType.Text;
                         }
-                        switch(TypeValue)
+                        switch(Type)
                         {
                             case InputType.Date:
                                 if (valueDateTime.HasValue)
@@ -147,7 +118,7 @@ namespace BootstrapMvc.Controls
             {
                 input.MergeAttribute("type", actualType.ToType());
             }
-            if (DisabledValue)
+            if (Disabled)
             {
                 input.MergeAttribute("disabled", "disabled");
             }
@@ -157,12 +128,32 @@ namespace BootstrapMvc.Controls
 
             ////input.MergeAttributes(helper.HtmlHelper.GetUnobtrusiveValidationAttributes(context.ExpressionText, context.Metadata));
 
-            writer.Write(input.GetFullTag());
+            input.WriteFullTag(writer);
 
             if (div != null)
             {
-                writer.Write(div.GetEndTag());
+                div.WriteEndTag(writer);
             }
+        }
+
+        void IGridSizable.SetSize(GridSize value)
+        {
+            Size = value;
+        }
+
+        GridSize IGridSizable.GetSize()
+        {
+            return Size;
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            Disabled = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return Disabled;
         }
     }
 }

@@ -1,20 +1,23 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Lists
+﻿namespace BootstrapMvc.Lists
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class ListContent : DisposableContent
     {
-        public ListContent(IBootstrapContext context)
+        public ListContent(IBootstrapContext context, List parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; set; }
+        private IBootstrapContext Context { get; set; }
 
-        public IWriter2<OrdinaryElement, AnyContent> Item()
+        private List Parent { get; set; }
+
+        public IItemWriter<OrdinaryElement, AnyContent> Item()
         {
-            var res = Context.CreateWriter<OrdinaryElement, AnyContent>();
+            var res = Context.Helper.CreateWriter<OrdinaryElement, AnyContent>(Parent);
             res.Item.TagName = "li";
             return res;
         }

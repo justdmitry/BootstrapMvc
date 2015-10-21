@@ -1,8 +1,8 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Forms
+﻿namespace BootstrapMvc.Forms
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class Legend : OrdinaryElement
     {
         public Legend()

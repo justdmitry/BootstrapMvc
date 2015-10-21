@@ -1,26 +1,27 @@
-﻿using System;
-using System.Linq.Expressions;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Forms
+﻿namespace BootstrapMvc.Forms
 {
+    using System;
+    using System.Linq.Expressions;
+    using BootstrapMvc.Core;
+
     public class FormContent<T> : FormContentBase
     {
-        public FormContent(IBootstrapContext<T> context)
-            : base(context)
+        public FormContent(IBootstrapContext<T> context, IForm parent)
+            : base(context, parent)
         {
             this.Context = context;
         }
 
-        public new IBootstrapContext<T> Context { get; private set; }
+        private IBootstrapContext<T> Context { get; set; }
 
-        public IWriter2<FormGroup, AnyContent> GroupFor<TProperty>(Expression<Func<T, TProperty>> expression)
+        public IItemWriter<FormGroup, AnyContent> GroupFor<TProperty>(Expression<Func<T, TProperty>> expression)
         {
-            var fg = Context.CreateWriter<FormGroup, AnyContent>();
-            return ControlContextHolderExtensions.ControlContext(fg, Context.GetControlContext(expression));
+            var fg = Context.Helper.CreateWriter<FormGroup, AnyContent>(Parent);
+            Context.Helper.FillControlContext(fg.Item, expression);
+            return fg;
         }
 
-        public IWriter2<FormGroup, AnyContent> GroupFor<TProperty>(Expression<Func<T, TProperty>> expression, object label)
+        public IItemWriter<FormGroup, AnyContent> GroupFor<TProperty>(Expression<Func<T, TProperty>> expression, object label)
         {
             return GroupFor(expression).Label(label);
         }

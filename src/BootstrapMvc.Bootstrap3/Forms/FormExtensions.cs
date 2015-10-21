@@ -1,45 +1,45 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Forms;
+
     public static class FormExtensions
     {
         #region Fluent
 
-        public static IWriter2<T, FormContent<TModel>> Method<T, TModel>(this IWriter2<T, FormContent<TModel>> target, SubmitMethod value)
+        public static IItemWriter<T, FormContent<TModel>> Method<T, TModel>(this IItemWriter<T, FormContent<TModel>> target, SubmitMethod value)
             where T : Form<TModel>
         {
-            target.Item.MethodValue = value;
+            target.Item.Method = value;
             return target;
         }
 
-        public static IWriter2<T, FormContent<TModel>> Type<T, TModel>(this IWriter2<T, FormContent<TModel>> target, FormType value)
+        public static IItemWriter<T, FormContent<TModel>> Type<T, TModel>(this IItemWriter<T, FormContent<TModel>> target, FormType value)
             where T : Form<TModel>
         {
-            target.Item.TypeValue = value;
+            target.Item.Type = value;
             return target;
         }
 
-        public static IWriter2<T, FormContent<TModel>> Enctype<T, TModel>(this IWriter2<T, FormContent<TModel>> target, FormEnctype value)
+        public static IItemWriter<T, FormContent<TModel>> Enctype<T, TModel>(this IItemWriter<T, FormContent<TModel>> target, FormEnctype value)
             where T : Form<TModel>
         {
-            target.Item.EnctypeValue = value;
+            target.Item.Enctype = value;
             return target;
         }
         
-        public static IWriter2<T, FormContent<TModel>> LabelWidth<T, TModel>(this IWriter2<T, FormContent<TModel>> target, GridSize value)
+        public static IItemWriter<T, FormContent<TModel>> LabelWidth<T, TModel>(this IItemWriter<T, FormContent<TModel>> target, GridSize value)
             where T : Form<TModel>
         {
-            target.Item.LabelWidthValue = value;
+            target.Item.LabelWidth = value;
             return target;
         }
 
-        public static IWriter2<T, FormContent<TModel>> ControlsWidth<T, TModel>(this IWriter2<T, FormContent<TModel>> target, GridSize value)
+        public static IItemWriter<T, FormContent<TModel>> ControlsWidth<T, TModel>(this IItemWriter<T, FormContent<TModel>> target, GridSize value)
             where T : Form<TModel>
         {
-            target.Item.ControlsWidthValue = value;
+            target.Item.ControlsWidth = value;
             return target;
         }
 
@@ -47,22 +47,22 @@ namespace BootstrapMvc
 
         #region Generating
 
-        public static IWriter2<Form<TModel>, FormContent<TModel>> Form<TModel>(this IAnyContentMarker<TModel> contentHelper)
+        public static IItemWriter<Form<TModel>, FormContent<TModel>> Form<TModel>(this IAnyContentMarker<TModel> contentHelper)
         {
-            return contentHelper.Context.CreateWriter<Form<TModel>, FormContent<TModel>>();
+            return contentHelper.CreateWriter<Form<TModel>, FormContent<TModel>>();
         }
 
-        public static IWriter2<Form<TModel>, FormContent<TModel>> Form<TModel>(this IAnyContentMarker<TModel> contentHelper, FormType type)
+        public static IItemWriter<Form<TModel>, FormContent<TModel>> Form<TModel>(this IAnyContentMarker<TModel> contentHelper, FormType type)
         {
             return Form<TModel>(contentHelper).Type(type);
         }
 
-        public static IWriter2<Form<TModel>, FormContent<TModel>> Form<TModel>(this IAnyContentMarker<TModel> contentHelper, FormEnctype enctype)
+        public static IItemWriter<Form<TModel>, FormContent<TModel>> Form<TModel>(this IAnyContentMarker<TModel> contentHelper, FormEnctype enctype)
         {
             return Form<TModel>(contentHelper).Enctype(enctype);
         }
 
-        public static IWriter2<Form<TModel>, FormContent<TModel>> Form<TModel>(this IAnyContentMarker<TModel> contentHelper, FormType type, FormEnctype enctype)
+        public static IItemWriter<Form<TModel>, FormContent<TModel>> Form<TModel>(this IAnyContentMarker<TModel> contentHelper, FormType type, FormEnctype enctype)
         {
             return Form<TModel>(contentHelper).Type(type).Enctype(enctype);
         }

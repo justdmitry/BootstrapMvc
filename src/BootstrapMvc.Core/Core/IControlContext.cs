@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
-    public interface IControlContext
-    {
-        string Name { get; set; }
+    using System;
 
-        object Value { get; set; }
+    public interface IControlContext : IWritableItem
+    {
+        string FieldName { get; set; }
+
+        object FieldValue { get; set; }
 
         bool IsRequired { get; set; }
 

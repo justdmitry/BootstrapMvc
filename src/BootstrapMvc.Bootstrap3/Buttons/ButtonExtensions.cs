@@ -1,69 +1,68 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Buttons;
-using BootstrapMvc.Elements;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Buttons;
+    using BootstrapMvc.Elements;
+
     public static class ButtonExtensions
     {
         #region Fluent
 
-        public static IWriter2<T, AnyContent> Type<T>(this IWriter2<T, AnyContent> target, ButtonType value) where T : Button
+        public static IItemWriter<T, AnyContent> Type<T>(this IItemWriter<T, AnyContent> target, ButtonType value) where T : Button
         {
-            target.Item.TypeValue = value;
+            target.Item.Type = value;
             return target;
         }
 
-        public static IWriter2<T, AnyContent> BlockSize<T>(this IWriter2<T, AnyContent> target, bool value = true) where T : Button
+        public static IItemWriter<T, AnyContent> BlockSize<T>(this IItemWriter<T, AnyContent> target, bool value = true) where T : Button
         {
-            target.Item.BlockSizeValue = value;
+            target.Item.BlockSize = value;
             return target;
         }
-
-        //public static IWriter2<T, AnyContent> Disabled<T>(this IWriter2<T, AnyContent> target, bool value = true) where T : Button
-        //{
-        //    target.Item.DisabledValue = value;
-        //    return target;
-        //}
 
         #endregion
 
         #region Generation
 
-        public static IWriter2<Button, AnyContent> Button(this IAnyContentMarker contentHelper, object content)
+        private static IItemWriter<Button, AnyContent> Button(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<Button, AnyContent>().Content(content);
+            return contentHelper.CreateWriter<Button, AnyContent>();
         }
 
-        public static IWriter2<Button, AnyContent> Button(this IAnyContentMarker contentHelper, ButtonType type, object content)
+        public static IItemWriter<Button, AnyContent> Button(this IAnyContentMarker contentHelper, object content)
         {
-            return contentHelper.Context.CreateWriter<Button, AnyContent>().Type(type).Content(content);
+            return Button(contentHelper).Content(content);
         }
 
-        public static IWriter2<Button, AnyContent> Button(this IAnyContentMarker contentHelper, ButtonType type, params object[] contents)
+        public static IItemWriter<Button, AnyContent> Button(this IAnyContentMarker contentHelper, ButtonType type, object content)
         {
-            return contentHelper.Context.CreateWriter<Button, AnyContent>().Type(type).Content(contents);
+            return Button(contentHelper).Type(type).Content(content);
         }
 
-        public static IWriter2<Button, AnyContent> Button(this IAnyContentMarker contentHelper, IconType iconType)
+        public static IItemWriter<Button, AnyContent> Button(this IAnyContentMarker contentHelper, ButtonType type, params object[] contents)
         {
-            return contentHelper.Context.CreateWriter<Button, AnyContent>().Content(contentHelper.Context.CreateWriter<Icon>().Type(iconType));
+            return Button(contentHelper).Type(type).Content(contents);
         }
 
-        public static IWriter2<Button, AnyContent> Button(this IAnyContentMarker contentHelper, IconType iconType, object content)
+        public static IItemWriter<Button, AnyContent> Button(this IAnyContentMarker contentHelper, IconType iconType)
         {
-            return contentHelper.Context.CreateWriter<Button, AnyContent>().Content(contentHelper.Context.CreateWriter<Icon>().Type(iconType), content);
+            return Button(contentHelper).Content(contentHelper.CreateWriter<Icon>().Type(iconType));
         }
 
-        public static IWriter2<Button, AnyContent> Button(this IAnyContentMarker contentHelper, ButtonType type, IconType iconType)
+        public static IItemWriter<Button, AnyContent> Button(this IAnyContentMarker contentHelper, IconType iconType, object content)
         {
-            return contentHelper.Context.CreateWriter<Button, AnyContent>().Type(type).Content(contentHelper.Context.CreateWriter<Icon>().Type(iconType));
+            return Button(contentHelper).Content(contentHelper.CreateWriter<Icon>().Type(iconType), content);
         }
 
-        public static IWriter2<Button, AnyContent> Button(this IAnyContentMarker contentHelper, ButtonType type, IconType iconType, object content)
+        public static IItemWriter<Button, AnyContent> Button(this IAnyContentMarker contentHelper, ButtonType type, IconType iconType)
         {
-            return contentHelper.Context.CreateWriter<Button, AnyContent>().Type(type).Content(contentHelper.Context.CreateWriter<Icon>().Type(iconType), content);
+            return Button(contentHelper).Type(type).Content(contentHelper.CreateWriter<Icon>().Type(iconType));
+        }
+
+        public static IItemWriter<Button, AnyContent> Button(this IAnyContentMarker contentHelper, ButtonType type, IconType iconType, object content)
+        {
+            return Button(contentHelper).Type(type).Content(contentHelper.CreateWriter<Icon>().Type(iconType), content);
         }
 
         #endregion

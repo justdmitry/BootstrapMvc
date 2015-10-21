@@ -28,7 +28,7 @@ using (var form = Bootstrap.BeginForm())
         @@form.GroupFor(m => m.BooleanField)
             .Control(Bootstrap.Checkbox("checkbox text"))
     }
-    using (form.Group().BeginControls())
+    using (form.Group().BeginContent())
     {
         @@Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
         @@Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
@@ -49,7 +49,7 @@ using (var form = Bootstrap.BeginForm())
                 @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
                 @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
             }
-            using (form.Group().BeginControls())
+            using (form.Group().BeginContent())
             {
                 @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
                 @Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
@@ -79,7 +79,7 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
         @@form.GroupFor(m => m.BooleanField)
             .Control(Bootstrap.Checkbox("checkbox text"))
     }
-    using (form.Group().BeginControls())
+    using (form.Group().BeginContent())
     {
         @@Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
         @@Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
@@ -100,7 +100,7 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
                 @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
                 @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
             }
-            using (form.Group().BeginControls())
+            using (form.Group().BeginContent())
             {
                 @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
                 @Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
@@ -151,21 +151,21 @@ using (Bootstrap.BeginForm())
     @@Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Placeholder("number"))
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputTel().Placeholder("tel"))
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputUrl().Placeholder("url"))
-    using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Text"))
+    using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Text"))
     {
-        BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Text;
+        BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Text;
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
     }
-    using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Html5"))
+    using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Html5"))
     {
-        BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Html5;
+        BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Html5;
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
     }
-    using (Bootstrap.FormGroup().BeginControls())
+    using (Bootstrap.FormGroup().BeginContent())
     {
         @@Bootstrap.Button(ButtonType.WarningOrange, "Submit")
     }
@@ -181,21 +181,21 @@ using (Bootstrap.BeginForm())
             @Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Placeholder("number"))
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputTel().Placeholder("tel"))
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputUrl().Placeholder("url"))
-            using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Text"))
+            using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Text"))
             {
-                BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Text;
+                BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Text;
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
             }
-            using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Html5"))
+            using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Html5"))
             {
-                BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Html5;
+                BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Html5;
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
             }
-            using (Bootstrap.FormGroup().BeginControls())
+            using (Bootstrap.FormGroup().BeginContent())
             {
                 @Bootstrap.Button(ButtonType.WarningOrange, "Submit")
             }
@@ -213,30 +213,30 @@ using (Bootstrap.BeginForm())
 <pre>
 using (Bootstrap.BeginForm(FormType.Horizontal))
 {
-    using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Inline radio").BeginControls())
+    using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Inline radio").BeginContent())
     {
         @@Bootstrap.Radio(1, "value one").Inline()
         @@Bootstrap.Radio(2, "value two").Inline()
         @@Bootstrap.Radio(3, "value three").Inline()
     }
-    using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Vertical radio").BeginControls())
+    using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Vertical radio").BeginContent())
     {
         @@Bootstrap.Radio(1, "value one")
         @@Bootstrap.Radio(2, "value two")
         @@Bootstrap.Radio(3, "value three")
     }
     @@Bootstrap.FormGroupFor(m => m.BooleanField).Label("Single checkbox").Control(Bootstrap.Checkbox("Checkbox text"))
-    using (Bootstrap.FormGroup().Label("Inline checkbox").BeginControls())
+    using (Bootstrap.FormGroup().Label("Inline checkbox").BeginContent())
     {
-        @@Bootstrap.Checkbox("option one").Inline().For(Bootstrap.For(m => m.BooleanField))
-        @@Bootstrap.Checkbox("option two").Inline().For(Bootstrap.For(m => m.BooleanField))
-        @@Bootstrap.Checkbox("option three").Inline().For(Bootstrap.For(m => m.BooleanField))
+        @@Bootstrap.Checkbox("option one").Inline()
+        @@Bootstrap.Checkbox("option two").Inline()
+        @@Bootstrap.Checkbox("option three").Inline()
     }
-    using (Bootstrap.FormGroup().Label("Vertical checkbox").BeginControls())
+    using (Bootstrap.FormGroup().Label("Vertical checkbox").BeginContent())
     {
-        @@Bootstrap.Checkbox("option one").For(Bootstrap.For(m => m.BooleanField))
-        @@Bootstrap.Checkbox("option two").For(Bootstrap.For(m => m.BooleanField))
-        @@Bootstrap.Checkbox("option three").For(Bootstrap.For(m => m.BooleanField))
+        @@Bootstrap.Checkbox("option one")
+        @@Bootstrap.Checkbox("option two")
+        @@Bootstrap.Checkbox("option three")
     }
 }
 </pre>
@@ -245,30 +245,30 @@ using (Bootstrap.BeginForm(FormType.Horizontal))
     {
         using (Bootstrap.BeginForm(FormType.Horizontal))
         {
-            using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Inline radio").BeginControls())
+            using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Inline radio").BeginContent())
             {
                 @Bootstrap.Radio(1, "value one").Inline()
                 @Bootstrap.Radio(2, "value two").Inline()
                 @Bootstrap.Radio(3, "value three").Inline()
             }
-            using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Vertical radio").BeginControls())
+            using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Vertical radio").BeginContent())
             {
                 @Bootstrap.Radio(1, "value one")
                 @Bootstrap.Radio(2, "value two")
                 @Bootstrap.Radio(3, "value three")
             }
             @Bootstrap.FormGroupFor(m => m.BooleanField).Label("Single checkbox").Control(Bootstrap.Checkbox("Checkbox text"))
-            using (Bootstrap.FormGroup().Label("Inline checkbox").BeginControls())
+            using (Bootstrap.FormGroup().Label("Inline checkbox").BeginContent())
             {
-                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option one")).Inline()
-                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option two")).Inline()
-                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option three")).Inline()
+                @Bootstrap.Checkbox("option one").Inline()
+                @Bootstrap.Checkbox("option two").Inline()
+                @Bootstrap.Checkbox("option three").Inline()
             }
-            using (Bootstrap.FormGroup().Label("Vertical checkbox").BeginControls())
+            using (Bootstrap.FormGroup().Label("Vertical checkbox").BeginContent())
             {
-                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option one"))
-                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option two"))
-                @Bootstrap.ControlFor(m => m.BooleanField, Bootstrap.Checkbox("option three"))
+                @Bootstrap.Checkbox("option one")
+                @Bootstrap.Checkbox("option two")
+                @Bootstrap.Checkbox("option three")
             }
         }
     }
@@ -316,6 +316,7 @@ using (Bootstrap.BeginForm())
 
 
 
+
 @Bootstrap.H3("Other features")
 @using (Bootstrap.BeginGridRow())
 {
@@ -326,9 +327,15 @@ using (Bootstrap.BeginForm())
 {
     using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
+        @@Bootstrap.ValidationSummary()
+             .ErrorHeader("You have errors!")
+             .ErrorFooter("Fix please")
         @@Bootstrap.FormGroupFor(m => m.StringField)
              .Label("Disabled control")
              .Control(Bootstrap.Input().Disabled())
+        @@Bootstrap.FormGroupFor(m => m.FieldWithError)
+             .Label("Field with error")
+             .Control(Bootstrap.Input())
     }
 }
 </pre>
@@ -337,9 +344,12 @@ using (Bootstrap.BeginForm())
     {
         using (Bootstrap.BeginForm())
         {
+            @Bootstrap.ValidationSummary().ErrorHeader("You have errors!").ErrorFooter("Fix please")
+
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
                 @Bootstrap.FormGroupFor(m => m.StringField).Label("Disabled control").Control(Bootstrap.Input().Disabled())
+                @Bootstrap.FormGroupFor(m => m.FieldWithError).Label("Field with error").Control(Bootstrap.Input())
             }
         }
     }

@@ -1,25 +1,30 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Grid
+﻿namespace BootstrapMvc.Grid
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class GridRowContent : DisposableContent
     {
-        public GridRowContent(IBootstrapContext context)
+        public GridRowContent(IBootstrapContext context, GridRow parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
 
-        public IWriter2<GridCol, AnyContent> Col(GridSize size)
+        private GridRow Parent { get; set; }
+
+        public IItemWriter<GridCol, AnyContent> Col(GridSize size)
         {
-            return Context.CreateWriter<GridCol, AnyContent>().Size(size);
+            return Context.Helper.CreateWriter<GridCol, AnyContent>(Parent)
+                .Size(size);
         }
 
-        public IWriter2<GridCol, AnyContent> Col(byte xs, byte sm, byte md, byte lg)
+        public IItemWriter<GridCol, AnyContent> Col(byte xs, byte sm, byte md, byte lg)
         {
-            return Context.CreateWriter<GridCol, AnyContent>().Size(new GridSize(xs, sm, md, lg));
+            return Context.Helper.CreateWriter<GridCol, AnyContent>(Parent)
+                .Size(new GridSize(xs, sm, md, lg));
         }
 
         public AnyContent BeginCol(GridSize size)

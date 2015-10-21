@@ -1,30 +1,30 @@
-﻿using BootstrapMvc;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Elements
+﻿namespace BootstrapMvc.Elements
 {
+    using BootstrapMvc;
+    using BootstrapMvc.Core;
+
     public class Icon : Element
     {
-        public IconType TypeValue { get; set; }
+        public IconType Type { get; set; }
 
-        public bool NoSpacingValue { get; set; }
+        public bool NoSpacing { get; set; }
 
-        protected override void WriteSelf(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelf(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("i");
-            tb.AddCssClass(TypeValue.ToCssClass());
+            var tb = Helper.CreateTagBuilder("i");
+            tb.AddCssClass(Type.ToCssClass());
 
             ApplyCss(tb);
             ApplyAttributes(tb);
 
-            if (!NoSpacingValue)
+            if (!NoSpacing)
             {
                 writer.Write(" ");
             }
 
             tb.WriteFullTag(writer);
 
-            if (!NoSpacingValue)
+            if (!NoSpacing)
             {
                 writer.Write(" ");
             }

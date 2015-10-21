@@ -1,57 +1,44 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Buttons
+﻿namespace BootstrapMvc.Buttons
 {
+    using System;
+    using System.Collections.Generic;
+    using BootstrapMvc.Core;
+
     public class ButtonToolbar : ContentElement<ButtonToolbarContent>
     {
-        private WritableBlock content;
+        private List<ButtonGroup> buttons;
 
-        public ButtonToolbar AddButtonGroup(ButtonGroup value)
+        public void AddButtonGroup(ButtonGroup value)
         {
             if (value == null)
             {
-                return this;
+                return;
             }
-            if (content == null)
+            value.Parent = this;
+            if (buttons == null)
             {
-                content = value;
+                buttons = new List<ButtonGroup>();
             }
-            else
-            {
-                content.Append(value);
-            }
-            return this;
+
+            buttons.Add(value);
         }
 
-        public ButtonToolbar AddButtonGroup(params ButtonGroup[] values)
+        public void AddButtonGroup(params ButtonGroup[] values)
         {
-            if (values == null || values.Length == 0)
+            foreach(var value in values)
             {
-                return this;
+                AddButtonGroup(value);
             }
-            foreach (var value in values)
-            {
-                if (content == null)
-                {
-                    content = value;
-                }
-                else
-                {
-                    content.Append(value);
-                }
-            }
-            return this;
         }
 
         protected override ButtonToolbarContent CreateContentContext(IBootstrapContext context)
         {
-            return new ButtonToolbarContent(context);
+            return new ButtonToolbarContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("div");
+            var tb = Helper.CreateTagBuilder("div");
             tb.AddCssClass("btn-toolbar");
             tb.MergeAttribute("role", "toolbar");
 
@@ -60,13 +47,16 @@ namespace BootstrapMvc.Buttons
 
             tb.WriteStartTag(writer);
 
-            if (content != null)
+            if (buttons != null)
             {
-                content.WriteTo(writer, context);
+                foreach(var button in buttons)
+                {
+                    button.WriteTo(writer);
+                }
             }
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write("</div>");
         }

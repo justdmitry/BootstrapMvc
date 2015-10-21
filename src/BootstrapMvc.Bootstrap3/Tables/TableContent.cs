@@ -1,37 +1,40 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Tables
+﻿namespace BootstrapMvc.Tables
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class TableContent : DisposableContent
     {
-        public TableContent(IBootstrapContext context)
+        public TableContent(IBootstrapContext context, Table parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
-        public IBootstrapContext Context { get; private set; }
+        private IBootstrapContext Context { get; set; }
+
+        private Table Parent { get; set; }
 
         #region Sections
 
-        public IWriter2<TableCaption, AnyContent> Caption(object value)
+        public IItemWriter<TableCaption, AnyContent> Caption(object value)
         {
-            return Context.CreateWriter<TableCaption, AnyContent>().Content(value);
+            return Context.Helper.CreateWriter<TableCaption, AnyContent>(Parent).Content(value);
         }
 
-        public IWriter2<TableCaption, AnyContent> Caption(params object[] values)
+        public IItemWriter<TableCaption, AnyContent> Caption(params object[] values)
         {
-            return Context.CreateWriter<TableCaption, AnyContent>().Content(values);
+            return Context.Helper.CreateWriter<TableCaption, AnyContent>(Parent).Content(values);
         }
 
         public AnyContent BeginCaption()
         {
-            return Context.CreateWriter<TableCaption, AnyContent>().BeginContent();
+            return Context.Helper.CreateWriter<TableCaption, AnyContent>(Parent).BeginContent();
         }
 
-        public IWriter2<TableHeader, TableSectionContent> Header()
+        public IItemWriter<TableHeader, TableSectionContent> Header()
         {
-            return Context.CreateWriter<TableHeader, TableSectionContent>();
+            return Context.Helper.CreateWriter<TableHeader, TableSectionContent>(Parent);
         }
 
         public TableSectionContent BeginHeader()
@@ -39,9 +42,9 @@ namespace BootstrapMvc.Tables
             return Header().BeginContent();
         }
 
-        public IWriter2<TableBody, TableSectionContent> Body()
+        public IItemWriter<TableBody, TableSectionContent> Body()
         {
-            return Context.CreateWriter<TableBody, TableSectionContent>();
+            return Context.Helper.CreateWriter<TableBody, TableSectionContent>(Parent);
         }
 
         public TableSectionContent BeginBody()
@@ -49,9 +52,9 @@ namespace BootstrapMvc.Tables
             return Body().BeginContent();
         }
         
-        public IWriter2<TableFooter, TableSectionContent> Footer()
+        public IItemWriter<TableFooter, TableSectionContent> Footer()
         {
-            return Context.CreateWriter<TableFooter, TableSectionContent>();
+            return Context.Helper.CreateWriter<TableFooter, TableSectionContent>(Parent);
         }
 
         public TableSectionContent BeginFooter()
@@ -63,12 +66,12 @@ namespace BootstrapMvc.Tables
 
         #region Rows
 
-        public IWriter2<TableRow, TableRowContent> Row()
+        public IItemWriter<TableRow, TableRowContent> Row()
         {
-            return Context.CreateWriter<TableRow, TableRowContent>();
+            return Context.Helper.CreateWriter<TableRow, TableRowContent>(Parent);
         }
 
-        public IWriter2<TableRow, TableRowContent> Row(TableRowCellColor color)
+        public IItemWriter<TableRow, TableRowContent> Row(TableRowCellColor color)
         {
             return Row().Color(color);
         }
@@ -87,22 +90,22 @@ namespace BootstrapMvc.Tables
 
         #region Table 'regular' cells and TD synonym
 
-        public IWriter2<TableCell, AnyContent> Cell(object value)
+        public IItemWriter<TableCell, AnyContent> Cell(object value)
         {
-            return Context.CreateWriter<TableCell, AnyContent>().Content(value);
+            return Context.Helper.CreateWriter<TableCell, AnyContent>(Parent).Content(value);
         }
 
-        public IWriter2<TableCell, AnyContent> Cell(params object[] values)
+        public IItemWriter<TableCell, AnyContent> Cell(params object[] values)
         {
-            return Context.CreateWriter<TableCell, AnyContent>().Content(values);
+            return Context.Helper.CreateWriter<TableCell, AnyContent>(Parent).Content(values);
         }
 
-        public IWriter2<TableCell, AnyContent> Cell(TableRowCellColor color, object value)
+        public IItemWriter<TableCell, AnyContent> Cell(TableRowCellColor color, object value)
         {
             return Cell(value).Color(color);
         }
 
-        public IWriter2<TableCell, AnyContent> Cell(TableRowCellColor color, params object[] values)
+        public IItemWriter<TableCell, AnyContent> Cell(TableRowCellColor color, params object[] values)
         {
             return Cell(values).Color(color);
         }
@@ -117,22 +120,22 @@ namespace BootstrapMvc.Tables
             return Cell(color).BeginContent();
         }
 
-        public IWriter2<TableCell, AnyContent> TD(object value)
+        public IItemWriter<TableCell, AnyContent> TD(object value)
         {
             return Cell(value);
         }
 
-        public IWriter2<TableCell, AnyContent> TD(params object[] values)
+        public IItemWriter<TableCell, AnyContent> TD(params object[] values)
         {
             return Cell(values);
         }
 
-        public IWriter2<TableCell, AnyContent> TD(TableRowCellColor color, object value)
+        public IItemWriter<TableCell, AnyContent> TD(TableRowCellColor color, object value)
         {
             return Cell(color, value);
         }
 
-        public IWriter2<TableCell, AnyContent> TD(TableRowCellColor color, params object[] values)
+        public IItemWriter<TableCell, AnyContent> TD(TableRowCellColor color, params object[] values)
         {
             return Cell(color, values);
         }
@@ -151,22 +154,22 @@ namespace BootstrapMvc.Tables
 
         #region Table 'header' cells and TH synonym
 
-        public IWriter2<TableHeaderCell, AnyContent> HeaderCell(object value)
+        public IItemWriter<TableHeaderCell, AnyContent> HeaderCell(object value)
         {
-            return Context.CreateWriter<TableHeaderCell, AnyContent>().Content(value);
+            return Context.Helper.CreateWriter<TableHeaderCell, AnyContent>(Parent).Content(value);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> HeaderCell(params object[] values)
+        public IItemWriter<TableHeaderCell, AnyContent> HeaderCell(params object[] values)
         {
-            return Context.CreateWriter<TableHeaderCell, AnyContent>().Content(values);
+            return Context.Helper.CreateWriter<TableHeaderCell, AnyContent>(Parent).Content(values);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> HeaderCell(TableRowCellColor color, object value)
+        public IItemWriter<TableHeaderCell, AnyContent> HeaderCell(TableRowCellColor color, object value)
         {
             return HeaderCell(value).Color(color);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> HeaderCell(TableRowCellColor color, params object[] values)
+        public IItemWriter<TableHeaderCell, AnyContent> HeaderCell(TableRowCellColor color, params object[] values)
         {
             return HeaderCell(values).Color(color);
         }
@@ -181,22 +184,22 @@ namespace BootstrapMvc.Tables
             return HeaderCell(color).BeginContent();
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> TH(object value)
+        public IItemWriter<TableHeaderCell, AnyContent> TH(object value)
         {
             return HeaderCell(value);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> TH(params object[] values)
+        public IItemWriter<TableHeaderCell, AnyContent> TH(params object[] values)
         {
             return HeaderCell(values);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> TH(TableRowCellColor color, object value)
+        public IItemWriter<TableHeaderCell, AnyContent> TH(TableRowCellColor color, object value)
         {
             return HeaderCell(color, value);
         }
 
-        public IWriter2<TableHeaderCell, AnyContent> TH(TableRowCellColor color, params object[] values)
+        public IItemWriter<TableHeaderCell, AnyContent> TH(TableRowCellColor color, params object[] values)
         {
             return HeaderCell(color, values);
         }

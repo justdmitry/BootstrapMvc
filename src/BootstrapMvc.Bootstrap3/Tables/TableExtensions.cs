@@ -1,56 +1,46 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Tables;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Tables;
+
     public static class TableExtensions
     {
         #region Fluent
 
-        public static IWriter2<T, TableContent> Style<T>(this IWriter2<T, TableContent> target, TableStyles styles)
+        public static IItemWriter<T, TableContent> Style<T>(this IItemWriter<T, TableContent> target, TableStyles styles)
             where T: Table
         {
-            target.Item.StyleValue = styles;
+            target.Item.Style = styles;
             return target;
         }
 
-        public static IWriter2<T, TableContent> Caption<T>(this IWriter2<T, TableContent> target, TableCaption value)
+        public static IItemWriter<T, TableContent> Caption<T>(this IItemWriter<T, TableContent> target, object value)
             where T : Table
         {
-            target.Item.CaptionValue = value;
+            var caption = value as TableCaption;
+            target.Item.Caption = caption ?? target.Helper.CreateWriter<TableCaption, AnyContent>(target.Item).Content(value).Item;
             return target;
         }
 
-        public static IWriter2<T, TableContent> Caption<T>(this IWriter2<T, TableContent> target, object value)
+        public static IItemWriter<T, TableContent> Caption<T>(this IItemWriter<T, TableContent> target, params object[] values)
             where T : Table
         {
-            var tc = new TableCaption();
-            tc.AddContent(value);
-            target.Item.CaptionValue = tc;
+            target.Item.Caption = target.Helper.CreateWriter<TableCaption, AnyContent>(target.Item).Content(values).Item;
             return target;
         }
 
-        public static IWriter2<T, TableContent> Caption<T>(this IWriter2<T, TableContent> target, params object[] values)
+        public static IItemWriter<T, TableContent> Header<T>(this IItemWriter<T, TableContent> target, TableHeader value)
             where T : Table
         {
-            var tc = new TableCaption();
-            tc.AddContent(values);
-            target.Item.CaptionValue = tc;
+            target.Item.Header = value;
             return target;
         }
 
-        public static IWriter2<T, TableContent> Header<T>(this IWriter2<T, TableContent> target, TableHeader value)
+        public static IItemWriter<T, TableContent> Footer<T>(this IItemWriter<T, TableContent> target, TableFooter value)
             where T : Table
         {
-            target.Item.HeaderValue = value;
-            return target;
-        }
-
-        public static IWriter2<T, TableContent> Footer<T>(this IWriter2<T, TableContent> target, TableFooter value)
-            where T : Table
-        {
-            target.Item.FooterValue = value;
+            target.Item.Footer = value;
             return target;
         }
 
@@ -58,12 +48,12 @@ namespace BootstrapMvc
 
         #region Generating
 
-        public static IWriter2<Table, TableContent> Table(this IAnyContentMarker contentHelper)
+        public static IItemWriter<Table, TableContent> Table(this IAnyContentMarker contentHelper)
         {
-            return contentHelper.Context.CreateWriter<Table, TableContent>();
+            return contentHelper.CreateWriter<Table, TableContent>();
         }
 
-        public static IWriter2<Table, TableContent> Table(this IAnyContentMarker contentHelper, TableStyles styles)
+        public static IItemWriter<Table, TableContent> Table(this IAnyContentMarker contentHelper, TableStyles styles)
         {
             return Table(contentHelper).Style(styles);
         }

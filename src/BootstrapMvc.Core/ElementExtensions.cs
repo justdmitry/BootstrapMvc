@@ -1,18 +1,18 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public static class ElementExtensions
     {
-        public static IWriter<T> CssClass<T>(this IWriter<T> target, string value)
+        public static IItemWriter<T> CssClass<T>(this IItemWriter<T> target, string value)
             where T : Element
         {
             target.Item.AddCssClass(value);
             return target;
         }
 
-        public static IWriter2<T, TContent> CssClass<T, TContent>(this IWriter2<T, TContent> target, string value)
+        public static IItemWriter<T, TContent> CssClass<T, TContent>(this IItemWriter<T, TContent> target, string value)
             where T : ContentElement<TContent>
             where TContent : DisposableContent
         {
@@ -20,14 +20,14 @@ namespace BootstrapMvc
             return target;
         }
 
-        public static IWriter<T> Attribute<T>(this IWriter<T> target, string name, string value)
+        public static IItemWriter<T> Attribute<T>(this IItemWriter<T> target, string name, string value)
             where T : Element
         {
             target.Item.AddAttribute(name, value);
             return target;
         }
 
-        public static IWriter2<T, TContent> Attribute<T, TContent>(this IWriter2<T, TContent> target, string name, string value)
+        public static IItemWriter<T, TContent> Attribute<T, TContent>(this IItemWriter<T, TContent> target, string name, string value)
             where T : ContentElement<TContent>
             where TContent : DisposableContent
         {

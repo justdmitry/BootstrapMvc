@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
-    public abstract class Element : WritableBlock
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public abstract class Element : WritableItem
     {
         private IList<string> additionalClasses;
 

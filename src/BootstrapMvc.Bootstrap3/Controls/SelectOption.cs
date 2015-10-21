@@ -1,31 +1,31 @@
-﻿using System;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Forms;
+
     public class SelectOption : AnyContentElement, ISelectItem, IDisableable, IValueHolder
     {
-        public object ValueValue { get; set; }
+        public object Value { get; set; }
 
-        public bool DisabledValue { get; set; }
+        public bool Disabled { get; set; }
 
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("option");
+            var controlContext = GetNearestParent<IControlContext>();
 
-            if (ValueValue != null)
+            var tb = Helper.CreateTagBuilder("option");
+
+            if (Value != null)
             {
-                tb.MergeAttribute("value", ValueValue.ToString());
+                tb.MergeAttribute("value", Value.ToString());
             }
-            if (DisabledValue)
+            if (Disabled)
             {
                 tb.MergeAttribute("disabled", "disabled");
             }
 
-            var formGroup = context.PeekNearest<Select>();
-            var controlContext = formGroup == null ? null : formGroup.ControlContextValue;
-            if (controlContext != null && controlContext.Value != null && ValueValue != null && ValueValue.ToString().Equals(controlContext.Value.ToString()))
+            if (controlContext != null && controlContext.FieldValue != null && Value != null && Value.ToString().Equals(controlContext.FieldValue.ToString()))
             {
                 tb.MergeAttribute("selected", "selected");
             }
@@ -40,12 +40,12 @@ namespace BootstrapMvc.Controls
 
         void IDisableable.SetDisabled(bool disabled)
         {
-            DisabledValue = disabled;
+            Disabled = disabled;
         }
 
         bool IDisableable.Disabled()
         {
-            return DisabledValue;
+            return Disabled;
         }
     }
 }

@@ -1,14 +1,14 @@
-﻿using System;
-
-namespace BootstrapMvc.Core
+﻿namespace BootstrapMvc.Core
 {
+    using System;
+
     public class OrdinaryElement : AnyContentElement
     {
         public string TagName { get; set; }
 
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder(TagName);
+            var tb = Helper.CreateTagBuilder(TagName);
 
             ApplyCss(tb);
             ApplyAttributes(tb);

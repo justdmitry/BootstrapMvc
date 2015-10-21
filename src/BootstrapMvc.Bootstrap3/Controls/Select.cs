@@ -1,74 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BootstrapMvc.Core;
-using BootstrapMvc.Forms;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
+    using System;
+    using System.Collections.Generic;
+    using BootstrapMvc.Core;
+    using BootstrapMvc.Forms;
+
     public class Select : ContentElement<SelectContent>, IFormControl, IPlaceholderTarget, IGridSizable
     {
         private string endTag;
 
-        public IControlContext ControlContextValue { get; set; }
+        public IEnumerable<ISelectItem> Items { get; set; }
 
-        public IEnumerable<ISelectItem> ItemsValue { get; set; }
+        public GridSize Size { get; set; }
 
-        public GridSize SizeValue { get; set; }
-
-        public bool DisabledValue { get; set; }
-
-        void IControlContextHolder.SetControlContext(IControlContext context)
-        {
-            ControlContextValue = context;
-        }
-
-        void IGridSizable.SetSize(GridSize value)
-        {
-            SizeValue = value;
-        }
-
-        GridSize IGridSizable.Size()
-        {
-            return SizeValue;
-        }
-
-        void IDisableable.SetDisabled(bool disabled)
-        {
-            DisabledValue = disabled;
-        }
-
-        bool IDisableable.Disabled()
-        {
-            return DisabledValue;
-        }
+        public bool Disabled { get; set; }
 
         protected override SelectContent CreateContentContext(IBootstrapContext context)
         {
-            return new SelectContent(context);
+            return new SelectContent(context, this);
         }
 
-        protected override void WriteSelfStart(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var form = context.PeekNearest<IFormContext>();
-            var formGroup = context.PeekNearest<FormGroup>();
-            if (ControlContextValue == null)
-            {
-                ControlContextValue = formGroup.ControlContextValue;
-            }
+            var formContext = GetNearestParent<IForm>();
+            var formGroupContext = GetNearestParent<FormGroup>();
+            var controlContext = GetNearestParent<IControlContext>();
 
             ITagBuilder div = null;
 
-            if (!SizeValue.IsEmpty())
+            if (!Size.IsEmpty())
             {
                 // Inline forms does not support sized controls (we need 'some other' sizing rules?)
-                if (form != null && form.TypeValue != FormType.Inline)
+                if (formContext != null && formContext.Type != FormType.Inline)
                 {
-                    if (formGroup != null && formGroup.WithSizedControlValue)
+                    if (formGroupContext != null && formGroupContext.WithSizedControl)
                     {
-                        div = context.CreateTagBuilder("div");
-                        div.AddCssClass(SizeValue.ToCssClass());
-                        writer.Write(div.GetStartTag());
+                        div = Helper.CreateTagBuilder("div");
+                        div.AddCssClass(Size.ToCssClass());
+                        div.WriteStartTag(writer);
                     }
                     else
                     {
@@ -80,20 +49,20 @@ namespace BootstrapMvc.Controls
 
             object value = null;
 
-            var tb = context.CreateTagBuilder("select");
+            var tb = Helper.CreateTagBuilder("select");
             tb.AddCssClass("form-control");
 
-            if (ControlContextValue != null)
+            if (controlContext != null)
             {
-                tb.MergeAttribute("id", ControlContextValue.Name);
-                tb.MergeAttribute("name", ControlContextValue.Name);
-                if (ControlContextValue.IsRequired)
+                tb.MergeAttribute("id", controlContext.FieldName);
+                tb.MergeAttribute("name", controlContext.FieldName);
+                if (controlContext.IsRequired)
                 {
                     tb.MergeAttribute("required", "required");
                 }
-                value = ControlContextValue.Value;
+                value = controlContext.FieldValue;
             }
-            if (DisabledValue)
+            if (Disabled)
             {
                 tb.MergeAttribute("disabled", "disabled");
             }
@@ -101,25 +70,43 @@ namespace BootstrapMvc.Controls
             ApplyCss(tb);
             ApplyAttributes(tb);
 
-            writer.Write(tb.GetStartTag());
+            tb.WriteStartTag(writer);
 
-            context.Push(this);
-
-            if (ItemsValue != null)
+            if (Items != null)
             {
-                foreach (var item in ItemsValue)
+                foreach (var item in Items)
                 {
-                    item.WriteTo(writer, context);
+                    item.Parent = this;
+                    item.WriteTo(writer);
                 }
             }
 
             endTag = tb.GetEndTag() + (div == null ? string.Empty : div.GetEndTag());
         }
 
-        protected override void WriteSelfEnd(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override void WriteSelfEnd(System.IO.TextWriter writer)
         {
             writer.Write(endTag);
-            context.PopIfEqual(this);
+        }
+
+        void IGridSizable.SetSize(GridSize value)
+        {
+            Size = value;
+        }
+
+        GridSize IGridSizable.GetSize()
+        {
+            return Size;
+        }
+
+        void IDisableable.SetDisabled(bool disabled)
+        {
+            Disabled = disabled;
+        }
+
+        bool IDisableable.Disabled()
+        {
+            return Disabled;
         }
     }
 }

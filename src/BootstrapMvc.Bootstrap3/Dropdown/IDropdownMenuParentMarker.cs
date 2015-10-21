@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BootstrapMvc.Dropdown
+﻿namespace BootstrapMvc.Dropdown
 {
+    using System;
+
     public interface IDropdownMenuParentMarker
     {
         // Nothing

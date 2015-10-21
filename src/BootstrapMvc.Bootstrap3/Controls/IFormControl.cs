@@ -1,9 +1,9 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Controls
+﻿namespace BootstrapMvc.Controls
 {
-    public interface IFormControl : IControlContextHolder, IWritable, IDisableable
+    using System;
+    using BootstrapMvc.Core;
+
+    public interface IFormControl : IWritableItem, IDisableable
     {
         // Nothing more
     }

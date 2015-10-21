@@ -1,13 +1,13 @@
-﻿using System;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Forms
+﻿namespace BootstrapMvc.Forms
 {
+    using System;
+    using BootstrapMvc.Core;
+
     public class HelpBlock : AnyContentElement
     {
-        protected override string WriteSelfStartTag(System.IO.TextWriter writer, IBootstrapContext context)
+        protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
-            var tb = context.CreateTagBuilder("span");
+            var tb = Helper.CreateTagBuilder("span");
             tb.AddCssClass("help-block");
 
             ApplyCss(tb);

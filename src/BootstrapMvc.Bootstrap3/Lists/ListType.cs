@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+
     public enum ListType
     {
         Unordered,
