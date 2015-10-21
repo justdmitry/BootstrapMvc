@@ -151,16 +151,16 @@ using (Bootstrap.BeginForm())
     @@Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Placeholder("number"))
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputTel().Placeholder("tel"))
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputUrl().Placeholder("url"))
-    using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Text"))
+    using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Text"))
     {
-        BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Text;
+        BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Text;
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
     }
-    using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Html5"))
+    using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Html5"))
     {
-        BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Html5;
+        BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Html5;
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
@@ -181,16 +181,16 @@ using (Bootstrap.BeginForm())
             @Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Placeholder("number"))
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputTel().Placeholder("tel"))
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputUrl().Placeholder("url"))
-            using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Text"))
+            using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Text"))
             {
-                BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Text;
+                BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Text;
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))
             }
-            using (Bootstrap.BeginFormFieldset("DateInputMode = DateInputMode.Html5"))
+            using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Html5"))
             {
-                BootstrapMvc.Controls.Input.DateInputMode = DateInputMode.Html5;
+                BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Html5;
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDate().Placeholder("date"))
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTime().Placeholder("datetime"))
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField).Control(Bootstrap.InputDateTimeLocal().Placeholder("datetimelocal"))

@@ -7,7 +7,9 @@
 
     public class Input : Element, IFormControl, IPlaceholderTarget, IGridSizable
     {
-        public static DateInputMode DateInputMode { get; set; }
+        public static DateInputMode DateInputModeDefault { get; set; } = DateInputMode.Text;
+
+        public DateInputMode DateInputMode { get; set; } = DateInputModeDefault;
 
         public InputType Type { get; set; }
 
