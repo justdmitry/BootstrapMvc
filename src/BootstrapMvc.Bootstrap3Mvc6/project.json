@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.2.0-beta8-51016",
+  "version": "2.0.0-beta8-beta-51021",
   "title": "BootstrapMvc.Bootstrap3Mvc6",
   "description": "Helpers for using [Twitter] Bootstrap 3.3 in MVC6 projects. Use this package to get correct dependencies from BootstrapMvc pack.",
   "authors": [ "just_dmitry" ],
@@ -10,8 +10,8 @@
   "releaseNotes": "Update for beta8",
 
   "dependencies": {
-    "BootstrapMvc.Mvc6": "",
-    "BootstrapMvc.Bootstrap3": ""
+    "BootstrapMvc.Mvc6": "2.0.0-*",
+    "BootstrapMvc.Bootstrap3": "2.0.0-*"
   },
 
   "frameworks": {
