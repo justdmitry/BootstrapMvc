@@ -27,6 +27,7 @@ namespace Bootstrap3Mvc6.Sample
             app.UseStatusCodePages();
             app.UseDeveloperExceptionPage();
 
+            app.UseIISPlatformHandler();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
