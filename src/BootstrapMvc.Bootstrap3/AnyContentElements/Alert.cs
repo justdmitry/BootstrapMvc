@@ -16,7 +16,7 @@
             {
                 tb.AddCssClass("alert-dismissable");
             }
-            tb.MergeAttribute("role", "alert");
+            tb.MergeAttribute("role", "alert", true);
 
             ApplyCss(tb);
             ApplyAttributes(tb);
@@ -26,10 +26,10 @@
             if (Closable)
             {
                 var dsmb = Helper.CreateTagBuilder("button");
-                dsmb.MergeAttribute("type", "button");
-                dsmb.MergeAttribute("class", "close");
-                dsmb.MergeAttribute("data-dismiss", "alert");
-                dsmb.MergeAttribute("aria-hidden", "true");
+                dsmb.MergeAttribute("type", "button", true);
+                dsmb.MergeAttribute("class", "close", true);
+                dsmb.MergeAttribute("data-dismiss", "alert", true);
+                dsmb.MergeAttribute("aria-hidden", "true", true);
                 dsmb.InnerHtml = "&times;";
                 dsmb.WriteFullTag(writer);
             }

@@ -9,7 +9,7 @@ namespace BootstrapMvc.Dropdown
         {
             var tb = Helper.CreateTagBuilder("li");
             tb.AddCssClass("dropdown-header");
-            tb.MergeAttribute("role", "presentation");
+            tb.MergeAttribute("role", "presentation", true);
 
             tb.WriteStartTag(writer);
 

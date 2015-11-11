@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.0.0-beta2-51021",
+  "version": "2.0.0-beta3-51111",
   "title": "BootstrapMvc.Core",
   "description": "Core library for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],
@@ -7,7 +7,6 @@
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Upgrade for mvc6 beta8",
 
   "dependencies": { },
 

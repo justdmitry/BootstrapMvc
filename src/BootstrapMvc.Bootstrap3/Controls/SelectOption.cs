@@ -18,16 +18,16 @@
 
             if (Value != null)
             {
-                tb.MergeAttribute("value", Value.ToString());
+                tb.MergeAttribute("value", Value.ToString(), true);
             }
             if (Disabled)
             {
-                tb.MergeAttribute("disabled", "disabled");
+                tb.MergeAttribute("disabled", "disabled", true);
             }
 
             if (controlContext != null && controlContext.FieldValue != null && Value != null && Value.ToString().Equals(controlContext.FieldValue.ToString()))
             {
-                tb.MergeAttribute("selected", "selected");
+                tb.MergeAttribute("selected", "selected", true);
             }
 
             ApplyCss(tb);

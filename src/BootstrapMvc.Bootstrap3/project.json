@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.0.0-beta-51021",
+  "version": "2.0.0-beta3-51111",
   "title": "BootstrapMvc.Bootstrap3",
   "description": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],
@@ -7,10 +7,9 @@
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Upgrade to new Core (for mvc6 beta8), some breaking changes in forms",
 
   "dependencies": {
-    "BootstrapMvc.Core": "2.0.0-*"
+    "BootstrapMvc.Core": "2.0.0-beta3-*"
   },
 
   "frameworks": {

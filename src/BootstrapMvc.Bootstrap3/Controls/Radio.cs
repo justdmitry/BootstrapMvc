@@ -34,21 +34,21 @@
             lbl.WriteStartTag(writer);
 
             var input = Helper.CreateTagBuilder("input");
-            input.MergeAttribute("type", "radio");
+            input.MergeAttribute("type", "radio", true);
             if (controlContext != null)
             {
-                input.MergeAttribute("id", controlContext.FieldName);
-                input.MergeAttribute("name", controlContext.FieldName);
-                input.MergeAttribute("value", Value?.ToString());
+                input.MergeAttribute("id", controlContext.FieldName, true);
+                input.MergeAttribute("name", controlContext.FieldName, true);
+                input.MergeAttribute("value", Value?.ToString(), true);
                 var controlValue = controlContext.FieldValue;
                 if (controlValue != null && Value != null && Value.ToString().Equals(controlValue.ToString()))
                 {
-                    input.MergeAttribute("checked", "checked");
+                    input.MergeAttribute("checked", "checked", true);
                 }
             }
             if (Disabled)
             {
-                input.MergeAttribute("disabled", "disabled");
+                input.MergeAttribute("disabled", "disabled", true);
             }
 
             ApplyCss(input);

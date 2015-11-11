@@ -53,15 +53,15 @@ namespace BootstrapMvc.Forms
             }
             if (Method != SubmitMethod.Get)
             {
-                tb.MergeAttribute("method", Method.ToString().ToLowerInvariant());
+                tb.MergeAttribute("method", Method.ToString().ToLowerInvariant(), true);
             }
             if (Enctype != FormEnctype.NoValue)
             {
-                tb.MergeAttribute("enctype", Enctype.ToEnctype());
+                tb.MergeAttribute("enctype", Enctype.ToEnctype(), true);
             }
             if (!string.IsNullOrEmpty(Href))
             {
-                tb.MergeAttribute("action", Href);
+                tb.MergeAttribute("action", Href, true);
             }
 
             ApplyCss(tb);

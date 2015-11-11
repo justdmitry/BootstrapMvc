@@ -20,7 +20,7 @@
             {
                 tb.AddCssClass("dropdown-menu-right");
             }
-            tb.MergeAttribute("role", "menu");
+            tb.MergeAttribute("role", "menu", true);
 
             ApplyCss(tb);
             ApplyAttributes(tb);

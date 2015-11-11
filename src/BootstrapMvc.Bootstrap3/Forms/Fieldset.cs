@@ -20,7 +20,7 @@
 
             if (Disabled)
             {
-                tb.MergeAttribute("disabled", "disabled");
+                tb.MergeAttribute("disabled", "disabled", true);
             }
 
             ApplyCss(tb);

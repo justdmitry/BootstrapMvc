@@ -40,7 +40,7 @@
         {
             var tb = Helper.CreateTagBuilder("div");
             tb.AddCssClass("btn-toolbar");
-            tb.MergeAttribute("role", "toolbar");
+            tb.MergeAttribute("role", "toolbar", true);
 
             ApplyCss(tb);
             ApplyAttributes(tb);

@@ -22,7 +22,7 @@ namespace BootstrapMvc.Dropdown
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var tb = Helper.CreateTagBuilder("li");
-            tb.MergeAttribute("role", "presentation");
+            tb.MergeAttribute("role", "presentation", true);
             if (DisabledValue)
             {
                 tb.AddCssClass("disabled");
@@ -31,9 +31,9 @@ namespace BootstrapMvc.Dropdown
             tb.WriteStartTag(writer);
 
             var a = Helper.CreateTagBuilder("a");
-            a.MergeAttribute("role", "menuitem");
-            a.MergeAttribute("tabindex", "-1");
-            a.MergeAttribute("href", DisabledValue ? "#" : HrefValue);
+            a.MergeAttribute("role", "menuitem", true);
+            a.MergeAttribute("tabindex", "-1", true);
+            a.MergeAttribute("href", DisabledValue ? "#" : HrefValue, true);
 
             a.WriteStartTag(writer);
 
