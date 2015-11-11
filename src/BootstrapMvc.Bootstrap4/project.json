@@ -1,0 +1,20 @@
+﻿{
+  "version": "1.0.0-beta-51030",
+  "title": "BootstrapMvc.Bootstrap4",
+  "description": "Bootstrap 4 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap4Mvc6 package).",
+  "authors": [ "just_dmitry" ],
+  "tags": [ "Bootstrap", "Bootstrap4", "Mvc", "HtmlHelpers" ],
+  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+  "licenseUrl": "",
+  "copyright": "Copyright © Dmitry Popov, 2015",
+
+  "dependencies": {
+    "BootstrapMvc.Core": "2.0.0-*"
+  },
+
+  "frameworks": {
+    "net45": { },
+    "dnx451": { },
+    "dnxcore50": { }
+  }
+}

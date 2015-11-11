@@ -1,0 +1,20 @@
+﻿{
+  "version": "1.0.0-beta8-alpha-51106",
+  "title": "BootstrapMvc.Bootstrap4Mvc6",
+  "description": "Helpers for using [Twitter] Bootstrap 4 in MVC6 projects. Use this package to get correct dependencies from BootstrapMvc pack.",
+  "authors": [ "just_dmitry" ],
+  "tags": [ "Bootstrap", "Bootstrap4", "Mvc", "Mvc6", "HelpHelpers" ],
+  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+  "licenseUrl": "",
+  "copyright": "Copyright © Dmitry Popov, 2015",
+
+  "dependencies": {
+    "BootstrapMvc.Mvc6": "2.0.0-beta8-*",
+    "BootstrapMvc.Bootstrap4": ""
+  },
+
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  }
+}

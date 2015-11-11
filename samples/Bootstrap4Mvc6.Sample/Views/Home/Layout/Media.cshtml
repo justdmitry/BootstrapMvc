@@ -1,0 +1,134 @@
+﻿<h2>Media</h2>
+@{
+    var leftColSize = new GridSize(6, 6, 6, 6, 6);
+    var rightColSize = leftColSize;
+}
+
+<h3>Base markup</h3>
+@{
+    using (Bootstrap.BeginGridRow())
+    {
+        using (Bootstrap.BeginGridCol(leftColSize))
+        {
+<pre>
+using (var media = Bootstrap.Media().BeginContent())
+{
+    using (media.BeginObject())
+    {
+        &lt;img src="http://placehold.it/64" /&gt;
+    }
+    using (media.BeginBody())
+    {
+        &lt;p&gt;Lorem ipsum dolor sit amet... &lt;/p&gt;
+    }
+}</pre>
+        }
+        using (Bootstrap.BeginGridCol(rightColSize))
+        {
+            using (var media = Bootstrap.Media().BeginContent())
+            {
+                using (media.BeginObject())
+                {
+                    <img src="http://placehold.it/64" />
+                }
+                using (media.BeginBody())
+                {
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus, leo tincidunt interdum dictum, mauris erat placerat leo, ut suscipit mauris nisl sed massa. </p>
+                }
+            }
+        }
+    }
+}
+
+<h3>Or using precreated objects</h3>
+@{
+    using (Bootstrap.BeginGridRow())
+    {
+        using (Bootstrap.BeginGridCol(leftColSize))
+        {
+<pre>
+var obj = Html.Raw("&lt;img src='http://placehold.it/64' /&gt;");
+var body = Bootstrap.P("Lorem ipsum dolor sit amet...");
+@@Bootstrap.Media().Object(obj).Body(body);
+</pre>
+        }
+        using (Bootstrap.BeginGridCol(rightColSize))
+        {
+            var obj = Html.Raw("<img src='http://placehold.it/64' />");
+            var body = Bootstrap.P("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus, leo tincidunt interdum dictum, mauris erat placerat leo, ut suscipit mauris nisl sed massa.");
+            @Bootstrap.Media().Object(obj).Body(body);
+        }
+    }
+}
+
+
+<h3>Complex content and formatting</h3>
+<p>Create <code>MediaObject</code> and/or <code>MediaBody</code> for complex content or advanced options.</p>
+@{
+    using (Bootstrap.BeginGridRow())
+    {
+        using (Bootstrap.BeginGridCol(leftColSize))
+        {
+<pre>
+var obj = Bootstrap.MediaObject(Html.Raw("&lt;img src='http://placehold.it/64' /&gt;"))
+    .AlignRight().VerticalAlignMiddle();
+var body = Bootstrap.MediaBody(
+    Bootstrap.H4("Media header").MediaHeading(),
+    Bootstrap.P("Lorem ipsum dolor sit amet..."));
+@@Bootstrap.Media().Object(obj).Body(body);
+</pre>
+        }
+        using (Bootstrap.BeginGridCol(rightColSize))
+        {
+            var obj = Bootstrap.MediaObject(Html.Raw("<img src='http://placehold.it/64' />")).AlignRight().VerticalAlignMiddle();
+            var body = Bootstrap.MediaBody(
+                Bootstrap.H4("Media header").MediaHeading(),
+                Bootstrap.P("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus, leo tincidunt interdum dictum, mauris erat placerat leo, ut suscipit mauris nisl sed massa."));
+            @Bootstrap.Media().Object(obj).Body(body);
+        }
+    }
+}
+<h4>Available extensions methods:</h4>
+<dl>
+    <dt>For <code>MediaObject</code></dt>
+    <dd><code>Align(MediaObjectAlignType value)</code>, <code>AlignRight()</code>, <code>AlignLeft()</code> (default)</dd>
+    <dd><code>VerticalAlign(MediaObjectVerticalAlignType value)</code>, <code>VerticalAlignTop()</code> (default), <code>VerticalAlignMiddle()</code>, <code>VerticalAlignBottom()</code> </dd>
+</dl>
+
+<h3>Autodetect object location (left/right)</h3>
+<p>Simply write object after body, and it will be right-aligned automatically.</p>
+@{
+
+    using (Bootstrap.BeginGridRow())
+    {
+        using (Bootstrap.BeginGridCol(leftColSize))
+        {
+<pre>
+using (var media = Bootstrap.Media().BeginContent())
+{
+    using (media.BeginBody())
+    {
+        &lt;p&gt;Lorem ipsum dolor sit amet... &lt;/p&gt;
+    }
+    using (media.BeginObject())
+    {
+        &lt;img src="http://placehold.it/64" /&gt;
+    }
+}</pre>
+        }
+        using (Bootstrap.BeginGridCol(rightColSize))
+        {
+            using (var media = Bootstrap.Media().BeginContent())
+            {
+                using (media.BeginBody())
+                {
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus, leo tincidunt interdum dictum, mauris erat placerat leo, ut suscipit mauris nisl sed massa. </p>
+                }
+                using (media.BeginObject())
+                {
+                    <img src="http://placehold.it/64" />
+                }
+            }
+        }
+    }
+}
