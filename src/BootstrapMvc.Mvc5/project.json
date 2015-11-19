@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0-beta3-51111",
+  "version": "2.0.0-beta4-51119",
   "title": "BootstrapMvc.Mvc5",
   "description": "MVC5 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).",
   "authors": [ "just_dmitry" ],
@@ -7,15 +7,16 @@
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
+  "releaseNotes": "Updated to new framework monikers",
 
   "dependencies": {
     "Microsoft.AspNet.Mvc": "5.2.3",
     "Microsoft.AspNet.Razor": "3.2.3",
-    "BootstrapMvc.Core": "2.0.0-beta3-*"
+    "BootstrapMvc.Core": "2.0.0-beta4-*"
   },
 
   "frameworks": {
-    "net45": {
+    "net451": {
       "frameworkAssemblies": {
         "System.Web": "4.0.0.0"
       }

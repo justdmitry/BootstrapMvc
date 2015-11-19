@@ -5,9 +5,9 @@
     using Microsoft.AspNet.Mvc;
     using Microsoft.AspNet.Mvc.Rendering;
     using Microsoft.AspNet.Mvc.ViewFeatures.Internal;
-    using Microsoft.Framework.WebEncoders;
     using Microsoft.AspNet.Routing;
     using Microsoft.AspNet.Html.Abstractions;
+    using Microsoft.Extensions.WebEncoders;
     using BootstrapMvc.Core;
 
     public class BootstrapHelper: IAnyContentMarker, ICanHasViewContext, IWritingHelper, IBootstrapContext

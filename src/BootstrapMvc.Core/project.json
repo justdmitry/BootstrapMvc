@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.0.0-beta3-51111",
+  "version": "2.0.0-beta4-51119",
   "title": "BootstrapMvc.Core",
   "description": "Core library for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],
@@ -7,13 +7,13 @@
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
+  "releaseNotes": "Updated to new framework monikers",
 
   "dependencies": { },
 
   "frameworks": {
-    "net45": { },
-    "dnx451": { },
-    "dnxcore50": {
+    "net451": { },
+    "dotnet5.4": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.0",
         "System.ComponentModel.TypeConverter": "4.0.0",

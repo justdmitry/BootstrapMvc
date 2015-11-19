@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
-using Microsoft.Framework.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using BootstrapMvc;
-using Microsoft.Framework.Logging;
 
 namespace Bootstrap3Mvc6.Sample
 {
@@ -21,7 +21,7 @@ namespace Bootstrap3Mvc6.Sample
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            loggerFactory.MinimumLevel = LogLevel.Verbose;
+            loggerFactory.MinimumLevel = LogLevel.Debug;
             loggerFactory.AddConsole();
 
             app.UseStatusCodePages();
