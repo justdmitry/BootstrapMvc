@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using Microsoft.Framework.WebEncoders;
+using Microsoft.Extensions.WebEncoders;
 using mvc = Microsoft.AspNet.Mvc.Rendering;
 using BootstrapMvc.Core;
 
@@ -27,7 +27,7 @@ namespace BootstrapMvc.Mvc6
             {
                 InnerHtml.Clear();
                 if (!string.IsNullOrEmpty(value)) {
-                    InnerHtml.AppendEncoded(value);
+                    InnerHtml.AppendHtml(value);
                 }
             }
         }

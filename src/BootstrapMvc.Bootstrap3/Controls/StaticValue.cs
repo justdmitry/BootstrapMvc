@@ -15,7 +15,7 @@
             input.AddCssClass("form-control-static");
             if (controlContext != null)
             {
-                input.MergeAttribute("id", controlContext.FieldName);
+                input.MergeAttribute("id", controlContext.FieldName, true);
                 var value = controlContext.FieldValue;
                 if (value != null)
                 {

@@ -23,7 +23,7 @@
 
             if (!string.IsNullOrEmpty(name))
             {
-                tb.MergeAttribute("for", name);
+                tb.MergeAttribute("for", name, true);
             }
             if (required)
             {

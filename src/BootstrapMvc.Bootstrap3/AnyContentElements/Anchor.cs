@@ -11,7 +11,7 @@
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var tb = Helper.CreateTagBuilder("a");
-            tb.MergeAttribute("href", Href);
+            tb.MergeAttribute("href", Href, true);
 
             ApplyCss(tb);
             ApplyAttributes(tb);

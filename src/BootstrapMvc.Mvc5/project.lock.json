@@ -2,10 +2,10 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5": {
-      "BootstrapMvc.Core/2.0.0-beta2-51021": {
+    ".NETFramework,Version=v4.5.1": {
+      "BootstrapMvc.Core/2.0.0-beta4-51119": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5"
+        "framework": ".NETFramework,Version=v4.5.1"
       },
       "Microsoft.AspNet.Mvc/5.2.3": {
         "type": "package",
@@ -58,10 +58,10 @@
         }
       }
     },
-    ".NETFramework,Version=v4.5/win7-x86": {
-      "BootstrapMvc.Core/2.0.0-beta2-51021": {
+    ".NETFramework,Version=v4.5.1/win7-x86": {
+      "BootstrapMvc.Core/2.0.0-beta4-51119": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5"
+        "framework": ".NETFramework,Version=v4.5.1"
       },
       "Microsoft.AspNet.Mvc/5.2.3": {
         "type": "package",
@@ -114,10 +114,10 @@
         }
       }
     },
-    ".NETFramework,Version=v4.5/win7-x64": {
-      "BootstrapMvc.Core/2.0.0-beta2-51021": {
+    ".NETFramework,Version=v4.5.1/win7-x64": {
+      "BootstrapMvc.Core/2.0.0-beta4-51119": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5"
+        "framework": ".NETFramework,Version=v4.5.1"
       },
       "Microsoft.AspNet.Mvc/5.2.3": {
         "type": "package",
@@ -172,7 +172,7 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Core/2.0.0-beta2-51021": {
+    "BootstrapMvc.Core/2.0.0-beta4-51119": {
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json"
     },
@@ -237,9 +237,9 @@
     "": [
       "Microsoft.AspNet.Mvc >= 5.2.3",
       "Microsoft.AspNet.Razor >= 3.2.3",
-      "BootstrapMvc.Core >= 2.0.0-beta2"
+      "BootstrapMvc.Core >= 2.0.0-beta4-*"
     ],
-    ".NETFramework,Version=v4.5": [
+    ".NETFramework,Version=v4.5.1": [
       "fx/System.Web >= 4.0.0"
     ]
   }

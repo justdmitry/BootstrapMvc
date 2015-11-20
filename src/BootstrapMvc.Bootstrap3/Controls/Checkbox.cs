@@ -32,21 +32,21 @@
             lbl.WriteStartTag(writer);
 
             var input = Helper.CreateTagBuilder("input");
-            input.MergeAttribute("type", "checkbox");
+            input.MergeAttribute("type", "checkbox", true);
             if (controlContext != null)
             {
-                input.MergeAttribute("id", controlContext.FieldName);
-                input.MergeAttribute("name", controlContext.FieldName);
-                input.MergeAttribute("value", "true");
+                input.MergeAttribute("id", controlContext.FieldName, true);
+                input.MergeAttribute("name", controlContext.FieldName, true);
+                input.MergeAttribute("value", "true", true);
                 var controlValue = controlContext.FieldValue;
                 if (controlValue != null && bool.Parse(controlValue.ToString()))
                 {
-                    input.MergeAttribute("checked", "checked");
+                    input.MergeAttribute("checked", "checked", true);
                 }
             }
             if (Disabled)
             {
-                input.MergeAttribute("disabled", "disabled");
+                input.MergeAttribute("disabled", "disabled", true);
             }
 
             ApplyCss(input);

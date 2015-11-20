@@ -48,11 +48,11 @@
             var actualType = Type;
             if (actualType != InputType.File && controlContext != null)
             {
-                input.MergeAttribute("id", controlContext.FieldName);
-                input.MergeAttribute("name", controlContext.FieldName);
+                input.MergeAttribute("id", controlContext.FieldName, true);
+                input.MergeAttribute("name", controlContext.FieldName, true);
                 if (controlContext.IsRequired)
                 {
-                    input.MergeAttribute("required", "required");
+                    input.MergeAttribute("required", "required", true);
                 }
                 var value = controlContext.FieldValue;
                 if (value != null)
@@ -110,17 +110,17 @@
                                 break;
                         }
                     }
-                    input.MergeAttribute("value", valueString);
+                    input.MergeAttribute("value", valueString, true);
                 }
             }
 
             if (actualType != InputType.Text)
             {
-                input.MergeAttribute("type", actualType.ToType());
+                input.MergeAttribute("type", actualType.ToType(), true);
             }
             if (Disabled)
             {
-                input.MergeAttribute("disabled", "disabled");
+                input.MergeAttribute("disabled", "disabled", true);
             }
 
             ApplyCss(input);

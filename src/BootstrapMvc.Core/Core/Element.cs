@@ -60,7 +60,7 @@
             {
                 if (!string.IsNullOrWhiteSpace(attr.Value))
                 {
-                    tag.MergeAttribute(attr.Key, attr.Value);
+                    tag.MergeAttribute(attr.Key, attr.Value, true);
                 }
             }
         }

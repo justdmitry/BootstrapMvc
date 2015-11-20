@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
-using Microsoft.Framework.DependencyInjection;
-using BootstrapMvc;
-using Microsoft.Framework.Logging;
+﻿using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Bootstrap3Mvc6.Sample
 {
     public class Startup
     {
+        public Startup(IHostingEnvironment env)
+        {
+            // Set up configuration sources.
+            var builder = new ConfigurationBuilder()
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+        public IConfigurationRoot Configuration { get; set; }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -21,7 +27,7 @@ namespace Bootstrap3Mvc6.Sample
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            loggerFactory.MinimumLevel = LogLevel.Verbose;
+            loggerFactory.MinimumLevel = LogLevel.Debug;
             loggerFactory.AddConsole();
 
             app.UseStatusCodePages();
@@ -45,5 +51,8 @@ namespace Bootstrap3Mvc6.Sample
                     new { controller = "Home" });
             });
         }
+
+        // Entry point for the application.
+        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

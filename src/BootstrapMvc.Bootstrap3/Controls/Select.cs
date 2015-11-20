@@ -54,17 +54,17 @@
 
             if (controlContext != null)
             {
-                tb.MergeAttribute("id", controlContext.FieldName);
-                tb.MergeAttribute("name", controlContext.FieldName);
+                tb.MergeAttribute("id", controlContext.FieldName, true);
+                tb.MergeAttribute("name", controlContext.FieldName, true);
                 if (controlContext.IsRequired)
                 {
-                    tb.MergeAttribute("required", "required");
+                    tb.MergeAttribute("required", "required", true);
                 }
                 value = controlContext.FieldValue;
             }
             if (Disabled)
             {
-                tb.MergeAttribute("disabled", "disabled");
+                tb.MergeAttribute("disabled", "disabled", true);
             }
 
             ApplyCss(tb);

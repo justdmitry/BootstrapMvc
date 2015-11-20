@@ -9,7 +9,7 @@
         {
             var tb = Helper.CreateTagBuilder("li");
             tb.AddCssClass("divider");
-            tb.MergeAttribute("role", "presentation");
+            tb.MergeAttribute("role", "presentation", true);
 
             tb.WriteFullTag(writer);
         }

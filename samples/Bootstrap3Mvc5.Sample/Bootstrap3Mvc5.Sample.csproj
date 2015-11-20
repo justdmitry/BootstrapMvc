@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bootstrap3Mvc5.Sample</RootNamespace>
     <AssemblyName>Bootstrap3Mvc5.Sample</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -23,6 +23,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,29 +44,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BootstrapMvc.Bootstrap3, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3.2.0.0-beta-51021\lib\net45\BootstrapMvc.Bootstrap3.dll</HintPath>
+      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3.2.0.0-beta4-51119\lib\net451\BootstrapMvc.Bootstrap3.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="BootstrapMvc.Bootstrap3Mvc5, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3Mvc5.2.0.0-beta-51021\lib\net45\BootstrapMvc.Bootstrap3Mvc5.dll</HintPath>
+      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3Mvc5.2.0.0-beta4-51119\lib\net451\BootstrapMvc.Bootstrap3Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="BootstrapMvc.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Core.2.0.0-beta-51021\lib\net45\BootstrapMvc.Core.dll</HintPath>
+      <HintPath>..\..\packages\BootstrapMvc.Core.2.0.0-beta4-51119\lib\net451\BootstrapMvc.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="BootstrapMvc.Mvc5, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Mvc5.2.0.0-beta-51021\lib\net45\BootstrapMvc.Mvc5.dll</HintPath>
+      <HintPath>..\..\packages\BootstrapMvc.Mvc5.2.0.0-beta4-51119\lib\net451\BootstrapMvc.Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -103,6 +106,7 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />

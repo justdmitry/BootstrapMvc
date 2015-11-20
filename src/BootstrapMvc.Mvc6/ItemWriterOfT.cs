@@ -3,7 +3,7 @@
     using System;
     using System.IO;
     using Microsoft.AspNet.Html.Abstractions;
-    using Microsoft.Framework.WebEncoders;
+    using Microsoft.Extensions.WebEncoders;
     using BootstrapMvc.Core;
 
     public class ItemWriter<TItem> : IItemWriter<TItem>, IHtmlContent

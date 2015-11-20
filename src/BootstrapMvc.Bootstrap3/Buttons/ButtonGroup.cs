@@ -52,7 +52,7 @@
             {
                 tb.AddCssClass("dropup");
             }
-            tb.MergeAttribute("role", "group");
+            tb.MergeAttribute("role", "group", true);
 
             ApplyCss(tb);
             ApplyAttributes(tb);

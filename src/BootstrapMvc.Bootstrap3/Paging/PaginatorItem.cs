@@ -32,7 +32,7 @@
             var link = Helper.CreateTagBuilder(Disabled ? "span" : "a");
             if (!Disabled)
             {
-                link.MergeAttribute("href", Href);
+                link.MergeAttribute("href", Href, true);
             }
 
             link.WriteStartTag(writer);

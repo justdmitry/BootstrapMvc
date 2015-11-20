@@ -44,7 +44,7 @@
             }
             if (withHref)
             {
-                tb.MergeAttribute("href", Href);
+                tb.MergeAttribute("href", Href, true);
             }
 
             ApplyCss(tb);

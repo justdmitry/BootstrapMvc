@@ -8,8 +8,8 @@
     using Microsoft.AspNet.Mvc.ModelBinding;
     using Microsoft.AspNet.Mvc.Rendering;
     using Microsoft.AspNet.Mvc.ViewFeatures;
-    using Microsoft.Framework.DependencyInjection;
-    using Microsoft.Framework.WebEncoders;
+    using Microsoft.Extensions.WebEncoders;
+    using Microsoft.Extensions.DependencyInjection;
     using BootstrapMvc.Core;
 
     public class BootstrapHelper<TModel> : BootstrapHelper, IAnyContentMarker<TModel>, IWritingHelper<TModel>, IBootstrapContext<TModel>
@@ -58,7 +58,7 @@
             var name = ExpressionHelper.GetExpressionText(expression);
             var fullName = ViewData.TemplateInfo.GetFullHtmlFieldName(name);
 
-            ModelState modelState;
+            ModelStateEntry modelState;
             ViewContext.ViewData.ModelState.TryGetValue(fullName, out modelState);
 
             object value = null;
