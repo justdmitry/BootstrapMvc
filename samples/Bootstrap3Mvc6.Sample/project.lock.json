@@ -3,19 +3,30 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "BootstrapMvc.Core": "2.0.0-beta4"
         }
       },
-      "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51111": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+      "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51119": {
+        "type": "package",
         "dependencies": {
-          "BootstrapMvc.Bootstrap3": "2.0.0",
-          "BootstrapMvc.Mvc6": "2.0.0-rc1-beta4"
+          "BootstrapMvc.Bootstrap3": "2.0.0-beta4-51119",
+          "BootstrapMvc.Mvc6": "2.0.0-rc1-beta4-51119"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll": {}
+        },
+        "runtime": {
+          "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll": {}
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -1579,19 +1590,30 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
-      "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "BootstrapMvc.Core": "2.0.0-beta4"
         }
       },
-      "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51111": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+      "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51119": {
+        "type": "package",
         "dependencies": {
-          "BootstrapMvc.Bootstrap3": "2.0.0",
-          "BootstrapMvc.Mvc6": "2.0.0-rc1-beta4"
+          "BootstrapMvc.Bootstrap3": "2.0.0-beta4-51119",
+          "BootstrapMvc.Mvc6": "2.0.0-rc1-beta4-51119"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll": {}
+        },
+        "runtime": {
+          "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll": {}
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -3158,19 +3180,30 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
-      "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "BootstrapMvc.Core": "2.0.0-beta4"
         }
       },
-      "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51111": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+      "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51119": {
+        "type": "package",
         "dependencies": {
-          "BootstrapMvc.Bootstrap3": "2.0.0",
-          "BootstrapMvc.Mvc6": "2.0.0-rc1-beta4"
+          "BootstrapMvc.Bootstrap3": "2.0.0-beta4-51119",
+          "BootstrapMvc.Mvc6": "2.0.0-rc1-beta4-51119"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll": {}
+        },
+        "runtime": {
+          "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll": {}
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -4738,13 +4771,9 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+    "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3/project.json"
-    },
-    "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51111": {
-      "type": "project",
-      "path": "../../src/BootstrapMvc.Bootstrap3Mvc6/project.json"
     },
     "BootstrapMvc.Core/2.0.0-beta4-51119": {
       "type": "project",
@@ -4753,6 +4782,19 @@
     "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Mvc6/project.json"
+    },
+    "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51119": {
+      "type": "package",
+      "sha512": "EWhw4ZzXUbA4NJfLElgDJRXj1LyzVTWqy312XtyGMSKsa2FajAZAsNKMi7eyDOXqRyLWxYqffzgSXMZHcZ6IBQ==",
+      "files": [
+        "BootstrapMvc.Bootstrap3Mvc6.2.0.0-rc1-beta4-51119.nupkg",
+        "BootstrapMvc.Bootstrap3Mvc6.2.0.0-rc1-beta4-51119.nupkg.sha512",
+        "BootstrapMvc.Bootstrap3Mvc6.nuspec",
+        "lib/dotnet5.4/BootstrapMvc.Bootstrap3Mvc6.dll",
+        "lib/dotnet5.4/BootstrapMvc.Bootstrap3Mvc6.xml",
+        "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll",
+        "lib/net451/BootstrapMvc.Bootstrap3Mvc6.xml"
+      ]
     },
     "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
       "type": "package",
