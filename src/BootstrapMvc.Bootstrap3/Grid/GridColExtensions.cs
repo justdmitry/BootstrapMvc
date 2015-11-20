@@ -2,7 +2,6 @@
 {
     using System;
     using BootstrapMvc.Core;
-    using BootstrapMvc.Grid;
 
     public static class GridColExtensions
     {

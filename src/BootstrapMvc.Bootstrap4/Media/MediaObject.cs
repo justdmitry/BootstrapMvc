@@ -30,7 +30,7 @@
 
             if (a != null)
             {
-                a.MergeAttribute("href", Href);
+                a.MergeAttribute("href", Href, true);
                 a.WriteStartTag(writer);
             }
 

@@ -6,6 +6,8 @@
     {
         public static readonly byte ColumnsCount = 12;
 
+        public static readonly GridSize Empty = new GridSize(0, 0, 0, 0, 0);
+
         private byte xs;
 
         private byte sm;

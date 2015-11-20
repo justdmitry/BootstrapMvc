@@ -2,7 +2,7 @@
 {
     using System;
 
-    public enum ListType
+    public enum ListType : byte
     {
         Unordered,
         Ordered,

@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
-    public enum AlertType
+    using System;
+
+    public enum AlertType : byte
     {
         WarningOrange,
         DangerRed,

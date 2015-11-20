@@ -11,12 +11,13 @@
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var tb = Helper.CreateTagBuilder("div");
+
+            tb.MergeAttribute("role", "alert", true);
             tb.AddCssClass(Type.ToCssClass());
             if (Closable)
             {
                 tb.AddCssClass("alert-dismissable");
             }
-            tb.MergeAttribute("role", "alert", true);
 
             ApplyCss(tb);
             ApplyAttributes(tb);

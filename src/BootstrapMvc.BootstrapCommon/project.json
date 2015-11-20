@@ -1,0 +1,15 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "Bootstrap common (3 and 4) class Library",
+
+  "shared": [ "**/*.cs" ],
+
+  "dependencies": {
+    "BootstrapMvc.Core": ""
+  },
+
+  "frameworks": {
+    "net451": { },
+    "dotnet5.4": { }
+  }
+}

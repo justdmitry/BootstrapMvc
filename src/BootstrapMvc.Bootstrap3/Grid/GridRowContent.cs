@@ -1,4 +1,4 @@
-﻿namespace BootstrapMvc.Grid
+﻿namespace BootstrapMvc
 {
     using System;
     using BootstrapMvc.Core;

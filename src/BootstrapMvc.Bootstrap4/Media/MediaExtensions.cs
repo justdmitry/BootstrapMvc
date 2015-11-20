@@ -51,6 +51,34 @@
 
         #endregion
 
+        public static string ToCssClass(this MediaObjectAlign align)
+        {
+            switch (align)
+            {
+                case MediaObjectAlign.Left:
+                    return "media-left";
+                case MediaObjectAlign.Right:
+                    return "media-right";
+                default:
+                    return string.Empty;
+            }
+        }
+
+        public static string ToCssClass(this MediaObjectVerticalAlign align)
+        {
+            switch (align)
+            {
+                case MediaObjectVerticalAlign.Top:
+                    return string.Empty;
+                case MediaObjectVerticalAlign.Middle:
+                    return "media-middle";
+                case MediaObjectVerticalAlign.Bottom:
+                    return "media-bottom";
+                default:
+                    return string.Empty;
+            }
+        }
+
         public static IItemWriter<Media, MediaContent> Media(this IAnyContentMarker contentHelper)
         {
             return contentHelper.CreateWriter<Media, MediaContent>();

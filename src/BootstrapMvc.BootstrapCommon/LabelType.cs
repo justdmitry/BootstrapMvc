@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
-    public enum LabelType
+    using System;
+
+    public enum LabelType : byte
     {
         DefaultGray,
         PrimaryBlue,

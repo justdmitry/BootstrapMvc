@@ -1,4 +1,4 @@
-﻿namespace BootstrapMvc.Lists
+﻿namespace BootstrapMvc
 {
     using System;
     using BootstrapMvc.Core;

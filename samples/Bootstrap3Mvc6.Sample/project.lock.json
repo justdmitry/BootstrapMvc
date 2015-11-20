@@ -7,6 +7,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "BootstrapMvc.BootstrapCommon": null,
           "BootstrapMvc.Core": "2.0.0-beta4"
         }
       },
@@ -27,6 +28,13 @@
         },
         "runtime": {
           "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll": {}
+        }
+      },
+      "BootstrapMvc.BootstrapCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "BootstrapMvc.Core": null
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -1651,6 +1659,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "BootstrapMvc.BootstrapCommon": null,
           "BootstrapMvc.Core": "2.0.0-beta4"
         }
       },
@@ -1671,6 +1680,13 @@
         },
         "runtime": {
           "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll": {}
+        }
+      },
+      "BootstrapMvc.BootstrapCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "BootstrapMvc.Core": null
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -3298,6 +3314,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "BootstrapMvc.BootstrapCommon": null,
           "BootstrapMvc.Core": "2.0.0-beta4"
         }
       },
@@ -3318,6 +3335,13 @@
         },
         "runtime": {
           "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll": {}
+        }
+      },
+      "BootstrapMvc.BootstrapCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "BootstrapMvc.Core": null
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -4945,6 +4969,10 @@
     "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3/project.json"
+    },
+    "BootstrapMvc.BootstrapCommon/1.0.0": {
+      "type": "project",
+      "path": "../../src/BootstrapMvc.BootstrapCommon/project.json"
     },
     "BootstrapMvc.Core/2.0.0-beta4-51119": {
       "type": "project",

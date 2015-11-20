@@ -5,7 +5,15 @@
 
     public class DefinitionList : ContentElement<DefinitionListContent>
     {
+        public static GridSize TermSizeDefault = GridSize.Empty;
+
+        public static GridSize DescriptionSizeDefault = GridSize.Empty;
+
         public bool Horizontal { get; set; }
+
+        public GridSize TermSize { get; set; } = TermSizeDefault;
+
+        public GridSize DescriptionSize { get; set; } = DescriptionSizeDefault;
 
         protected override DefinitionListContent CreateContentContext(IBootstrapContext context)
         {

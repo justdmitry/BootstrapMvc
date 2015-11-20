@@ -2,7 +2,6 @@
 {
     using System;
     using BootstrapMvc.Core;
-    using BootstrapMvc.Lists;
 
     public static class ListExtensions
     {

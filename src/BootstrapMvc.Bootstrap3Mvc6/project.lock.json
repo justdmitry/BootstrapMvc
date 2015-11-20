@@ -7,7 +7,15 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "BootstrapMvc.BootstrapCommon": null,
           "BootstrapMvc.Core": "2.0.0-beta4"
+        }
+      },
+      "BootstrapMvc.BootstrapCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "BootstrapMvc.Core": null
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -1293,7 +1301,15 @@
         "type": "project",
         "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
+          "BootstrapMvc.BootstrapCommon": null,
           "BootstrapMvc.Core": "2.0.0-beta4"
+        }
+      },
+      "BootstrapMvc.BootstrapCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETPlatform,Version=v5.4",
+        "dependencies": {
+          "BootstrapMvc.Core": null
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -2989,7 +3005,15 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "BootstrapMvc.BootstrapCommon": null,
           "BootstrapMvc.Core": "2.0.0-beta4"
+        }
+      },
+      "BootstrapMvc.BootstrapCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "BootstrapMvc.Core": null
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -4275,7 +4299,15 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "BootstrapMvc.BootstrapCommon": null,
           "BootstrapMvc.Core": "2.0.0-beta4"
+        }
+      },
+      "BootstrapMvc.BootstrapCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "BootstrapMvc.Core": null
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -5561,7 +5593,15 @@
         "type": "project",
         "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
+          "BootstrapMvc.BootstrapCommon": null,
           "BootstrapMvc.Core": "2.0.0-beta4"
+        }
+      },
+      "BootstrapMvc.BootstrapCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETPlatform,Version=v5.4",
+        "dependencies": {
+          "BootstrapMvc.Core": null
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -7503,7 +7543,15 @@
         "type": "project",
         "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
+          "BootstrapMvc.BootstrapCommon": null,
           "BootstrapMvc.Core": "2.0.0-beta4"
+        }
+      },
+      "BootstrapMvc.BootstrapCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETPlatform,Version=v5.4",
+        "dependencies": {
+          "BootstrapMvc.Core": null
         }
       },
       "BootstrapMvc.Core/2.0.0-beta4-51119": {
@@ -9445,6 +9493,10 @@
     "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
       "type": "project",
       "path": "../BootstrapMvc.Bootstrap3/project.json"
+    },
+    "BootstrapMvc.BootstrapCommon/1.0.0": {
+      "type": "project",
+      "path": "../BootstrapMvc.BootstrapCommon/project.json"
     },
     "BootstrapMvc.Core/2.0.0-beta4-51119": {
       "type": "project",

@@ -5,34 +5,6 @@ namespace BootstrapMvc
 {
     public static class ElementExtensions
     {
-        public static IItemWriter<T> HtmlTooltip<T>(this IItemWriter<T> target, string value) where T : Element
-        {
-            target.Item.AddAttribute("title", value);
-            return target;
-        }
-
-        public static IItemWriter<T, TContent> HtmlTooltip<T, TContent>(this IItemWriter<T, TContent> target, string value)
-            where T : ContentElement<TContent>
-            where TContent : DisposableContent
-        {
-            target.Item.AddAttribute("title", value);
-            return target;
-        }
-
-        public static IItemWriter<T> DoNotPrint<T>(this IItemWriter<T> target) where T : Element
-        {
-            target.Item.AddCssClass("hidden-print");
-            return target;
-        }
-
-        public static IItemWriter<T, TContent> DoNotPrint<T, TContent>(this IItemWriter<T, TContent> target)
-            where T : ContentElement<TContent>
-            where TContent : DisposableContent
-        {
-            target.Item.AddCssClass("hidden-print");
-            return target;
-        }
-
         public static IItemWriter<T> PullLeft<T>(this IItemWriter<T> target) where T : Element
         {
             target.Item.AddCssClass("pull-left");
@@ -74,71 +46,7 @@ namespace BootstrapMvc
             target.Item.AddCssClass("center-block");
             return target;
         }
-
-        public static IItemWriter<T> Clearfix<T>(this IItemWriter<T> target) where T : Element
-        {
-            target.Item.AddCssClass("clearfix");
-            return target;
-        }
-
-        public static IItemWriter<T, TContent> Clearfix<T, TContent>(this IItemWriter<T, TContent> target)
-            where T : ContentElement<TContent>
-            where TContent : DisposableContent
-        {
-            target.Item.AddCssClass("clearfix");
-            return target;
-        }
-
-        public static IItemWriter<T> Visible<T>(this IItemWriter<T> target, Visibility value) where T : Element
-        {
-            target.Item.AddCssClass(value.ToCssClass());
-            return target;
-        }
-
-        public static IItemWriter<T, TContent> Visible<T, TContent>(this IItemWriter<T, TContent> target, Visibility value)
-            where T : ContentElement<TContent>
-            where TContent : DisposableContent
-        {
-            target.Item.AddCssClass(value.ToCssClass());
-            return target;
-        }
-
-        public static IItemWriter<T> ForScreenReaders<T>(this IItemWriter<T> target, bool focusable = false) where T : Element
-        {
-            target.Item.AddCssClass("sr-only");
-            if (focusable)
-            {
-                target.Item.AddCssClass("sr-only-focusable");
-            }
-            return target;
-        }
-
-        public static IItemWriter<T, TContent> ForScreenReaders<T, TContent>(this IItemWriter<T, TContent> target, bool focusable = false)
-            where T : ContentElement<TContent>
-            where TContent : DisposableContent
-        {
-            target.Item.AddCssClass("sr-only");
-            if (focusable)
-            {
-                target.Item.AddCssClass("sr-only-focusable");
-            }
-            return target;
-        }
-
-        public static IItemWriter<T> HiddenText<T>(this IItemWriter<T> target) where T : Element
-        {
-            target.Item.AddCssClass("text-hide");
-            return target;
-        }
-
-        public static IItemWriter<T, TContent> HiddenText<T, TContent>(this IItemWriter<T, TContent> target)
-            where T : ContentElement<TContent>
-            where TContent : DisposableContent
-        {
-            target.Item.AddCssClass("text-hide");
-            return target;
-        }
-
+        
         public static IItemWriter<T> TextColor<T>(this IItemWriter<T> target, TextColor color) where T : Element
         {
             target.Item.AddCssClass(color.ToCssClass());
@@ -176,20 +84,6 @@ namespace BootstrapMvc
             where TContent : DisposableContent
         {
             target.Item.AddCssClass(color.ToBackgroundCssClass());
-            return target;
-        }
-
-        public static IItemWriter<T> Id<T>(this IItemWriter<T> target, string id) where T : Element
-        {
-            target.Item.AddAttribute("id", id);
-            return target;
-        }
-
-        public static IItemWriter<T, TContent> Id<T, TContent>(this IItemWriter<T, TContent> target, string id)
-            where T : ContentElement<TContent>
-            where TContent : DisposableContent
-        {
-            target.Item.AddAttribute("id", id);
             return target;
         }
     }

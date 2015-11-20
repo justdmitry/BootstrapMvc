@@ -10,7 +10,8 @@
   "releaseNotes": "New IconTypes from Bootstrap 3.3.5",
 
   "dependencies": {
-    "BootstrapMvc.Core": "2.0.0-beta4-*"
+    "BootstrapMvc.Core": "2.0.0-beta4-*",
+    "BootstrapMvc.BootstrapCommon": { "type": "build" }
   },
 
   "frameworks": {

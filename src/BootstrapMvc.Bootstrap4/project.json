@@ -9,12 +9,12 @@
   "copyright": "Copyright © Dmitry Popov, 2015",
 
   "dependencies": {
-    "BootstrapMvc.Core": "2.0.0-*"
+    "BootstrapMvc.Core": "2.0.0-*",
+    "BootstrapMvc.BootstrapCommon": { "type": "build" }
   },
 
   "frameworks": {
-    "net45": { },
-    "dnx451": { },
-    "dnxcore50": { }
+    "net451": { },
+    "dotnet5.4": { }
   }
 }
