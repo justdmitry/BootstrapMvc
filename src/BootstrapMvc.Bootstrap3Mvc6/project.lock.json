@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.5.1": {
-      "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -14,7 +14,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1"
       },
-      "BootstrapMvc.Mvc6/2.0.0-rc1-beta3-51111": {
+      "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -1289,7 +1289,7 @@
       }
     },
     ".NETPlatform,Version=v5.4": {
-      "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
         "type": "project",
         "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
@@ -1306,7 +1306,7 @@
           "System.Text.Encoding.Extensions": "4.0.0"
         }
       },
-      "BootstrapMvc.Mvc6/2.0.0-rc1-beta3-51111": {
+      "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
         "type": "project",
         "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
@@ -2985,7 +2985,7 @@
       }
     },
     ".NETFramework,Version=v4.5.1/win7-x86": {
-      "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -2996,7 +2996,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1"
       },
-      "BootstrapMvc.Mvc6/2.0.0-rc1-beta3-51111": {
+      "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -4271,7 +4271,7 @@
       }
     },
     ".NETFramework,Version=v4.5.1/win7-x64": {
-      "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -4282,7 +4282,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1"
       },
-      "BootstrapMvc.Mvc6/2.0.0-rc1-beta3-51111": {
+      "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -5557,7 +5557,7 @@
       }
     },
     ".NETPlatform,Version=v5.4/win7-x86": {
-      "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
         "type": "project",
         "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
@@ -5574,7 +5574,7 @@
           "System.Text.Encoding.Extensions": "4.0.0"
         }
       },
-      "BootstrapMvc.Mvc6/2.0.0-rc1-beta3-51111": {
+      "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
         "type": "project",
         "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
@@ -7499,7 +7499,7 @@
       }
     },
     ".NETPlatform,Version=v5.4/win7-x64": {
-      "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
         "type": "project",
         "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
@@ -7516,7 +7516,7 @@
           "System.Text.Encoding.Extensions": "4.0.0"
         }
       },
-      "BootstrapMvc.Mvc6/2.0.0-rc1-beta3-51111": {
+      "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
         "type": "project",
         "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
@@ -9442,7 +9442,7 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3/2.0.0-beta4-51119": {
+    "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
       "type": "project",
       "path": "../BootstrapMvc.Bootstrap3/project.json"
     },
@@ -9450,7 +9450,7 @@
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json"
     },
-    "BootstrapMvc.Mvc6/2.0.0-rc1-beta3-51111": {
+    "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
       "type": "project",
       "path": "../BootstrapMvc.Mvc6/project.json"
     },
