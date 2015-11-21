@@ -37,39 +37,7 @@
             res.Content(contents);
             return res;
         }
-
-        /// <summary>
-        /// Paragraph element (&ltp&gt)
-        /// </summary>
-        public static IItemWriter<OrdinaryElement, AnyContent> Paragraph(this IAnyContentMarker contentHelper)
-        {
-            return contentHelper.Tag("p");
-        }
-
-        /// <summary>
-        /// Paragraph element (&ltp&gt) with content
-        /// </summary>
-        public static IItemWriter<OrdinaryElement, AnyContent> Paragraph(this IAnyContentMarker contentHelper, params object[] contents)
-        {
-            return contentHelper.Tag("p", contents);
-        }
-
-        /// <summary>
-        /// Paragraph element (&ltp&gt)
-        /// </summary>
-        public static IItemWriter<OrdinaryElement, AnyContent> P(this IAnyContentMarker contentHelper)
-        {
-            return contentHelper.Tag("p");
-        }
-
-        /// <summary>
-        /// Paragraph element (&ltp&gt) with content
-        /// </summary>
-        public static IItemWriter<OrdinaryElement, AnyContent> P(this IAnyContentMarker contentHelper, params object[] contents)
-        {
-            return contentHelper.Tag("p", contents);
-        }
-
+       
         public static IItemWriter<OrdinaryElement, AnyContent> Span(this IAnyContentMarker contentHelper)
         {
             return contentHelper.Tag("span");

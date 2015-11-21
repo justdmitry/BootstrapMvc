@@ -19,22 +19,5 @@
             target.Item.AddCssClass(value.ToCssClass());
             return target;
         }
-
-        public static string ToCssClass(this PrintMode mode)
-        {
-            switch (mode)
-            {
-                case BootstrapMvc.PrintMode.VisibleBlock:
-                    return "visible-print-block";
-                case BootstrapMvc.PrintMode.VisibleInline:
-                    return "visible-print-inline";
-                case BootstrapMvc.PrintMode.VisibleInlineBlock:
-                    return "visible-print-inline-block";
-                case BootstrapMvc.PrintMode.Hidden:
-                    return "hidden-print";
-                default:
-                    return string.Empty;
-            }
-        }
     }
 }

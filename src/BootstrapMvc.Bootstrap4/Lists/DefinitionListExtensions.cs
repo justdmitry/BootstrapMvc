@@ -7,9 +7,17 @@
     {
         #region Fluent
 
-        public static IItemWriter<T, DefinitionListContent> Horizontal<T>(this IItemWriter<T, DefinitionListContent> target, bool value = true) where T : DefinitionList
+        public static IItemWriter<T, DefinitionListContent> Horizontal<T>(this IItemWriter<T, DefinitionListContent> target, bool value = true) 
+            where T : DefinitionList
         {
             target.Item.Horizontal = value;
+            return target;
+        }
+
+        public static IItemWriter<T, AnyContent> Truncate<T>(this IItemWriter<T, AnyContent> target, bool value = true) 
+            where T : DefinitionListTerm
+        {
+            target.Item.Truncate = value;
             return target;
         }
 

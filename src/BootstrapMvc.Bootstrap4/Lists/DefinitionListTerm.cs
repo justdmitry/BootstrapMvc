@@ -7,6 +7,8 @@
     {
         public GridSize Size { get; set; }
 
+        public bool Truncate { get; set; }
+
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var tb = Helper.CreateTagBuilder("dt");
@@ -22,6 +24,11 @@
                 {
                     tb.AddCssClass(list.TermSize.ToCssClass());
                 }
+            }
+
+            if (Truncate)
+            {
+                tb.AddCssClass("text-truncate");
             }
 
             ApplyCss(tb);

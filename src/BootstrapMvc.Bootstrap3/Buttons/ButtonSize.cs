@@ -2,7 +2,7 @@
 {
     using System;
 
-    public enum ButtonSize
+    public enum ButtonSize : byte
     {
         Default,
         Large,

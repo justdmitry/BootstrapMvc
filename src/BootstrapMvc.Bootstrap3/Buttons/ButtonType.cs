@@ -2,7 +2,7 @@
 {
     using System;
 
-    public enum ButtonType
+    public enum ButtonType : byte
     {
         DefaultGray,
         PrimaryBlue,

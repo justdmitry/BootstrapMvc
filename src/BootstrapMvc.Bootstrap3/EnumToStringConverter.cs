@@ -4,10 +4,6 @@ namespace BootstrapMvc
 {
     public static partial class EnumToStringConverter
     {
-        public static string ToCssClass(this IconType type)
-        {
-            return "glyphicon glyphicon-" + type.ToString().Replace('_', '-').ToLowerInvariant();
-        }
 
         public static string ToCssClass(this TextColor color)
         {

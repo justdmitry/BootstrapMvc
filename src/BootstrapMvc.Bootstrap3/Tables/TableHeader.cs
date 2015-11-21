@@ -1,4 +1,4 @@
-﻿namespace BootstrapMvc.Tables
+﻿namespace BootstrapMvc
 {
     using System;
 

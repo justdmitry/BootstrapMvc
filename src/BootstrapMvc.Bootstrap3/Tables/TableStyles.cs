@@ -1,9 +1,9 @@
-﻿using System;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+
     [Flags]
-    public enum TableStyles
+    public enum TableStyles : byte
     {
         Default = 0x0,
         Striped = 0x1,
