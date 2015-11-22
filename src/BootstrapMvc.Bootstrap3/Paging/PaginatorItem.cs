@@ -3,7 +3,7 @@
     using System;
     using BootstrapMvc.Core;
 
-    public class PaginatorItem : AnyContentElement, ILink, IDisableable
+    public class PaginatorItem : AnyContentElement, ILink, IDisableable, ICanBeActive
     {
         public string Href { get; set; }
 

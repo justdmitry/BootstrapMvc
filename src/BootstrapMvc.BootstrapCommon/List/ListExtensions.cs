@@ -17,12 +17,12 @@
 
         #region Generation
 
-        public static IItemWriter<List, ListContent> List(this IAnyContentMarker contentHelper, ListType type)
+        public static IItemWriter<List, ListContent> List(this IAnyContentMarker contentHelper, ListType type = ListType.Default)
         {
             return contentHelper.CreateWriter<List, ListContent>().Type(type);
         }
 
-        public static ListContent BeginList(this IAnyContentMarker contentHelper, ListType type)
+        public static ListContent BeginList(this IAnyContentMarker contentHelper, ListType type = ListType.Default)
         {
             return List(contentHelper, type).BeginContent();
         }

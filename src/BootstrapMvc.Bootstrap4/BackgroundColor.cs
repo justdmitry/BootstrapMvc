@@ -1,12 +1,13 @@
 ﻿namespace BootstrapMvc
 {
-    public enum BaseColor
+    public enum BackgroundColor
     {
         DefaultNone,
         PrimaryBlue,
         SuccessGreen,
         InfoCyan,
         WarningOrange,
-        DangerRed
+        DangerRed,
+        FadedGray
     }
 }

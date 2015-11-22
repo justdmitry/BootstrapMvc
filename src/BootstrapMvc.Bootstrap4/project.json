@@ -9,7 +9,7 @@
   "copyright": "Copyright © Dmitry Popov, 2015",
 
   "dependencies": {
-    "BootstrapMvc.Core": "2.0.0-*",
+    "BootstrapMvc.Core": "2.0.0-beta4-*",
     "BootstrapMvc.BootstrapCommon": { "type": "build" }
   },
 

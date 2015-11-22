@@ -21,13 +21,6 @@
             return target;
         }
 
-        public static IItemWriter<T, AnyContent> Active<T>(this IItemWriter<T, AnyContent> target, bool value = true)
-            where T : Button
-        {
-            target.Item.Active = value;
-            return target;
-        }
-
         #endregion
 
         #region Generation

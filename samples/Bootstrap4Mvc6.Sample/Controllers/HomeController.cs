@@ -12,9 +12,9 @@ namespace Bootstrap4Mvc6.Sample.Controllers
             var types = new[]
             {
                 typeof(BootstrapMvc.Core.IWritable),
-                //typeof(BootstrapMvc.Elements.Icon),
+                typeof(BootstrapMvc.Button),
                 typeof(BootstrapMvc.Mvc6.BootstrapHelper),
-                //typeof(BootstrapMvc.Bootstrap4Mvc6AnyContentExtensions),
+                typeof(BootstrapMvc.Bootstrap4Mvc6AnyContentExtensions),
                 typeof(Microsoft.AspNet.Mvc.ActionResult)
             };
 
@@ -37,9 +37,11 @@ namespace Bootstrap4Mvc6.Sample.Controllers
             return View();
         }
 
-        public ActionResult Components()
+        [Route("components/{component}")]
+        public ActionResult Components(string component)
         {
-            return View();
+            ViewBag.Component = component;
+            return View("Components");
         }
 
         public ActionResult Layout()

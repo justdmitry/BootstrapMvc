@@ -12,7 +12,7 @@ namespace Bootstrap3Mvc6.Sample.Controllers
             var types = new[]
             {
                 typeof(BootstrapMvc.Core.IWritable),
-                typeof(BootstrapMvc.Elements.Icon),
+                typeof(BootstrapMvc.Alert),
                 typeof(BootstrapMvc.Mvc6.BootstrapHelper),
                 typeof(BootstrapMvc.Bootstrap3Mvc6AnyContentExtensions),
                 typeof(Microsoft.AspNet.Mvc.ActionResult)

@@ -22,6 +22,14 @@
             return res;
         }
 
+        public IItemWriter<OrdinaryElement, AnyContent> Item(params object[] contents)
+        {
+            var res = Context.Helper.CreateWriter<OrdinaryElement, AnyContent>(Parent);
+            res.Item.TagName = "li";
+            res.Content(contents);
+            return res;
+        }
+
         public AnyContent BeginItem()
         {
             return Item().BeginContent();

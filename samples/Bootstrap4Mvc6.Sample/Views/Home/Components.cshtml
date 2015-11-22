@@ -1,0 +1,8 @@
+﻿@{
+    var component = (string)ViewBag.Component;
+
+    ViewBag.Title = component;
+    ViewBag.Subtitle = "Components";
+
+    await Html.RenderPartialAsync("Components/" + component);
+}

@@ -1915,7 +1915,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "BootstrapMvc.Core >= 2.0.0-*",
+      "BootstrapMvc.Core >= 2.0.0-beta4-*",
       "BootstrapMvc.BootstrapCommon "
     ],
     ".NETFramework,Version=v4.5.1": [],

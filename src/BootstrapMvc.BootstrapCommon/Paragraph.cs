@@ -7,6 +7,11 @@
     {
         public bool Lead { get; set; }
 
+        public Paragraph()
+        {
+            TagName = "p";
+        }
+
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             if (Lead)

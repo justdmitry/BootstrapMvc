@@ -1,0 +1,45 @@
+﻿<h2>Utility classes</h2>
+
+
+<h3>Text alignment</h3>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(6, 6, 6, 6, 6))
+    {
+        <pre>
+@@Bootstrap.P("Text aligned left").TextAlignment(TextAlignment.Left)
+@@Bootstrap.P("Text aligned center").TextAlignment(TextAlignment.Center)
+@@Bootstrap.P("Text aligned right").TextAlignment(TextAlignment.Right)
+@@Bootstrap.P("Text justified").TextAlignment(TextAlignment.Justify)
+@@Bootstrap.P("Text no-wrap").TextAlignment(TextAlignment.NoWrap)
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(6, 6, 6, 6, 6))
+    {
+        @Bootstrap.P("Text aligned left").TextAlignment(TextAlignment.Left)
+        @Bootstrap.P("Text aligned center").TextAlignment(TextAlignment.Center)
+        @Bootstrap.P("Text aligned right").TextAlignment(TextAlignment.Right)
+        @Bootstrap.P("Text justified").TextAlignment(TextAlignment.Justify)
+        @Bootstrap.P("Text no-wrap").TextAlignment(TextAlignment.NoWrap)
+    }
+}
+
+
+<h3>Text transorm</h3>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(6, 6, 6, 6, 6))
+    {
+        <pre>
+@@Bootstrap.P("TeXt LoWeRcAsE").TextTransform(TextTransformation.Lowercase)
+@@Bootstrap.P("TeXt UpPeRcAsE").TextTransform(TextTransformation.Uppercase)
+@@Bootstrap.P("text capitalize").TextTransform(TextTransformation.Capitalize)
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(6, 6, 6, 6, 6))
+    {
+        @Bootstrap.P("TeXt LoWeRcAsE").TextTransform(TextTransformation.Lowercase)
+        @Bootstrap.P("TeXt UpPeRcAsE").TextTransform(TextTransformation.Uppercase)
+        @Bootstrap.P("text capitalize").TextTransform(TextTransformation.Capitalize)
+    }
+}

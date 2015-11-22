@@ -2,7 +2,7 @@
 {
     using BootstrapMvc.Core;
 
-    public class Button : AnyContentElement, IDropdownMenuParentMarker, ILink, IButtonSizable, IDisableable
+    public class Button : AnyContentElement, IDropdownMenuParentMarker, ILink, IButtonSizable, IDisableable, ICanBeActive
     {
         public ButtonType Type { get; set; }
 
