@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.0.0-rc1-beta4-51119",
+  "version": "2.0.1-rc1-beta5-51203",
   "title": "BootstrapMvc.Mvc6",
   "description": "MVC6 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],
@@ -7,7 +7,7 @@
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Update to ASP.NET rc1-final; new framework monikers",
+  "releaseNotes": "Fixed rendering bug in child/partial views",
 
   "dependencies": {
     "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
