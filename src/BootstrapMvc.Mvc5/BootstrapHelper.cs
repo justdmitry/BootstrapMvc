@@ -10,15 +10,23 @@
 
     public class BootstrapHelper: IAnyContentMarker, IWritingHelper, IBootstrapContext
     {
+        private const string ParentStackContextKey = "BootstrapMvc.Mvc5.BootstrapHelper.Parents";
+
         protected IBootstrapContext bootstrapContext;
 
-        private Stack<IWritableItem> parents = new Stack<IWritableItem>(5);
+        private Stack<IWritableItem> parents;
 
         public BootstrapHelper(mvc.ViewContext viewContext, mvc.UrlHelper urlHelper, Func<int, string> messageSource)
         {
             this.ViewContext = viewContext;
             this.UrlHelper = urlHelper;
-            parents.Push(null);
+            parents = (Stack<IWritableItem>)viewContext.HttpContext.Items[ParentStackContextKey];
+            if (parents == null)
+            {
+                parents = new Stack<IWritableItem>(5);
+                parents.Push(null);
+                viewContext.HttpContext.Items[ParentStackContextKey] = parents;
+            }
         }
 
         protected Func<int, string> MessageSource { get; set; }
@@ -30,11 +38,6 @@
         public System.IO.TextWriter GetCurrentWriter()
         {
             return ViewContext.Writer;
-        }
-
-        public virtual void Contextualize(ViewContext viewContext)
-        {
-            ViewContext = viewContext;
         }
 
         #region IAnyContentMarker

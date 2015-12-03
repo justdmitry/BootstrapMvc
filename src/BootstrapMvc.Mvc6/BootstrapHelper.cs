@@ -12,15 +12,16 @@
 
     public class BootstrapHelper: IAnyContentMarker, ICanHasViewContext, IWritingHelper, IBootstrapContext
     {
+        private const string ParentStackContextKey = "BootstrapMvc.Mvc6.BootstrapHelper.Parents";
+
         protected IBootstrapContext bootstrapContext;
 
-        private Stack<IWritableItem> parents = new Stack<IWritableItem>(5);
+        private Stack<IWritableItem> parents;
 
         public BootstrapHelper(IUrlHelper urlHelper, IHtmlEncoder htmlEncoder)
         {
             this.UrlHelper = urlHelper;
             this.HtmlEncoder = htmlEncoder;
-            parents.Push(null);
         }
 
         protected Func<int, string> MessageSource { get; set; }
@@ -39,6 +40,13 @@
         public virtual void Contextualize(ViewContext viewContext)
         {
             ViewContext = viewContext;
+            parents = (Stack<IWritableItem>)viewContext.HttpContext.Items[ParentStackContextKey];
+            if (parents == null)
+            {
+                parents = new Stack<IWritableItem>(5);
+                parents.Push(null);
+                viewContext.HttpContext.Items[ParentStackContextKey] = parents;
+            }
         }
 
         #region IAnyContentMarker
