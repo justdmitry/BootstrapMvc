@@ -3,11 +3,22 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+      "BootstrapMvc.Bootstrap3/2.2.0-beta5-51203": {
+        "type": "package",
         "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4"
+          "BootstrapMvc.Core": "2.0.0-beta4-51119"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/BootstrapMvc.Bootstrap3.dll": {}
+        },
+        "runtime": {
+          "lib/net451/BootstrapMvc.Bootstrap3.dll": {}
         }
       },
       "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51119": {
@@ -1658,11 +1669,22 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
-      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+      "BootstrapMvc.Bootstrap3/2.2.0-beta5-51203": {
+        "type": "package",
         "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4"
+          "BootstrapMvc.Core": "2.0.0-beta4-51119"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/BootstrapMvc.Bootstrap3.dll": {}
+        },
+        "runtime": {
+          "lib/net451/BootstrapMvc.Bootstrap3.dll": {}
         }
       },
       "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51119": {
@@ -3316,11 +3338,22 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
-      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+      "BootstrapMvc.Bootstrap3/2.2.0-beta5-51203": {
+        "type": "package",
         "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4"
+          "BootstrapMvc.Core": "2.0.0-beta4-51119"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/BootstrapMvc.Bootstrap3.dll": {}
+        },
+        "runtime": {
+          "lib/net451/BootstrapMvc.Bootstrap3.dll": {}
         }
       },
       "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51119": {
@@ -4975,13 +5008,22 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
-      "type": "project",
-      "path": "../../src/BootstrapMvc.Bootstrap3/project.json"
-    },
     "BootstrapMvc.Core/2.0.0-beta4-51119": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Core/project.json"
+    },
+    "BootstrapMvc.Bootstrap3/2.2.0-beta5-51203": {
+      "type": "package",
+      "sha512": "h3b/u392/3/0gi9Lc30SFR7SKaSKwW0dQiPBgquQ3nM/u8Uo9RTTq6lJBXTpe7iPDHt9qJVXaqS+RRDr+QTJxw==",
+      "files": [
+        "BootstrapMvc.Bootstrap3.2.2.0-beta5-51203.nupkg",
+        "BootstrapMvc.Bootstrap3.2.2.0-beta5-51203.nupkg.sha512",
+        "BootstrapMvc.Bootstrap3.nuspec",
+        "lib/dotnet5.4/BootstrapMvc.Bootstrap3.dll",
+        "lib/dotnet5.4/BootstrapMvc.Bootstrap3.xml",
+        "lib/net451/BootstrapMvc.Bootstrap3.dll",
+        "lib/net451/BootstrapMvc.Bootstrap3.xml"
+      ]
     },
     "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51119": {
       "type": "package",
@@ -6887,6 +6929,7 @@
     "": [
       "BootstrapMvc.Bootstrap3Mvc6 >= 2.0.0-rc1-*",
       "BootstrapMvc.Mvc6 >= 2.0.1-rc1-*",
+      "BootstrapMvc.Bootstrap3 >= 2.2.0-beta5-*",
       "Microsoft.AspNet.Diagnostics >= 1.0.0-rc1-final",
       "Microsoft.AspNet.IISPlatformHandler >= 1.0.0-rc1-final",
       "Microsoft.AspNet.Mvc >= 6.0.0-rc1-final",

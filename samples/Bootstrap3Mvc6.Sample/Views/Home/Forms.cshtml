@@ -334,6 +334,12 @@ using (Bootstrap.BeginForm())
             .Label("Disabled control").Control(Bootstrap.Input().Disabled())
         @@Bootstrap.FormGroupFor(m => m.FieldWithError)
             .Label("Field with error").Control(Bootstrap.Input())
+
+        using (Bootstrap.FormGroup("Group with multiple controls").WithSizedControls().BeginContent())
+        {
+            @@Bootstrap.ControlFor(m => m.StringField, Bootstrap.Input().Size(6, 6, 6, 6))
+            @@Bootstrap.ControlFor(m => m.IntegerField, Bootstrap.InputInt())
+        }
     }
 
     await Html.RenderPartialAsync("Partial/PartialForm");
@@ -357,14 +363,23 @@ using (Bootstrap.BeginForm())
     }
     using (Bootstrap.BeginGridCol(rightColSize))
     {
+        BootstrapMvc.Forms.ValidationSummary.ErrorHeaderDefault = "You have errors!";
+        BootstrapMvc.Forms.ValidationSummary.ErrorFooterDefault = "Fix them please";
+
         using (Bootstrap.BeginForm())
         {
-            @Bootstrap.ValidationSummary().ErrorHeader("You have errors!").ErrorFooter("Fix please")
+            @Bootstrap.ValidationSummary()
 
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
                 @Bootstrap.FormGroupFor(m => m.StringField).Label("Disabled control").Control(Bootstrap.Input().Disabled())
                 @Bootstrap.FormGroupFor(m => m.FieldWithError).Label("Field with error").Control(Bootstrap.Input())
+
+                using (Bootstrap.FormGroup("Group with multiple controls").WithSizedControls().BeginContent())
+                {
+                    @Bootstrap.ControlFor(m => m.StringField, Bootstrap.Input().Size(6, 6, 6, 6))
+                    @Bootstrap.ControlFor(m => m.IntegerField, Bootstrap.InputInt())
+                }
             }
 
             await Html.RenderPartialAsync("Partial/PartialForm");

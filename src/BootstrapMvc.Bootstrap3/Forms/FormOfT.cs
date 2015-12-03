@@ -10,10 +10,8 @@ namespace BootstrapMvc.Forms
         public Form()
         {
             LabelWidth = new GridSize(0, 4, 4, 4);
-            Type = DefaultType;
+            Type = Form.DefaultType;
         }
-
-        public static FormType DefaultType = FormType.DefaultNone;
 
         public SubmitMethod Method { get; set; } = SubmitMethod.Post;
 

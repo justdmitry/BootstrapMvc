@@ -40,13 +40,6 @@
             return target;
         }
 
-        public static IItemWriter<T, AnyContent> Required<T>(this IItemWriter<T, AnyContent> target, bool value = true)
-            where T : FormGroup
-        {
-            target.Item.IsRequired = value;
-            return target;
-        }
-
         public static IItemWriter<T, AnyContent> WithSizedControls<T>(this IItemWriter<T, AnyContent> target, bool value = true)
             where T : FormGroup
         {

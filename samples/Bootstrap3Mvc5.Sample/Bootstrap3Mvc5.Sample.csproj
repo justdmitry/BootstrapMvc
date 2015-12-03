@@ -43,8 +43,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BootstrapMvc.Bootstrap3, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3.2.1.0-beta4-51119\lib\net451\BootstrapMvc.Bootstrap3.dll</HintPath>
+    <Reference Include="BootstrapMvc.Bootstrap3, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3.2.2.0-beta5-51203\lib\net451\BootstrapMvc.Bootstrap3.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="BootstrapMvc.Bootstrap3Mvc5, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">

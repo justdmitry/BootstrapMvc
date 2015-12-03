@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.1.0-beta4-51119",
+  "version": "2.2.0-beta5-51203",
   "title": "BootstrapMvc.Bootstrap3",
   "description": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
   "authors": [ "just_dmitry" ],
@@ -7,7 +7,7 @@
   "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
   "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "New IconTypes from Bootstrap 3.3.5",
+  "releaseNotes": "ControlFor(), Form default Type, ValidationSummary default headers/footers",
 
   "dependencies": {
     "BootstrapMvc.Core": "2.0.0-beta4-*"

@@ -13,6 +13,10 @@
       "target": "package",
       "version": "2.0.1-rc1-*"
     },
+    "BootstrapMvc.Bootstrap3": {
+      "target": "package",
+      "version": "2.2.0-beta5-*"
+    },
     "Microsoft.AspNet.Diagnostics": "1.0.0-rc1-final",
     "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
     "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
