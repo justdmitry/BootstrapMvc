@@ -324,17 +324,33 @@ using (Bootstrap.BeginForm())
 <pre>
 using (Bootstrap.BeginForm())
 {
+    @@Bootstrap.ValidationSummary()
+        .ErrorHeader("You have errors!")
+        .ErrorFooter("Fix please")
+
     using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
-        @@Bootstrap.ValidationSummary()
-             .ErrorHeader("You have errors!")
-             .ErrorFooter("Fix please")
         @@Bootstrap.FormGroupFor(m => m.StringField)
-             .Label("Disabled control")
-             .Control(Bootstrap.Input().Disabled())
+            .Label("Disabled control").Control(Bootstrap.Input().Disabled())
         @@Bootstrap.FormGroupFor(m => m.FieldWithError)
-             .Label("Field with error")
-             .Control(Bootstrap.Input())
+            .Label("Field with error").Control(Bootstrap.Input())
+    }
+
+    await Html.RenderPartialAsync("Partial/PartialForm");
+}
+</pre>
+<p>And partial file:</p>
+<pre>
+@@model Bootstrap3Mvc6.Sample.Models.DemoModelOne
+@@{
+    using (Bootstrap.BeginFormFieldset("Fieldset in partial subview"))
+    {
+        using (Bootstrap.FormGroupFor(m => m.StringField)
+            .Label("Field with complex content").WithSizedControls().BeginContent())
+        {
+            @@Bootstrap.Input().Size(6, 6, 6, 6)
+            @@Bootstrap.HelpBlock("Some text about this control")
+        }
     }
 }
 </pre>
@@ -350,6 +366,8 @@ using (Bootstrap.BeginForm())
                 @Bootstrap.FormGroupFor(m => m.StringField).Label("Disabled control").Control(Bootstrap.Input().Disabled())
                 @Bootstrap.FormGroupFor(m => m.FieldWithError).Label("Field with error").Control(Bootstrap.Input())
             }
+
+            await Html.RenderPartialAsync("Partial/PartialForm");
         }
     }
 }

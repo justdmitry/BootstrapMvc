@@ -43,8 +43,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BootstrapMvc.Bootstrap3, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3.2.0.0-beta4-51119\lib\net451\BootstrapMvc.Bootstrap3.dll</HintPath>
+    <Reference Include="BootstrapMvc.Bootstrap3, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BootstrapMvc.Bootstrap3.2.1.0-beta4-51119\lib\net451\BootstrapMvc.Bootstrap3.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="BootstrapMvc.Bootstrap3Mvc5, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -55,8 +55,8 @@
       <HintPath>..\..\packages\BootstrapMvc.Core.2.0.0-beta4-51119\lib\net451\BootstrapMvc.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="BootstrapMvc.Mvc5, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BootstrapMvc.Mvc5.2.0.0-beta4-51119\lib\net451\BootstrapMvc.Mvc5.dll</HintPath>
+    <Reference Include="BootstrapMvc.Mvc5, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BootstrapMvc.Mvc5.2.0.1-beta5-51203\lib\net451\BootstrapMvc.Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -167,6 +167,7 @@
     <Content Include="Scripts\jquery-2.1.3.min.map" />
     <Content Include="Views\Home\Partial\Paging.cshtml" />
     <Content Include="Views\Home\Forms.cshtml" />
+    <Content Include="Views\Home\Partial\PartialForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

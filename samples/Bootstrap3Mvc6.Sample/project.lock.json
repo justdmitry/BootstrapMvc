@@ -33,14 +33,25 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1"
       },
-      "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+      "BootstrapMvc.Mvc6/2.0.1-rc1-beta5-51203": {
+        "type": "package",
         "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4",
+          "BootstrapMvc.Core": "2.0.0-beta4-51119",
           "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
           "Microsoft.AspNet.Razor": "4.0.0-rc1-final",
           "Microsoft.AspNet.Routing": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/BootstrapMvc.Mvc6.dll": {}
+        },
+        "runtime": {
+          "lib/net451/BootstrapMvc.Mvc6.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -1677,14 +1688,25 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1"
       },
-      "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+      "BootstrapMvc.Mvc6/2.0.1-rc1-beta5-51203": {
+        "type": "package",
         "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4",
+          "BootstrapMvc.Core": "2.0.0-beta4-51119",
           "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
           "Microsoft.AspNet.Razor": "4.0.0-rc1-final",
           "Microsoft.AspNet.Routing": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/BootstrapMvc.Mvc6.dll": {}
+        },
+        "runtime": {
+          "lib/net451/BootstrapMvc.Mvc6.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -3324,14 +3346,25 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1"
       },
-      "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+      "BootstrapMvc.Mvc6/2.0.1-rc1-beta5-51203": {
+        "type": "package",
         "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4",
+          "BootstrapMvc.Core": "2.0.0-beta4-51119",
           "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
           "Microsoft.AspNet.Razor": "4.0.0-rc1-final",
           "Microsoft.AspNet.Routing": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/BootstrapMvc.Mvc6.dll": {}
+        },
+        "runtime": {
+          "lib/net451/BootstrapMvc.Mvc6.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -4950,10 +4983,6 @@
       "type": "project",
       "path": "../../src/BootstrapMvc.Core/project.json"
     },
-    "BootstrapMvc.Mvc6/2.0.0-rc1-beta4-51119": {
-      "type": "project",
-      "path": "../../src/BootstrapMvc.Mvc6/project.json"
-    },
     "BootstrapMvc.Bootstrap3Mvc6/2.0.0-rc1-beta4-51119": {
       "type": "package",
       "sha512": "EWhw4ZzXUbA4NJfLElgDJRXj1LyzVTWqy312XtyGMSKsa2FajAZAsNKMi7eyDOXqRyLWxYqffzgSXMZHcZ6IBQ==",
@@ -4965,6 +4994,19 @@
         "lib/dotnet5.4/BootstrapMvc.Bootstrap3Mvc6.xml",
         "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll",
         "lib/net451/BootstrapMvc.Bootstrap3Mvc6.xml"
+      ]
+    },
+    "BootstrapMvc.Mvc6/2.0.1-rc1-beta5-51203": {
+      "type": "package",
+      "sha512": "UtKHwCmCc+46ttkQeDrslH+ZoJcdMgqXyhVn0N/OYG6FytaIN+DdQ+SilqmJ1UcyTYhZauSS4+5LyFNBAwWy6g==",
+      "files": [
+        "BootstrapMvc.Mvc6.2.0.1-rc1-beta5-51203.nupkg",
+        "BootstrapMvc.Mvc6.2.0.1-rc1-beta5-51203.nupkg.sha512",
+        "BootstrapMvc.Mvc6.nuspec",
+        "lib/dotnet5.4/BootstrapMvc.Mvc6.dll",
+        "lib/dotnet5.4/BootstrapMvc.Mvc6.xml",
+        "lib/net451/BootstrapMvc.Mvc6.dll",
+        "lib/net451/BootstrapMvc.Mvc6.xml"
       ]
     },
     "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -6844,6 +6886,7 @@
   "projectFileDependencyGroups": {
     "": [
       "BootstrapMvc.Bootstrap3Mvc6 >= 2.0.0-rc1-*",
+      "BootstrapMvc.Mvc6 >= 2.0.1-rc1-*",
       "Microsoft.AspNet.Diagnostics >= 1.0.0-rc1-final",
       "Microsoft.AspNet.IISPlatformHandler >= 1.0.0-rc1-final",
       "Microsoft.AspNet.Mvc >= 6.0.0-rc1-final",
