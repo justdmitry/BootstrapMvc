@@ -1,18 +1,24 @@
 {
-  "version": "2.0.1-beta5-51203",
+  "version": "2.1.0",
   "title": "BootstrapMvc.Mvc5",
-  "description": "MVC5 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).",
-  "authors": [ "just_dmitry" ],
-  "tags": [ "Bootstrap", "Mvc", "Mvc5", "HelpHelpers" ],
-  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
-  "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Fixed rendering bug in child/partial views",
+
+  "packOptions": {
+    "summary": "MVC5 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).",
+    "tags": [ "Bootstrap", "Mvc", "Mvc5", "HelpHelpers" ],
+    "owners": [ "just_dmitry" ],
+    "releaseNotes": "BootstrapMvc.Core updated to v2.1.0",
+    "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/justdmitry/BootstrapMvc.git"
+    }
+  },
 
   "dependencies": {
     "Microsoft.AspNet.Mvc": "5.2.3",
     "Microsoft.AspNet.Razor": "3.2.3",
-    "BootstrapMvc.Core": "2.0.0-beta4-*"
+    "BootstrapMvc.Core": "2.1.0"
   },
 
   "frameworks": {

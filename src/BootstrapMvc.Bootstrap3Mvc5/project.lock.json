@@ -3,29 +3,6 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.5.1": {
-      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4"
-        }
-      },
-      "BootstrapMvc.Core/2.0.0-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
-      },
-      "BootstrapMvc.Mvc5/2.0.0-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4",
-          "Microsoft.AspNet.Mvc": "5.2.3",
-          "Microsoft.AspNet.Razor": "3.2.3"
-        },
-        "frameworkAssemblies": [
-          "System.Web"
-        ]
-      },
       "Microsoft.AspNet.Mvc/5.2.3": {
         "type": "package",
         "dependencies": {
@@ -57,14 +34,14 @@
         "compile": {
           "lib/net45/System.Web.Helpers.dll": {},
           "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {}
+          "lib/net45/System.Web.WebPages.Razor.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {}
         },
         "runtime": {
           "lib/net45/System.Web.Helpers.dll": {},
           "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {}
+          "lib/net45/System.Web.WebPages.Razor.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {}
         }
       },
       "Microsoft.Web.Infrastructure/1.0.0": {
@@ -75,238 +52,131 @@
         "runtime": {
           "lib/net40/Microsoft.Web.Infrastructure.dll": {}
         }
-      }
-    },
-    ".NETFramework,Version=v4.5.1/win7-x86": {
-      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
+      },
+      "BootstrapMvc.Bootstrap3/2.3.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4"
+          "BootstrapMvc.Core": "2.1.0"
+        },
+        "compile": {
+          "net451/BootstrapMvc.Bootstrap3.dll": {}
+        },
+        "runtime": {
+          "net451/BootstrapMvc.Bootstrap3.dll": {}
         }
       },
-      "BootstrapMvc.Core/2.0.0-beta4-51119": {
+      "BootstrapMvc.Core/2.1.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.5.1",
+        "compile": {
+          "net451/BootstrapMvc.Core.dll": {}
+        },
+        "runtime": {
+          "net451/BootstrapMvc.Core.dll": {}
+        }
       },
-      "BootstrapMvc.Mvc5/2.0.0-beta4-51119": {
+      "BootstrapMvc.Mvc5/2.1.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4",
+          "BootstrapMvc.Core": "2.1.0",
           "Microsoft.AspNet.Mvc": "5.2.3",
           "Microsoft.AspNet.Razor": "3.2.3"
         },
         "frameworkAssemblies": [
           "System.Web"
-        ]
-      },
-      "Microsoft.AspNet.Mvc/5.2.3": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "[3.2.3, 3.3.0)",
-          "Microsoft.AspNet.WebPages": "[3.2.3, 3.3.0)"
-        },
+        ],
         "compile": {
-          "lib/net45/System.Web.Mvc.dll": {}
+          "net451/BootstrapMvc.Mvc5.dll": {}
         },
         "runtime": {
-          "lib/net45/System.Web.Mvc.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Razor/3.2.3": {
-        "type": "package",
-        "compile": {
-          "lib/net45/System.Web.Razor.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Razor.dll": {}
-        }
-      },
-      "Microsoft.AspNet.WebPages/3.2.3": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "[3.2.3, 3.3.0)",
-          "Microsoft.Web.Infrastructure": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/System.Web.Helpers.dll": {},
-          "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Helpers.dll": {},
-          "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {}
-        }
-      },
-      "Microsoft.Web.Infrastructure/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.5.1/win7-x64": {
-      "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4"
-        }
-      },
-      "BootstrapMvc.Core/2.0.0-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
-      },
-      "BootstrapMvc.Mvc5/2.0.0-beta4-51119": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "BootstrapMvc.Core": "2.0.0-beta4",
-          "Microsoft.AspNet.Mvc": "5.2.3",
-          "Microsoft.AspNet.Razor": "3.2.3"
-        },
-        "frameworkAssemblies": [
-          "System.Web"
-        ]
-      },
-      "Microsoft.AspNet.Mvc/5.2.3": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "[3.2.3, 3.3.0)",
-          "Microsoft.AspNet.WebPages": "[3.2.3, 3.3.0)"
-        },
-        "compile": {
-          "lib/net45/System.Web.Mvc.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Mvc.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Razor/3.2.3": {
-        "type": "package",
-        "compile": {
-          "lib/net45/System.Web.Razor.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Razor.dll": {}
-        }
-      },
-      "Microsoft.AspNet.WebPages/3.2.3": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "[3.2.3, 3.3.0)",
-          "Microsoft.Web.Infrastructure": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/System.Web.Helpers.dll": {},
-          "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Helpers.dll": {},
-          "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {}
-        }
-      },
-      "Microsoft.Web.Infrastructure/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+          "net451/BootstrapMvc.Mvc5.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3/2.1.0-beta4-51119": {
-      "type": "project",
-      "path": "../BootstrapMvc.Bootstrap3/project.json"
-    },
-    "BootstrapMvc.Core/2.0.0-beta4-51119": {
-      "type": "project",
-      "path": "../BootstrapMvc.Core/project.json"
-    },
-    "BootstrapMvc.Mvc5/2.0.0-beta4-51119": {
-      "type": "project",
-      "path": "../BootstrapMvc.Mvc5/project.json"
-    },
     "Microsoft.AspNet.Mvc/5.2.3": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "i8jZf5QrbcFmjiYWRD7o7qTak/oXKxV80MgP4cZ33A8GC0RBtBIdZ1VHaloGUg+qsHUz5rVkGpwenM+ugDz5PA==",
+      "type": "package",
       "files": [
         "Content/Web.config.install.xdt",
         "Content/Web.config.uninstall.xdt",
-        "lib/net45/System.Web.Mvc.dll",
-        "lib/net45/System.Web.Mvc.xml",
         "Microsoft.AspNet.Mvc.5.2.3.nupkg",
         "Microsoft.AspNet.Mvc.5.2.3.nupkg.sha512",
-        "Microsoft.AspNet.Mvc.nuspec"
+        "Microsoft.AspNet.Mvc.nuspec",
+        "lib/net45/System.Web.Mvc.dll",
+        "lib/net45/System.Web.Mvc.xml"
       ]
     },
     "Microsoft.AspNet.Razor/3.2.3": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "leta+Q73O7+pR8ThTqXmwaNMSqwZQQ3BHfpUHd8S1XaUWe1jRVLitMHqo1AmY7wPNLyankPA1beiUKEGj8Q3Dw==",
+      "type": "package",
       "files": [
-        "lib/net45/System.Web.Razor.dll",
-        "lib/net45/System.Web.Razor.xml",
         "Microsoft.AspNet.Razor.3.2.3.nupkg",
         "Microsoft.AspNet.Razor.3.2.3.nupkg.sha512",
-        "Microsoft.AspNet.Razor.nuspec"
+        "Microsoft.AspNet.Razor.nuspec",
+        "lib/net45/System.Web.Razor.dll",
+        "lib/net45/System.Web.Razor.xml"
       ]
     },
     "Microsoft.AspNet.WebPages/3.2.3": {
-      "type": "package",
-      "serviceable": true,
       "sha512": "zbtxBERla5RE/mhftwbrXOzc0r6lh8WcnjpGW7QQe+PvSDDx1BgsTUGzfCXO/vJznHNpY5oCSYLt8Q5vUu7F0g==",
+      "type": "package",
       "files": [
         "Content/Web.config.install.xdt",
         "Content/Web.config.uninstall.xdt",
+        "Microsoft.AspNet.WebPages.3.2.3.nupkg",
+        "Microsoft.AspNet.WebPages.3.2.3.nupkg.sha512",
+        "Microsoft.AspNet.WebPages.nuspec",
         "lib/net45/System.Web.Helpers.dll",
         "lib/net45/System.Web.Helpers.xml",
         "lib/net45/System.Web.WebPages.Deployment.dll",
         "lib/net45/System.Web.WebPages.Deployment.xml",
-        "lib/net45/System.Web.WebPages.dll",
         "lib/net45/System.Web.WebPages.Razor.dll",
         "lib/net45/System.Web.WebPages.Razor.xml",
-        "lib/net45/System.Web.WebPages.xml",
-        "Microsoft.AspNet.WebPages.3.2.3.nupkg",
-        "Microsoft.AspNet.WebPages.3.2.3.nupkg.sha512",
-        "Microsoft.AspNet.WebPages.nuspec"
+        "lib/net45/System.Web.WebPages.dll",
+        "lib/net45/System.Web.WebPages.xml"
       ]
     },
     "Microsoft.Web.Infrastructure/1.0.0": {
-      "type": "package",
       "sha512": "FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
+      "type": "package",
       "files": [
-        "lib/net40/Microsoft.Web.Infrastructure.dll",
         "Microsoft.Web.Infrastructure.1.0.0.nupkg",
         "Microsoft.Web.Infrastructure.1.0.0.nupkg.sha512",
-        "Microsoft.Web.Infrastructure.nuspec"
+        "Microsoft.Web.Infrastructure.nuspec",
+        "lib/net40/Microsoft.Web.Infrastructure.dll"
       ]
+    },
+    "BootstrapMvc.Bootstrap3/2.3.0": {
+      "type": "project",
+      "path": "../BootstrapMvc.Bootstrap3/project.json",
+      "msbuildProject": "../BootstrapMvc.Bootstrap3/BootstrapMvc.Bootstrap3.xproj"
+    },
+    "BootstrapMvc.Core/2.1.0": {
+      "type": "project",
+      "path": "../BootstrapMvc.Core/project.json",
+      "msbuildProject": "../BootstrapMvc.Core/BootstrapMvc.Core.xproj"
+    },
+    "BootstrapMvc.Mvc5/2.1.0": {
+      "type": "project",
+      "path": "../BootstrapMvc.Mvc5/project.json",
+      "msbuildProject": "../BootstrapMvc.Mvc5/BootstrapMvc.Mvc5.xproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
+      "BootstrapMvc.Bootstrap3 >= 2.3.0",
+      "BootstrapMvc.Mvc5 >= 2.1.0",
       "Microsoft.AspNet.Mvc >= 5.2.3",
-      "Microsoft.AspNet.Razor >= 3.2.3",
-      "BootstrapMvc.Mvc5 >= 2.0.0-beta4-*",
-      "BootstrapMvc.Bootstrap3 >= 2.0.0-beta4-*"
+      "Microsoft.AspNet.Razor >= 3.2.3"
     ],
     ".NETFramework,Version=v4.5.1": [
-      "fx/System.Web >= 4.0.0"
+      "System.Web >= 4.0.0"
     ]
-  }
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
 }
