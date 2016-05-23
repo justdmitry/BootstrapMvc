@@ -1,23 +1,35 @@
-﻿{
-  "version": "2.0.1-rc1-beta5-51203",
+{
+  "version": "2.1.0",
   "title": "BootstrapMvc.Mvc6",
-  "description": "MVC6 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc6 package).",
-  "authors": [ "just_dmitry" ],
-  "tags": [ "Bootstrap", "Mvc", "Mvc6", "HelpHelpers" ],
-  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
-  "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Fixed rendering bug in child/partial views",
+
+  "packOptions": {
+    "summary": "MVC6 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc6 package).",
+    "tags": [ "Bootstrap", "Mvc", "Mvc6", "HelpHelpers" ],
+    "owners": [ "just_dmitry" ],
+    "releaseNotes": "Upgrade to RC2",
+    "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/justdmitry/BootstrapMvc.git"
+    }
+  },
 
   "dependencies": {
-    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Razor": "4.0.0-rc1-final",
-    "Microsoft.AspNet.Routing": "1.0.0-rc1-final",
-    "BootstrapMvc.Core": "2.0.0-beta4-*"
+    "BootstrapMvc.Core": "2.1.0",
+    "Microsoft.AspNetCore.Razor": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Routing": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Html.Abstractions": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Mvc.Abstractions": "1.0.0-rc2-final"
   },
 
   "frameworks": {
     "net451": { },
-    "dotnet5.4": { }
+    "netstandard1.5": {
+      "imports": [
+        "portable-net451+win8"
+      ]
+    }
   }
 }

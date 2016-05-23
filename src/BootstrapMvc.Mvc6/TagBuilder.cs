@@ -1,20 +1,23 @@
-﻿using System;
-using System.IO;
-using Microsoft.Extensions.WebEncoders;
-using mvc = Microsoft.AspNet.Mvc.Rendering;
-using BootstrapMvc.Core;
-
-namespace BootstrapMvc.Mvc6
+﻿namespace BootstrapMvc.Mvc6
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Text.Encodings.Web;
+
+    using mvc = Microsoft.AspNetCore.Mvc.Rendering;
+
+    using BootstrapMvc.Core;
+
     public class TagBuilder : mvc.TagBuilder, ITagBuilder
     {
-        public TagBuilder(string tagName, IHtmlEncoder htmlEncoder)
+        public TagBuilder(string tagName, HtmlEncoder htmlEncoder)
             : base(tagName)
         {
             this.HtmlEncoder = htmlEncoder;
         }
 
-        public IHtmlEncoder HtmlEncoder { get; set; }
+        public HtmlEncoder HtmlEncoder { get; set; }
 
         string ITagBuilder.InnerHtml
         {
@@ -69,6 +72,7 @@ namespace BootstrapMvc.Mvc6
 
         public void WriteStartTag(TextWriter writer)
         {
+            ValidateAttributes();
             TagRenderMode = mvc.TagRenderMode.StartTag;
             WriteTo(writer, HtmlEncoder);
         }
@@ -81,6 +85,7 @@ namespace BootstrapMvc.Mvc6
 
         public void WriteFullTag(TextWriter writer)
         {
+            ValidateAttributes();
             TagRenderMode = mvc.TagRenderMode.Normal;
             WriteTo(writer, HtmlEncoder);
         }
@@ -90,7 +95,17 @@ namespace BootstrapMvc.Mvc6
             InnerHtml.Clear();
             if (!string.IsNullOrEmpty(text))
             {
-                InnerHtml.Append(new mvc.HtmlString(text));
+                InnerHtml.Append(text);
+            }
+        }
+
+        // workaround for https://github.com/aspnet/Mvc/issues/4710
+        protected void ValidateAttributes()
+        {
+            var empty = Attributes.Where(x => x.Value == null).ToArray();
+            foreach(var attr in empty)
+            {
+                Attributes[attr.Key] = string.Empty;
             }
         }
     }

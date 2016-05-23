@@ -2,15 +2,18 @@
 {
     using System;
     using System.Collections.Generic;
-    using Microsoft.AspNet.Mvc;
-    using Microsoft.AspNet.Mvc.Rendering;
-    using Microsoft.AspNet.Mvc.ViewFeatures.Internal;
-    using Microsoft.AspNet.Routing;
-    using Microsoft.AspNet.Html.Abstractions;
-    using Microsoft.Extensions.WebEncoders;
+    using System.Text.Encodings.Web;
+
+    using Microsoft.AspNetCore.Html;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.Routing;
+    using Microsoft.AspNetCore.Mvc.ViewFeatures;
+    using Microsoft.AspNetCore.Routing;
+
     using BootstrapMvc.Core;
 
-    public class BootstrapHelper: IAnyContentMarker, ICanHasViewContext, IWritingHelper, IBootstrapContext
+    public class BootstrapHelper: IAnyContentMarker, IViewContextAware, IWritingHelper, IBootstrapContext
     {
         private const string ParentStackContextKey = "BootstrapMvc.Mvc6.BootstrapHelper.Parents";
 
@@ -18,9 +21,9 @@
 
         private Stack<IWritableItem> parents;
 
-        public BootstrapHelper(IUrlHelper urlHelper, IHtmlEncoder htmlEncoder)
+        public BootstrapHelper(IUrlHelperFactory urlHelperFactory, HtmlEncoder htmlEncoder)
         {
-            this.UrlHelper = urlHelper;
+            this.UrlHelperFactory = urlHelperFactory;
             this.HtmlEncoder = htmlEncoder;
         }
 
@@ -28,9 +31,11 @@
 
         protected ViewContext ViewContext { get; set; }
 
+        protected IUrlHelperFactory UrlHelperFactory { get; set; }
+
         protected IUrlHelper UrlHelper { get; set; }
 
-        protected IHtmlEncoder HtmlEncoder { get; set; }
+        protected HtmlEncoder HtmlEncoder { get; set; }
 
         public System.IO.TextWriter GetCurrentWriter()
         {
@@ -40,6 +45,7 @@
         public virtual void Contextualize(ViewContext viewContext)
         {
             ViewContext = viewContext;
+            UrlHelper = UrlHelperFactory.GetUrlHelper(viewContext);
             parents = (Stack<IWritableItem>)viewContext.HttpContext.Items[ParentStackContextKey];
             if (parents == null)
             {
@@ -134,7 +140,7 @@
 
         string IWritingHelper.HtmlEncode(string value)
         {
-            return HtmlEncoder.HtmlEncode(value);
+            return HtmlEncoder.Encode(value);
         }
 
         void IWritingHelper.WriteValue(System.IO.TextWriter writer, object value)
@@ -158,7 +164,7 @@
             var str = value as string;
             if (str != null)
             {
-                writer.Write(HtmlEncoder.HtmlEncode(str));
+                writer.Write(HtmlEncoder.Encode(str));
                 return;
             }
 

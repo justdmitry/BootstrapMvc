@@ -1,8 +1,9 @@
 ﻿namespace BootstrapMvc
 {
     using System;
+    using Microsoft.AspNetCore.Routing;
+
     using BootstrapMvc.Core;
-    using Microsoft.AspNet.Routing;
 
     public static class Mvc6LinkExtensions
     {

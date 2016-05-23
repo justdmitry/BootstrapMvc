@@ -2,8 +2,9 @@
 {
     using System;
     using System.IO;
-    using Microsoft.AspNet.Html.Abstractions;
-    using Microsoft.Extensions.WebEncoders;
+    using System.Text.Encodings.Web;
+    using Microsoft.AspNetCore.Html;
+
     using BootstrapMvc.Core;
 
     public class ItemWriter<TItem> : IItemWriter<TItem>, IHtmlContent
@@ -32,7 +33,7 @@
             Item.WriteTo(writer);
         }
 
-        public void WriteTo(TextWriter writer, IHtmlEncoder encoder)
+        public void WriteTo(TextWriter writer, HtmlEncoder encoder)
         {
             Item.WriteTo(writer);
         }

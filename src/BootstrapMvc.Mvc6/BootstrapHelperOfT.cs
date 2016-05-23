@@ -4,20 +4,23 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
-    using Microsoft.AspNet.Mvc;
-    using Microsoft.AspNet.Mvc.ModelBinding;
-    using Microsoft.AspNet.Mvc.Rendering;
-    using Microsoft.AspNet.Mvc.ViewFeatures;
-    using Microsoft.Extensions.WebEncoders;
+    using System.Text.Encodings.Web;
+
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.Routing;
+    using Microsoft.AspNetCore.Mvc.ViewFeatures;
+    using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
     using Microsoft.Extensions.DependencyInjection;
+
     using BootstrapMvc.Core;
 
     public class BootstrapHelper<TModel> : BootstrapHelper, IAnyContentMarker<TModel>, IWritingHelper<TModel>, IBootstrapContext<TModel>
     {
         private static readonly string WarningSpecialField = "BootstrapContext_WarningField";
 
-        public BootstrapHelper(IUrlHelper urlHelper, IHtmlEncoder htmlEncoder)
-            : base(urlHelper, htmlEncoder)
+        public BootstrapHelper(IUrlHelperFactory urlHelperFactory, HtmlEncoder htmlEncoder)
+            : base(urlHelperFactory, htmlEncoder)
         {
             // Nothing
         }
@@ -54,9 +57,9 @@
 
         public void FillControlContext<TProperty>(IControlContext target, Expression<Func<TModel, TProperty>> expression)
         {
-            var modelExplorer = ExpressionMetadataProvider.FromLambdaExpression(expression, ViewData, MetadataProvider);
-            var name = ExpressionHelper.GetExpressionText(expression);
-            var fullName = ViewData.TemplateInfo.GetFullHtmlFieldName(name);
+            var modelExplorer = ExpressionMetadataProvider.FromLambdaExpression<TModel, TProperty>(expression, ViewData, MetadataProvider);
+            var expressionName = ExpressionHelper.GetExpressionText(expression);
+            var fullName = ViewData.TemplateInfo.GetFullHtmlFieldName(expressionName);
 
             ModelStateEntry modelState;
             ViewContext.ViewData.ModelState.TryGetValue(fullName, out modelState);
