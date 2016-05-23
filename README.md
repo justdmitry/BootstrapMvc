@@ -7,9 +7,9 @@ Extendable packages pack for simplifying Bootstrap markup in your ASP.MVC projec
 * [BootstrapMvc.Core](https://www.nuget.org/packages/BootstrapMvc.Core/) - core library, containing base clasess only;
 * [BootstrapMvc.Bootstrap3](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3/) - helper classes for Bootstrap 3.3 (not complete at this moment), not bound to any MVC version;
 * [BootstrapMvc.Mvc5](https://www.nuget.org/packages/BootstrapMvc.Mvc5/) - classes for integrating with ASP.MVC5 infrastructure;
-* [BootstrapMvc.Mvc6](https://www.nuget.org/packages/BootstrapMvc.Mvc6/) - classes for integrating with ASP.NET5 / MVC6 infrastructure (currently for beta7);
+* [BootstrapMvc.Mvc6](https://www.nuget.org/packages/BootstrapMvc.Mvc6/) - classes for integrating with ASP.NET Core / MVC6 infrastructure (currently for RC2);
 * **[BootstrapMvc.Bootstrap3Mvc5](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc5/) - 'use-this' package (with correct dependencies) for using in your MVC5 projects.**
-* **[BootstrapMvc.Bootstrap3Mvc6](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc6/) - 'use-this' package (with correct dependencies) for using in your ASP.NET5 / MVC6 projects (currently for beta7).**
+* **[BootstrapMvc.Bootstrap3Mvc6](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc6/) - 'use-this' package (with correct dependencies) for using in your ASP.NET Core / MVC6 projects (currently for RC2).**
 
 ## Key features
 
@@ -39,7 +39,7 @@ Just one sample - toolbar with button with dropdown menu. You remember how much 
     
 Of course you can do more than simple buttons and create URLs better than using string values - look for more extension methods.
 
-Also, view sample sites for [ASP.NET MVC5](http://bootstrap3mvc5.azurewebsites.net/) and (ASP.NET5 MVC6)[http://bootstrap3mvc6.azurewebsites.net/]
+Also, view sample sites for [ASP.NET MVC5](http://bootstrap3mvc5.azurewebsites.net/) and [ASP.NET Core / MVC6](http://bootstrap3mvc6.azurewebsites.net/)
 
 ## Installation for MVC5
 
@@ -65,16 +65,16 @@ And add one more `namespace` to namespaces list:
 
 Clean and Rebuild you project to activate changes and activate intellisence. Rarely, a Visual Studio restart also needed.
 
-## Installation for MVC6
+## Installation for ASP.NET Core
 
 ### 1. Add dependency to `project.json`
 
     "dependencies": {
         ....
-        "BootstrapMvc.Bootstrap3Mvc6": "0.1.51007-beta7-*"
+        "BootstrapMvc.Bootstrap3Mvc6": "2.0.2-rc2-*"
     }
 
-Currently, **beta7** of ASP.NET5 / MVC6 is supported - because beta8 is in progress and not available in Azure.
+Currently, **RC2** of ASP.NET Core / MVC6 is supported.
 
 ### 2. Update `Views\_ViewImports.cshtml` file
 
