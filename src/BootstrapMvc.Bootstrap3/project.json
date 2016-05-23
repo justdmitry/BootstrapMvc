@@ -1,20 +1,30 @@
 ﻿{
-  "version": "2.2.0-beta5-51203",
+  "version": "2.3.0",
   "title": "BootstrapMvc.Bootstrap3",
-  "description": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
-  "authors": [ "just_dmitry" ],
-  "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "HtmlHelpers" ],
-  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
-  "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "ControlFor(), Form default Type, ValidationSummary default headers/footers",
+
+  "packOptions": {
+    "summary": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
+    "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "HtmlHelpers" ],
+    "owners": [ "just_dmitry" ],
+    "releaseNotes": "Upgrade to RC2 and netstandard1.3",
+    "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/justdmitry/BootstrapMvc.git"
+    }
+  },
 
   "dependencies": {
-    "BootstrapMvc.Core": "2.0.0-beta4-*"
+    "BootstrapMvc.Core": "2.1.0"
   },
 
   "frameworks": {
     "net451": { },
-    "dotnet5.4": { }
+    "netstandard1.3": {
+      "dependencies": {
+        "System.Globalization": "4.0.11-rc2-24027"
+      }
+    }
   }
 }
