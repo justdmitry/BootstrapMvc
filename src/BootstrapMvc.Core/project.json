@@ -1,24 +1,30 @@
 ﻿{
-  "version": "2.0.0-beta4-51119",
+  "version": "2.1.0",
   "title": "BootstrapMvc.Core",
-  "description": "Core library for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
-  "authors": [ "just_dmitry" ],
-  "tags": [ "Bootstrap", "Mvc", "HtmlHelpers" ],
-  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
-  "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Updated to new framework monikers",
 
-  "dependencies": { },
+  "packOptions": {
+    "summary": "Core library for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
+    "tags": [ "Bootstrap", "Mvc", "HtmlHelpers" ],
+    "owners": [ "just_dmitry" ],
+    "releaseNotes": "Upgrade to RC2 and netstandard1.3",
+    "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/justdmitry/BootstrapMvc.git"
+    }
+  },
+
+  "dependencies": {  },
 
   "frameworks": {
     "net451": { },
-    "dotnet5.4": {
+    "netstandard1.3": {
       "dependencies": {
-        "Microsoft.CSharp": "4.0.0",
-        "System.ComponentModel.TypeConverter": "4.0.0",
-        "System.Reflection.Extensions": "4.0.0",
-        "System.Text.Encoding.Extensions": "4.0.0"
+        "System.IO": "4.1.0-rc2-24027",
+        "System.Linq": "4.1.0-rc2-24027",
+        "System.Linq.Expressions": "4.0.11-rc2-24027",
+        "System.Runtime.Extensions": "4.1.0-rc2-24027"
       }
     }
   }
