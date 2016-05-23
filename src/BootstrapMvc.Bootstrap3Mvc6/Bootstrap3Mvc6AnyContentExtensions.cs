@@ -3,7 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.AspNet.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+
     using BootstrapMvc;
     using BootstrapMvc.Controls;
     using BootstrapMvc.Core;

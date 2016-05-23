@@ -1,21 +1,31 @@
 ﻿{
-  "version": "2.0.0-rc1-beta4-51119",
+  "version": "2.1.0",
   "title": "BootstrapMvc.Bootstrap3Mvc6",
-  "description": "Helpers for using [Twitter] Bootstrap 3.3 in MVC6 projects. Use this package to get correct dependencies from BootstrapMvc pack.",
-  "authors": [ "just_dmitry" ],
-  "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "Mvc6", "HelpHelpers" ],
-  "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
-  "licenseUrl": "",
   "copyright": "Copyright © Dmitry Popov, 2015",
-  "releaseNotes": "Update to ASP.NET rc1-final; new framework monikers",
+
+  "packOptions": {
+    "summary": "Helpers for using [Twitter] Bootstrap 3.3 in MVC6 projects. Use this package to get correct dependencies from BootstrapMvc pack.",
+    "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "Mvc6", "HelpHelpers" ],
+    "owners": [ "just_dmitry" ],
+    "releaseNotes": "Upgrade to RC2",
+    "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/justdmitry/BootstrapMvc.git"
+    }
+  },
 
   "dependencies": {
-    "BootstrapMvc.Mvc6": "2.0.0-rc1-beta4-*",
-    "BootstrapMvc.Bootstrap3": "2.0.0-*"
+    "BootstrapMvc.Mvc6": "2.1.0",
+    "BootstrapMvc.Bootstrap3": "2.3.0"
   },
 
   "frameworks": {
     "net451": { },
-    "dotnet5.4": { }
+    "netstandard1.5": {
+      "imports": [
+        "portable-net451+win8"
+      ]
+    }
   }
 }
