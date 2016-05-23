@@ -1,21 +1,22 @@
-﻿using System;
-using Microsoft.AspNet.Mvc;
-using System.Linq;
-using System.Reflection;
-
-namespace Bootstrap3Mvc6.Sample.Controllers
+﻿namespace Bootstrap3Mvc6.Sample.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Reflection;
+
+    using Microsoft.AspNetCore.Mvc;
+
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             var types = new[]
             {
-                typeof(BootstrapMvc.Core.IWritable),
-                typeof(BootstrapMvc.Elements.Icon),
-                typeof(BootstrapMvc.Mvc6.BootstrapHelper),
-                typeof(BootstrapMvc.Bootstrap3Mvc6AnyContentExtensions),
-                typeof(Microsoft.AspNet.Mvc.ActionResult)
+                typeof(BootstrapMvc.Core.IWritable).GetTypeInfo(),
+                typeof(BootstrapMvc.Elements.Icon).GetTypeInfo(),
+                typeof(BootstrapMvc.Mvc6.BootstrapHelper).GetTypeInfo(),
+                typeof(BootstrapMvc.Bootstrap3Mvc6AnyContentExtensions).GetTypeInfo(),
+                typeof(Microsoft.AspNetCore.Mvc.ActionResult).GetTypeInfo()
             };
 
             var versions = types.Select(x => new[]
