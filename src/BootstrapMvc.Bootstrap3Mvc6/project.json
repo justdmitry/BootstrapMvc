@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.1.0",
+  "version": "2.1.1",
   "title": "BootstrapMvc.Bootstrap3Mvc6",
   "copyright": "Copyright © Dmitry Popov, 2015",
 
@@ -7,7 +7,7 @@
     "summary": "Helpers for using [Twitter] Bootstrap 3.3 in MVC6 projects. Use this package to get correct dependencies from BootstrapMvc pack.",
     "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "Mvc6", "HelpHelpers" ],
     "owners": [ "just_dmitry" ],
-    "releaseNotes": "Upgrade to RC2",
+    "releaseNotes": "BootstrapMvc.Mvc6 updated to v2.2.0",
     "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
     "repository": {
       "type": "git",
@@ -16,7 +16,7 @@
   },
 
   "dependencies": {
-    "BootstrapMvc.Mvc6": "2.1.0",
+    "BootstrapMvc.Mvc6": "2.2.0",
     "BootstrapMvc.Bootstrap3": "2.3.0"
   },
 

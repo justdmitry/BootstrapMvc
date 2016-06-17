@@ -814,7 +814,7 @@
           "net451/BootstrapMvc.Core.dll": {}
         }
       },
-      "BootstrapMvc.Mvc6/2.1.0": {
+      "BootstrapMvc.Mvc6/2.2.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -2668,7 +2668,7 @@
           "netstandard1.3/BootstrapMvc.Core.dll": {}
         }
       },
-      "BootstrapMvc.Mvc6/2.1.0": {
+      "BootstrapMvc.Mvc6/2.2.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.5",
         "dependencies": {
@@ -6399,7 +6399,7 @@
       "path": "../BootstrapMvc.Core/project.json",
       "msbuildProject": "../BootstrapMvc.Core/BootstrapMvc.Core.xproj"
     },
-    "BootstrapMvc.Mvc6/2.1.0": {
+    "BootstrapMvc.Mvc6/2.2.0": {
       "type": "project",
       "path": "../BootstrapMvc.Mvc6/project.json",
       "msbuildProject": "../BootstrapMvc.Mvc6/BootstrapMvc.Mvc6.xproj"
@@ -6408,7 +6408,7 @@
   "projectFileDependencyGroups": {
     "": [
       "BootstrapMvc.Bootstrap3 >= 2.3.0",
-      "BootstrapMvc.Mvc6 >= 2.1.0"
+      "BootstrapMvc.Mvc6 >= 2.2.0"
     ],
     ".NETFramework,Version=v4.5.1": [],
     ".NETStandard,Version=v1.5": []

@@ -2,8 +2,10 @@
 {
     using System;
     using Microsoft.AspNetCore.Routing;
+    using Microsoft.AspNetCore.Mvc.Routing;
 
     using BootstrapMvc.Core;
+    using BootstrapMvc.Mvc6;
 
     public static class Mvc6LinkExtensions
     {
@@ -20,6 +22,23 @@
             where TContent : DisposableContent
         {
             var href = target.Helper.CreateUrl(routeValues);
+            target.Href(href);
+            return target;
+        }
+
+        public static IItemWriter<T> Href<T>(this IItemWriter<T> target, UrlActionContext actionContext)
+            where T : Element, ILink
+        {
+            var href = ((BootstrapHelper)target.Helper).CreateUrl(actionContext);
+            target.Href(href);
+            return target;
+        }
+
+        public static IItemWriter<T, TContent> Href<T, TContent>(this IItemWriter<T, TContent> target, UrlActionContext actionContext)
+            where T : ContentElement<TContent>, ILink
+            where TContent : DisposableContent
+        {
+            var href = ((BootstrapHelper) target.Helper).CreateUrl(actionContext);
             target.Href(href);
             return target;
         }

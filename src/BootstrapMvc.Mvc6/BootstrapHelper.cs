@@ -98,6 +98,11 @@
 
         #endregion
 
+        public string CreateUrl(UrlActionContext actionContext)
+        {
+            return UrlHelper.Action(actionContext);
+        }
+
         #region IWritingHelper
 
         IItemWriter<T> IWritingHelper.CreateWriter<T>(IWritableItem parent)

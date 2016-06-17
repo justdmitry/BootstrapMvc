@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "title": "BootstrapMvc.Mvc6",
   "copyright": "Copyright © Dmitry Popov, 2015",
 
@@ -7,7 +7,7 @@
     "summary": "MVC6 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc6 package).",
     "tags": [ "Bootstrap", "Mvc", "Mvc6", "HelpHelpers" ],
     "owners": [ "just_dmitry" ],
-    "releaseNotes": "Upgrade to RC2",
+    "releaseNotes": "Href() method accepts UrlActionContext",
     "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
     "repository": {
       "type": "git",
