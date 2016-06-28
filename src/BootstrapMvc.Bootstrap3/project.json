@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.3.0",
+  "version": "2.4.0",
   "title": "BootstrapMvc.Bootstrap3",
   "copyright": "Copyright © Dmitry Popov, 2015",
 
@@ -7,7 +7,7 @@
     "summary": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
     "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "HtmlHelpers" ],
     "owners": [ "just_dmitry" ],
-    "releaseNotes": "Upgrade to RC2 and netstandard1.3",
+    "releaseNotes": "Dependencies upgraded to 1.0.0 RTM",
     "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
     "repository": {
       "type": "git",
@@ -16,14 +16,14 @@
   },
 
   "dependencies": {
-    "BootstrapMvc.Core": "2.1.0"
+    "BootstrapMvc.Core": "2.2.0"
   },
 
   "frameworks": {
     "net451": { },
     "netstandard1.3": {
       "dependencies": {
-        "System.Globalization": "4.0.11-rc2-24027"
+        "System.Globalization": "4.0.11"
       }
     }
   }
