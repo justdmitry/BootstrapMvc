@@ -29,8 +29,13 @@
                 dsmb.MergeAttribute("type", "button", true);
                 dsmb.MergeAttribute("class", "close", true);
                 dsmb.MergeAttribute("data-dismiss", "alert", true);
+#if BOOTSTRAP3
                 dsmb.MergeAttribute("aria-hidden", "true", true);
                 dsmb.InnerHtml = "&times;";
+#endif
+#if BOOTSTRAP4
+                dsmb.InnerHtml = "<span aria-hidden=\"true\">&times;</span>";
+#endif
                 dsmb.WriteFullTag(writer);
             }
 

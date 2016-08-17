@@ -1,13 +1,13 @@
 ﻿{
-  "version": "2.4.0",
-  "title": "BootstrapMvc.Bootstrap3",
-  "copyright": "Copyright © Dmitry Popov, 2015",
+  "version": "1.0.0",
+  "title": "BootstrapMvc.Bootstrap4",
+  "copyright": "Copyright © Dmitry Popov, 2016",
 
   "packOptions": {
-    "summary": "Bootstrap 3.3 classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
-    "tags": [ "Bootstrap", "Bootstrap3", "Mvc", "HtmlHelpers" ],
+    "summary": "Bootstrap 4 (alpha.3) classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap4Mvc6 package).",
+    "tags": [ "Bootstrap", "Bootstrap4", "Mvc", "HtmlHelpers" ],
     "owners": [ "just_dmitry" ],
-    "releaseNotes": "Dependencies upgraded to 1.0.0 RTM",
+    //"releaseNotes": "Dependencies upgraded to 1.0.0 RTM",
     "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
     "repository": {
       "type": "git",
@@ -24,7 +24,7 @@
   },
 
   "buildOptions": {
-    "define": [ "BOOTSTRAP3" ]
+    "define": [ "BOOTSTRAP4" ]
   },
 
   "frameworks": {

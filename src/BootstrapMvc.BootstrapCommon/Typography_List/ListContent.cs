@@ -19,6 +19,12 @@
         {
             var res = Context.Helper.CreateWriter<OrdinaryElement, AnyContent>(Parent);
             res.Item.TagName = "li";
+#if BOOTSTRAP4
+            if (Parent.Type == ListType.Inline)
+            {
+                res.Item.AddCssClass("list-inline-item");
+            }
+#endif
             return res;
         }
 

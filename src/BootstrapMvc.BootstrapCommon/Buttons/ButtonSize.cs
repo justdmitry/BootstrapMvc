@@ -7,6 +7,8 @@
         Default,
         Large,
         Small,
+#if BOOTSTRAP3
         ExtraSmall
+#endif
     }
 }

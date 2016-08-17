@@ -14,8 +14,10 @@
 
         public bool DropUp { get; set; }
 
+#if BOOTSTRAP3
         public bool Justified { get; set; }
-        
+#endif
+                
         public void AddButton(Button value)
         {
             if (value == null)
@@ -44,10 +46,12 @@
             {
                 tb.AddCssClass("btn-group-vertical");
             }
+#if BOOTSTRAP3
             if (Justified)
             {
                 tb.AddCssClass("btn-group-justified");
             }
+#endif
             if (DropUp)
             {
                 tb.AddCssClass("dropup");

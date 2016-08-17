@@ -8,8 +8,14 @@
         {
             switch (type)
             {
+#if BOOTSTRAP3
                 case ButtonType.DefaultGray:
                     return "btn btn-default";
+#endif
+#if BOOTSTRAP4
+                case ButtonType.SecondaryWhite:
+                    return "btn btn-secondary";
+#endif
                 case ButtonType.PrimaryBlue:
                     return "btn btn-primary";
                 case ButtonType.InfoCyan:
@@ -34,8 +40,10 @@
                     return "btn-lg";
                 case ButtonSize.Small:
                     return "btn-sm";
+#if BOOTSTRAP3
                 case ButtonSize.ExtraSmall:
                     return "btn-xs";
+#endif
             }
             return string.Empty;
         }
@@ -48,8 +56,10 @@
                     return "btn-group-lg";
                 case ButtonSize.Small:
                     return "btn-group-sm";
+#if BOOTSTRAP3
                 case ButtonSize.ExtraSmall:
                     return "btn-group-xs";
+#endif
             }
             return string.Empty;
         }

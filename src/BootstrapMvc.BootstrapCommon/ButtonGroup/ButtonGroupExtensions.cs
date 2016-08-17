@@ -4,7 +4,7 @@
     using BootstrapMvc.Core;
     using BootstrapMvc.Buttons;
 
-    public static class ButtonGroupExtensions
+    public static partial class ButtonGroupExtensions
     {
         #region Fluent
 
@@ -14,17 +14,19 @@
             return target;
         }
 
-        public static IItemWriter<T, ButtonGroupContent> Justified<T>(this IItemWriter<T, ButtonGroupContent> target, bool value = true) where T : ButtonGroup
-        {
-            target.Item.Justified = value;
-            return target;
-        }
-
         public static IItemWriter<T, ButtonGroupContent> DropUp<T>(this IItemWriter<T, ButtonGroupContent> target, bool value = true) where T : ButtonGroup
         {
             target.Item.DropUp = value;
             return target;
         }
+
+#if BOOTSTRAP3
+        public static IItemWriter<T, ButtonGroupContent> Justified<T>(this IItemWriter<T, ButtonGroupContent> target, bool value = true) where T : ButtonGroup
+        {
+            target.Item.Justified = value;
+            return target;
+        }
+#endif
 
         public static IItemWriter<T, ButtonGroupContent> AddButton<T, TButton>(this IItemWriter<T, ButtonGroupContent> target, IItemWriter<TButton, AnyContent> button) 
             where T : ButtonGroup
@@ -45,9 +47,9 @@
             return target;
         }
 
-        #endregion
+#endregion
 
-        #region Generation
+#region Generation
 
         public static IItemWriter<ButtonGroup, ButtonGroupContent> ButtonGroup(this IAnyContentMarker contentHelper)
         {
@@ -69,6 +71,6 @@
             return ButtonGroup(contentHelper).Size(size).BeginContent();
         }
 
-        #endregion
+#endregion
     }
 }

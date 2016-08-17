@@ -53,7 +53,7 @@
           "lib/net40/Microsoft.Web.Infrastructure.dll": {}
         }
       },
-      "BootstrapMvc.Core/2.1.0": {
+      "BootstrapMvc.Core/2.2.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "compile": {
@@ -119,7 +119,7 @@
         "lib/net40/Microsoft.Web.Infrastructure.dll"
       ]
     },
-    "BootstrapMvc.Core/2.1.0": {
+    "BootstrapMvc.Core/2.2.0": {
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json",
       "msbuildProject": "../BootstrapMvc.Core/BootstrapMvc.Core.xproj"

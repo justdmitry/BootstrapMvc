@@ -3,19 +3,6 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.5.1": {
-      "BootstrapMvc.BootstrapCommon/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "BootstrapMvc.Core": "2.2.0"
-        },
-        "compile": {
-          "net451/BootstrapMvc.BootstrapCommon.dll": {}
-        },
-        "runtime": {
-          "net451/BootstrapMvc.BootstrapCommon.dll": {}
-        }
-      },
       "BootstrapMvc.Core/2.2.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -166,20 +153,6 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
-        }
-      },
-      "BootstrapMvc.BootstrapCommon/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v1.3",
-        "dependencies": {
-          "BootstrapMvc.Core": "2.2.0",
-          "System.Globalization": "4.0.11"
-        },
-        "compile": {
-          "netstandard1.3/BootstrapMvc.BootstrapCommon.dll": {}
-        },
-        "runtime": {
-          "netstandard1.3/BootstrapMvc.BootstrapCommon.dll": {}
         }
       },
       "BootstrapMvc.Core/2.2.0": {
@@ -1025,11 +998,6 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "BootstrapMvc.BootstrapCommon/1.0.0": {
-      "type": "project",
-      "path": "../BootstrapMvc.BootstrapCommon/project.json",
-      "msbuildProject": "../BootstrapMvc.BootstrapCommon/BootstrapMvc.BootstrapCommon.xproj"
-    },
     "BootstrapMvc.Core/2.2.0": {
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json",
@@ -1038,7 +1006,6 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "BootstrapMvc.BootstrapCommon",
       "BootstrapMvc.Core >= 2.2.0"
     ],
     ".NETFramework,Version=v4.5.1": [],

@@ -13,6 +13,14 @@
             return target;
         }
 
+#if BOOTSTRAP4
+        public static IItemWriter<T, AnyContent> Pill<T>(this IItemWriter<T, AnyContent> target, bool value = true) where T : Label
+        {
+            target.Item.Pill = value;
+            return target;
+        }
+#endif
+
         #endregion
 
         #region Generation

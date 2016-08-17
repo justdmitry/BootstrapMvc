@@ -11,6 +11,10 @@
 
         public bool BlockSize { get; set; }
 
+#if BOOTSTRAP4
+        public bool Outline { get; set; }
+#endif
+
         public bool Disabled { get; set; }
 
         public string Href { get; set; }
@@ -32,7 +36,15 @@
             var tb = Helper.CreateTagBuilder(withHref ? "a" : "button");
 
             tb.AddCssClass(Type.ToCssClass());
-            tb.AddCssClass(Size.ToButtonCssClass());
+
+            var sizeClass = Size.ToButtonCssClass();
+#if BOOTSTRAP4
+            if (Outline) 
+            {
+                sizeClass = sizeClass.Replace("btn-", "btn-outline-");
+            }
+#endif
+            tb.AddCssClass(sizeClass);
 
             if (Disabled)
             {
