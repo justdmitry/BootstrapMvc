@@ -3,10 +3,10 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.0": {
-      "BootstrapMvc.Bootstrap3Mvc6/2.2.0": {
+      "BootstrapMvc.Bootstrap3Mvc6/2.3.0": {
         "type": "package",
         "dependencies": {
-          "BootstrapMvc.Bootstrap3": "2.4.0",
+          "BootstrapMvc.Bootstrap3": "2.5.0",
           "BootstrapMvc.Mvc6": "2.3.0"
         },
         "compile": {
@@ -3697,7 +3697,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "BootstrapMvc.Bootstrap3/2.4.0": {
+      "BootstrapMvc.Bootstrap3/2.5.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -3747,12 +3747,12 @@
     }
   },
   "libraries": {
-    "BootstrapMvc.Bootstrap3Mvc6/2.2.0": {
-      "sha512": "ugVsIwuonXpx+iYE3KMRhNiKCQvJ+U1gb6oObaQG46t80dQly3R1/iHxwsCI/OgRtzAagTIw+fxiYc3jp2l22w==",
+    "BootstrapMvc.Bootstrap3Mvc6/2.3.0": {
+      "sha512": "/wmUuBboQ0IOXiW3JBpYUye0PurL2nm7vqAnQJK+GUtlC5rej6tMNOfSKchtPyczvyz/rzggHdi+DNAHLeA+EQ==",
       "type": "package",
-      "path": "BootstrapMvc.Bootstrap3Mvc6/2.2.0",
+      "path": "BootstrapMvc.Bootstrap3Mvc6/2.3.0",
       "files": [
-        "BootstrapMvc.Bootstrap3Mvc6.2.2.0.nupkg.sha512",
+        "BootstrapMvc.Bootstrap3Mvc6.2.3.0.nupkg.sha512",
         "BootstrapMvc.Bootstrap3Mvc6.nuspec",
         "lib/net451/BootstrapMvc.Bootstrap3Mvc6.dll",
         "lib/netstandard1.6/BootstrapMvc.Bootstrap3Mvc6.dll"
@@ -9776,7 +9776,7 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "BootstrapMvc.Bootstrap3/2.4.0": {
+    "BootstrapMvc.Bootstrap3/2.5.0": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3/project.json",
       "msbuildProject": "../../src/BootstrapMvc.Bootstrap3/BootstrapMvc.Bootstrap3.xproj"
@@ -9794,7 +9794,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "BootstrapMvc.Bootstrap3Mvc6 >= 2.2.0",
+      "BootstrapMvc.Bootstrap3Mvc6 >= 2.3.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Mvc >= 1.0.0",
       "Microsoft.AspNetCore.Razor.Tools >= 1.0.0-preview2-final",
