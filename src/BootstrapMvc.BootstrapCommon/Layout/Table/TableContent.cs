@@ -3,7 +3,7 @@
     using System;
     using BootstrapMvc.Core;
 
-    public class TableContent : DisposableContent
+    public partial class TableContent : DisposableContent
     {
         public TableContent(IBootstrapContext context, Table parent)
         {

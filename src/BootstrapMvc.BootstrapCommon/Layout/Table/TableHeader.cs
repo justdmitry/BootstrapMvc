@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class TableHeader : TableSection
+    public partial class TableHeader : TableSection
     {
         protected override string GetTagName()
         {

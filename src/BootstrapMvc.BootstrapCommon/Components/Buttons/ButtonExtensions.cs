@@ -6,8 +6,6 @@
 
     public static partial class ButtonExtensions
     {
-        #region Fluent
-
         public static IItemWriter<T, AnyContent> Type<T>(this IItemWriter<T, AnyContent> target, ButtonType value) where T : Button
         {
             target.Item.Type = value;
@@ -20,9 +18,13 @@
             return target;
         }
 
-        #endregion
-
-        #region Generation
+#if BOOTSTRAP4
+        public static IItemWriter<T, AnyContent> Outline<T>(this IItemWriter<T, AnyContent> target, bool value = true) where T : Button
+        {
+            target.Item.Outline = value;
+            return target;
+        }
+#endif
 
         private static IItemWriter<Button, AnyContent> Button(this IAnyContentMarker contentHelper)
         {
@@ -43,7 +45,5 @@
         {
             return Button(contentHelper).Type(type).Content(contents);
         }
-
-        #endregion
     }
 }

@@ -35,16 +35,16 @@
             var withHref = !string.IsNullOrEmpty(Href);
             var tb = Helper.CreateTagBuilder(withHref ? "a" : "button");
 
-            tb.AddCssClass(Type.ToCssClass());
-
-            var sizeClass = Size.ToButtonCssClass();
+            var typeClass = Type.ToCssClass();
 #if BOOTSTRAP4
             if (Outline) 
             {
-                sizeClass = sizeClass.Replace("btn-", "btn-outline-");
+                typeClass = typeClass.Replace("btn-", "btn-outline-");
             }
 #endif
-            tb.AddCssClass(sizeClass);
+            tb.AddCssClass(typeClass);
+
+            tb.AddCssClass(Size.ToButtonCssClass());
 
             if (Disabled)
             {
