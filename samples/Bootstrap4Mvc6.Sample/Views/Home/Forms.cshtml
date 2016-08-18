@@ -1,7 +1,7 @@
-﻿@model Bootstrap3Mvc6.Sample.Models.DemoModelOne
+﻿@model Bootstrap4Mvc6.Sample.Models.DemoModelOne
 @{
     ViewBag.Title = "Forms";
-    var leftColSize = new GridSize(0, 6, 6, 6);
+    var leftColSize = new GridSize(0, 6, 6, 6, 6);
     var rightColSize = leftColSize.Invert();
 }
 
@@ -24,14 +24,14 @@ using (var form = Bootstrap.BeginForm())
     using (form.BeginFieldset("Fieldset two"))
     {
         @@form.GroupFor(m => m.IntegerField, "Label 2")
-            .Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
+            .Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
         @@form.GroupFor(m => m.BooleanField)
             .Control(Bootstrap.Checkbox("checkbox text"))
     }
     using (form.Group().BeginContent())
     {
-        @@Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
-        @@Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
+        @@Bootstrap.Button(ButtonType.SuccessGreen, "Save")
+        @@Bootstrap.Button(ButtonType.SecondaryWhite, "Cancel").Href("/list")
     }
 }
 </pre>
@@ -46,13 +46,13 @@ using (var form = Bootstrap.BeginForm())
             }
             using (form.BeginFieldset("Fieldset two"))
             {
-                @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
+                @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
                 @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
             }
             using (form.Group().BeginContent())
             {
-                @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
-                @Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
+                @Bootstrap.Button(ButtonType.SuccessGreen, "Save")
+                @Bootstrap.Button(ButtonType.SecondaryWhite, "Cancel").Href("/list")
             }
         }
     }
@@ -75,14 +75,14 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
     using (form.BeginFieldset("Fieldset two"))
     {
         @@form.GroupFor(m => m.IntegerField, "Label 2")
-            .Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
+            .Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
         @@form.GroupFor(m => m.BooleanField)
             .Control(Bootstrap.Checkbox("checkbox text"))
     }
     using (form.Group().BeginContent())
     {
-        @@Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
-        @@Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
+        @@Bootstrap.Button(ButtonType.SuccessGreen, "Save")
+        @@Bootstrap.Button(ButtonType.SecondaryWhite, "Cancel").Href("/list")
     }
 }
 </pre>
@@ -97,13 +97,13 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
             }
             using (form.BeginFieldset("Fieldset two"))
             {
-                @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3))
+                @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
                 @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
             }
             using (form.Group().BeginContent())
             {
-                @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
-                @Bootstrap.Button(ButtonType.DefaultGray, "Cancel").Href("/list")
+                @Bootstrap.Button(ButtonType.SuccessGreen, "Save")
+                @Bootstrap.Button(ButtonType.SecondaryWhite, "Cancel").Href("/list")
             }
         }
     }
@@ -120,7 +120,7 @@ using (Bootstrap.BeginForm(FormType.Inline))
     @@Bootstrap.FormGroupFor(m => m.StringField).Label("Label").Control(Bootstrap.Input().Placeholder("placeholder text"))
     @@Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt())
     @@Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
-    @@Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
+    @@Bootstrap.Button(ButtonType.SuccessGreen, "Save")
 }
 </pre>
     }
@@ -132,7 +132,7 @@ using (Bootstrap.BeginForm(FormType.Inline))
             @Bootstrap.FormGroupFor(m => m.StringField).Label("Label").Control(Bootstrap.Input().Placeholder("placeholder text"))
             @Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt())
             @Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
-            @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Save, "Save")
+            @Bootstrap.Button(ButtonType.SuccessGreen, "Save")
         }
     }
 }
@@ -151,6 +151,7 @@ using (Bootstrap.BeginForm())
     @@Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Placeholder("number"))
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputTel().Placeholder("tel"))
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputUrl().Placeholder("url"))
+    @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Textarea())
     using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Text"))
     {
         BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Text;
@@ -181,6 +182,7 @@ using (Bootstrap.BeginForm())
             @Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Placeholder("number"))
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputTel().Placeholder("tel"))
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.InputUrl().Placeholder("url"))
+            @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Textarea())
             using (Bootstrap.BeginFormFieldset("DateInputModeDefault = DateInputMode.Text"))
             {
                 BootstrapMvc.Controls.Input.DateInputModeDefault = DateInputMode.Text;
@@ -333,7 +335,11 @@ using (Bootstrap.BeginForm())
         @@Bootstrap.FormGroupFor(m => m.StringField)
             .Label("Disabled control").Control(Bootstrap.Input().Disabled())
         @@Bootstrap.FormGroupFor(m => m.FieldWithError)
-            .Label("Field with error").Control(Bootstrap.Input())
+            .Label("Field with error")
+            .Control(Bootstrap.Input())
+            .Content(Bootstrap.HelpBlock("Some help text about this field"))
+        @@Bootstrap.FormGroupFor(m => m.BooleanFieldWithError)
+            .Control(Bootstrap.Checkbox("Checkbox with error"))
 
         using (Bootstrap.FormGroup("Group with multiple controls").WithSizedControls().BeginContent())
         {
@@ -342,7 +348,7 @@ using (Bootstrap.BeginForm())
         }
     }
 
-    await Html.RenderPartialAsync("Partial/PartialForm");
+    await Html.RenderPartialAsync("FormPartial");
 }
 </pre>
 <p>And partial file:</p>
@@ -354,7 +360,7 @@ using (Bootstrap.BeginForm())
         using (Bootstrap.FormGroupFor(m => m.StringField)
             .Label("Field with complex content").WithSizedControls().BeginContent())
         {
-            @@Bootstrap.Input().Size(6, 6, 6, 6)
+            @@Bootstrap.Input().Size(6, 6, 6, 6, 6)
             @@Bootstrap.HelpBlock("Some text about this control")
         }
     }
@@ -373,16 +379,17 @@ using (Bootstrap.BeginForm())
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
                 @Bootstrap.FormGroupFor(m => m.StringField).Label("Disabled control").Control(Bootstrap.Input().Disabled())
-                @Bootstrap.FormGroupFor(m => m.FieldWithError).Label("Field with error").Control(Bootstrap.Input())
+                @Bootstrap.FormGroupFor(m => m.FieldWithError).Label("Field with error").Control(Bootstrap.Input()).Content(Bootstrap.HelpBlock("Some help text about this field"))
+                @Bootstrap.FormGroupFor(m => m.BooleanFieldWithError).Control(Bootstrap.Checkbox("Checkbox with error"))
 
                 using (Bootstrap.FormGroup("Group with multiple controls").WithSizedControls().BeginContent())
                 {
-                    @Bootstrap.ControlFor(m => m.StringField, Bootstrap.Input().Size(6, 6, 6, 6))
+                    @Bootstrap.ControlFor(m => m.StringField, Bootstrap.Input().Size(6, 6, 6, 6, 6))
                     @Bootstrap.ControlFor(m => m.IntegerField, Bootstrap.InputInt())
                 }
             }
 
-            await Html.RenderPartialAsync("Partial/PartialForm");
+            await Html.RenderPartialAsync("FormPartial");
         }
     }
 }

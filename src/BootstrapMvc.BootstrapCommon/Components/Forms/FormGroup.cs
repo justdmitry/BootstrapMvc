@@ -45,13 +45,24 @@
 
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
+            var bootstrap4Mode = false;
+#if BOOTSTRAP4 
+            bootstrap4Mode = true;
+#endif
+
             var formContext = GetNearestParent<IForm>();
 
             var tb = Helper.CreateTagBuilder("div");
             tb.AddCssClass("form-group");
+
+            if (bootstrap4Mode && formContext != null && formContext.Type == FormType.Horizontal)
+            {
+                tb.AddCssClass("row");
+            }
+
             if (HasErrors)
             {
-                tb.AddCssClass("has-error");
+                tb.AddCssClass(bootstrap4Mode ? "has-danger" : "has-error");
             }
             else if (HasWarning)
             {

@@ -13,5 +13,7 @@ namespace Bootstrap4Mvc6.Sample.Models
         public DateTimeOffset DateTimeOffsetField { get; set; } = DateTimeOffset.Now;
 
         public string FieldWithError { get; set; }
+
+        public bool BooleanFieldWithError { get; set; }
     }
 }

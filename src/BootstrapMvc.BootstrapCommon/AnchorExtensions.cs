@@ -5,8 +5,6 @@
 
     public static class AnchorExtensions
     {
-        #region Generation
-
         public static IItemWriter<Anchor, AnyContent> Anchor(this IAnyContentMarker contentHelper)
         {
             return contentHelper.CreateWriter<Anchor, AnyContent>();
@@ -46,7 +44,5 @@
         {
             return BeginAnchor(contentHelper);
         }
-
-        #endregion
     }
 }

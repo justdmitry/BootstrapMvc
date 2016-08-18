@@ -19,6 +19,11 @@
 
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
+            var bootstrap4Mode = false;
+#if BOOTSTRAP4 
+            bootstrap4Mode = true;
+#endif
+
             var validationResult = ((IWritingHelper<TModel>)Helper).ValidationResult;
 
             if (validationResult.IsValid)
@@ -39,7 +44,7 @@
                 {
                     if (!string.IsNullOrEmpty(ErrorHeader))
                     {
-                        writer.Write("<h4>");
+                        writer.Write(bootstrap4Mode ? "<h4 class=\"alert-heading\">" : "<h4>");
                         writer.Write(Helper.HtmlEncode(ErrorHeader));
                         writer.Write("</h4>");
                     }
@@ -59,7 +64,7 @@
                     writer.Write("</ul>");
                     if (!string.IsNullOrEmpty(ErrorFooter))
                     {
-                        writer.Write("<p>");
+                        writer.Write(bootstrap4Mode ? "<p class=\"m-b-0\">" : "<p>");
                         writer.Write(Helper.HtmlEncode(ErrorFooter));
                         writer.Write("</p>");
                     }
@@ -72,7 +77,7 @@
                 {
                     if (!string.IsNullOrEmpty(WarningHeader))
                     {
-                        writer.Write("<h4>");
+                        writer.Write(bootstrap4Mode ? "<h4 class=\"alert-heading\">" : "<h4>");
                         writer.Write(Helper.HtmlEncode(WarningHeader));
                         writer.Write("</h4>");
                     }
@@ -92,7 +97,7 @@
                     writer.Write("</ul>");
                     if (!string.IsNullOrEmpty(WarningFooter))
                     {
-                        writer.Write("<p>");
+                        writer.Write(bootstrap4Mode ? "<p class=\"m-b-0\">" : "<p>");
                         writer.Write(Helper.HtmlEncode(WarningFooter));
                         writer.Write("</p>");
                     }

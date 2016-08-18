@@ -44,7 +44,31 @@
             }
 
             var input = Helper.CreateTagBuilder("input");
+#if BOOTSTRAP3
             input.AddCssClass("form-control");
+#endif
+#if BOOTSTRAP4
+            if (Type == InputType.File)
+            {
+                input.AddCssClass("form-control-file");
+            }
+            else
+            {
+                input.AddCssClass("form-control");
+            }
+
+            if (controlContext != null)
+            {
+                if (controlContext.HasErrors)
+                {
+                    input.AddCssClass("form-control-danger");
+                }
+                else if (controlContext.HasWarning)
+                {
+                    input.AddCssClass("form-control-warning");
+                }
+            }
+#endif
             var actualType = Type;
             if (actualType != InputType.File && controlContext != null)
             {

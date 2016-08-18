@@ -49,6 +49,7 @@
             var model = new Bootstrap4Mvc6.Sample.Models.DemoModelOne();
             model.FieldWithError = "Some wrong value";
             ModelState.AddModelError("FieldWithError", "Demo error message for field FieldWithError");
+            ModelState.AddModelError("BooleanFieldWithError", "Demo error message for field BooleanFieldWithError");
             ModelState.AddModelError(string.Empty, "Demo error message for whole model");
             return View(model);
         }

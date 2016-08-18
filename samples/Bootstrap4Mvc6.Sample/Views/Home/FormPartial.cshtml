@@ -1,10 +1,10 @@
-﻿@model Bootstrap3Mvc6.Sample.Models.DemoModelOne
+﻿@model Bootstrap4Mvc6.Sample.Models.DemoModelOne
 @{
     using (Bootstrap.BeginFormFieldset("Fieldset in partial subview"))
     {
         using (Bootstrap.FormGroupFor(m => m.StringField).Label("Field with complex content").WithSizedControls().BeginContent())
         {
-            @Bootstrap.Input().Size(6, 6, 6, 6)
+            @Bootstrap.Input().Size(6, 6, 6, 6, 6)
             @Bootstrap.HelpBlock("Some text about this control")
         }
     }
