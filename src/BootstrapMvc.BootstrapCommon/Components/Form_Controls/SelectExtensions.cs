@@ -8,7 +8,7 @@ namespace BootstrapMvc
 {
     public static class SelectExtensions
     {
-        #region Select
+        /* Fluent */
 
         public static IItemWriter<T, SelectContent> Items<T>(this IItemWriter<T, SelectContent> target, IEnumerable<ISelectItem> items)
             where T : Select
@@ -24,9 +24,7 @@ namespace BootstrapMvc
             return target;
         }
 
-        #endregion
-
-        #region Generating
+        /* Generating */
 
         public static IItemWriter<Select, SelectContent> Select(this IAnyContentMarker contentHelper)
         {
@@ -45,6 +43,11 @@ namespace BootstrapMvc
             return Select(contentHelper).Items(items.Select(x => (ISelectItem)x.Item));
         }
 
-        #endregion
+        public static IItemWriter<Select, SelectContent> Select<TItem, TSource>(this IAnyContentMarker contentHelper, IEnumerable<TSource> source, Func<TSource, object> valueSelector, Func<TSource, string> textSelector)
+            where TItem : ISelectItem
+        {
+            var items = source.Select(x => contentHelper.SelectOption(valueSelector(x), textSelector(x)).Item);
+            return Select(contentHelper).Items(items);
+        }
     }
 }
