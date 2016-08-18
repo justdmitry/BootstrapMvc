@@ -31,7 +31,11 @@
         
         public static IItemWriter<Input> InputInt(this IAnyContentMarker contextHelper)
         {
+#if BOOTSTRAP3
             return contextHelper.Input(InputType.Number).Size(0, 2, 2, 2); 
+#else
+            return contextHelper.Input(InputType.Number).Size(0, 2, 2, 2, 2);
+#endif
         }
 
         public static IItemWriter<Input> InputInt(this IAnyContentMarker contextHelper, int min, int max)
@@ -43,17 +47,29 @@
 
         public static IItemWriter<Input> InputDate(this IAnyContentMarker contextHelper)
         {
+#if BOOTSTRAP3
             return contextHelper.Input(InputType.Date).Size(0, 3, 3, 3);
+#else
+            return contextHelper.Input(InputType.Date).Size(0, 3, 3, 3, 3);
+#endif
         }
 
         public static IItemWriter<Input> InputDateTime(this IAnyContentMarker contextHelper)
         {
+#if BOOTSTRAP3
             return contextHelper.Input(InputType.Datetime).Size(0, 6, 5, 5);
+#else
+            return contextHelper.Input(InputType.Datetime).Size(0, 6, 5, 5, 5);
+#endif
         }
 
         public static IItemWriter<Input> InputDateTimeLocal(this IAnyContentMarker contextHelper)
         {
+#if BOOTSTRAP3
             return contextHelper.Input(InputType.DatetimeLocal).Size(0, 5, 4, 4);
+#else
+            return contextHelper.Input(InputType.DatetimeLocal).Size(0, 5, 4, 4, 4);
+#endif
         }
 
         public static IItemWriter<Input> InputEmail(this IAnyContentMarker contextHelper)
