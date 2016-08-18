@@ -43,7 +43,7 @@
 <pre>
 @@Bootstrap.Alert(AlertType.SuccessGreen)
     .Content("Regular Strings will be encoded (&lt;hi!&gt;);")
-    .Content(new HtmlString("&lt;i&gt;HtmlStrings will NOT be encoded&lt;/i&gt; "))
+    .Content(new HtmlString("&lt;i&gt;IHtmlContent will NOT be encoded&lt;/i&gt; "))
     .Content(Bootstrap.Label(LabelType.SuccessGreen, "and other Bootstrap objects are accepted"))
 </pre>
     }
@@ -51,7 +51,7 @@
     {
         @(Bootstrap.Alert(AlertType.SuccessGreen)
             .Content("Regular Strings will be encoded (<hi!>);")
-            .Content(new HtmlString("<i>HtmlStrings will NOT be encoded</i> "))
+            .Content(new HtmlString("<i>IHtmlContent will NOT be encoded</i> "))
             .Content(Bootstrap.Label(LabelType.SuccessGreen, "and other Bootstrap objects are accepted")))
 
     }

@@ -1,0 +1,18 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "BootstrapMvc.Core": "2.2.0"
+  },
+
+  "shared": "**/*.cs",
+
+  "frameworks": {
+    "net451": { },
+    "netstandard1.3": {
+      "dependencies": {
+        "System.Globalization": "4.0.11"
+      }
+    }
+  }
+}

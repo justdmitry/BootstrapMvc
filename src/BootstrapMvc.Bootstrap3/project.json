@@ -16,11 +16,19 @@
   },
 
   "dependencies": {
-    "BootstrapMvc.Core": "2.2.0"
+    "BootstrapMvc.Core": "2.2.0",
+    "BootstrapMvc.BootstrapCommon": {
+      "version": "*",
+      "type": "build"
+    }
+  },
+
+  "buildOptions": {
+    "define": [ "BOOTSTRAP3" ]
   },
 
   "frameworks": {
-    "net451": { },
+    "net451": {},
     "netstandard1.3": {
       "dependencies": {
         "System.Globalization": "4.0.11"

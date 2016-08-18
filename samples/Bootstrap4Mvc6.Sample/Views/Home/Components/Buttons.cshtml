@@ -1,0 +1,122 @@
+﻿@{ 
+    ViewBag.Title = "Buttons";
+}
+
+<h1>Buttons</h1>
+
+<h3>Simple buttons</h3>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+@@Bootstrap.Button(ButtonType.SecondaryWhite,   "SecondaryWhite")
+@@Bootstrap.Button(ButtonType.InfoCyan,      "InfoCyan")
+@@Bootstrap.Button(ButtonType.PrimaryBlue,   "PrimaryBlue")
+@@Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange")
+@@Bootstrap.Button(ButtonType.DangerRed,     "DangerRed")
+@@Bootstrap.Button(ButtonType.SuccessGreen,  "SuccessGreen")
+@@Bootstrap.Button(ButtonType.Link,          "Link")
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        @Bootstrap.Button(ButtonType.SecondaryWhite, "SecondaryWhite")
+        @Bootstrap.Button(ButtonType.InfoCyan, "InfoCyan")
+        @Bootstrap.Button(ButtonType.PrimaryBlue, "PrimaryBlue")
+        @Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange")
+        @Bootstrap.Button(ButtonType.DangerRed, "DangerRed")
+        @Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen")
+        @Bootstrap.Button(ButtonType.Link, "Link")
+    }
+}
+
+<h3>Different sizes, disabled, outlined</h3>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+@@Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange small").Size(ButtonSize.Small)
+@@Bootstrap.Button(ButtonType.DangerRed, "DangerRed large").Size(ButtonSize.Large)
+@@Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen disabled").Disabled()
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        @Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange small").Size(ButtonSize.Small)
+        @Bootstrap.Button(ButtonType.DangerRed, "DangerRed large").Size(ButtonSize.Large)
+        @Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen disabled").Disabled()
+        @Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange outline").Outline()
+    }
+}
+
+<h3>Create toolbars and button groups with precreated values or with <code>using</code> blocks:</h3>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+@@using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
+{
+    @@Bootstrap.ButtonGroup().AddButton(
+        Bootstrap.Button(ButtonType.PrimaryBlue, "One"),
+        Bootstrap.Button(ButtonType.SecondaryWhite, "Two"),
+        Bootstrap.Button(ButtonType.SecondaryWhite, "Three")
+    )
+    using (var groupContent = toolbarContent.BeginButtonGroup())
+    {
+        @@Bootstrap.Button(ButtonType.PrimaryBlue, "One"),
+        @@Bootstrap.Button(ButtonType.SecondaryWhite, "Two"),
+        @@Bootstrap.Button(ButtonType.SecondaryWhite, "Three")
+    }
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
+        {
+            @(Bootstrap.ButtonGroup().AddButton(
+                Bootstrap.Button(ButtonType.PrimaryBlue, "One"),
+                Bootstrap.Button(ButtonType.SecondaryWhite, "Two"),
+                Bootstrap.Button(ButtonType.SecondaryWhite, "Three")
+            ))
+            using (var groupContent = toolbarContent.BeginButtonGroup())
+            {
+                @Bootstrap.Button(ButtonType.PrimaryBlue, "One")
+                @Bootstrap.Button(ButtonType.SecondaryWhite, "Two")
+                @Bootstrap.Button(ButtonType.SecondaryWhite, "Three")
+            }
+        }
+    }
+}
+
+@*<p>Use <code>Dropdown()</code> or <code>BeginDropdown()</code> methods on any Button</p>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+@@using (var dropdown = Bootstrap.Button("Sample").BeginDropdown())
+{
+    @@dropdown.Link("Hello");
+    @@dropdown.Divider();
+    @@dropdown.Header("Header");
+    @@dropdown.Link("Link 1").Href("#target1");
+    @@dropdown.Link("Link 2").Href("#target2").Disabled();
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        using (var dropdown = Bootstrap.Button("Sample").BeginDropdown())
+        {
+            @dropdown.Link("Hello");
+            @dropdown.Divider();
+            @dropdown.Header("Header");
+            @dropdown.Link("Link 1").Href("#target1");
+            @dropdown.Link("Link 2").Href("#target2").Disabled();
+        }
+    }
+}*@

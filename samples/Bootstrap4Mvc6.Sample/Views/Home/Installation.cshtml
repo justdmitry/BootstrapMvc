@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "BootstrapMvc: Installation";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<h2>1. Add dependency to <code>project.json</code></h2>
+
+<pre>
+"dependencies": {
+    ....
+    "BootstrapMvc.Bootstrap4Mvc6": "1.0.0"
+}
+</pre>
+
+<h2>2. Update <code>Views\_ViewImports.cshtml</code> file</h2>
+
+<p>
+    Add two lines to <code>Views\_ViewImports.cshtml</code> file:
+    <pre>@@using BootstrapMvc
+@@inject BootstrapMvc.Mvc6.BootstrapHelper&lt;TModel&gt; Bootstrap</pre>
+</p>
+
+<h2>3. Register in DI container</h2>
+
+<p>
+    Append to <code>ConfigureServices()</code> method in <code>Startup.cs</code>:
+    <pre>services.AddTransient(typeof(BootstrapMvc.Mvc6.BootstrapHelper<>));</pre>
+</p>
