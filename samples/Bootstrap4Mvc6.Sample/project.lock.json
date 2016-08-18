@@ -3684,7 +3684,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "BootstrapMvc.Bootstrap4/1.0.0": {
+      "BootstrapMvc.Bootstrap4/1.0.0-alpha1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -3698,11 +3698,11 @@
           "netstandard1.3/BootstrapMvc.Bootstrap4.dll": {}
         }
       },
-      "BootstrapMvc.Bootstrap4Mvc6/1.0.0-dev": {
+      "BootstrapMvc.Bootstrap4Mvc6/1.0.0-alpha1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
-          "BootstrapMvc.Bootstrap4": "1.0.0",
+          "BootstrapMvc.Bootstrap4": "1.0.0-alpha1",
           "BootstrapMvc.Mvc6": "2.3.0"
         },
         "compile": {
@@ -9767,12 +9767,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "BootstrapMvc.Bootstrap4/1.0.0": {
+    "BootstrapMvc.Bootstrap4/1.0.0-alpha1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap4/project.json",
       "msbuildProject": "../../src/BootstrapMvc.Bootstrap4/BootstrapMvc.Bootstrap4.xproj"
     },
-    "BootstrapMvc.Bootstrap4Mvc6/1.0.0-dev": {
+    "BootstrapMvc.Bootstrap4Mvc6/1.0.0-alpha1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap4Mvc6/project.json",
       "msbuildProject": "../../src/BootstrapMvc.Bootstrap4Mvc6/BootstrapMvc.Bootstrap4Mvc6.xproj"
@@ -9841,13 +9841,31 @@
         "runtime": {
           "lib/netcoreapp1.0/dotnet-publish-iis.dll": {}
         }
+      },
+      "Microsoft.DotNet.Watcher.Tools/1.0.0-preview2-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.DotNet.Watcher.Core": "1.0.0-preview2-final",
+          "Microsoft.Extensions.CommandLineUtils": "1.0.0",
+          "Microsoft.Extensions.Logging": "1.0.0",
+          "Microsoft.Extensions.Logging.Console": "1.0.0",
+          "Microsoft.NETCore.App": "1.0.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp1.0/dotnet-watch.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp1.0/dotnet-watch.dll": {}
+        }
       }
     }
   },
   "projectFileToolGroups": {
     ".NETCoreApp,Version=v1.0": [
       "Microsoft.AspNetCore.Razor.Tools >= 1.0.0-preview2-final",
-      "Microsoft.AspNetCore.Server.IISIntegration.Tools >= 1.0.0-preview2-final"
+      "Microsoft.AspNetCore.Server.IISIntegration.Tools >= 1.0.0-preview2-final",
+      "Microsoft.DotNet.Watcher.Tools >= 1.0.0-preview2-final"
     ]
   }
 }

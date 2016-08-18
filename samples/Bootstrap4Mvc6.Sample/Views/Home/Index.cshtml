@@ -48,7 +48,7 @@
             {
                 foreach (var pair in Model)
                 {
-                    @list.Item().Content(Bootstrap.Span(pair[0]), Bootstrap.Span(pair[1])); //.PullRight())
+                    @list.Item().Content(Bootstrap.Span(pair[0]), " - ", Bootstrap.Span(pair[1])); //.PullRight())
                 }
             }
         }
