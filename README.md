@@ -6,11 +6,12 @@ Extendable packages pack for simplifying Bootstrap markup in your ASP.MVC projec
 
 * [BootstrapMvc.Core](https://www.nuget.org/packages/BootstrapMvc.Core/) - core library, containing base clasess only;
 * [BootstrapMvc.Bootstrap3](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3/) - helper classes for Bootstrap 3.3 (not complete at this moment), not bound to any MVC version;
+* [BootstrapMvc.Bootstrap4](https://www.nuget.org/packages/BootstrapMvc.Bootstrap4/) - helper classes for Bootstrap 4 (`alpha.3`, not complete at this moment), not bound to any MVC version;
 * [BootstrapMvc.Mvc5](https://www.nuget.org/packages/BootstrapMvc.Mvc5/) - classes for integrating with ASP.MVC5 infrastructure;
 * [BootstrapMvc.Mvc6](https://www.nuget.org/packages/BootstrapMvc.Mvc6/) - classes for integrating with ASP.NET Core / MVC6 infrastructure;
 * **[BootstrapMvc.Bootstrap3Mvc5](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc5/) - 'use-this' package (with correct dependencies) for using in your MVC5 projects.**
-* **[BootstrapMvc.Bootstrap3Mvc6](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc6/) - 'use-this' package (with correct dependencies) for using in your ASP.NET Core / MVC6 projects.**
-
+* **[BootstrapMvc.Bootstrap3Mvc6](https://www.nuget.org/packages/BootstrapMvc.Bootstrap3Mvc6/) - 'use-this' package (with correct dependencies) for using with `Bootstrap 3` in your ASP.NET Core / MVC6 projects.**
+* **[BootstrapMvc.Bootstrap4Mvc6](https://www.nuget.org/packages/BootstrapMvc.Bootstrap4Mvc6/) - 'use-this' package (with correct dependencies) for using with `Bootstrap 4` in your ASP.NET Core / MVC6 projects.**
 ## Key features
 
 1. **Library decomposition** - allows creating different packages for different Bootstrap and/or Mvc versions with minimal code duplicating and without unneeded dependencies;
@@ -21,27 +22,38 @@ Extendable packages pack for simplifying Bootstrap markup in your ASP.MVC projec
 
 ## Usage
 
-Just one sample - toolbar with button with dropdown menu. You remember how much markup you should write. Now you can: 
+Just one sample - from. Do you remember how much markup you should write? Now you can: 
 
 ```csharp
-using (Bootstrap.BeginButtonToolbar()) 
+using (var form = Bootstrap.BeginFormFormType.Horizontal))
 {
-    using (Bootstrap.BeginButtonGroup(ButtonSize.Small))
+    using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
-        @Bootstrap.Button(ButtonType.SuccessGreen, IconType.Ok, "Hello, world!").Href("/hello.html")
-        @using (var dropdown = Bootstrap.Button(ButtonType.InfoCyan, "This is dropdown").BeginDropdown()) 
-        {
-            @dropdown.Link(IconType.Plus_Sign, "Link 1").Href("/page1.html")
-            @dropdown.Divider()
-            @dropdown.Link(IconType.Plus_Sign, "Link 2").Href("/page2.html")
-        }
+        @Bootstrap.FormGroupFor(m => m.StringField)
+            .Label("Label 1")
+            .Control(Bootstrap.Input().Placeholder("placeholder text"))
+    }
+    using (form.BeginFieldset("Fieldset two"))
+    {
+        @form.GroupFor(m => m.IntegerField, "Label 2")
+            .Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
+        @form.GroupFor(m => m.BooleanField)
+            .Control(Bootstrap.Checkbox("checkbox text"))
+    }
+    using (form.Group().BeginContent())
+    {
+        @Bootstrap.Button(ButtonType.SuccessGreen, "Save")
+        @Bootstrap.Button(ButtonType.SecondaryWhite, "Cancel").Href("/list")
     }
 }
 ```
-    
-Of course you can do more than simple buttons and create URLs better than using string values - look for more extension methods.
 
-Also, view sample sites for [ASP.NET MVC5](http://bootstrap3mvc5.azurewebsites.net/) and [ASP.NET Core / MVC6](http://bootstrap3mvc6.azurewebsites.net/)
+And you got this:
+
+![Sample](readme-sample.png)
+    
+
+For more samples, visit one of sites: for [Bootstrap 3 in ASP.NET MVC5](http://bootstrap3mvc5.azurewebsites.net/) or for [Bootstrap 3 in ASP.NET Core / MVC6](http://bootstrap3mvc6.azurewebsites.net/) or even for [Bootstrap 4 alpha.3 in ASP.NET Core / MVC6](http://bootstrap4mvc6.azurewebsites.net/)
 
 ## Installation for MVC5
 
@@ -75,12 +87,19 @@ Clean and Rebuild you project to activate changes and activate intellisence. Rar
 
 ## Installation for ASP.NET Core
 
-### 1. Add dependency to `project.json`
+### 1. Add correct dependency to `project.json`
 
 ```json
 "dependencies": {
     ...
-    "BootstrapMvc.Bootstrap3Mvc6": "2.2.0"
+    "BootstrapMvc.Bootstrap3Mvc6": "2.3.0"
+}
+```
+
+```json
+"dependencies": {
+    ...
+    "BootstrapMvc.Bootstrap4Mvc6": "1.0.0-*"
 }
 ```
 
