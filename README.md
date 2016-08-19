@@ -22,7 +22,7 @@ Extendable packages pack for simplifying Bootstrap markup in your ASP.MVC projec
 
 ## Usage
 
-Just one sample - from. Do you remember how much markup you should write? Now you can: 
+Just one sample - input form. Do you remember how much markup you should write? Now you can: 
 
 ```csharp
 using (var form = Bootstrap.BeginFormFormType.Horizontal))
