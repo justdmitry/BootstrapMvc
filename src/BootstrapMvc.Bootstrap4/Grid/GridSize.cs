@@ -64,11 +64,11 @@ namespace BootstrapMvc
 
         public string ToOffsetCssClass()
         {
-            return ((xs == 0 ? string.Empty : " offset-xs-" + xs)
-                 + (sm == 0 ? string.Empty : " offset-sm-" + sm)
-                 + (md == 0 ? string.Empty : " offset-md-" + md)
-                 + (lg == 0 ? string.Empty : " offset-lg-" + lg)
-                 + (xl == 0 ? string.Empty : " offset-xl-" + xl))
+            return (" offset-xs-" + xs
+                 + " offset-sm-" + sm
+                 + " offset-md-" + md
+                 + " offset-lg-" + lg
+                 + " offset-xl-" + xl)
                  .Trim();
         }
 

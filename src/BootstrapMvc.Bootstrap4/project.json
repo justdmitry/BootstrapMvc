@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0-alpha2",
   "title": "BootstrapMvc.Bootstrap4",
   "copyright": "Copyright © Dmitry Popov, 2016",
 
@@ -7,7 +7,7 @@
     "summary": "Bootstrap 4 (alpha.3) classes for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap4Mvc6 package).",
     "tags": [ "Bootstrap", "Bootstrap4", "Mvc", "HtmlHelpers" ],
     "owners": [ "just_dmitry" ],
-    "releaseNotes": "Initial release (for Bootstrap4 alpha.3)",
+    "releaseNotes": "Fix for grid offset classes",
     "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
     "repository": {
       "type": "git",
