@@ -53,7 +53,9 @@
                 : modelState.Errors.Select(e => e.ErrorMessage).ToArray();
 
             target.FieldName = fullHtmlFieldName;
+            target.DisplayName = modelMetadata.GetDisplayName();
             target.IsRequired = modelMetadata.IsRequired;
+            target.DataType = modelMetadata.ModelType;
             target.FieldValue = value;
             target.Errors = errors;
             target.HasErrors = errors != null && errors.Length > 0;

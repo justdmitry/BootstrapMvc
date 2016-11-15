@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "title": "BootstrapMvc.Mvc5",
   "copyright": "Copyright © Dmitry Popov, 2015",
 
@@ -7,7 +7,7 @@
     "summary": "MVC5 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 package).",
     "tags": [ "Bootstrap", "Mvc", "Mvc5", "HelpHelpers" ],
     "owners": [ "just_dmitry" ],
-    "releaseNotes": "BootstrapMvc.Core updated to v2.1.0",
+    "releaseNotes": "IControlContext.DisplayName added",
     "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
     "repository": {
       "type": "git",
@@ -18,7 +18,7 @@
   "dependencies": {
     "Microsoft.AspNet.Mvc": "5.2.3",
     "Microsoft.AspNet.Razor": "3.2.3",
-    "BootstrapMvc.Core": "2.1.0"
+    "BootstrapMvc.Core": "2.3.0"
   },
 
   "frameworks": {

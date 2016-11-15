@@ -1,5 +1,5 @@
 {
-  "version": "2.3.0",
+  "version": "2.4.0",
   "title": "BootstrapMvc.Mvc6",
   "copyright": "Copyright © Dmitry Popov, 2015",
 
@@ -7,7 +7,7 @@
     "summary": "MVC6 integration for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc6 package).",
     "tags": [ "Bootstrap", "Mvc", "Mvc6", "HelpHelpers" ],
     "owners": [ "just_dmitry" ],
-    "releaseNotes": "Dependencies upgraded to 1.0.0 RTM",
+    "releaseNotes": "IControlContext.DisplayName added",
     "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
     "repository": {
       "type": "git",
@@ -16,7 +16,7 @@
   },
 
   "dependencies": {
-    "BootstrapMvc.Core": "2.2.0",
+    "BootstrapMvc.Core": "2.3.0",
     "Microsoft.AspNetCore.Razor": "1.0.0",
     "Microsoft.AspNetCore.Routing": "1.0.0",
     "Microsoft.AspNetCore.Html.Abstractions": "1.0.0",
