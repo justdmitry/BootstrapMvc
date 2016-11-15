@@ -833,11 +833,11 @@
           "lib/net45/_._": {}
         }
       },
-      "BootstrapMvc.Bootstrap3/2.5.0": {
+      "BootstrapMvc.Bootstrap3/2.6.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "BootstrapMvc.Core": "2.2.0"
+          "BootstrapMvc.Core": "2.3.0"
         },
         "compile": {
           "net451/BootstrapMvc.Bootstrap3.dll": {}
@@ -846,7 +846,7 @@
           "net451/BootstrapMvc.Bootstrap3.dll": {}
         }
       },
-      "BootstrapMvc.Core/2.2.0": {
+      "BootstrapMvc.Core/2.3.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "compile": {
@@ -856,11 +856,11 @@
           "net451/BootstrapMvc.Core.dll": {}
         }
       },
-      "BootstrapMvc.Mvc6/2.3.0": {
+      "BootstrapMvc.Mvc6/2.4.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "BootstrapMvc.Core": "2.2.0",
+          "BootstrapMvc.Core": "2.3.0",
           "Microsoft.AspNetCore.Html.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
           "Microsoft.AspNetCore.Razor": "1.0.0",
@@ -2736,11 +2736,11 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "BootstrapMvc.Bootstrap3/2.5.0": {
+      "BootstrapMvc.Bootstrap3/2.6.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
-          "BootstrapMvc.Core": "2.2.0",
+          "BootstrapMvc.Core": "2.3.0",
           "System.Globalization": "4.0.11"
         },
         "compile": {
@@ -2750,7 +2750,7 @@
           "netstandard1.3/BootstrapMvc.Bootstrap3.dll": {}
         }
       },
-      "BootstrapMvc.Core/2.2.0": {
+      "BootstrapMvc.Core/2.3.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -2766,11 +2766,11 @@
           "netstandard1.3/BootstrapMvc.Core.dll": {}
         }
       },
-      "BootstrapMvc.Mvc6/2.3.0": {
+      "BootstrapMvc.Mvc6/2.4.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
-          "BootstrapMvc.Core": "2.2.0",
+          "BootstrapMvc.Core": "2.3.0",
           "Microsoft.AspNetCore.Html.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
           "Microsoft.AspNetCore.Razor": "1.0.0",
@@ -6672,17 +6672,17 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "BootstrapMvc.Bootstrap3/2.5.0": {
+    "BootstrapMvc.Bootstrap3/2.6.0": {
       "type": "project",
       "path": "../BootstrapMvc.Bootstrap3/project.json",
       "msbuildProject": "../BootstrapMvc.Bootstrap3/BootstrapMvc.Bootstrap3.xproj"
     },
-    "BootstrapMvc.Core/2.2.0": {
+    "BootstrapMvc.Core/2.3.0": {
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json",
       "msbuildProject": "../BootstrapMvc.Core/BootstrapMvc.Core.xproj"
     },
-    "BootstrapMvc.Mvc6/2.3.0": {
+    "BootstrapMvc.Mvc6/2.4.0": {
       "type": "project",
       "path": "../BootstrapMvc.Mvc6/project.json",
       "msbuildProject": "../BootstrapMvc.Mvc6/BootstrapMvc.Mvc6.xproj"
@@ -6690,8 +6690,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "BootstrapMvc.Bootstrap3 >= 2.5.0",
-      "BootstrapMvc.Mvc6 >= 2.3.0"
+      "BootstrapMvc.Bootstrap3 >= 2.6.0",
+      "BootstrapMvc.Mvc6 >= 2.4.0"
     ],
     ".NETFramework,Version=v4.5.1": [],
     ".NETStandard,Version=v1.6": []
