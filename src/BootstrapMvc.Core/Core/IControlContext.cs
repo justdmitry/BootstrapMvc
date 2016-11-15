@@ -8,6 +8,10 @@
 
         object FieldValue { get; set; }
 
+        string DisplayName { get; set; }
+
+        Type DataType { get; set; }
+
         bool IsRequired { get; set; }
 
         string[] Errors { get; set; }

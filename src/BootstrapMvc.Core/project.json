@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.2.0",
+  "version": "2.3.0",
   "title": "BootstrapMvc.Core",
   "copyright": "Copyright © Dmitry Popov, 2015",
 
@@ -7,7 +7,7 @@
     "summary": "Core library for BootstrapMvc pack. Do not use directly (use BootstrapMvc.Bootstrap3Mvc5 or BootstrapMvc.Bootstrap3Mvc6 package).",
     "tags": [ "Bootstrap", "Mvc", "HtmlHelpers" ],
     "owners": [ "just_dmitry" ],
-    "releaseNotes": "Dependencies upgraded to 1.0.0 RTM",
+    "releaseNotes": "IControlContext.DisplayName added",
     "projectUrl": "https://github.com/justdmitry/BootstrapMvc",
     "repository": {
       "type": "git",
