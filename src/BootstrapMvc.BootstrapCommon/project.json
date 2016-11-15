@@ -2,7 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "BootstrapMvc.Core": "2.2.0"
+    "BootstrapMvc.Core": "2.3.0"
   },
 
   "shared": "**/*.cs",

@@ -31,7 +31,11 @@
 
         public string FieldName { get; set; }
 
+        public string DisplayName { get; set; }
+
         public object FieldValue { get; set; }
+
+        public Type DataType { get; set; }
 
         public bool IsRequired { get; set; }
 
@@ -46,7 +50,7 @@
         protected override string WriteSelfStartTag(System.IO.TextWriter writer)
         {
             var bootstrap4Mode = false;
-#if BOOTSTRAP4 
+#if BOOTSTRAP4
             bootstrap4Mode = true;
 #endif
 

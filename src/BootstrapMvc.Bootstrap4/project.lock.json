@@ -7,7 +7,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "BootstrapMvc.Core": "2.2.0"
+          "BootstrapMvc.Core": "2.3.0"
         },
         "compile": {
           "net451/BootstrapMvc.BootstrapCommon.dll": {}
@@ -16,7 +16,7 @@
           "net451/BootstrapMvc.BootstrapCommon.dll": {}
         }
       },
-      "BootstrapMvc.Core/2.2.0": {
+      "BootstrapMvc.Core/2.3.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "compile": {
@@ -172,7 +172,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
-          "BootstrapMvc.Core": "2.2.0",
+          "BootstrapMvc.Core": "2.3.0",
           "System.Globalization": "4.0.11"
         },
         "compile": {
@@ -182,7 +182,7 @@
           "netstandard1.3/BootstrapMvc.BootstrapCommon.dll": {}
         }
       },
-      "BootstrapMvc.Core/2.2.0": {
+      "BootstrapMvc.Core/2.3.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -1030,7 +1030,7 @@
       "path": "../BootstrapMvc.BootstrapCommon/project.json",
       "msbuildProject": "../BootstrapMvc.BootstrapCommon/BootstrapMvc.BootstrapCommon.xproj"
     },
-    "BootstrapMvc.Core/2.2.0": {
+    "BootstrapMvc.Core/2.3.0": {
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json",
       "msbuildProject": "../BootstrapMvc.Core/BootstrapMvc.Core.xproj"
@@ -1039,7 +1039,7 @@
   "projectFileDependencyGroups": {
     "": [
       "BootstrapMvc.BootstrapCommon",
-      "BootstrapMvc.Core >= 2.2.0"
+      "BootstrapMvc.Core >= 2.3.0"
     ],
     ".NETFramework,Version=v4.5.1": [],
     ".NETStandard,Version=v1.3": [

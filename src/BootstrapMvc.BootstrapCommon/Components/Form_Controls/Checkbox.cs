@@ -15,7 +15,7 @@
         protected override void WriteSelf(System.IO.TextWriter writer)
         {
             var bootstrap4Mode = false;
-#if BOOTSTRAP4 
+#if BOOTSTRAP4
             bootstrap4Mode = true;
 #endif
 
@@ -87,7 +87,7 @@
 
             writer.Write(" "); // writing space to separate text from checkbox itself
 
-            writer.Write(Helper.HtmlEncode(Text));
+            writer.Write(Helper.HtmlEncode(Text ?? controlContext?.DisplayName));
 
             lbl.WriteEndTag(writer);
 

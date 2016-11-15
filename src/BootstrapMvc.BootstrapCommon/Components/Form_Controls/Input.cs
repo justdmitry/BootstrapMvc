@@ -121,9 +121,9 @@
                             case InputType.Datetime:
                                 if (valueDateTime.HasValue)
                                 {
-                                    valueString = asHtml5 
-                                        ? valueDateTimeOffset.Value.ToString("o") 
-                                        : valueDateTimeOffset.Value.ToString();
+                                    valueString = asHtml5
+                                        ? valueDateTime.Value.ToString("o")
+                                        : valueDateTime.Value.ToString();
                                 }
                                 break;
                             case InputType.Time:

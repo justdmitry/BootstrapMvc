@@ -10,7 +10,11 @@
 
         public string FieldName { get; set; }
 
+        public string DisplayName { get; set; }
+
         public object FieldValue { get; set; }
+
+        public Type DataType { get; set; }
 
         public bool IsRequired { get; set; }
 

@@ -75,6 +75,10 @@
         {
             var fg = contentHelper.CreateWriter<FormGroup, AnyContent>();
             contentHelper.Context.Helper.FillControlContext(fg.Item, expression);
+            if (fg.Item.DataType != typeof(bool) && fg.Item.DataType != typeof(bool?))
+            {
+                fg.Label(fg.Item.DisplayName);
+            }
             return fg;
         }
 

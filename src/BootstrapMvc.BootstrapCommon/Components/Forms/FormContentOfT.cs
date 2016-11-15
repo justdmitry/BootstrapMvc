@@ -18,6 +18,10 @@
         {
             var fg = Context.Helper.CreateWriter<FormGroup, AnyContent>(Parent);
             Context.Helper.FillControlContext(fg.Item, expression);
+            if (fg.Item.DataType != typeof(bool) && fg.Item.DataType != typeof(bool?))
+            {
+                fg.Label(fg.Item.DisplayName);
+            }
             return fg;
         }
 

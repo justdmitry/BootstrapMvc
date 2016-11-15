@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.5.1": {
-      "BootstrapMvc.Core/2.2.0": {
+      "BootstrapMvc.Core/2.3.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "compile": {
@@ -155,7 +155,7 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "BootstrapMvc.Core/2.2.0": {
+      "BootstrapMvc.Core/2.3.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -998,7 +998,7 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "BootstrapMvc.Core/2.2.0": {
+    "BootstrapMvc.Core/2.3.0": {
       "type": "project",
       "path": "../BootstrapMvc.Core/project.json",
       "msbuildProject": "../BootstrapMvc.Core/BootstrapMvc.Core.xproj"
@@ -1006,7 +1006,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "BootstrapMvc.Core >= 2.2.0"
+      "BootstrapMvc.Core >= 2.3.0"
     ],
     ".NETFramework,Version=v4.5.1": [],
     ".NETStandard,Version=v1.3": [
