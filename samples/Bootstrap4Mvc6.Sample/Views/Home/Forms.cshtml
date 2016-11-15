@@ -18,15 +18,14 @@ using (var form = Bootstrap.BeginForm())
     using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
         @@Bootstrap.FormGroupFor(m => m.StringField)
-            .Label("Label 1")
             .Control(Bootstrap.Input().Placeholder("placeholder text"))
     }
     using (form.BeginFieldset("Fieldset two"))
     {
-        @@form.GroupFor(m => m.IntegerField, "Label 2")
+        @@form.GroupFor(m => m.IntegerField)
             .Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
         @@form.GroupFor(m => m.BooleanField)
-            .Control(Bootstrap.Checkbox("checkbox text"))
+            .Control(Bootstrap.Checkbox())
     }
     using (form.Group().BeginContent())
     {
@@ -42,12 +41,12 @@ using (var form = Bootstrap.BeginForm())
         {
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
-                @Bootstrap.FormGroupFor(m => m.StringField).Label("Label 1").Control(Bootstrap.Input().Placeholder("placeholder text"))
+                @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text"))
             }
             using (form.BeginFieldset("Fieldset two"))
             {
-                @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
-                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
+                @form.GroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
+                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox())
             }
             using (form.Group().BeginContent())
             {
@@ -69,15 +68,14 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
     using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
         @@Bootstrap.FormGroupFor(m => m.StringField)
-            .Label("Label 1")
             .Control(Bootstrap.Input().Placeholder("placeholder text"))
     }
     using (form.BeginFieldset("Fieldset two"))
     {
-        @@form.GroupFor(m => m.IntegerField, "Label 2")
+        @@form.GroupFor(m => m.IntegerField)
             .Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
         @@form.GroupFor(m => m.BooleanField)
-            .Control(Bootstrap.Checkbox("checkbox text"))
+            .Control(Bootstrap.Checkbox())
     }
     using (form.Group().BeginContent())
     {
@@ -93,12 +91,12 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
         {
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
-                @Bootstrap.FormGroupFor(m => m.StringField).Label("Label 1").Control(Bootstrap.Input().Placeholder("placeholder text"))
+                @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text"))
             }
             using (form.BeginFieldset("Fieldset two"))
             {
-                @form.GroupFor(m => m.IntegerField, "Label 2").Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
-                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
+                @form.GroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
+                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox())
             }
             using (form.Group().BeginContent())
             {
@@ -117,9 +115,9 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
 <pre>
 using (Bootstrap.BeginForm(FormType.Inline))
 {
-    @@Bootstrap.FormGroupFor(m => m.StringField).Label("Label").Control(Bootstrap.Input().Placeholder("placeholder text"))
+    @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text"))
     @@Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt())
-    @@Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
+    @@Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox())
     @@Bootstrap.Button(ButtonType.SuccessGreen, "Save")
 }
 </pre>
@@ -129,9 +127,9 @@ using (Bootstrap.BeginForm(FormType.Inline))
         @Bootstrap.Alert(AlertType.WarningOrange, "Attention! Sized controls are not supported - all 'Size' values are ignored.")
         using (Bootstrap.BeginForm(FormType.Inline))
         {
-            @Bootstrap.FormGroupFor(m => m.StringField).Label("Label").Control(Bootstrap.Input().Placeholder("placeholder text"))
+            @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text"))
             @Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt())
-            @Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox("checkbox text"))
+            @Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox())
             @Bootstrap.Button(ButtonType.SuccessGreen, "Save")
         }
     }

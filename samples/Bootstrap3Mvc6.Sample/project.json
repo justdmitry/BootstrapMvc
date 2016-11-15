@@ -1,11 +1,8 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
-    "BootstrapMvc.Bootstrap3Mvc6": {
-      "target": "package",
-      "version": "2.3.0"
-    },
+    "BootstrapMvc.Bootstrap3Mvc6": "2.4.0",
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
       "type": "platform"
