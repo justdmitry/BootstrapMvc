@@ -168,6 +168,7 @@
     <Content Include="Views\Home\Partial\Paging.cshtml" />
     <Content Include="Views\Home\Forms.cshtml" />
     <Content Include="Views\Home\Partial\PartialForm.cshtml" />
+    <Content Include="Views\Home\Partial\ListGroups.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

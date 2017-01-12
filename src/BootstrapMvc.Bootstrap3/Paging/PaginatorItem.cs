@@ -3,7 +3,7 @@
     using System;
     using BootstrapMvc.Core;
 
-    public class PaginatorItem : AnyContentElement, ILink, IDisableable
+    public class PaginatorItem : AnyContentElement, ILink, IDisableable, IActivable
     {
         public string Href { get; set; }
 
@@ -53,6 +53,16 @@
         bool IDisableable.Disabled()
         {
             return Disabled;
+        }
+
+        void IActivable.SetActive(bool active)
+        {
+            Active = active;
+        }
+
+        bool IActivable.Active()
+        {
+            return Active;
         }
     }
 }

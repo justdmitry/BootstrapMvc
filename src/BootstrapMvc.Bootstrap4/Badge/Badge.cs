@@ -2,9 +2,9 @@
 {
     using BootstrapMvc.Core;
 
-    public class Label : AnyContentElement
+    public class Badge : AnyContentElement
     {
-        public LabelType Type { get; set; }
+        public BadgeType Type { get; set; }
 
 #if BOOTSTRAP4
         public bool Pill { get; set; }

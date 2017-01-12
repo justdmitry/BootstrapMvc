@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "ListGroups";
+}
+
+<h1>ListGroups</h1>
+
+@Bootstrap.H3("Ordinary list groups")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+using (var list = Bootstrap.BeginOrdinaryListGroup())
+{
+    @@list.Item().Content("Item 1")
+    @@list.Item(ListGroupItemType.InfoCyan).Content("Item 2 - info")
+    @@list.Item(ListGroupItemType.SuccessGreen).Content("Item 3 - success")
+    @@list.Item(ListGroupItemType.WarningOrange).Content("Item 4 - warning")
+    @@list.Item(ListGroupItemType.DangerRed).Content("Item 5 - danger")
+    @@list.Item().Content("Item 6 - disabled").Disabled()
+    @@list.Item().Content("Item 7 - active").Active()
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        using (var list = Bootstrap.BeginOrdinaryListGroup())
+        {
+            @list.Item().Content("Item 1")
+            @list.Item(ListGroupItemType.InfoCyan).Content("Item 2 - info")
+            @list.Item(ListGroupItemType.SuccessGreen).Content("Item 3 - success")
+            @list.Item(ListGroupItemType.WarningOrange).Content("Item 4 - warning")
+            @list.Item(ListGroupItemType.DangerRed).Content("Item 5 - danger")
+            @list.Item().Content("Item 6 - disabled").Disabled()
+            @list.Item().Content("Item 7 - active").Active()
+        }
+    }
+}
+
+
+@Bootstrap.H3("Actionable list groups")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7))
+    {
+<pre>
+using (var list = Bootstrap.BeginOrdinaryListGroup())
+{
+    @@list.Link().Content("Link 1").Href("#")
+    @@list.Link(ListGroupItemType.InfoCyan).Content("Link 2 - info ", Bootstrap.Badge("with badge"))
+    @@list.Button(ListGroupItemType.SuccessGreen).Content("Button 3 - success")
+    @@list.Button(ListGroupItemType.WarningOrange).Content("Button 4 - warning")
+    @@list.Button(ListGroupItemType.DangerRed).Content("Button 5 - danger")
+    @@list.Link().Content("Link 6 - disabled").Disabled()
+    @@list.Button().Content("Button 7 - active").Active()
+    using (list.Link(ListGroupItemType.InfoCyan).BeginContent())
+    {
+        &lt;h4&gt;Complex content&lt;/h4&gt;
+        &lt;p&gt;Any HTML inside&lt;/p&gt;
+    }
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5))
+    {
+        using (var list = Bootstrap.BeginActionableListGroup())
+        {
+            @list.Link().Content("Link 1").Href("#")
+            @list.Link(ListGroupItemType.InfoCyan).Content("Link 2 - info ", Bootstrap.Badge("with badge"))
+            @list.Button(ListGroupItemType.SuccessGreen).Content("Button 3 - success")
+            @list.Button(ListGroupItemType.WarningOrange).Content("Button 4 - warning")
+            @list.Button(ListGroupItemType.DangerRed).Content("Button 5 - danger")
+            @list.Link().Content("Link 6 - disabled").Disabled()
+            @list.Button().Content("Button 7 - active").Active()
+            using (list.Link(ListGroupItemType.InfoCyan).BeginContent())
+            {
+                <h4>Complex content</h4>
+                <p>Any HTML inside</p>
+            }
+        }
+    }
+}
+

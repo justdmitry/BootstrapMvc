@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     ViewBag.Title = "Alerts";
 }
 
@@ -47,7 +47,7 @@
 @@Bootstrap.Alert(AlertType.SuccessGreen)
     .Content("Regular Strings will be encoded (&lt;hi!&gt;);")
     .Content(new HtmlString("&lt;i&gt;IHtmlContent will NOT be encoded&lt;/i&gt; "))
-    .Content(Bootstrap.Label(LabelType.SuccessGreen, "and other Bootstrap objects are accepted"))
+    .Content(Bootstrap.Badge(BadgeType.SuccessGreen, "and other Bootstrap objects are accepted"))
 </pre>
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
@@ -55,7 +55,7 @@
         @(Bootstrap.Alert(AlertType.SuccessGreen)
             .Content("Regular Strings will be encoded (<hi!>);")
             .Content(new HtmlString("<i>IHtmlContent will NOT be encoded</i> "))
-            .Content(Bootstrap.Label(LabelType.SuccessGreen, "and other Bootstrap objects are accepted")))
+            .Content(Bootstrap.Badge(BadgeType.SuccessGreen, "and other Bootstrap objects are accepted")))
 
     }
 }
@@ -70,7 +70,7 @@
 @@using (Bootstrap.Alert(AlertType.SuccessGreen).Closable().BeginContent())
 {
     &lt;h4&gt;Header inside Alert&lt;/h4&gt;
-    &lt;p&gt;Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside, and mix with @@Bootstrap.Label(LabelType.InfoCyan, "bootstrap objects")&lt;/p&gt;
+    &lt;p&gt;Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside, and mix with @@Bootstrap.Badge(BadgeType.InfoCyan, "bootstrap objects")&lt;/p&gt;
 }
 </pre>
     }
@@ -79,7 +79,7 @@
         using(Bootstrap.Alert(AlertType.SuccessGreen).Closable().BeginContent())
         {
             <h4>Header inside Alert</h4>
-            <p>Use <code>BeginContent()</code> method and place any HTML markup inside, and mix with @Bootstrap.Label(LabelType.InfoCyan, "bootstrap objects")</p>
+            <p>Use <code>BeginContent()</code> method and place any HTML markup inside, and mix with @Bootstrap.Badge(BadgeType.InfoCyan, "bootstrap objects")</p>
         }
     }
 }

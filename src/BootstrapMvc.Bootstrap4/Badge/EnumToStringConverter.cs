@@ -4,39 +4,33 @@ namespace BootstrapMvc
 {
     public static partial class EnumToStringConverter
     {
-        public static string ToCssClass(this LabelType type)
+        public static string ToCssClass(this BadgeType type)
         {
             string suffix = null;
             switch (type)
             {
-                case LabelType.DefaultGray:
+                case BadgeType.DefaultGray:
                     suffix = "default";
                     break;
-                case LabelType.PrimaryBlue:
+                case BadgeType.PrimaryBlue:
                     suffix = "primary";
                     break;
-                case LabelType.SuccessGreen:
+                case BadgeType.SuccessGreen:
                     suffix = "success";
                     break;
-                case LabelType.WarningOrange:
+                case BadgeType.WarningOrange:
                     suffix = "warning";
                     break;
-                case LabelType.DangerRed:
+                case BadgeType.DangerRed:
                     suffix = "danger";
                     break;
-                case LabelType.InfoCyan:
+                case BadgeType.InfoCyan:
                     suffix = "info";
                     break;
                 default:
                     return string.Empty;
             }
-#if BOOTSTRAP3
-            return "label label-" + suffix;
-#elif BOOTSTRAP4
-            return "tag tag-" + suffix;
-#else
-            return string.Empty;
-#endif
+            return "badge badge-" + suffix;
         }
     }
 }
