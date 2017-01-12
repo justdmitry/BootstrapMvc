@@ -1,19 +1,19 @@
-﻿namespace BootstrapMvc.Lists
+﻿namespace BootstrapMvc.ListGroups
 {
     using BootstrapMvc.Core;
 
-    public class ButtonsListGroup : ContentElement<ButtonsListGroupContent>
+    public class OrdinaryListGroup : ContentElement<OrdinaryListGroupContent>
     {
         private string endTag;
 
-        protected override ButtonsListGroupContent CreateContentContext(IBootstrapContext context)
+        protected override OrdinaryListGroupContent CreateContentContext(IBootstrapContext context)
         {
-            return new ButtonsListGroupContent(context, this);
+            return new OrdinaryListGroupContent(context, this);
         }
 
         protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = Helper.CreateTagBuilder("div");
+            var tb = Helper.CreateTagBuilder("ul");
 
             tb.AddCssClass("list-group");
             ApplyCss(tb);

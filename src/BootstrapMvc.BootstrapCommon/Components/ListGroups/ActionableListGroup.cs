@@ -1,19 +1,19 @@
-﻿namespace BootstrapMvc.Lists
+﻿namespace BootstrapMvc.ListGroups
 {
     using BootstrapMvc.Core;
 
-    public class ListGroup : ContentElement<ListGroupContent>
+    public class ActionableListGroup : ContentElement<ActionableListGroupContent>
     {
         private string endTag;
 
-        protected override ListGroupContent CreateContentContext(IBootstrapContext context)
+        protected override ActionableListGroupContent CreateContentContext(IBootstrapContext context)
         {
-            return new ListGroupContent(context, this);
+            return new ActionableListGroupContent(context, this);
         }
 
         protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
-            var tb = Helper.CreateTagBuilder("ul");
+            var tb = Helper.CreateTagBuilder("div");
 
             tb.AddCssClass("list-group");
             ApplyCss(tb);
