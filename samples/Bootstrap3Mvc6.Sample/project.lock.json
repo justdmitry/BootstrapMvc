@@ -3684,7 +3684,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "BootstrapMvc.Bootstrap3/2.6.0": {
+      "BootstrapMvc.Bootstrap3/2.7.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -3698,11 +3698,11 @@
           "netstandard1.3/BootstrapMvc.Bootstrap3.dll": {}
         }
       },
-      "BootstrapMvc.Bootstrap3Mvc6/2.4.0": {
+      "BootstrapMvc.Bootstrap3Mvc6/2.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
-          "BootstrapMvc.Bootstrap3": "2.6.0",
+          "BootstrapMvc.Bootstrap3": "2.7.0",
           "BootstrapMvc.Mvc6": "2.4.0"
         },
         "compile": {
@@ -9766,12 +9766,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "BootstrapMvc.Bootstrap3/2.6.0": {
+    "BootstrapMvc.Bootstrap3/2.7.0": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3/project.json",
       "msbuildProject": "../../src/BootstrapMvc.Bootstrap3/BootstrapMvc.Bootstrap3.xproj"
     },
-    "BootstrapMvc.Bootstrap3Mvc6/2.4.0": {
+    "BootstrapMvc.Bootstrap3Mvc6/2.4.1": {
       "type": "project",
       "path": "../../src/BootstrapMvc.Bootstrap3Mvc6/project.json",
       "msbuildProject": "../../src/BootstrapMvc.Bootstrap3Mvc6/BootstrapMvc.Bootstrap3Mvc6.xproj"
@@ -9789,7 +9789,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "BootstrapMvc.Bootstrap3Mvc6 >= 2.4.0",
+      "BootstrapMvc.Bootstrap3Mvc6 >= 2.4.1",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Mvc >= 1.0.0",
       "Microsoft.AspNetCore.Razor.Tools >= 1.0.0-preview2-final",
