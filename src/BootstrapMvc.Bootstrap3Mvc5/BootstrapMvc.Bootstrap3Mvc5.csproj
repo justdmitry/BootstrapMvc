@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Copyright>Copyright © Dmitry Popov, 2015</Copyright>
+    <AssemblyTitle>BootstrapMvc.Bootstrap3Mvc5</AssemblyTitle>
+    <VersionPrefix>2.3.1</VersionPrefix>
+    <TargetFramework>net451</TargetFramework>
+    <AssemblyName>BootstrapMvc.Bootstrap3Mvc5</AssemblyName>
+    <PackageId>BootstrapMvc.Bootstrap3Mvc5</PackageId>
+    <PackageTags>Bootstrap;Bootstrap3;Mvc;Mvc5;HelpHelpers</PackageTags>
+    <PackageReleaseNotes>BootstrapMvc.Bootstrap3 updated to 2.7.0</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/justdmitry/BootstrapMvc</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/justdmitry/BootstrapMvc.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BootstrapMvc.Mvc5\BootstrapMvc.Mvc5.csproj" />
+    <ProjectReference Include="..\BootstrapMvc.Bootstrap3\BootstrapMvc.Bootstrap3.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.3" />
+    <PackageReference Include="Microsoft.AspNet.Razor" Version="3.2.3" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <Reference Include="System.Web" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>
