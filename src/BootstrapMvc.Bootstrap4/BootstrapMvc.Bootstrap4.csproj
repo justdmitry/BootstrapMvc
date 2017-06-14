@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Copyright>Copyright © Dmitry Popov, 2016</Copyright>
+    <AssemblyTitle>BootstrapMvc.Bootstrap4</AssemblyTitle>
+    <VersionPrefix>1.2.0</VersionPrefix>
+    <TargetFrameworks>netstandard1.3;net451</TargetFrameworks>
+    <DefineConstants>$(DefineConstants);BOOTSTRAP4</DefineConstants>
+    <AssemblyName>BootstrapMvc.Bootstrap4</AssemblyName>
+    <PackageId>BootstrapMvc.Bootstrap4</PackageId>
+    <PackageTags>Bootstrap;Bootstrap4;Mvc;HtmlHelpers</PackageTags>
+    <PackageReleaseNotes>ListGroup added, Label now Badge (again)</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/justdmitry/BootstrapMvc</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/justdmitry/BootstrapMvc.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BootstrapMvc.Core\BootstrapMvc.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../BootstrapMvc.BootstrapCommon/**/*.cs" Exclude="../BootstrapMvc.BootstrapCommon/bin/**/*.*;../BootstrapMvc.BootstrapCommon/obj/**/*.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

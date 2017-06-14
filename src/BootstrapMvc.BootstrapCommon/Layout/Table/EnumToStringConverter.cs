@@ -43,5 +43,31 @@
 #endif
             return className;
         }
+
+        public static string ToCssClass(this TableRowCellColor color)
+        {
+#if BOOTSTRAP4
+            const string prefix = "table-";
+#else
+            const string prefix = "";
+#endif
+            // String concatenation will be optimized at compile-time
+            switch (color)
+            {
+                case TableRowCellColor.ActiveGray:
+                    return prefix + "active";
+                case TableRowCellColor.SuccessGreen:
+                    return prefix + "success";
+                case TableRowCellColor.InfoCyan:
+                    return prefix + "info";
+                case TableRowCellColor.WarningOrange:
+                    return prefix + "warning";
+                case TableRowCellColor.DangerRed:
+                    return prefix + "danger";
+                case TableRowCellColor.DefaultNone:
+                default:
+                    return string.Empty;
+            }
+        }
     }
 }

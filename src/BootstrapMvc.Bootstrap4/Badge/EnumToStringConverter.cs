@@ -6,31 +6,25 @@ namespace BootstrapMvc
     {
         public static string ToCssClass(this BadgeType type)
         {
-            string suffix = null;
+            // String concatenation will be optimized at compile time
+            const string prefix = "badge badge-";
             switch (type)
             {
                 case BadgeType.DefaultGray:
-                    suffix = "default";
-                    break;
+                    return prefix + "default";
                 case BadgeType.PrimaryBlue:
-                    suffix = "primary";
-                    break;
+                    return prefix + "primary";
                 case BadgeType.SuccessGreen:
-                    suffix = "success";
-                    break;
+                    return prefix + "success";
                 case BadgeType.WarningOrange:
-                    suffix = "warning";
-                    break;
+                    return prefix + "warning";
                 case BadgeType.DangerRed:
-                    suffix = "danger";
-                    break;
+                    return prefix + "danger";
                 case BadgeType.InfoCyan:
-                    suffix = "info";
-                    break;
+                    return prefix + "info";
                 default:
                     return string.Empty;
             }
-            return "badge badge-" + suffix;
         }
     }
 }
