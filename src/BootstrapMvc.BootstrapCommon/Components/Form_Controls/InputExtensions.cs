@@ -1,5 +1,6 @@
 ﻿namespace BootstrapMvc
 {
+    using System;
     using System.Globalization;
     using BootstrapMvc.Core;
     using BootstrapMvc.Controls;
@@ -54,6 +55,7 @@
 #endif
         }
 
+        [Obsolete("No more \"type=datetime\" in HTML 5.1, use InputDateTimeLocal()")]
         public static IItemWriter<Input> InputDateTime(this IAnyContentMarker contextHelper)
         {
 #if BOOTSTRAP4
@@ -66,9 +68,18 @@
         public static IItemWriter<Input> InputDateTimeLocal(this IAnyContentMarker contextHelper)
         {
 #if BOOTSTRAP4
-            return contextHelper.Input(InputType.DatetimeLocal).Size(new GridSize(0, 5, 4, 4, 4));
+            return contextHelper.Input(InputType.DatetimeLocal).Size(new GridSize(0, 6, 5, 5, 5));
 #else
-            return contextHelper.Input(InputType.DatetimeLocal).Size(new GridSize(0, 5, 4, 4));
+            return contextHelper.Input(InputType.DatetimeLocal).Size(new GridSize(0, 6, 5, 5));
+#endif
+        }
+
+        public static IItemWriter<Input> InputTime(this IAnyContentMarker contextHelper)
+        {
+#if BOOTSTRAP4
+            return contextHelper.Input(InputType.Time).Size(new GridSize(0, 3, 3, 3, 3));
+#else
+            return contextHelper.Input(InputType.Time).Size(new GridSize(0, 3, 3, 3));
 #endif
         }
 
