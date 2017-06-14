@@ -22,39 +22,51 @@
             var controlContext = GetNearestParent<IControlContext>();
 
             ITagBuilder div = null;
-            if (!Inline)
+            ITagBuilder lbl = null;
+
+            if (bootstrap4Mode)
             {
                 div = Helper.CreateTagBuilder("div");
-                div.AddCssClass(bootstrap4Mode ? "form-check" : "checkbox");
+                div.AddCssClass("form-check");
+                if (Inline)
+                {
+                    div.AddCssClass("form-check-inline");
+                }
 
-                if (bootstrap4Mode && controlContext != null)
+                if (controlContext != null)
                 {
                     if (controlContext.HasErrors)
                     {
-                        div.AddCssClass("has-danger checkbox");
+                        div.AddCssClass("has-danger");
                     }
+
                     else if (controlContext.HasWarning)
                     {
-                        div.AddCssClass("has-warning checkbox");
+                        div.AddCssClass("has-warning");
                     }
                 }
 
-                div.WriteStartTag(writer);
-            }
+                lbl = Helper.CreateTagBuilder("label");
+                lbl.AddCssClass("form-check-label");
 
-            var lbl = Helper.CreateTagBuilder("label");
-            if (Inline)
-            {
-                lbl.AddCssClass(bootstrap4Mode ? "form-check-inline" : "checkbox-inline");
             }
             else
             {
-                if (bootstrap4Mode)
+                if (!Inline)
                 {
-                    lbl.AddCssClass("form-check-label");
+                    div = Helper.CreateTagBuilder("div");
+                    div.AddCssClass("checkbox");
+                }
+
+                lbl = Helper.CreateTagBuilder("label");
+                if (Inline)
+                {
+                    lbl.AddCssClass("checkbox-inline");
                 }
             }
-            lbl.WriteStartTag(writer);
+
+            div?.WriteStartTag(writer);
+            lbl?.WriteStartTag(writer);
 
             var input = Helper.CreateTagBuilder("input");
             input.MergeAttribute("type", "checkbox", true);
@@ -89,12 +101,8 @@
 
             writer.Write(Helper.HtmlEncode(Text ?? controlContext?.DisplayName));
 
-            lbl.WriteEndTag(writer);
-
-            if (div != null)
-            {
-                div.WriteEndTag(writer);
-            }
+            lbl?.WriteEndTag(writer);
+            div?.WriteEndTag(writer);
         }
 
         void IDisableable.SetDisabled(bool disabled)
