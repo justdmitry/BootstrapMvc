@@ -1,6 +1,7 @@
 ﻿namespace BootstrapMvc.Controls
 {
     using System;
+    using System.Globalization;
     using BootstrapMvc;
     using BootstrapMvc.Core;
     using BootstrapMvc.Forms;
@@ -8,6 +9,10 @@
     public class Input : Element, IFormControl, IPlaceholderTarget, IGridSizable
     {
         public static DateInputMode DateInputModeDefault { get; set; } = DateInputMode.Text;
+
+        public static string TextDateInputModeDateFormat { get; set; } = "d";
+
+        public static string TextDateInputModeDateTimeLocalFormat { get; set; } = "G";
 
         public DateInputMode DateInputMode { get; set; } = DateInputModeDefault;
 
@@ -78,58 +83,60 @@
                 {
                     input.MergeAttribute("required", "required", true);
                 }
+
                 var value = controlContext.FieldValue;
                 if (value != null)
                 {
                     var valueString = value.ToString();
-                    if (Type == InputType.Date || Type == InputType.Datetime || Type == InputType.DatetimeLocal || Type == InputType.Time)
+                    if (actualType == InputType.Datetime)
+                    {
+                        actualType = InputType.DatetimeLocal;
+                    }
+
+                    if (actualType == InputType.Date || actualType == InputType.DatetimeLocal || actualType == InputType.Time)
                     {
                         var valueDateTime = value as DateTime?;
                         var valueDateTimeOffset = value as DateTimeOffset?;
                         var valueTimeSpan = value as TimeSpan?;
+
                         if (valueDateTimeOffset.HasValue)
                         {
                             valueDateTime = valueDateTimeOffset.Value.DateTime;
                         }
+
                         if (valueDateTime.HasValue)
                         {
                             valueTimeSpan = valueDateTime.Value.TimeOfDay;
                         }
+
                         var asHtml5 = (DateInputMode == BootstrapMvc.DateInputMode.Html5);
                         if (!asHtml5)
                         {
                             actualType = InputType.Text;
                         }
+
                         switch(Type)
                         {
                             case InputType.Date:
                                 if (valueDateTime.HasValue)
                                 {
                                     valueString = asHtml5
-                                        ? valueDateTime.Value.ToString("yyyy-MM-dd")
-                                        : valueDateTime.Value.ToString("d");
+                                        ? valueDateTime.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
+                                        : valueDateTime.Value.ToString(TextDateInputModeDateFormat);
                                 }
                                 break;
                             case InputType.DatetimeLocal:
                                 if (valueDateTime.HasValue)
                                 {
                                     valueString = asHtml5
-                                        ? valueDateTime.Value.ToString("o")
-                                        : valueDateTime.Value.ToString();
-                                }
-                                break;
-                            case InputType.Datetime:
-                                if (valueDateTime.HasValue)
-                                {
-                                    valueString = asHtml5
-                                        ? valueDateTime.Value.ToString("o")
-                                        : valueDateTime.Value.ToString();
+                                        ? valueDateTime.Value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture)
+                                        : valueDateTime.Value.ToString(TextDateInputModeDateTimeLocalFormat);
                                 }
                                 break;
                             case InputType.Time:
-                                if (valueDateTime.HasValue)
+                                if (valueTimeSpan.HasValue)
                                 {
-                                    valueString = valueTimeSpan.ToString();
+                                    valueString = DateTime.MinValue.Add(valueTimeSpan.Value).ToString("HH:mm:ss", CultureInfo.InvariantCulture);
                                 }
                                 break;
                         }
@@ -142,6 +149,7 @@
             {
                 input.MergeAttribute("type", actualType.ToType(), true);
             }
+
             if (Disabled)
             {
                 input.MergeAttribute("disabled", "disabled", true);
