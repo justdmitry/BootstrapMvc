@@ -9,10 +9,10 @@ namespace BootstrapMvc.Forms
 
         public Form()
         {
-#if BOOTSTRAP3
-            LabelWidth = new GridSize(0, 4, 4, 4);
-#else
+#if BOOTSTRAP4
             LabelWidth = new GridSize(0, 4, 4, 4, 4);
+#else
+            LabelWidth = new GridSize(0, 4, 4, 4);
 #endif
             Type = Form.DefaultType;
         }

@@ -14,16 +14,24 @@ namespace BootstrapMvc
 
         private byte lg;
 
+#if BOOTSTRAP4
         private byte xl;
+#endif
 
+#if BOOTSTRAP4
         [Obsolete("Use new constructor with 'xl' param")]
         public GridSize(byte xs, byte sm, byte md, byte lg)
             : this(xs, sm, md, lg, lg)
         {
             // Nothing
         }
+#endif
 
+#if BOOTSTRAP4
         public GridSize(byte xs, byte sm, byte md, byte lg, byte xl)
+#else
+        public GridSize(byte xs, byte sm, byte md, byte lg)
+#endif
         {
             if (xs > ColumnsCount)
             {
@@ -41,15 +49,20 @@ namespace BootstrapMvc
             {
                 throw new ArgumentOutOfRangeException(nameof(lg));
             }
-            if (xl > ColumnsCount)
-            {
-                throw new ArgumentOutOfRangeException(nameof(xl));
-            }
+
             this.xs = xs;
             this.sm = sm;
             this.md = md;
             this.lg = lg;
+
+#if BOOTSTRAP4
+            if (xl > ColumnsCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(xl));
+            }
+
             this.xl = xl;
+#endif
         }
 
         public string ToCssClass()
@@ -58,8 +71,10 @@ namespace BootstrapMvc
                  + (sm == 0 ? string.Empty : " col-sm-" + sm)
                  + (md == 0 ? string.Empty : " col-md-" + md)
                  + (lg == 0 ? string.Empty : " col-lg-" + lg)
-                 + (xl == 0 ? string.Empty : " col-xl-" + xl))
-                 .Trim();
+#if BOOTSTRAP4
+                 + (xl == 0 ? string.Empty : " col-xl-" + xl)
+#endif
+                 ).Trim();
         }
 
         public string ToOffsetCssClass()
@@ -68,8 +83,10 @@ namespace BootstrapMvc
                  + " offset-sm-" + sm
                  + " offset-md-" + md
                  + " offset-lg-" + lg
-                 + " offset-xl-" + xl)
-                 .Trim();
+#if BOOTSTRAP4
+                 + " offset-xl-" + xl
+#endif
+                 ).Trim();
         }
 
         public GridSize Invert()
@@ -78,13 +95,21 @@ namespace BootstrapMvc
                 (byte)(xs == 0 ? 0 : ColumnsCount - xs),
                 (byte)(sm == 0 ? 0 : ColumnsCount - sm),
                 (byte)(md == 0 ? 0 : ColumnsCount - md),
-                (byte)(lg == 0 ? 0 : ColumnsCount - lg),
-                (byte)(xl == 0 ? 0 : ColumnsCount - xl));
+                (byte)(lg == 0 ? 0 : ColumnsCount - lg)
+#if BOOTSTRAP4
+                ,
+                (byte)(xl == 0 ? 0 : ColumnsCount - xl)
+#endif
+                );
         }
 
         public bool IsEmpty()
         {
-            return xs == 0 && sm == 0 && md == 0 && lg == 0 && xl == 0;
+            return xs == 0 && sm == 0 && md == 0 && lg == 0
+#if BOOTSTRAP4
+                && xl == 0
+#endif
+                ;
         }
     }
 }
