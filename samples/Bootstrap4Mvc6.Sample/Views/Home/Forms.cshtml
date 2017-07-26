@@ -47,6 +47,7 @@ using (var form = Bootstrap.BeginForm())
             {
                 @form.GroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
                 @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox())
+                @Bootstrap.HiddenFor(m => m.IntegerField)
             }
             using (form.Group().BeginContent())
             {
