@@ -5,33 +5,18 @@
 
     public static partial class IGridSizableExtensions
     {
-        [Obsolete("Use method with 'xl' param")]
-        public static IItemWriter<T> Size<T>(this IItemWriter<T> target, byte xs, byte sm, byte md, byte lg) 
+        public static IItemWriter<T> Size<T>(this IItemWriter<T> target, GridSize value)
             where T : IGridSizable, IWritableItem
         {
-            return Size(target, xs, sm, md, lg, lg);
-        }
-
-        public static IItemWriter<T> Size<T>(this IItemWriter<T> target, byte xs, byte sm, byte md, byte lg, byte xl)
-            where T : IGridSizable, IWritableItem
-        {
-            target.Item.SetSize(new GridSize(xs, sm, md, lg, xl));
+            target.Item.Size = value;
             return target;
         }
 
-        [Obsolete("Use method with 'xl' param")]
-        public static IItemWriter<T, TContent> Size<T, TContent>(this IItemWriter<T, TContent> target, byte xs, byte sm, byte md, byte lg)
+        public static IItemWriter<T, TContent> Size<T, TContent>(this IItemWriter<T, TContent> target, GridSize value)
             where T : ContentElement<TContent>, IGridSizable
             where TContent : DisposableContent
         {
-            return Size(target, xs, sm, md, lg, lg);
-        }
-
-        public static IItemWriter<T, TContent> Size<T, TContent>(this IItemWriter<T, TContent> target, byte xs, byte sm, byte md, byte lg, byte xl)
-            where T : ContentElement<TContent>, IGridSizable
-            where TContent : DisposableContent
-        {
-            target.Item.SetSize(new GridSize(xs, sm, md, lg, xl));
+            target.Item.Size = value;
             return target;
         }
     }

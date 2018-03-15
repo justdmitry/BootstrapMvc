@@ -5,10 +5,10 @@
 
     public static class IDisableableExtensions
     {
-        public static IItemWriter<T> Disabled<T>(this IItemWriter<T> target, bool disabled = true) 
+        public static IItemWriter<T> Disabled<T>(this IItemWriter<T> target, bool disabled = true)
             where T : IDisableable, IWritableItem
         {
-            target.Item.SetDisabled(disabled);
+            target.Item.Disabled = disabled;
             return target;
         }
 
@@ -16,7 +16,7 @@
             where T : ContentElement<TContent>, IDisableable
             where TContent : DisposableContent
         {
-            target.Item.SetDisabled(disabled);
+            target.Item.Disabled = disabled;
             return target;
         }
     }

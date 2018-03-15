@@ -2,7 +2,7 @@
     ViewBag.Title = "Alerts";
 }
 
-<h1>Alerts</h1>
+@Bootstrap.H1("Alerts")
 
 @Bootstrap.H3("Simple alerts")
 @using (Bootstrap.BeginGridRow())
@@ -10,18 +10,26 @@
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
 <pre>
-@@Bootstrap.Alert(AlertType.DangerRed,     "This is simple danger alert")
-@@Bootstrap.Alert(AlertType.SuccessGreen,  "This is simple success alert")
-@@Bootstrap.Alert(AlertType.WarningOrange, "This is simple warning alert")
-@@Bootstrap.Alert(AlertType.InfoCyan,      "This is simple info alert")
+@@Bootstrap.Alert(Color8.PrimaryBlue, "This is simple PRIMARY alert")
+@@Bootstrap.Alert(Color8.SecondaryGrey, "This is simple SECONDARY alert")
+@@Bootstrap.Alert(Color8.SuccessGreen, "This is simple SUCCESS alert")
+@@Bootstrap.Alert(Color8.WarningOrange, "This is simple WARNING alert")
+@@Bootstrap.Alert(Color8.DangerRed, "This is simple DANGER alert")
+@@Bootstrap.Alert(Color8.InfoCyan, "This is simple INFO alert")
+@@Bootstrap.Alert(Color8.LightGrey, "This is simple LIGHT alert")
+@@Bootstrap.Alert(Color8.DarkGrey, "This is simple DARK alert")
 </pre>
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        @Bootstrap.Alert(AlertType.DangerRed, "This is simple danger alert")
-        @Bootstrap.Alert(AlertType.SuccessGreen, "This is simple success alert")
-        @Bootstrap.Alert(AlertType.WarningOrange, "This is simple warning alert")
-        @Bootstrap.Alert(AlertType.InfoCyan, "This is simple info alert")
+        @Bootstrap.Alert(Color8.PrimaryBlue, "This is simple PRIMARY alert")
+        @Bootstrap.Alert(Color8.SecondaryGrey, "This is simple SECONDARY alert")
+        @Bootstrap.Alert(Color8.SuccessGreen, "This is simple SUCCESS alert")
+        @Bootstrap.Alert(Color8.WarningOrange, "This is simple WARNING alert")
+        @Bootstrap.Alert(Color8.DangerRed, "This is simple DANGER alert")
+        @Bootstrap.Alert(Color8.InfoCyan, "This is simple INFO alert")
+        @Bootstrap.Alert(Color8.LightGrey, "This is simple LIGHT alert")
+        @Bootstrap.Alert(Color8.DarkGrey, "This is simple DARK alert")
     }
 }
 
@@ -30,11 +38,12 @@
 {
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
-<pre>@@Bootstrap.Alert(AlertType.WarningOrange, "Alert with close button").Closable()</pre>
+<pre>@@Bootstrap.Alert(Color8.WarningOrange, "Alert with close button")
+    .Closable()</pre>
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        @Bootstrap.Alert(AlertType.WarningOrange, "Alert with close button").Closable()
+        @Bootstrap.Alert(Color8.WarningOrange, "Alert with close button").Closable()
     }
 }
 
@@ -44,18 +53,18 @@
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
 <pre>
-@@Bootstrap.Alert(AlertType.SuccessGreen)
+@@Bootstrap.Alert(Color8.SuccessGreen)
     .Content("Regular Strings will be encoded (&lt;hi!&gt;);")
     .Content(new HtmlString("&lt;i&gt;IHtmlContent will NOT be encoded&lt;/i&gt; "))
-    .Content(Bootstrap.Badge(BadgeType.SuccessGreen, "and other Bootstrap objects are accepted"))
+    .Content(Bootstrap.Badge(Color8.SuccessGreen, "and other Bootstrap objects are accepted"))
 </pre>
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        @(Bootstrap.Alert(AlertType.SuccessGreen)
-            .Content("Regular Strings will be encoded (<hi!>);")
-            .Content(new HtmlString("<i>IHtmlContent will NOT be encoded</i> "))
-            .Content(Bootstrap.Badge(BadgeType.SuccessGreen, "and other Bootstrap objects are accepted")))
+        @(Bootstrap.Alert(Color8.SuccessGreen)
+                                            .Content("Regular Strings will be encoded (<hi!>);")
+                                            .Content(new HtmlString("<i>IHtmlContent will NOT be encoded</i> "))
+                                            .Content(Bootstrap.Badge(Color8.SuccessGreen, "and other Bootstrap objects are accepted")))
 
     }
 }
@@ -67,19 +76,19 @@
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
 <pre>
-@@using (Bootstrap.Alert(AlertType.SuccessGreen).Closable().BeginContent())
+@@using (Bootstrap.Alert(Color8.SuccessGreen).Closable().BeginContent())
 {
     &lt;h4&gt;Header inside Alert&lt;/h4&gt;
-    &lt;p&gt;Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside, and mix with @@Bootstrap.Badge(BadgeType.InfoCyan, "bootstrap objects")&lt;/p&gt;
+    &lt;p&gt;Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside, and mix with @@Bootstrap.Badge(Color8.InfoCyan, "bootstrap objects")&lt;/p&gt;
 }
 </pre>
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        using(Bootstrap.Alert(AlertType.SuccessGreen).Closable().BeginContent())
+        using (Bootstrap.Alert(Color8.SuccessGreen).Closable().BeginContent())
         {
             <h4>Header inside Alert</h4>
-            <p>Use <code>BeginContent()</code> method and place any HTML markup inside, and mix with @Bootstrap.Badge(BadgeType.InfoCyan, "bootstrap objects")</p>
+            <p>Use <code>BeginContent()</code> method and place any HTML markup inside, and mix with @Bootstrap.Badge(Color8.InfoCyan, "bootstrap objects")</p>
         }
     }
 }

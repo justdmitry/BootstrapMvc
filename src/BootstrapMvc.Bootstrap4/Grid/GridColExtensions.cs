@@ -6,38 +6,43 @@
 
     public static partial class GridColExtensions
     {
-        [Obsolete("Use method with 'xl' param")]
-        public static IItemWriter<T, AnyContent> Offset<T>(this IItemWriter<T, AnyContent> target, byte xs, byte sm, byte md, byte lg) where T : GridCol
+        public static IItemWriter<T, AnyContent> Align<T>(this IItemWriter<T, AnyContent> target, VerticalAlignment align)
+            where T : GridCol
         {
-            return Offset(target, xs, sm, md, lg, lg);
-        }
-
-        public static IItemWriter<T, AnyContent> Offset<T>(this IItemWriter<T, AnyContent> target, byte xs, byte sm, byte md, byte lg, byte xl) where T : GridCol
-        {
-            target.Item.Offset = new GridSize(xs, sm, md, lg, xl);
+            target.Item.Align = align;
             return target;
         }
 
-        [Obsolete("Use method with 'xl' param")]
-        public static IItemWriter<GridCol, AnyContent> GridCol(this IAnyContentMarker contentHelper, byte xs, byte sm, byte md, byte lg)
+        public static IItemWriter<T, AnyContent> Offset<T>(this IItemWriter<T, AnyContent> target, GridSize value)
+            where T : GridCol
         {
-            return GridCol(contentHelper, xs, sm, md, lg, lg);
+            target.Item.Offset = value;
+            return target;
         }
 
-        public static IItemWriter<GridCol, AnyContent> GridCol(this IAnyContentMarker contentHelper, byte xs, byte sm, byte md, byte lg, byte xl)
+        public static IItemWriter<GridCol, AnyContent> GridCol(this IAnyContentMarker contentHelper, GridSize size)
         {
-            return contentHelper.CreateWriter<GridCol, AnyContent>().Size(new GridSize(xs, sm, md, lg, xl));
+            return contentHelper.CreateWriter<GridCol, AnyContent>().Size(size);
         }
 
-        [Obsolete("Use method with 'xl' param")]
-        public static AnyContent BeginGridCol(this IAnyContentMarker contentHelper, byte xs, byte sm, byte md, byte lg)
+        public static AnyContent BeginGridCol(this IAnyContentMarker contentHelper, GridSize size)
         {
-            return BeginGridCol(contentHelper, xs, sm, md, lg, lg);
+            return GridCol(contentHelper, size).BeginContent();
+        }
+
+        public static AnyContent BeginGridCol(this IAnyContentMarker contentHelper, byte equalSize)
+        {
+            return GridCol(contentHelper, new GridSize(equalSize)).BeginContent();
         }
 
         public static AnyContent BeginGridCol(this IAnyContentMarker contentHelper, byte xs, byte sm, byte md, byte lg, byte xl)
         {
-            return GridCol(contentHelper, xs, sm, md, lg, xl).BeginContent();
+            return GridCol(contentHelper, new GridSize(xs, sm, md, lg, xl)).BeginContent();
+        }
+
+        public static AnyContent BeginGridCol(this IAnyContentMarker contentHelper, GridSize size, GridSize offset)
+        {
+            return GridCol(contentHelper, size).Offset(offset).BeginContent();
         }
     }
 }

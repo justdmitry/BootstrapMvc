@@ -5,27 +5,25 @@
 
     public partial class GridRowContent : DisposableContent
     {
-        [Obsolete("Use method with 'xl' param")]
-        public IItemWriter<GridCol, AnyContent> Col(byte xs, byte sm, byte md, byte lg)
+        public GridRowContent(IBootstrapContext context, GridRow parent)
         {
-            return Col(xs, sm, md, lg, lg);
+            this.Context = context;
+            this.Parent = parent;
         }
 
-        public IItemWriter<GridCol, AnyContent> Col(byte xs, byte sm, byte md, byte lg, byte xl)
+        private IBootstrapContext Context { get; set; }
+
+        private GridRow Parent { get; set; }
+
+        public IItemWriter<GridCol, AnyContent> Col(GridSize size)
         {
             return Context.Helper.CreateWriter<GridCol, AnyContent>(Parent)
-                .Size(new GridSize(xs, sm, md, lg, xl));
+                .Size(size);
         }
 
-        [Obsolete("Use method with 'xl' param")]
-        public AnyContent BeginCol(byte xs, byte sm, byte md, byte lg)
+        public AnyContent BeginCol(GridSize size)
         {
-            return BeginCol(xs, sm, md, lg, lg);
-        }
-
-        public AnyContent BeginCol(byte xs, byte sm, byte md, byte lg, byte xl)
-        {
-            return Col(xs, sm, md, lg, xl).BeginContent();
+            return Col(size).BeginContent();
         }
     }
 }

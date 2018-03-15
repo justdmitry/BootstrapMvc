@@ -1,64 +1,109 @@
-﻿<h1>Badges <small class="text-muted">(and Labels)</small></h1>
-
-@using (Bootstrap.BeginGridRow())
-{
-    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
-    {
-<pre>
-@@Bootstrap.Badge(BadgeType.DefaultGray,   "DefaultGray")
-@@Bootstrap.Badge(BadgeType.InfoCyan,      "InfoCyan")
-@@Bootstrap.Badge(BadgeType.PrimaryBlue,   "PrimaryBlue")
-@@Bootstrap.Badge(BadgeType.WarningOrange, "WarningOrange")
-@@Bootstrap.Badge(BadgeType.DangerRed,     "DangerRed")
-@@Bootstrap.Badge(BadgeType.SuccessGreen,  "SuccessGreen")
-</pre>
-    }
-    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
-    {
-        @Bootstrap.Badge(BadgeType.DefaultGray, "DefaultGray")
-        @Bootstrap.Badge(BadgeType.InfoCyan, "InfoCyan")
-        @Bootstrap.Badge(BadgeType.PrimaryBlue, "PrimaryBlue")
-        <br/>
-        @Bootstrap.Badge(BadgeType.WarningOrange, "WarningOrange")
-        @Bootstrap.Badge(BadgeType.DangerRed, "DangerRed")
-        @Bootstrap.Badge(BadgeType.SuccessGreen, "SuccessGreen")
-    }
+﻿@{
+    ViewBag.Title = "Badges";
 }
 
-<h3><code>Pill</code> mode</h3>
+@Bootstrap.H1("Badges ", Bootstrap.Small("(and labels)"))
+
+@Bootstrap.H3("Simple badges")
 @using (Bootstrap.BeginGridRow())
 {
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
 <pre>
-@@Bootstrap.Badge(BadgeType.DefaultGray,   "DefaultGray").Pill()
-@@Bootstrap.Badge(BadgeType.InfoCyan,      "InfoCyan").Pill()
-@@Bootstrap.Badge(BadgeType.PrimaryBlue,   "PrimaryBlue").Pill()
-@@Bootstrap.Badge(BadgeType.WarningOrange, "WarningOrange").Pill()
-@@Bootstrap.Badge(BadgeType.DangerRed,     "DangerRed").Pill()
-@@Bootstrap.Badge(BadgeType.SuccessGreen,  "SuccessGreen").Pill()
+@@Bootstrap.Badge(Color8.PrimaryBlue, "Primary")
+@@Bootstrap.Badge(Color8.SecondaryGrey, "Secondary")
+@@Bootstrap.Badge(Color8.SuccessGreen, "Success")
+@@Bootstrap.Badge(Color8.WarningOrange, "Warning")
+@@Bootstrap.Badge(Color8.DangerRed, "Danger")
+@@Bootstrap.Badge(Color8.InfoCyan, "Info")
+@@Bootstrap.Badge(Color8.LightGrey, "Light")
+@@Bootstrap.Badge(Color8.DarkGrey, "Dark")
 </pre>
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        @Bootstrap.Badge(BadgeType.DefaultGray, "DefaultGray").Pill()
-        @Bootstrap.Badge(BadgeType.InfoCyan, "InfoCyan").Pill()
-        @Bootstrap.Badge(BadgeType.PrimaryBlue, "PrimaryBlue").Pill()
+        @Bootstrap.Badge(Color8.PrimaryBlue, "Primary")
+        @Bootstrap.Badge(Color8.SecondaryGrey, "Secondary")
         <br />
-        @Bootstrap.Badge(BadgeType.WarningOrange, "WarningOrange").Pill()
-        @Bootstrap.Badge(BadgeType.DangerRed, "DangerRed").Pill()
-        @Bootstrap.Badge(BadgeType.SuccessGreen, "SuccessGreen").Pill()
+        @Bootstrap.Badge(Color8.SuccessGreen, "Success")
+        @Bootstrap.Badge(Color8.WarningOrange, "Warning")
+        @Bootstrap.Badge(Color8.DangerRed, "Danger")
+        @Bootstrap.Badge(Color8.InfoCyan, "Info")
+        <br />
+        @Bootstrap.Badge(Color8.LightGrey, "Light")
+        @Bootstrap.Badge(Color8.DarkGrey, "Dark")
     }
 }
 
+@Bootstrap.H3("Pill mode")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+        <pre>
+@@Bootstrap.Badge(Color8.PrimaryBlue, "Primary").Pill()
+@@Bootstrap.Badge(Color8.SecondaryGrey, "Secondary").Pill()
+@@Bootstrap.Badge(Color8.SuccessGreen, "Success").Pill()
+@@Bootstrap.Badge(Color8.WarningOrange, "Warning").Pill()
+@@Bootstrap.Badge(Color8.DangerRed, "Danger").Pill()
+@@Bootstrap.Badge(Color8.InfoCyan, "Info").Pill()
+@@Bootstrap.Badge(Color8.LightGrey, "Light").Pill()
+@@Bootstrap.Badge(Color8.DarkGrey, "Dark").Pill()
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        @Bootstrap.Badge(Color8.PrimaryBlue, "Primary").Pill()
+        @Bootstrap.Badge(Color8.SecondaryGrey, "Secondary").Pill()
+        <br />
+        @Bootstrap.Badge(Color8.SuccessGreen, "Success").Pill()
+        @Bootstrap.Badge(Color8.WarningOrange, "Warning").Pill()
+        @Bootstrap.Badge(Color8.DangerRed, "Danger").Pill()
+        @Bootstrap.Badge(Color8.InfoCyan, "Info").Pill()
+        <br />
+        @Bootstrap.Badge(Color8.LightGrey, "Light").Pill()
+        @Bootstrap.Badge(Color8.DarkGrey, "Dark").Pill()
+    }
+}
 
-<h3>Any content inside</h3>
+@Bootstrap.H3("Without whitespace prefix")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+        <pre>
+@@Bootstrap.Badge(Color8.PrimaryBlue, "Primary").WithWhitespacePrefix(false)
+@@Bootstrap.Badge(Color8.SecondaryGrey, "Secondary").WithWhitespacePrefix(false)
+@@Bootstrap.Badge(Color8.SuccessGreen, "Success").WithWhitespacePrefix(false)
+@@Bootstrap.Badge(Color8.WarningOrange, "Warning").WithWhitespacePrefix(false)
+@@Bootstrap.Badge(Color8.DangerRed, "Danger").WithWhitespacePrefix(false)
+@@Bootstrap.Badge(Color8.InfoCyan, "Info").WithWhitespacePrefix(false)
+@@Bootstrap.Badge(Color8.LightGrey, "Light").WithWhitespacePrefix(false)
+@@Bootstrap.Badge(Color8.DarkGrey, "Dark").WithWhitespacePrefix(false)
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        @Bootstrap.Badge(Color8.PrimaryBlue, "Primary").WithWhitespacePrefix(false)
+        @Bootstrap.Badge(Color8.SecondaryGrey, "Secondary").WithWhitespacePrefix(false)
+        <br />
+        @Bootstrap.Badge(Color8.SuccessGreen, "Success").WithWhitespacePrefix(false)
+        @Bootstrap.Badge(Color8.WarningOrange, "Warning").WithWhitespacePrefix(false)
+        @Bootstrap.Badge(Color8.DangerRed, "Danger").WithWhitespacePrefix(false)
+        @Bootstrap.Badge(Color8.InfoCyan, "Info").WithWhitespacePrefix(false)
+        <br />
+        @Bootstrap.Badge(Color8.LightGrey, "Light").WithWhitespacePrefix(false)
+        @Bootstrap.Badge(Color8.DarkGrey, "Dark").WithWhitespacePrefix(false)
+    }
+}
+
+@Bootstrap.H3("Any content inside")
 @using (Bootstrap.BeginGridRow())
 {
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
 <pre>
-@@Bootstrap.Badge(BadgeType.SuccessGreen)
+@@Bootstrap.Badge(Color8.SuccessGreen)
     .Content("Regular Strings will be encoded (&lt;hi!&gt;);")
     .Content(new HtmlString("&lt;i&gt;IHtmlContent will NOT be encoded&lt;/i&gt; "))
 )
@@ -66,9 +111,9 @@
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        @(Bootstrap.Badge(BadgeType.SuccessGreen)
-            .Content("Regular Strings will be encoded (<hi!>);")
-            .Content(new HtmlString("<i>IHtmlContent will NOT be encoded</i> "))
+        @(Bootstrap.Badge(Color8.SuccessGreen)
+                                            .Content("Regular Strings will be encoded (<hi!>);")
+                                            .Content(new HtmlString("<i>IHtmlContent will NOT be encoded</i> "))
         )
     }
 }
@@ -79,7 +124,7 @@
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
 <pre>
-@@using (Bootstrap.Badge(BadgeType.SuccessGreen).BeginContent())
+@@using (Bootstrap.Badge(Color8.SuccessGreen).BeginContent())
 {
     Use &lt;code&gt;BeginContent()&lt;/code&gt; method and place any HTML markup inside (at your risk!)
 }
@@ -87,7 +132,7 @@
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        using (Bootstrap.Badge(BadgeType.SuccessGreen).BeginContent())
+        using (Bootstrap.Badge(Color8.SuccessGreen).BeginContent())
         {
             <text>Use <code>BeginContent()</code> method and place any HTML markup inside (at your risk!)</text>
         }

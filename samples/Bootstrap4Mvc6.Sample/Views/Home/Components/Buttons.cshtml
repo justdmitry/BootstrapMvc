@@ -1,33 +1,35 @@
-﻿@{ 
+﻿@{
     ViewBag.Title = "Buttons";
 }
 
-<h1>Buttons</h1>
+@Bootstrap.H1("Buttons")
 
-<h3>Simple buttons</h3>
+@Bootstrap.H3(" Simple buttons")
 @using (Bootstrap.BeginGridRow())
 {
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
 <pre>
-@@Bootstrap.Button(ButtonType.SecondaryWhite,   "SecondaryWhite")
-@@Bootstrap.Button(ButtonType.InfoCyan,      "InfoCyan")
-@@Bootstrap.Button(ButtonType.PrimaryBlue,   "PrimaryBlue")
-@@Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange")
-@@Bootstrap.Button(ButtonType.DangerRed,     "DangerRed")
-@@Bootstrap.Button(ButtonType.SuccessGreen,  "SuccessGreen")
-@@Bootstrap.Button(ButtonType.Link,          "Link")
+@@Bootstrap.Button(Color8.PrimaryBlue, "Primary")
+@@Bootstrap.Button(Color8.SecondaryGrey, "Secondary")
+@@Bootstrap.Button(Color8.SuccessGreen, "Success")
+@@Bootstrap.Button(Color8.WarningOrange, "Warning")
+@@Bootstrap.Button(Color8.DangerRed, "Danger")
+@@Bootstrap.Button(Color8.InfoCyan, "Info")
+@@Bootstrap.Button(Color8.LightGrey, "Light")
+@@Bootstrap.Button(Color8.DarkGrey, "Dark")
 </pre>
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        @Bootstrap.Button(ButtonType.SecondaryWhite, "SecondaryWhite")
-        @Bootstrap.Button(ButtonType.InfoCyan, "InfoCyan")
-        @Bootstrap.Button(ButtonType.PrimaryBlue, "PrimaryBlue")
-        @Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange")
-        @Bootstrap.Button(ButtonType.DangerRed, "DangerRed")
-        @Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen")
-        @Bootstrap.Button(ButtonType.Link, "Link")
+        @Bootstrap.Button(Color8.PrimaryBlue, "Primary")
+        @Bootstrap.Button(Color8.SecondaryGrey, "Secondary")
+        @Bootstrap.Button(Color8.SuccessGreen, "Success")
+        @Bootstrap.Button(Color8.WarningOrange, "Warning")
+        @Bootstrap.Button(Color8.DangerRed, "Danger")
+        @Bootstrap.Button(Color8.InfoCyan, "Info")
+        @Bootstrap.Button(Color8.LightGrey, "Light")
+        @Bootstrap.Button(Color8.DarkGrey, "Dark")
     }
 }
 
@@ -37,17 +39,18 @@
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
 <pre>
-@@Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange small").Size(ButtonSize.Small)
-@@Bootstrap.Button(ButtonType.DangerRed, "DangerRed large").Size(ButtonSize.Large)
-@@Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen disabled").Disabled()
+@@Bootstrap.Button(Color8.WarningOrange, "Warning small").Size(ButtonSize.Small)
+@@Bootstrap.Button(Color8.DangerRed, "Danger large").Size(ButtonSize.Large)
+@@Bootstrap.Button(Color8.SuccessGreen, "Success disabled").Disabled()
+@@Bootstrap.Button(Color8.WarningOrange, "Warning outline").Outline()
 </pre>
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        @Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange small").Size(ButtonSize.Small)
-        @Bootstrap.Button(ButtonType.DangerRed, "DangerRed large").Size(ButtonSize.Large)
-        @Bootstrap.Button(ButtonType.SuccessGreen, "SuccessGreen disabled").Disabled()
-        @Bootstrap.Button(ButtonType.WarningOrange, "WarningOrange outline").Outline()
+        @Bootstrap.Button(Color8.WarningOrange, "Warning small").Size(ButtonSize.Small)
+        @Bootstrap.Button(Color8.DangerRed, "Danger large").Size(ButtonSize.Large)
+        @Bootstrap.Button(Color8.SuccessGreen, "Success disabled").Disabled()
+        @Bootstrap.Button(Color8.WarningOrange, "Warning outline").Outline()
     }
 }
 
@@ -60,15 +63,15 @@
 @@using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
 {
     @@Bootstrap.ButtonGroup().AddButton(
-        Bootstrap.Button(ButtonType.PrimaryBlue, "One"),
-        Bootstrap.Button(ButtonType.SecondaryWhite, "Two"),
-        Bootstrap.Button(ButtonType.SecondaryWhite, "Three")
+        Bootstrap.Button(Color8.PrimaryBlue, "One"),
+        Bootstrap.Button(Color8.SecondaryGrey, "Two"),
+        Bootstrap.Button(Color8.SecondaryGrey, "Three")
     )
     using (var groupContent = toolbarContent.BeginButtonGroup())
     {
-        @@Bootstrap.Button(ButtonType.PrimaryBlue, "One"),
-        @@Bootstrap.Button(ButtonType.SecondaryWhite, "Two"),
-        @@Bootstrap.Button(ButtonType.SecondaryWhite, "Three")
+        @@Bootstrap.Button(Color8.PrimaryBlue, "One"),
+        @@Bootstrap.Button(Color8.SecondaryGrey, "Two"),
+        @@Bootstrap.Button(Color8.SecondaryGrey, "Three")
     }
 }
 </pre>
@@ -78,45 +81,45 @@
         using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
         {
             @(Bootstrap.ButtonGroup().AddButton(
-                Bootstrap.Button(ButtonType.PrimaryBlue, "One"),
-                Bootstrap.Button(ButtonType.SecondaryWhite, "Two"),
-                Bootstrap.Button(ButtonType.SecondaryWhite, "Three")
+                Bootstrap.Button(Color8.PrimaryBlue, "One"),
+                Bootstrap.Button(Color8.SecondaryGrey, "Two"),
+                Bootstrap.Button(Color8.SecondaryGrey, "Three")
             ))
             using (var groupContent = toolbarContent.BeginButtonGroup())
             {
-                @Bootstrap.Button(ButtonType.PrimaryBlue, "One")
-                @Bootstrap.Button(ButtonType.SecondaryWhite, "Two")
-                @Bootstrap.Button(ButtonType.SecondaryWhite, "Three")
+                @Bootstrap.Button(Color8.PrimaryBlue, "One")
+                @Bootstrap.Button(Color8.SecondaryGrey, "Two")
+                @Bootstrap.Button(Color8.SecondaryGrey, "Three")
             }
         }
     }
 }
 
 @*<p>Use <code>Dropdown()</code> or <code>BeginDropdown()</code> methods on any Button</p>
-@using (Bootstrap.BeginGridRow())
-{
-    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    @using (Bootstrap.BeginGridRow())
     {
-<pre>
-@@using (var dropdown = Bootstrap.Button("Sample").BeginDropdown())
-{
-    @@dropdown.Link("Hello");
-    @@dropdown.Divider();
-    @@dropdown.Header("Header");
-    @@dropdown.Link("Link 1").Href("#target1");
-    @@dropdown.Link("Link 2").Href("#target2").Disabled();
-}
-</pre>
-    }
-    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
-    {
-        using (var dropdown = Bootstrap.Button("Sample").BeginDropdown())
+        using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
         {
-            @dropdown.Link("Hello");
-            @dropdown.Divider();
-            @dropdown.Header("Header");
-            @dropdown.Link("Link 1").Href("#target1");
-            @dropdown.Link("Link 2").Href("#target2").Disabled();
-        }
+    <pre>
+    @@using (var dropdown = Bootstrap.Button("Sample").BeginDropdown())
+    {
+        @@dropdown.Link("Hello");
+        @@dropdown.Divider();
+        @@dropdown.Header("Header");
+        @@dropdown.Link("Link 1").Href("#target1");
+        @@dropdown.Link("Link 2").Href("#target2").Disabled();
     }
-}*@
+    </pre>
+        }
+        using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+        {
+            using (var dropdown = Bootstrap.Button("Sample").BeginDropdown())
+            {
+                @dropdown.Link("Hello");
+                @dropdown.Divider();
+                @dropdown.Header("Header");
+                @dropdown.Link("Link 1").Href("#target1");
+                @dropdown.Link("Link 2").Href("#target2").Disabled();
+            }
+        }
+    }*@

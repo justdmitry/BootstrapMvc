@@ -4,7 +4,7 @@
     <Copyright>Copyright © Dmitry Popov, 2015</Copyright>
     <AssemblyTitle>BootstrapMvc.Core</AssemblyTitle>
     <VersionPrefix>2.3.0</VersionPrefix>
-    <TargetFrameworks>netstandard1.3;net451</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard1.6;netstandard1.3;net461;net451</TargetFrameworks>
     <AssemblyName>BootstrapMvc.Core</AssemblyName>
     <PackageId>BootstrapMvc.Core</PackageId>
     <PackageTags>Bootstrap;Mvc;HtmlHelpers</PackageTags>
@@ -15,6 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
