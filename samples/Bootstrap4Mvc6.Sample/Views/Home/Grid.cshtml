@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Grid";
+}
+
+@Bootstrap.H1("Grid")
+
+
+@Bootstrap.H3("Simple .col")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(6))
+    {
+<pre>
+using (var row = Bootstrap.BeginGridRow())
+{
+    @@row.Col(".col").Border(BorderType.All)
+    @@row.Col(".col").Border(BorderType.All)
+    @@row.Col(".col").Border(BorderType.All)
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(6))
+    {
+        using (var row = Bootstrap.BeginGridRow())
+        {
+            @row.Col(".col").Border(BorderType.All)
+            @row.Col(".col").Border(BorderType.All)
+            @row.Col(".col").Border(BorderType.All)
+        }
+    }
+}
+
+@Bootstrap.H3("Sized .col")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(6))
+    {
+<pre>
+using (var row = Bootstrap.BeginGridRow())
+{
+    @@row.Col(4, ".col-4").Border(BorderType.All)
+    @@row.Col(2, ".col-2").Border(BorderType.All)
+    @@row.Col(".col").Border(BorderType.All)
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(6))
+    {
+        using (var row = Bootstrap.BeginGridRow())
+        {
+            @row.Col(4, ".col-4").Border(BorderType.All)
+            @row.Col(2, ".col-2").Border(BorderType.All)
+            @row.Col(".col").Border(BorderType.All)
+        }
+    }
+}
+
+@Bootstrap.H3("Auto-sized and responsive")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(6))
+    {
+<pre>
+using (var row = Bootstrap.BeginGridRow())
+{
+    @@row.Col(4, ".col-4").Border(BorderType.All)
+    @@row.Col(new GridSize(0, GridSize.Auto, 0, 0, 0), ".col-auto").Border(BorderType.All)
+    @@row.Col(2, ".col-2").Border(BorderType.All)
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(6))
+    {
+        using (var row = Bootstrap.BeginGridRow())
+        {
+            @row.Col(new GridSize(6, 6, 4, 4, 2), ".col-xs-6 .col-md-4 .col-xl-2").Border(BorderType.All)
+            @row.Col(new GridSize(0, GridSize.Auto, 0, 0, 0), ".col-auto").Border(BorderType.All)
+            @row.Col(2, ".col-2").Border(BorderType.All)
+        }
+    }
+}
+
+
+@Bootstrap.H3("Align and justify")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(6))
+    {
+<pre>
+using (var row = Bootstrap.GridRow().HorizontalAlignment(HorizontalAlignment.Around).BeginContent())
+{
+    @@row.Col(3, "Lorem ipsum dolor sit amet...").Align(VerticalAlignment.Start).Border(BorderType.All)
+    @@row.Col(3, "center").Border(BorderType.All).Align(VerticalAlignment.Center)
+    @@row.Col(3, "end").Border(BorderType.All).Align(VerticalAlignment.End)
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(6))
+    {
+        using (var row = Bootstrap.GridRow().HorizontalAlignment(HorizontalAlignment.Around).BeginContent())
+        {
+            @row.Col(3, "Lorem ipsum dolor sit amet...").Align(VerticalAlignment.Start).Border(BorderType.All)
+            @row.Col(3, "center").Border(BorderType.All).Align(VerticalAlignment.Center)
+            @row.Col(3, "end").Border(BorderType.All).Align(VerticalAlignment.End)
+        }
+    }
+}

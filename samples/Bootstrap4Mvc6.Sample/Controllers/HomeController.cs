@@ -38,6 +38,16 @@
             return View();
         }
 
+        public ActionResult Grid()
+        {
+            return View();
+        }
+
+        public ActionResult Tables()
+        {
+            return View();
+        }
+
         [Route("/home/components/{component}")]
         public ActionResult Components(string component)
         {

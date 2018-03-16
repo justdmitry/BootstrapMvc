@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BootstrapMvc
+﻿namespace BootstrapMvc
 {
+    using System;
+
     public struct GridSize
     {
         public static readonly byte ColumnsCount = 12;

@@ -1,0 +1,187 @@
+﻿@{
+    ViewBag.Title = "Tables";
+}
+
+@Bootstrap.H1("Tables")
+
+
+@Bootstrap.H3("Basic table")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+using (var tbl = Bootstrap.BeginTable())
+{
+    @@tbl.Caption("Table caption")
+
+    using (tbl.BeginHeader(TableHeaderColor.Light))
+    {
+        using (tbl.BeginRow(TableRowCellColor.SuccessGreen))
+        {
+            @@tbl.HeaderCell("Header 1")
+            @@tbl.HeaderCell("Header 2")
+            @@tbl.HeaderCell("Header 3")
+        }
+    }
+
+    using (var body = tbl.BeginBody())
+    {
+        using (body.BeginRow())
+        {
+            @@tbl.Cell("Body Cell 1").Color(TableRowCellColor.InfoCyan)
+            @@tbl.Cell("Body Cell 1")
+            @@tbl.Cell("Body Cell 1").Color(TableRowCellColor.Active)
+        }
+        using (body.BeginRow())
+        {
+            @@tbl.Cell("Body Cell 2")
+            @@tbl.Cell("Body Cell 2").Color(TableRowCellColor.WarningOrange)
+            @@tbl.Cell("Body Cell 2")
+        }
+    }
+
+    var footerRow = tbl.Row().Cells("Footer 1", "Footer 2", "Footer 3");
+    @@tbl.Footer().Rows(footerRow)
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        using (var tbl = Bootstrap.BeginTable())
+        {
+            @tbl.Caption("Table caption")
+
+            using (tbl.BeginHeader(TableHeaderColor.Light))
+            {
+                using (tbl.BeginRow(TableRowCellColor.SuccessGreen))
+                {
+                    @tbl.HeaderCell("Header 1")
+                    @tbl.HeaderCell("Header 2")
+                    @tbl.HeaderCell("Header 3")
+                }
+            }
+
+            using (var body = tbl.BeginBody())
+            {
+                using (body.BeginRow())
+                {
+                    @tbl.Cell("Body Cell 1").Color(TableRowCellColor.InfoCyan)
+                    @tbl.Cell("Body Cell 1")
+                    @tbl.Cell("Body Cell 1").Color(TableRowCellColor.Active)
+                }
+                using (body.BeginRow())
+                {
+                    @tbl.Cell("Body Cell 2")
+                    @tbl.Cell("Body Cell 2").Color(TableRowCellColor.WarningOrange)
+                    @tbl.Cell("Body Cell 2")
+                }
+            }
+
+            var footerRow = tbl.Row().Cells("Footer 1", "Footer 2", "Footer 3");
+            @tbl.Footer().Rows(footerRow)
+        }
+    }
+}
+
+
+@Bootstrap.H3("Styles and colors")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+{
+    using (var tbl = Bootstrap.BeginTable(TableStyles.Bordered | TableStyles.Hover | TableStyles.Small))
+    {
+        using (tbl.BeginBody())
+        {
+            using (tbl.BeginRow())
+            {
+                @@tbl.Cell("Body Cell 1").Color(TableRowCellColor.InfoCyan)
+                @@tbl.Cell("Body Cell 1")
+                @@tbl.Cell("Body Cell 1").Color(TableRowCellColor.Active)
+            }
+
+            using (tbl.BeginRow())
+            {
+                @@tbl.Cell("Body Cell 2")
+                @@tbl.Cell("Body Cell 2").Color(TableRowCellColor.WarningOrange)
+                @@tbl.Cell("Body Cell 2")
+            }
+        }
+    }
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        using (var tbl = Bootstrap.BeginTable(TableStyles.Bordered | TableStyles.Hover | TableStyles.Small))
+        {
+            using (tbl.BeginBody())
+            {
+                using (tbl.BeginRow())
+                {
+                    @tbl.Cell("Body Cell 1").Color(TableRowCellColor.InfoCyan)
+                    @tbl.Cell("Body Cell 1")
+                    @tbl.Cell("Body Cell 1").Color(TableRowCellColor.LightGrey)
+                }
+
+                using (tbl.BeginRow())
+                {
+                    @tbl.Cell("Body Cell 2")
+                    @tbl.Cell("Body Cell 2").Color(TableRowCellColor.WarningOrange)
+                    @tbl.Cell("Body Cell 2")
+                }
+            }
+        }
+    }
+}
+
+@Bootstrap.H3("Colspan, Rowspan")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+using (var tbl = Bootstrap.BeginTable(TableStyles.Small | TableStyles.Bordered))
+{
+    using (tbl.BeginBody())
+    {
+        using (tbl.BeginRow())
+        {
+            @@tbl.Cell("Body Cell 1").Color(TableRowCellColor.InfoCyan).RowSpan(2)
+            @@tbl.Cell("Body Cell 1")
+            @@tbl.Cell("Body Cell 1").Color(TableRowCellColor.Active)
+        }
+
+        using (tbl.BeginRow())
+        {
+            @@tbl.Cell("Body Cell 2").ColSpan(2)
+        }
+    }
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        using (var tbl = Bootstrap.BeginTable(TableStyles.Small | TableStyles.Bordered))
+        {
+            using (tbl.BeginBody())
+            {
+                using (tbl.BeginRow())
+                {
+                    @tbl.Cell("Body Cell 1").Color(TableRowCellColor.InfoCyan).RowSpan(2)
+                    @tbl.Cell("Body Cell 1")
+                    @tbl.Cell("Body Cell 1").Color(TableRowCellColor.Active)
+                }
+
+                using (tbl.BeginRow())
+                {
+                    @tbl.Cell("Body Cell 2").ColSpan(2)
+                }
+            }
+        }
+    }
+}
