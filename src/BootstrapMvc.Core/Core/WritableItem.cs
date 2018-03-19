@@ -10,7 +10,7 @@
         public bool WithWhitespaceSuffix { get; set; }
 
         public IWritingHelper Helper { get; set; }
-        
+
         public void WriteTo(TextWriter writer)
         {
             WriteSelf(writer);
@@ -28,11 +28,12 @@
             {
                 return null;
             }
-            var parentAsT = Parent as T;
-            if (parentAsT != null)
+
+            if (Parent is T parentAsT)
             {
                 return parentAsT;
             }
+
             return Parent.GetNearestParent<T>();
         }
     }
