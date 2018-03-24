@@ -5,7 +5,7 @@
         using (Bootstrap.FormGroupFor(m => m.StringField).Label("Field with complex content").WithSizedControls().BeginContent())
         {
             @Bootstrap.Input().Size(6, 6, 6, 6, 6)
-            @Bootstrap.HelpBlock("Some text about this control")
+            @Bootstrap.HelpText("Some text about this control")
         }
     }
 }

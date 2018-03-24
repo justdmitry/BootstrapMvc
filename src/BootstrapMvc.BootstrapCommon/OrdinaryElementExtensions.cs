@@ -24,6 +24,11 @@
             return contentHelper.Tag("p").Content(content);
         }
 
+        public static IItemWriter<OrdinaryElement, AnyContent> Paragraph(this IAnyContentMarker contentHelper, params object[] content)
+        {
+            return P(contentHelper, content);
+        }
+
         public static IItemWriter<OrdinaryElement, AnyContent> Span(this IAnyContentMarker contentHelper, params object[] content)
         {
             return contentHelper.Tag("span").Content(content);

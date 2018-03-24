@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Buttons";
+    ViewBag.ContainerFluid = true;
 }
 
 @Bootstrap.H1("Buttons")
@@ -39,16 +40,16 @@
     using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
 <pre>
-@@Bootstrap.Button(Color8.WarningOrange, "Warning small").Size(ButtonSize.Small)
-@@Bootstrap.Button(Color8.DangerRed, "Danger large").Size(ButtonSize.Large)
+@@Bootstrap.Button(Color8.WarningOrange, "Warning small").Size(ControlSize.Small)
+@@Bootstrap.Button(Color8.DangerRed, "Danger large").Size(ControlSize.Large)
 @@Bootstrap.Button(Color8.SuccessGreen, "Success disabled").Disabled()
 @@Bootstrap.Button(Color8.WarningOrange, "Warning outline").Outline()
 </pre>
     }
     using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
     {
-        @Bootstrap.Button(Color8.WarningOrange, "Warning small").Size(ButtonSize.Small)
-        @Bootstrap.Button(Color8.DangerRed, "Danger large").Size(ButtonSize.Large)
+        @Bootstrap.Button(Color8.WarningOrange, "Warning small").Size(ControlSize.Small)
+        @Bootstrap.Button(Color8.DangerRed, "Danger large").Size(ControlSize.Large)
         @Bootstrap.Button(Color8.SuccessGreen, "Success disabled").Disabled()
         @Bootstrap.Button(Color8.WarningOrange, "Warning outline").Outline()
     }
@@ -62,16 +63,21 @@
 <pre>
 @@using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
 {
-    @@Bootstrap.ButtonGroup().AddButton(
-        Bootstrap.Button(Color8.PrimaryBlue, "One"),
-        Bootstrap.Button(Color8.SecondaryGrey, "Two"),
-        Bootstrap.Button(Color8.SecondaryGrey, "Three")
+    using (var groupContent = toolbarContent.BeginButtonGroup())
+    {
+        @@Bootstrap.Button(Color8.PrimaryBlue, "One")
+        @@Bootstrap.Button(Color8.SecondaryGrey, "Two")
+        @@Bootstrap.Button(Color8.SecondaryGrey, "Three")
     )
     using (var groupContent = toolbarContent.BeginButtonGroup())
     {
-        @@Bootstrap.Button(Color8.PrimaryBlue, "One"),
-        @@Bootstrap.Button(Color8.SecondaryGrey, "Two"),
-        @@Bootstrap.Button(Color8.SecondaryGrey, "Three")
+        @@Bootstrap.Button(Color8.PrimaryBlue, "Four")
+        @@Bootstrap.Button(Color8.SecondaryGrey, "Five")
+    }
+    using (var groupContent = toolbarContent.BeginButtonGroup())
+    {
+        @@Bootstrap.Button(Color8.PrimaryBlue, "Six")
+        @@Bootstrap.Button(Color8.SecondaryGrey, "Seven")
     }
 }
 </pre>
@@ -80,16 +86,21 @@
     {
         using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
         {
-            @(Bootstrap.ButtonGroup().AddButton(
-                Bootstrap.Button(Color8.PrimaryBlue, "One"),
-                Bootstrap.Button(Color8.SecondaryGrey, "Two"),
-                Bootstrap.Button(Color8.SecondaryGrey, "Three")
-            ))
             using (var groupContent = toolbarContent.BeginButtonGroup())
             {
                 @Bootstrap.Button(Color8.PrimaryBlue, "One")
                 @Bootstrap.Button(Color8.SecondaryGrey, "Two")
                 @Bootstrap.Button(Color8.SecondaryGrey, "Three")
+            }
+            using (var groupContent = toolbarContent.BeginButtonGroup())
+            {
+                @Bootstrap.Button(Color8.PrimaryBlue, "Four")
+                @Bootstrap.Button(Color8.SecondaryGrey, "Five")
+            }
+            using (var groupContent = toolbarContent.BeginButtonGroup())
+            {
+                @Bootstrap.Button(Color8.PrimaryBlue, "Six")
+                @Bootstrap.Button(Color8.SecondaryGrey, "Seven")
             }
         }
     }

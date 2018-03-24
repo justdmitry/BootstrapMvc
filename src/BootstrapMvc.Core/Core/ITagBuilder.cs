@@ -15,14 +15,6 @@
         void AddCssClass(string value);
 
         /// <summary>
-        /// Adds a new attribute to the tag.
-        /// </summary>
-        /// <param name="key">The key for the attribute.</param>
-        /// <param name="value">The value of the attribute.</param>
-        [Obsolete("Use MergeAttribute(key, value, replaceExisting)")]
-        void MergeAttribute(string key, string value);
-
-        /// <summary>
         /// Adds a new attribute to the tag or (optionally) replaces existing one
         /// </summary>
         /// <param name="key">The key for the attribute.</param>

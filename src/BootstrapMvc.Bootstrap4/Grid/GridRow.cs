@@ -11,6 +11,8 @@
 
         public bool NoGutters { get; set; }
 
+        protected string ClassName { get; set; } = "row";
+
         protected override GridRowContent CreateContentContext(IBootstrapContext context)
         {
             return new GridRowContent(context, this);
@@ -19,7 +21,7 @@
         protected override void WriteSelfStart(System.IO.TextWriter writer)
         {
             var tb = Helper.CreateTagBuilder("div");
-            tb.AddCssClass("row");
+            tb.AddCssClass(ClassName);
 
             if (NoGutters)
             {

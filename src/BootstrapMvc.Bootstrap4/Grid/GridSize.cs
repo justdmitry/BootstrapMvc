@@ -8,6 +8,8 @@
 
         public static readonly byte Auto = 255;
 
+        public static readonly GridSize Empty = new GridSize(0);
+
         private readonly byte xs;
 
         private readonly byte sm;
@@ -104,19 +106,16 @@
             return clss.Trim();
         }
 
-//        public GridSize Invert()
-//        {
-//            return new GridSize(
-//                (byte)(xs == 0 ? 0 : ColumnsCount - xs),
-//                (byte)(sm == 0 ? 0 : ColumnsCount - sm),
-//                (byte)(md == 0 ? 0 : ColumnsCount - md),
-//                (byte)(lg == 0 ? 0 : ColumnsCount - lg)
-//#if BOOTSTRAP4
-//                ,
-//                (byte)(xl == 0 ? 0 : ColumnsCount - xl)
-//#endif
-//                );
-//        }
+        public GridSize Invert()
+        {
+            return new GridSize(
+                (byte)(xs == 0 || xs == Auto ? xs : ColumnsCount - xs),
+                (byte)(sm == 0 || sm == Auto ? sm : ColumnsCount - sm),
+                (byte)(md == 0 || md == Auto ? md : ColumnsCount - md),
+                (byte)(lg == 0 || lg == Auto ? lg : ColumnsCount - lg),
+                (byte)(xl == 0 || xl == Auto ? xl : ColumnsCount - xl)
+                );
+        }
 
         public bool IsEmpty()
         {

@@ -3,11 +3,11 @@
     using BootstrapMvc.Core;
     using BootstrapMvc.Dropdown;
 
-    public class Button : AnyContentElement, IDropdownMenuParentMarker, ILink, IButtonSizable, IDisableable, IColor8Type
+    public class Button : AnyContentElement, IDropdownMenuParentMarker, ILink, IControlSizable, IDisableable, IColor8Type
     {
         public Color8 Type { get; set; }
 
-        public ButtonSize Size { get; set; }
+        public ControlSize Size { get; set; }
 
         public bool BlockSize { get; set; }
 
@@ -62,11 +62,6 @@
             tb.WriteStartTag(writer);
 
             return withHref ? "</a>" : "</button>";
-        }
-
-        void ILink.SetHref(string value)
-        {
-            Href = value;
         }
     }
 }

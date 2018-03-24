@@ -6,17 +6,12 @@
 
     public static class ListExtensions
     {
-        #region Fluent
-
-        public static IItemWriter<T, ListContent> Type<T>(this IItemWriter<T, ListContent> target, ListType value) where T : List
+        public static IItemWriter<T, ListContent> Type<T>(this IItemWriter<T, ListContent> target, ListType value)
+            where T : List
         {
             target.Item.Type = value;
             return target;
         }
-
-        #endregion
-
-        #region Generation
 
         public static IItemWriter<List, ListContent> List(this IAnyContentMarker contentHelper, ListType type)
         {
@@ -33,11 +28,14 @@
             return contentHelper.Tag("li");
         }
 
+        public static IItemWriter<OrdinaryElement, AnyContent> ListItem(this IAnyContentMarker contentHelper, params object[] content)
+        {
+            return ListItem(contentHelper).Content(content);
+        }
+
         public static AnyContent BeginListItem(this IAnyContentMarker contentHelper)
         {
             return ListItem(contentHelper).BeginContent();
         }
-
-        #endregion
     }
 }

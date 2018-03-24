@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Lists";
+    ViewBag.ContainerFluid = true;
+}
+
+@Bootstrap.H1("Lists")
+
+@Bootstrap.H3("Ordinary lists")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+using (var list = Bootstrap.BeginList(ListType.Default))
+{
+    @@list.Item("Item 1")
+    @@Bootstrap.ListItem("Item 2")
+    @@list.Item("Item 3")
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        using (var list = Bootstrap.BeginList(ListType.Default))
+        {
+            @list.Item("Item 1")
+            @Bootstrap.ListItem("Item 2")
+            @list.Item("Item 3")
+        }
+    }
+}
+
+
+@Bootstrap.H3("Nested lists")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+using (var list = Bootstrap.BeginList(ListType.Ordered))
+{
+    @@list.Item("Item 1")
+    using (list.BeginItem())
+    {
+        &lt;text&gt;Item 2&lt;/text&gt;
+        using (var list2 = Bootstrap.BeginList(ListType.Default))
+        {
+            @@list2.Item("Item 2-1")
+            @@Bootstrap.ListItem("Item 2-2")
+            @@list2.Item("Item 2-3")
+        }
+    }
+    @@Bootstrap.ListItem("Item 2")
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        using (var list = Bootstrap.BeginList(ListType.Ordered))
+        {
+            @list.Item("Item 1")
+            using (list.BeginItem())
+            {
+                <text>Item 2</text>
+                using (var list2 = Bootstrap.BeginList(ListType.Default))
+                {
+                    @list2.Item("Item 2-1")
+                    @Bootstrap.ListItem("Item 2-2")
+                    @list2.Item("Item 2-3")
+                }
+            }
+            @Bootstrap.ListItem("Item 2")
+        }
+    }
+}
+
+
+@Bootstrap.H3("Inline lists")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+    {
+<pre>
+using (var list = Bootstrap.BeginList(ListType.Inline))
+{
+    @@list.Item("Item 1")
+    @@list.Item("Item 2")
+    @@list.Item("Item 3")
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        using (var list = Bootstrap.BeginList(ListType.Inline))
+        {
+            @list.Item("Item 1")
+            @list.Item("Item 2")
+            @list.Item("Item 3")
+        }
+    }
+}
+

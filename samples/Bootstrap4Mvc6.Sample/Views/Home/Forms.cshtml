@@ -1,11 +1,13 @@
 ﻿@model Bootstrap4Mvc6.Sample.Models.DemoModelOne
+@using BootstrapMvc.Forms;
 @{
     ViewBag.Title = "Forms";
+    ViewBag.ContainerFluid = true;
     var leftColSize = new GridSize(0, 6, 6, 6, 6);
     var rightColSize = leftColSize.Invert();
 }
 
-<h2>Forms</h2>
+@Bootstrap.H1("Forms")
 
 @Bootstrap.H3("Default (vertical) form")
 @using (Bootstrap.BeginGridRow())
@@ -13,45 +15,55 @@
     using (Bootstrap.BeginGridCol(leftColSize))
     {
 <pre>
+FormDefaults.InputNumberSize = new GridSize(0, 3, 3, 3, 3);
 using (var form = Bootstrap.BeginForm())
 {
     using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
-        @@Bootstrap.FormGroupFor(m => m.StringField)
-            .Control(Bootstrap.Input().Placeholder("placeholder text"))
+        using (Bootstrap.BeginFormGroupFor(m => m.StringField))
+        {
+            @@Bootstrap.Input().Placeholder("placeholder text")
+            @@Bootstrap.HelpText("Some help text for input box")
+        }
     }
     using (form.BeginFieldset("Fieldset two"))
     {
         @@form.GroupFor(m => m.IntegerField)
-            .Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
+                .Control(Bootstrap.InputInt())
         @@form.GroupFor(m => m.BooleanField)
-            .Control(Bootstrap.Checkbox())
+                .Control(Bootstrap.Checkbox())
+                .Content(Bootstrap.HelpText("Some help text for this checkbox"))
     }
-    using (form.Group().BeginContent())
+    using (form.BeginGroup())
     {
-        @@Bootstrap.Button(ButtonType.SuccessGreen, "Save")
-        @@Bootstrap.Button(ButtonType.SecondaryWhite, "Cancel").Href("/list")
+        @@Bootstrap.Button(Color8.SuccessGreen, "Save")
+        @@Bootstrap.Button(Color8.SecondaryGrey, "Cancel").Href("/list")
     }
 }
 </pre>
     }
+    FormDefaults.InputNumberSize = new GridSize(0, 3, 3, 3, 3);
     using (Bootstrap.BeginGridCol(rightColSize))
     {
         using (var form = Bootstrap.BeginForm())
         {
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
-                @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text"))
+                using (Bootstrap.BeginFormGroupFor(m => m.StringField))
+                {
+                    @Bootstrap.Input().Placeholder("placeholder text")
+                    @Bootstrap.HelpText("Some help text for input box")
+                }
             }
             using (form.BeginFieldset("Fieldset two"))
             {
-                @form.GroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
-                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox())
+                @form.GroupFor(m => m.IntegerField).Control(Bootstrap.InputInt())
+                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox()).Content(Bootstrap.HelpText("Some help text for this checkbox"))
             }
-            using (form.Group().BeginContent())
+            using (form.BeginGroup())
             {
-                @Bootstrap.Button(ButtonType.SuccessGreen, "Save")
-                @Bootstrap.Button(ButtonType.SecondaryWhite, "Cancel").Href("/list")
+                @Bootstrap.Button(Color8.SuccessGreen, "Save")
+                @Bootstrap.Button(Color8.SecondaryGrey, "Cancel").Href("/list")
             }
         }
     }
@@ -67,20 +79,24 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
 {
     using (Bootstrap.BeginFormFieldset("Fieldset one"))
     {
-        @@Bootstrap.FormGroupFor(m => m.StringField)
-            .Control(Bootstrap.Input().Placeholder("placeholder text"))
+        using (Bootstrap.BeginFormGroupFor(m => m.StringField))
+        {
+            @@Bootstrap.Input().Placeholder("placeholder text")
+            @@Bootstrap.HelpText("Some help text for input box")
+        }
     }
     using (form.BeginFieldset("Fieldset two"))
     {
         @@form.GroupFor(m => m.IntegerField)
-            .Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
+                .Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
         @@form.GroupFor(m => m.BooleanField)
-            .Control(Bootstrap.Checkbox())
+                .Control(Bootstrap.Checkbox())
+                .Content(Bootstrap.HelpText("Some help text for this checkbox"))
     }
-    using (form.Group().BeginContent())
+    using (form.BeginGroup())
     {
-        @@Bootstrap.Button(ButtonType.SuccessGreen, "Save")
-        @@Bootstrap.Button(ButtonType.SecondaryWhite, "Cancel").Href("/list")
+        @@Bootstrap.Button(Color8.SuccessGreen, "Save")
+        @@Bootstrap.Button(Color8.SecondaryGrey, "Cancel").Href("/list")
     }
 }
 </pre>
@@ -91,23 +107,88 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
         {
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
-                @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text"))
+                using (Bootstrap.BeginFormGroupFor(m => m.StringField))
+                {
+                    @Bootstrap.Input().Placeholder("placeholder text")
+                    @Bootstrap.HelpText("Some help text for input box")
+                }
             }
             using (form.BeginFieldset("Fieldset two"))
             {
                 @form.GroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().Size(0, 3, 3, 3, 3))
-                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox())
+                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox()).Content(Bootstrap.HelpText("Some help text for this checkbox"))
             }
-            using (form.Group().BeginContent())
+            using (form.BeginGroup())
             {
-                @Bootstrap.Button(ButtonType.SuccessGreen, "Save")
-                @Bootstrap.Button(ButtonType.SecondaryWhite, "Cancel").Href("/list")
+                @Bootstrap.Button(Color8.SuccessGreen, "Save")
+                @Bootstrap.Button(Color8.SecondaryGrey, "Cancel").Href("/list")
             }
         }
     }
 }
 
-@Bootstrap.H3("And 'inline' form")
+
+@Bootstrap.H3("Default (vertical) form")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(leftColSize))
+    {
+<pre>
+FormDefaults.InputNumberSize = new GridSize(0, 3, 3, 3, 3);
+using (var form = Bootstrap.BeginForm())
+{
+    using (Bootstrap.BeginFormFieldset("Fieldset one"))
+    {
+        using (Bootstrap.BeginFormGroupFor(m => m.StringField))
+        {
+            @@Bootstrap.Input().Placeholder("placeholder text")
+            @@Bootstrap.HelpText("Some help text for input box")
+        }
+    }
+    using (form.BeginFieldset("Fieldset two"))
+    {
+        @@form.GroupFor(m => m.IntegerField)
+                .Control(Bootstrap.InputInt())
+        @@form.GroupFor(m => m.BooleanField)
+                .Control(Bootstrap.Checkbox())
+                .Content(Bootstrap.HelpText("Some help text for this checkbox"))
+    }
+    using (form.BeginGroup())
+    {
+        @@Bootstrap.Button(Color8.SuccessGreen, "Save")
+        @@Bootstrap.Button(Color8.SecondaryGrey, "Cancel").Href("/list")
+    }
+}
+</pre>
+    }
+    FormDefaults.InputNumberSize = new GridSize(0, 3, 3, 3, 3);
+    using (Bootstrap.BeginGridCol(rightColSize))
+    {
+        using (var form = Bootstrap.BeginForm())
+        {
+            using (Bootstrap.BeginFormFieldset("Fieldset one"))
+            {
+                using (Bootstrap.BeginFormGroupFor(m => m.StringField))
+                {
+                    @Bootstrap.Input().Placeholder("placeholder text")
+                    @Bootstrap.HelpText("Some help text for input box")
+                }
+            }
+            using (form.BeginFieldset("Fieldset two"))
+            {
+                @form.GroupFor(m => m.IntegerField).Control(Bootstrap.InputInt())
+                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox()).Content(Bootstrap.HelpText("Some help text for this checkbox"))
+            }
+            using (form.BeginGroup())
+            {
+                @Bootstrap.Button(Color8.SuccessGreen, "Save")
+                @Bootstrap.Button(Color8.SecondaryGrey, "Cancel").Href("/list")
+            }
+        }
+    }
+}
+
+@Bootstrap.H3("And 'inline' form (add margin for spacing)")
 @using (Bootstrap.BeginGridRow())
 {
     using (Bootstrap.BeginGridCol(leftColSize))
@@ -115,25 +196,203 @@ using (var form = Bootstrap.BeginForm(FormType.Horizontal))
 <pre>
 using (Bootstrap.BeginForm(FormType.Inline))
 {
-    @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text"))
-    @@Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt())
+    @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text").MarginLeftRight(2))
+    @@Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().MarginLeftRight(2))
     @@Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox())
-    @@Bootstrap.Button(ButtonType.SuccessGreen, "Save")
+    @@Bootstrap.Button(ButtonType.SuccessGreen, "Save").MarginLeftRight(2)
 }
 </pre>
     }
     using (Bootstrap.BeginGridCol(rightColSize))
     {
-        @Bootstrap.Alert(AlertType.WarningOrange, "Attention! Sized controls are not supported - all 'Size' values are ignored.")
+        @Bootstrap.Alert(Color8.WarningOrange, "Attention! Sized controls are not supported - all 'Size' values are ignored.")
         using (Bootstrap.BeginForm(FormType.Inline))
         {
-            @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text"))
-            @Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt())
+            @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("placeholder text").MarginLeftRight(2))
+            @Bootstrap.FormGroupFor(m => m.IntegerField).Control(Bootstrap.InputInt().MarginLeftRight(2))
             @Bootstrap.FormGroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox())
-            @Bootstrap.Button(ButtonType.SuccessGreen, "Save")
+            @Bootstrap.Button(Color8.SuccessGreen, "Save").MarginLeftRight(2)
         }
     }
 }
+
+@Bootstrap.H3("Control size")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(leftColSize))
+    {
+<pre>
+using (var form = Bootstrap.BeginForm(FormType.Horizontal))
+{
+    using (form.BeginFieldset("FormType = Horizontal"))
+    {
+        using (form.GroupFor(m => m.StringField).Label("Default control size").BeginContent())
+        {
+            @@Bootstrap.Input().Placeholder("placeholder text")
+            @@Bootstrap.HelpText("Some help text for input box")
+        }
+
+        using (form.GroupFor(m => m.StringField).Label("Large control size").Size(ControlSize.Large).BeginContent())
+        {
+            @@Bootstrap.Input().Placeholder("placeholder text")
+            @@Bootstrap.HelpText("Some help text for input box")
+        }
+
+        using (form.GroupFor(m => m.StringField).Label("Small control size").Size(ControlSize.Small).BeginContent())
+        {
+            @@Bootstrap.Input().Placeholder("placeholder text")
+            @@Bootstrap.HelpText("Some help text for input box")
+        }
+    }
+}
+
+using (var form = Bootstrap.BeginForm())
+{
+    using (form.BeginFieldset("FormType = Default (vertical)"))
+    {
+        using (form.GroupFor(m => m.StringField).Label("Default control size").BeginContent())
+        {
+            @@Bootstrap.Input().Placeholder("placeholder text")
+            @@Bootstrap.HelpText("Some help text for input box")
+        }
+
+        using (form.GroupFor(m => m.StringField).Label("Large control size").Size(ControlSize.Large).BeginContent())
+        {
+            @@Bootstrap.Input().Placeholder("placeholder text")
+            @@Bootstrap.HelpText("Some help text for input box")
+        }
+
+        using (form.GroupFor(m => m.StringField).Label("Small control size").Size(ControlSize.Small).BeginContent())
+        {
+            @@Bootstrap.Input().Placeholder("placeholder text")
+            @@Bootstrap.HelpText("Some help text for input box")
+        }
+    }
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(rightColSize))
+    {
+        using (var form = Bootstrap.BeginForm(FormType.Horizontal))
+        {
+            using (form.BeginFieldset("FormType = Horizontal"))
+            {
+                using (form.GroupFor(m => m.StringField).Label("Default control size").BeginContent())
+                {
+                    @Bootstrap.Input().Placeholder("placeholder text")
+                    @Bootstrap.HelpText("Some help text for input box")
+                }
+
+                using (form.GroupFor(m => m.StringField).Label("Large control size").Size(ControlSize.Large).BeginContent())
+                {
+                    @Bootstrap.Input().Placeholder("placeholder text")
+                    @Bootstrap.HelpText("Some help text for input box")
+                }
+
+                using (form.GroupFor(m => m.StringField).Label("Small control size").Size(ControlSize.Small).BeginContent())
+                {
+                    @Bootstrap.Input().Placeholder("placeholder text")
+                    @Bootstrap.HelpText("Some help text for input box")
+                }
+
+                using (form.GroupFor(m => m.StringField).Label("Small control size #2").Size(ControlSize.Small).BeginContent())
+                {
+                    @Bootstrap.Input().Plaintext()
+                }
+
+                using (form.GroupFor(m => m.StringField).Label("Small control size #3").Size(ControlSize.Small).BeginContent())
+                {
+                    @Bootstrap.Textarea().Placeholder("Textarea")
+                }
+            }
+        }
+
+        using (var form = Bootstrap.BeginForm())
+        {
+            using (form.BeginFieldset("FormType = Default (vertical)"))
+            {
+                using (form.GroupFor(m => m.StringField).Label("Default control size").BeginContent())
+                {
+                    @Bootstrap.Input().Placeholder("placeholder text")
+                    @Bootstrap.HelpText("Some help text for input box")
+                }
+
+                using (form.GroupFor(m => m.StringField).Label("Large control size").Size(ControlSize.Large).BeginContent())
+                {
+                    @Bootstrap.Input().Placeholder("placeholder text")
+                    @Bootstrap.HelpText("Some help text for input box")
+                }
+
+                using (form.GroupFor(m => m.StringField).Label("Small control size").Size(ControlSize.Small).BeginContent())
+                {
+                    @Bootstrap.Input().Placeholder("placeholder text")
+                    @Bootstrap.HelpText("Some help text for input box")
+                }
+            }
+        }
+    }
+}
+
+
+@Bootstrap.H3("form-row")
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(leftColSize))
+    {
+<pre>
+using (var form = Bootstrap.BeginForm())
+{
+    using (form.BeginFieldset("Fieldset one"))
+    {
+
+        using (Bootstrap.BeginFormRow())
+        {
+            using (Bootstrap.FormGroupFor(m => m.StringField).Size(6).BeginContent())
+            {
+                @@Bootstrap.Input()
+                @@Bootstrap.HelpText("Some help text for input box")
+            }
+            using (Bootstrap.FormGroupFor(m => m.IntegerField).Size(6).BeginContent())
+            {
+                @@Bootstrap.InputInt().Size(GridSize.Empty)
+            }
+        }
+    }
+    using (form.BeginFieldset("Fieldset two"))
+    {
+        @@form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox()).Content(Bootstrap.HelpText("Some help text for this checkbox"))
+    }
+}
+</pre>
+    }
+    using (Bootstrap.BeginGridCol(rightColSize))
+    {
+        using (var form = Bootstrap.BeginForm())
+        {
+            using (form.BeginFieldset("Fieldset one"))
+            {
+
+                using (Bootstrap.BeginFormRow())
+                {
+                    using (Bootstrap.FormGroupFor(m => m.StringField).Size(6).BeginContent())
+                    {
+                        @Bootstrap.Input()
+                        @Bootstrap.HelpText("Some help text for input box")
+                    }
+                    using (Bootstrap.FormGroupFor(m => m.IntegerField).Size(6).BeginContent())
+                    {
+                        @Bootstrap.InputInt().Size(GridSize.Empty)
+                    }
+                }
+            }
+            using (form.BeginFieldset("Fieldset two"))
+            {
+                @form.GroupFor(m => m.BooleanField).Control(Bootstrap.Checkbox()).Content(Bootstrap.HelpText("Some help text for this checkbox"))
+            }
+        }
+    }
+}
+
 
 
 @Bootstrap.H3("Different input types")
@@ -142,6 +401,7 @@ using (Bootstrap.BeginForm(FormType.Inline))
     using (Bootstrap.BeginGridCol(leftColSize))
     {
 <pre>
+Model.StringField = null; // remove value to see placeholders
 using (Bootstrap.BeginForm())
 {
     @@Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("regular text"))
@@ -164,15 +424,12 @@ using (Bootstrap.BeginForm())
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField, "InputDateTimeLocal()").Control(Bootstrap.InputDateTimeLocal())
         @@Bootstrap.FormGroupFor(m => m.DateTimeOffsetField, "InputTime()").Control(Bootstrap.InputTime())
     }
-    using (Bootstrap.FormGroup().BeginContent())
-    {
-        @@Bootstrap.Button(ButtonType.WarningOrange, "Submit")
-    }
 }
 </pre>
     }
     using (Bootstrap.BeginGridCol(rightColSize))
     {
+        Model.StringField = null; // remove value to see placeholders
         using (Bootstrap.BeginForm())
         {
             @Bootstrap.FormGroupFor(m => m.StringField).Control(Bootstrap.Input().Placeholder("regular text"))
@@ -195,17 +452,13 @@ using (Bootstrap.BeginForm())
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField, "InputDateTimeLocal()").Control(Bootstrap.InputDateTimeLocal().Size(0, 6, 6, 6, 6))
                 @Bootstrap.FormGroupFor(m => m.DateTimeOffsetField, "InputTime()").Control(Bootstrap.InputTime().Size(0, 6, 4, 4, 4))
             }
-            using (Bootstrap.FormGroup().BeginContent())
-            {
-                @Bootstrap.Button(ButtonType.WarningOrange, "Submit")
-            }
         }
     }
 }
 
 
-
 @Bootstrap.H3("Radios and checkboxes")
+@Bootstrap.P("If FormGroup contain only checkboxes or radios - use .WithCheckboxOrRadio() for correct label padding-top")
 @using (Bootstrap.BeginGridRow())
 {
     using (Bootstrap.BeginGridCol(leftColSize))
@@ -213,26 +466,26 @@ using (Bootstrap.BeginForm())
 <pre>
 using (Bootstrap.BeginForm(FormType.Horizontal))
 {
-    using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Inline radio").BeginContent())
+    using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Inline radio").WithCheckboxOrRadio().BeginContent())
     {
         @@Bootstrap.Radio(1, "value one").Inline()
         @@Bootstrap.Radio(2, "value two").Inline()
         @@Bootstrap.Radio(3, "value three").Inline()
     }
-    using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Vertical radio").BeginContent())
+    using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Vertical radio").WithCheckboxOrRadio().BeginContent())
     {
         @@Bootstrap.Radio(1, "value one")
         @@Bootstrap.Radio(2, "value two")
         @@Bootstrap.Radio(3, "value three")
     }
-    @@Bootstrap.FormGroupFor(m => m.BooleanField).Label("Single checkbox").Control(Bootstrap.Checkbox("Checkbox text"))
-    using (Bootstrap.FormGroupFor(m => m.BooleanField).Label("Inline checkbox").BeginContent())
+    @@Bootstrap.FormGroupFor(m => m.BooleanField).Label("Single checkbox").WithCheckboxOrRadio().Control(Bootstrap.Checkbox("Checkbox text"))
+    using (Bootstrap.FormGroupFor(m => m.BooleanField).Label("Inline checkbox").WithCheckboxOrRadio().BeginContent())
     {
         @@Bootstrap.Checkbox("option one").Inline()
         @@Bootstrap.Checkbox("option two").Inline()
         @@Bootstrap.Checkbox("option three").Inline()
     }
-    using (Bootstrap.FormGroupFor(m => m.BooleanField).Label("Vertical checkbox").BeginContent())
+    using (Bootstrap.FormGroupFor(m => m.BooleanField).Label("Vertical checkbox").WithCheckboxOrRadio().BeginContent())
     {
         @@Bootstrap.Checkbox("option one")
         @@Bootstrap.Checkbox("option two")
@@ -245,26 +498,26 @@ using (Bootstrap.BeginForm(FormType.Horizontal))
     {
         using (Bootstrap.BeginForm(FormType.Horizontal))
         {
-            using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Inline radio").BeginContent())
+            using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Inline radio").WithCheckboxOrRadio().BeginContent())
             {
                 @Bootstrap.Radio(1, "value one").Inline()
                 @Bootstrap.Radio(2, "value two").Inline()
                 @Bootstrap.Radio(3, "value three").Inline()
             }
-            using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Vertical radio").BeginContent())
+            using (Bootstrap.FormGroupFor(m => m.IntegerField).Label("Vertical radio").WithCheckboxOrRadio().BeginContent())
             {
                 @Bootstrap.Radio(1, "value one")
                 @Bootstrap.Radio(2, "value two")
                 @Bootstrap.Radio(3, "value three")
             }
-            @Bootstrap.FormGroupFor(m => m.BooleanField).Label("Single checkbox").Control(Bootstrap.Checkbox("Checkbox text"))
-            using (Bootstrap.FormGroupFor(m => m.BooleanField).Label("Inline checkbox").BeginContent())
+            @Bootstrap.FormGroupFor(m => m.BooleanField).Label("Single checkbox").WithCheckboxOrRadio().Control(Bootstrap.Checkbox("Checkbox text"))
+            using (Bootstrap.FormGroupFor(m => m.BooleanField).Label("Inline checkbox").WithCheckboxOrRadio().BeginContent())
             {
                 @Bootstrap.Checkbox("option one").Inline()
                 @Bootstrap.Checkbox("option two").Inline()
                 @Bootstrap.Checkbox("option three").Inline()
             }
-            using (Bootstrap.FormGroupFor(m => m.BooleanField).Label("Vertical checkbox").BeginContent())
+            using (Bootstrap.FormGroupFor(m => m.BooleanField).Label("Vertical checkbox").WithCheckboxOrRadio().BeginContent())
             {
                 @Bootstrap.Checkbox("option one")
                 @Bootstrap.Checkbox("option two")
@@ -303,9 +556,9 @@ using (Bootstrap.BeginForm())
         var items = (new[] { 1, 2, 3 }).Select(x => Bootstrap.SelectOption(x, "Value " + x)).ToList();
         var items2 = (new[] { 4, 5, 6 }).Select(x => Bootstrap.SelectOption(x, "Value " + x)).ToList();
         var grouped = new[] {
-            Bootstrap.SelectOptGroup("group 1", items),
-            Bootstrap.SelectOptGroup("group 2", items2)
-        };
+Bootstrap.SelectOptGroup("group 1", items),
+Bootstrap.SelectOptGroup("group 2", items2)
+};
         using (Bootstrap.BeginForm())
         {
             @Bootstrap.FormGroupFor(m => m.IntegerField).Label("Simple select").Control(Bootstrap.Select(items))
@@ -349,7 +602,7 @@ using (Bootstrap.BeginForm())
     await Html.RenderPartialAsync("FormPartial");
 }
 </pre>
-<p>And partial file:</p>
+        <p>And partial file:</p>
 <pre>
 @@model Bootstrap3Mvc6.Sample.Models.DemoModelOne
 @@{
@@ -359,7 +612,7 @@ using (Bootstrap.BeginForm())
             .Label("Field with complex content").WithSizedControls().BeginContent())
         {
             @@Bootstrap.Input().Size(6, 6, 6, 6, 6)
-            @@Bootstrap.HelpBlock("Some text about this control")
+            @@Bootstrap.HelpText("Some text about this control")
         }
     }
 }
@@ -377,7 +630,7 @@ using (Bootstrap.BeginForm())
             using (Bootstrap.BeginFormFieldset("Fieldset one"))
             {
                 @Bootstrap.FormGroupFor(m => m.StringField).Label("Disabled control").Control(Bootstrap.Input().Disabled())
-                @Bootstrap.FormGroupFor(m => m.FieldWithError).Label("Field with error").Control(Bootstrap.Input()).Content(Bootstrap.HelpBlock("Some help text about this field"))
+                @Bootstrap.FormGroupFor(m => m.FieldWithError).Label("Field with error").Control(Bootstrap.Input()).Content(Bootstrap.HelpText("Some help text about this field"))
                 @Bootstrap.FormGroupFor(m => m.BooleanFieldWithError).Control(Bootstrap.Checkbox("Checkbox with error"))
 
                 using (Bootstrap.FormGroup("Group with multiple controls").WithSizedControls().BeginContent())

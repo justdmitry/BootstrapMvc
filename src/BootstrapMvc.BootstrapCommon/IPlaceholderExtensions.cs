@@ -3,7 +3,7 @@
     using System;
     using BootstrapMvc.Core;
 
-    public static class MarkersExtensions
+    public static class IPlaceholderExtensions
     {
         public static IItemWriter<T> Placeholder<T>(this IItemWriter<T> target, string placeholder) 
             where T : Element, IPlaceholderTarget

@@ -46,7 +46,7 @@
             return contentHelper.CreateWriter<ButtonGroup, ButtonGroupContent>();
         }
 
-        public static IItemWriter<ButtonGroup, ButtonGroupContent> ButtonGroup(this IAnyContentMarker contentHelper, ButtonSize size)
+        public static IItemWriter<ButtonGroup, ButtonGroupContent> ButtonGroup(this IAnyContentMarker contentHelper, ControlSize size)
         {
             return contentHelper.CreateWriter<ButtonGroup, ButtonGroupContent>().Size(size);
         }
@@ -56,7 +56,7 @@
             return ButtonGroup(contentHelper).BeginContent();
         }
 
-        public static ButtonGroupContent BeginButtonGroup(this IAnyContentMarker contentHelper, ButtonSize size)
+        public static ButtonGroupContent BeginButtonGroup(this IAnyContentMarker contentHelper, ControlSize size)
         {
             return ButtonGroup(contentHelper).Size(size).BeginContent();
         }

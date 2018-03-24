@@ -67,6 +67,7 @@
             {
                 foreach(var button in buttons)
                 {
+                    button.Parent = this;
                     button.WriteTo(writer);
                 }
             }

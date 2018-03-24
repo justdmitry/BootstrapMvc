@@ -36,5 +36,15 @@
         {
             return GridRow(contentHelper).BeginContent();
         }
+
+        public static IItemWriter<FormRow, GridRowContent> FormRow(this IAnyContentMarker contentHelper)
+        {
+            return contentHelper.CreateWriter<FormRow, GridRowContent>();
+        }
+
+        public static GridRowContent BeginFormRow(this IAnyContentMarker contentHelper)
+        {
+            return FormRow(contentHelper).BeginContent();
+        }
     }
 }

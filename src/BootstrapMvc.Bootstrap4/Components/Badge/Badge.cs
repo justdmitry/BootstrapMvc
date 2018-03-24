@@ -42,10 +42,5 @@
 
             return tb.GetEndTag();
         }
-
-        void ILink.SetHref(string value)
-        {
-            Href = value;
-        }
     }
 }

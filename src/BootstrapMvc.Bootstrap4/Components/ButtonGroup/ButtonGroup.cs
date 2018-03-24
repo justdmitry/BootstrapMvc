@@ -4,11 +4,11 @@
     using BootstrapMvc.Core;
     using System.Collections.Generic;
 
-    public class ButtonGroup : ContentElement<ButtonGroupContent>, IButtonSizable
+    public class ButtonGroup : ContentElement<ButtonGroupContent>, IControlSizable
     {
         private List<Button> buttons;
 
-        public ButtonSize Size { get; set; }
+        public ControlSize Size { get; set; }
 
         public bool Vertical { get; set; }
 
@@ -20,11 +20,13 @@
             {
                 return;
             }
+
             value.Parent = this;
             if (buttons == null)
             {
                 buttons = new List<Button>();
             }
+
             buttons.Add(value);
         }
 
@@ -54,7 +56,7 @@
             {
                 if (toolbar.ButtonGroupsWritten != 0)
                 {
-                    tb.AddCssClass("mr-" + toolbar.GroupSpacing);
+                    tb.AddCssClass("ml-" + toolbar.GroupSpacing);
                 }
 
                 toolbar.ButtonGroupsWritten++;
@@ -71,6 +73,7 @@
             {
                 foreach (var button in buttons)
                 {
+                    button.Parent = this;
                     button.WriteTo(writer);
                 }
             }

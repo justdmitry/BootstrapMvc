@@ -28,6 +28,11 @@
             return res;
         }
 
+        public IItemWriter<OrdinaryElement, AnyContent> Item(params object[] content)
+        {
+            return Item().Content(content);
+        }
+
         public AnyContent BeginItem()
         {
             return Item().BeginContent();

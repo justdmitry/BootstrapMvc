@@ -8,6 +8,7 @@
         public ButtonToolbarContent(IBootstrapContext context, ButtonToolbar parent)
         {
             this.Context = context;
+            this.Parent = parent;
         }
 
         private IBootstrapContext Context { get; set; }
@@ -21,7 +22,7 @@
             return Context.Helper.CreateWriter<ButtonGroup, ButtonGroupContent>(Parent);
         }
 
-        public IItemWriter<ButtonGroup, ButtonGroupContent> ButtonGroup(ButtonSize size)
+        public IItemWriter<ButtonGroup, ButtonGroupContent> ButtonGroup(ControlSize size)
         {
             return ButtonGroup().Size(size);
         }
@@ -31,7 +32,7 @@
             return ButtonGroup().BeginContent();
         }
 
-        public ButtonGroupContent BeginButtonGroup(ButtonSize size)
+        public ButtonGroupContent BeginButtonGroup(ControlSize size)
         {
             return ButtonGroup(size).BeginContent();
         }

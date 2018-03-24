@@ -1,6 +1,6 @@
 ﻿namespace BootstrapMvc
 {
-    public enum ButtonSize : byte
+    public enum ControlSize : byte
     {
         Default,
         Large,
