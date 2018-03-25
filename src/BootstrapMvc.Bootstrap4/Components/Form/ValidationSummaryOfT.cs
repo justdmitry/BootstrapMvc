@@ -64,7 +64,7 @@
                     writer.Write("</ul>");
                     if (!string.IsNullOrEmpty(ErrorFooter))
                     {
-                        writer.Write(bootstrap4Mode ? "<p class=\"m-b-0\">" : "<p>");
+                        writer.Write(bootstrap4Mode ? "<p class=\"mb-0\">" : "<p>");
                         writer.Write(Helper.HtmlEncode(ErrorFooter));
                         writer.Write("</p>");
                     }
@@ -97,7 +97,7 @@
                     writer.Write("</ul>");
                     if (!string.IsNullOrEmpty(WarningFooter))
                     {
-                        writer.Write(bootstrap4Mode ? "<p class=\"m-b-0\">" : "<p>");
+                        writer.Write(bootstrap4Mode ? "<p class=\"mb-0\">" : "<p>");
                         writer.Write(Helper.HtmlEncode(WarningFooter));
                         writer.Write("</p>");
                     }

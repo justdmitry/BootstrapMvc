@@ -73,13 +73,9 @@
 
             if (controlContext != null)
             {
-                if (controlContext.HasErrors)
+                if (controlContext.HasErrors || controlContext.HasWarning)
                 {
-                    input.AddCssClass("form-control-danger");
-                }
-                else if (controlContext.HasWarning)
-                {
-                    input.AddCssClass("form-control-warning");
+                    input.AddCssClass("is-invalid");
                 }
             }
 

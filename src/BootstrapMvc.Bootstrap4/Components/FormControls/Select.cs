@@ -67,6 +67,11 @@
                     tb.MergeAttribute("required", "required", true);
                 }
                 value = controlContext.FieldValue;
+
+                if (controlContext.HasErrors || controlContext.HasWarning)
+                {
+                    tb.AddCssClass("is-invalid");
+                }
             }
 
             if (Disabled)

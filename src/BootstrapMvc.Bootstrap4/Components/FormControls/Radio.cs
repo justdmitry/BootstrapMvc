@@ -28,19 +28,6 @@
                 div.AddCssClass("form-check-inline");
             }
 
-            if (controlContext != null)
-            {
-                if (controlContext.HasErrors)
-                {
-                    div.AddCssClass("has-danger");
-                }
-
-                else if (controlContext.HasWarning)
-                {
-                    div.AddCssClass("has-warning");
-                }
-            }
-
             div.WriteStartTag(writer);
 
             var input = Helper.CreateTagBuilder("input");
@@ -56,6 +43,11 @@
                 if (controlValue != null && Value != null && Value.ToString().Equals(controlValue.ToString()))
                 {
                     input.MergeAttribute("checked", "checked", true);
+                }
+
+                if (controlContext.HasErrors || controlContext.HasWarning)
+                {
+                    input.AddCssClass("is-invalid");
                 }
             }
 

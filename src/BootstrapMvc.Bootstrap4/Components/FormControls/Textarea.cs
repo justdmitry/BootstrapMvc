@@ -63,6 +63,11 @@
                 {
                     tb.MergeAttribute("required", "required", true);
                 }
+                
+                if (controlContext.HasErrors || controlContext.HasWarning)
+                {
+                    tb.AddCssClass("is-invalid");
+                }
             }
 
             if (Disabled)

@@ -78,15 +78,6 @@
                 tb.AddCssClass(gridSize.ToCssClass());
             }
 
-            if (HasErrors)
-            {
-                tb.AddCssClass("has-danger");
-            }
-            else if (HasWarning)
-            {
-                tb.AddCssClass("has-warning");
-            }
-
             ApplyCss(tb);
             ApplyAttributes(tb);
 
