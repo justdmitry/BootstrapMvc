@@ -23,14 +23,14 @@
                 <li class="nav-item">@Html.ActionLink("Basics", "Basics", "Home", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Grid", "Grid", "Home", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Tables", "Tables", "Home", null, new { @class = "nav-link" })</li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Components</a>
-                    <div class="dropdown-menu">
-                        @Html.ActionLink("Alerts", "Components", "Home", new { component = "Alerts" }, new { @class = "dropdown-item" })
-                        @Html.ActionLink("Badges", "Components", "Home", new { component = "Badges" }, new { @class = "dropdown-item" })
-                        @Html.ActionLink("Buttons", "Components", "Home", new { component = "Buttons" }, new { @class = "dropdown-item" })
-                        @Html.ActionLink("Lists", "Components", "Home", new { component = "Lists" }, new { @class = "dropdown-item" })
-                    </div>
+                <li class="nav-item">
+                    @using (var dd = Bootstrap.Anchor("Components").CssClass("nav-link").BeginDropdown())
+                    {
+                        @dd.Link("Alerts").Href("Components", "Home", new { component = "Alerts" })
+                        @dd.Link("Badges").Href("Components", "Home", new { component = "Badges" })
+                        @dd.Link("Buttons").Href("Components", "Home", new { component = "Buttons" })
+                        @dd.Link("Lists").Href("Components", "Home", new { component = "Lists" })
+                    }
                 </li>
                 <li class="nav-item">@Html.ActionLink("Forms", "Forms", "Home", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Extend it!", "Extend", "Home", null, new { @class = "nav-link" })</li>

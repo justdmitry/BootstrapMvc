@@ -106,13 +106,30 @@
     }
 }
 
-@*<p>Use <code>Dropdown()</code> or <code>BeginDropdown()</code> methods on any Button</p>
-    @using (Bootstrap.BeginGridRow())
+<h3>Dropdowns</h3>
+<p>Use <code>BeginDropdown()</code> methods on any Button</p>
+@using (Bootstrap.BeginGridRow())
+{
+    using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
     {
-        using (Bootstrap.BeginGridCol(0, 7, 7, 7, 6))
+<pre>
+using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
+{
+    using (var groupContent = toolbarContent.BeginButtonGroup())
+    {
+        @@Bootstrap.Button(Color8.SuccessGreen, "One")
+        using (var dropdown = Bootstrap.Button("Two").BeginDropdown())
         {
-    <pre>
-    @@using (var dropdown = Bootstrap.Button("Sample").BeginDropdown())
+            @@dropdown.Link("Hello");
+            @@dropdown.Divider();
+            @@dropdown.Header("Header");
+            @@dropdown.Link("Link 1").Href("#target1");
+            @@dropdown.Link("Link 2").Href("#target2").Disabled();
+        }
+    }
+}
+&lt;p&gt;
+    @@using (var dropdown = Bootstrap.Button("Single").BeginDropdown())
     {
         @@dropdown.Link("Hello");
         @@dropdown.Divider();
@@ -120,11 +137,29 @@
         @@dropdown.Link("Link 1").Href("#target1");
         @@dropdown.Link("Link 2").Href("#target2").Disabled();
     }
+&lt;/p&gt;
     </pre>
-        }
-        using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    }
+    using (Bootstrap.BeginGridCol(0, 5, 5, 5, 6))
+    {
+        using (var toolbarContent = Bootstrap.ButtonToolbar().BeginContent())
         {
-            using (var dropdown = Bootstrap.Button("Sample").BeginDropdown())
+            using (var groupContent = toolbarContent.BeginButtonGroup())
+            {
+                @Bootstrap.Button(Color8.SuccessGreen, "One")
+                using (var dropdown = Bootstrap.Button("Two").BeginDropdown())
+                {
+                    @dropdown.Link("Hello");
+                    @dropdown.Divider();
+                    @dropdown.Header("Header");
+                    @dropdown.Link("Link 1").Href("#target1");
+                    @dropdown.Link("Link 2").Href("#target2").Disabled();
+                }
+            }
+        }
+
+        <p>
+            @using (var dropdown = Bootstrap.Button("Single").BeginDropdown())
             {
                 @dropdown.Link("Hello");
                 @dropdown.Divider();
@@ -132,5 +167,6 @@
                 @dropdown.Link("Link 1").Href("#target1");
                 @dropdown.Link("Link 2").Href("#target2").Disabled();
             }
-        }
-    }*@
+        </p>
+    }
+}
