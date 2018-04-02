@@ -4,11 +4,13 @@
     using BootstrapMvc.Core;
     using BootstrapMvc.Forms;
 
-    public class Checkbox : Element, IFormControl, ITextDisplay, IInlineDisplay
+    public class Checkbox : Element, IFormControl, ITextDisplay, IValueHolder, IInlineDisplay
     {
         public string Text { get; set; }
 
         public bool Inline { get; set; }
+
+        public object Value { get; set; } = "true";
 
         public bool Disabled { get; set; }
 
@@ -28,14 +30,16 @@
 
             div.WriteStartTag(writer);
 
+            var fieldId = (controlContext?.FieldName ?? "checkbox") + "-" + this.GetHashCode();
+
             var input = Helper.CreateTagBuilder("input");
             input.MergeAttribute("type", "checkbox", true);
             input.AddCssClass("form-check-input");
             if (controlContext != null)
             {
-                input.MergeAttribute("id", controlContext.FieldName, true);
+                input.MergeAttribute("id", fieldId, true);
                 input.MergeAttribute("name", controlContext.FieldName, true);
-                input.MergeAttribute("value", "true", true);
+                input.MergeAttribute("value", Value?.ToString(), true);
                 var controlValue = controlContext.FieldValue;
                 if (controlValue != null && bool.Parse(controlValue.ToString()))
                 {
@@ -61,7 +65,7 @@
             input.WriteFullTag(writer);
 
             lbl = Helper.CreateTagBuilder("label");
-            lbl.MergeAttribute("for", controlContext?.FieldName, true);
+            lbl.MergeAttribute("for", fieldId, true);
             lbl.AddCssClass("form-check-label");
             lbl.WriteStartTag(writer);
             writer.Write(Helper.HtmlEncode(Text ?? controlContext?.DisplayName));

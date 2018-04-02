@@ -3,16 +3,17 @@
   <PropertyGroup>
     <Copyright>Copyright © Dmitry Popov, 2016</Copyright>
     <AssemblyTitle>BootstrapMvc.Bootstrap4</AssemblyTitle>
-    <VersionPrefix>1.2.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <TargetFrameworks>netstandard2.0;netstandard1.4;netstandard1.3;netstandard1.2;net461;net46;net451</TargetFrameworks>
     <DefineConstants>$(DefineConstants);BOOTSTRAP4</DefineConstants>
     <AssemblyName>BootstrapMvc.Bootstrap4</AssemblyName>
     <PackageId>BootstrapMvc.Bootstrap4</PackageId>
     <PackageTags>Bootstrap;Bootstrap4;Mvc;HtmlHelpers</PackageTags>
-    <PackageReleaseNotes>ListGroup added, Label now Badge (again)</PackageReleaseNotes>
+    <PackageReleaseNotes>Bootstrap v4.0.0</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/justdmitry/BootstrapMvc</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/justdmitry/BootstrapMvc.git</RepositoryUrl>
+    <Version>2.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
