@@ -34,6 +34,11 @@
             return contentHelper.Tag("span").Content(content);
         }
 
+        public static IItemWriter<OrdinaryElement, AnyContent> Div(this IAnyContentMarker contentHelper, params object[] content)
+        {
+            return contentHelper.Tag("div").Content(content);
+        }
+
         public static IItemWriter<OrdinaryElement, AnyContent> Small(this IAnyContentMarker contentHelper, params object[] content)
         {
             return contentHelper.Tag("small").Content(content);
