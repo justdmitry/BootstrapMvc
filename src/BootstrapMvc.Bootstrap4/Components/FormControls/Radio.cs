@@ -35,12 +35,12 @@
             var input = Helper.CreateTagBuilder("input");
             input.MergeAttribute("type", "radio", true);
             input.AddCssClass("form-check-input");
+            input.MergeAttribute("id", fieldId, true);
+            input.MergeAttribute("value", Value?.ToString(), true);
 
             if (controlContext != null)
             {
-                input.MergeAttribute("id", fieldId, true);
                 input.MergeAttribute("name", controlContext.FieldName, true);
-                input.MergeAttribute("value", Value?.ToString(), true);
                 var controlValue = controlContext.FieldValue;
                 if (controlValue != null && Value != null && Value.ToString().Equals(controlValue.ToString()))
                 {
