@@ -76,7 +76,7 @@
 
             if (xs == sm && sm == md && md == lg && lg == xl)
             {
-                return xs == Auto ? string.Empty : "col-" + xs;
+                return xs == Auto ? "col-auto" : "col-" + xs;
             }
 
             var clss = (xs == Auto ? " col-xs-auto" : (xs == 0 ? string.Empty : " col-xs-" + xs))

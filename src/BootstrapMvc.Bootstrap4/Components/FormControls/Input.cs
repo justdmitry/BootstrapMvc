@@ -89,14 +89,17 @@
                     input.MergeAttribute("required", "required", true);
                 }
 
+                if (actualType == InputType.Datetime)
+                {
+                    actualType = InputType.DatetimeLocal;
+                }
+
+                var asHtml5 = (DateInputMode == DateInputMode.Html5);
+
                 var value = controlContext.FieldValue;
                 if (value != null)
                 {
                     var valueString = value.ToString();
-                    if (actualType == InputType.Datetime)
-                    {
-                        actualType = InputType.DatetimeLocal;
-                    }
 
                     if (actualType == InputType.Date || actualType == InputType.DatetimeLocal || actualType == InputType.Time)
                     {
@@ -114,13 +117,7 @@
                             valueTimeSpan = valueDateTime.Value.TimeOfDay;
                         }
 
-                        var asHtml5 = (DateInputMode == DateInputMode.Html5);
-                        if (!asHtml5)
-                        {
-                            actualType = InputType.Text;
-                        }
-
-                        switch(Type)
+                        switch (Type)
                         {
                             case InputType.Date:
                                 if (valueDateTime.HasValue)
@@ -147,6 +144,14 @@
                         }
                     }
                     input.MergeAttribute("value", valueString, true);
+                }
+
+                if (actualType == InputType.Date || actualType == InputType.DatetimeLocal || actualType == InputType.Time)
+                {
+                    if (!asHtml5)
+                    {
+                        actualType = InputType.Text;
+                    }
                 }
             }
 
